@@ -34,6 +34,10 @@ yarn start
 
 打开浏览器并访问: [http://127.0.0.1:3001](http://127.0.0.1:3001)
 
+## 讨论与支持
+
+【discord】 [https://discord.gg/j7JPmhzt](https://discord.gg/j7JPmhzt)
+
 ## 功能与建议
 
 目前项目处于开发初期，新功能正在持续添加中，如果你对软件有任何功能与建议，欢迎在 `Issues` 中提出
