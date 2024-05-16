@@ -8,6 +8,7 @@ import { useKeyPress } from 'ahooks';
 import { playerScheduler } from '@components/VideoPlayer/scheduler';
 import { useLockScroll } from '@hooks/useLockScroll';
 import { uniqueId } from 'lodash';
+import { useUpdateEffect } from 'ahooks';
 
 export type MaskProps = {
   visible?: boolean;
@@ -61,14 +62,14 @@ const Mask: React.FC<MaskProps> = ({
     el.scrollTop = window.innerHeight;
   }, [visible, pullToClose]);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     if (disabledPlayerScheduler) return;
+
     if (visible) {
       playerScheduler.stop();
-    }
-    return () => {
+    } else {
       playerScheduler.resume();
-    };
+    }
   }, [visible]);
 
   const onScroll = useCallback(() => {
