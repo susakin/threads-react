@@ -28,8 +28,6 @@
 
 ### 本地开发
 
-**注意：必须 git 命令 clone 下来才能运行，下载 zip 包是无法运行的。如果 clone 速度太慢，推荐使用 gitee 地址**
-
 ```bash
 git clone git@github.com:susakin/threads-react.git
 
