@@ -1,0 +1,40 @@
+@import '@assets/less/variable.less';
+
+.access-error {
+  max-width: 360px;
+  display: grid;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  padding-left: 64px;
+  padding-right: 64px;
+  justify-items: center;
+  flex-direction: column;
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-message,
+    &-reason {
+      overflow-y: visible;
+      text-align: center;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    &-message {
+      .text(var(--barcelona-primary-text), var(--system-16-font-size), 1.3125, 700);
+    }
+
+    &-reason {
+      .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 'normal');
+    }
+
+    &-button {
+      display: flex;
+    }
+  }
+}

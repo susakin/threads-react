@@ -1,0 +1,21 @@
+@import '@assets/less/variable.less';
+
+.avatar-selector {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  flex-shrink: 0;
+  cursor: pointer;
+
+  &-empty {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--barcelona-tertiary-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .active-scale();
+    color: var(--barcelona-primary-icon);
+  }
+}

@@ -1,0 +1,71 @@
+@import '@assets/less/variable.less';
+
+.profile-follower {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 18px;
+  min-height: 22px;
+
+  justify-content: space-between;
+
+  &-preview {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--barcelona-secondary-text);
+    white-space: nowrap;
+
+    &-count {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 16px;
+    flex-grow: 0;
+
+    &-button {
+      color: var(--barcelona-primary-icon);
+
+      &:nth-child(2) {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  &-bio {
+    min-width: 0;
+    flex-grow: 1;
+    display: flex;
+
+    &-split {
+      display: inline-block;
+      padding-left: 6px;
+      padding-right: 6px;
+      .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 400);
+    }
+
+    &-link {
+      min-width: 0;
+      text-decoration: none;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 400);
+
+      white-space: nowrap;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

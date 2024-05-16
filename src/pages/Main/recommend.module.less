@@ -1,0 +1,33 @@
+@import '@assets/less/variable.less';
+
+.recommend {
+  padding-bottom: 16px;
+  border-top: 0.5px solid var(--barcelona-primary-outline);
+
+  &-title {
+    padding-top: 14px;
+    padding-bottom: 14px;
+
+    @media (max-width: 699px) {
+      padding-right: var(--barcelona-post-horizontal-padding);
+      padding-left: var(--barcelona-post-horizontal-padding);
+    }
+
+    &-text {
+      .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 600);
+    }
+  }
+
+  &-scroll-container {
+    margin-top: -8px;
+    margin-bottom: -8px;
+  }
+
+  &-user {
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

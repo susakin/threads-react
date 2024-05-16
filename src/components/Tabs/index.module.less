@@ -1,0 +1,59 @@
+@import '@assets/less/variable.less';
+
+.tabs {
+  width: 100%;
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    height: 45px;
+    border-bottom: 1px solid var(--barcelona-primary-outline);
+
+    &-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-bottom-color: var(--barcelona-primary-text);
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      transition: transform 0.2s;
+    }
+
+    &-item {
+      display: flex;
+      flex: 1;
+      justify-self: center;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      cursor: pointer;
+      .text(var(--barcelona-secondary-text), var(--system-15-font-size), 0.95, 600);
+
+      .focus ();
+
+      &-active {
+        color: var(--barcelona-primary-text);
+      }
+
+      &:active {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &-content-scroll {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+
+    .tabs-content {
+      flex: 1;
+      min-height: 0;
+    }
+  }
+}

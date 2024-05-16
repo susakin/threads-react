@@ -1,0 +1,32 @@
+.video-player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  &-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &-spin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &-audio {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

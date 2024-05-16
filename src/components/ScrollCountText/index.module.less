@@ -1,0 +1,20 @@
+.scroll-count-text {
+  overflow-y: hidden;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  position: relative;
+
+  &-inner {
+    height: var(--base-line-clamp-line-height);
+    flex-direction: column;
+    text-overflow: clip;
+    display: flex;
+
+    &-changing {
+      transform: translateY(-100%);
+      transition-duration: 0.2s;
+      transition-property: transform;
+      transition-timing-function: ease-in;
+    }
+  }
+}

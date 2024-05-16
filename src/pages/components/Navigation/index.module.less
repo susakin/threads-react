@@ -1,0 +1,128 @@
+@import '@assets/less/variable.less';
+
+.navigation {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+
+  &-in-back {
+    @media (max-width: 699px) {
+      display: none;
+    }
+
+    .navigation-item-link {
+      @media (min-width: 700px) {
+        transform: scale(0.83, 1);
+        transition-duration: 0s;
+      }
+
+      @media (min-width: 768px) {
+        transform: scale(0.72, 1);
+        transition-duration: 0s;
+      }
+
+      @media (max-width: 699px) {
+        transition-property: unset;
+        transform: unset;
+        transition-duration: unset;
+      }
+    }
+
+    .navigation-item-icon {
+      transform: scale(calc(1 / 0.72), 1);
+
+      @media (max-width: 767px) and (min-width: 700px) {
+        transform: scale(calc(1 / 0.83), 1);
+      }
+    }
+
+    .navigation-item {
+      &:nth-child(1) {
+        transform: translateX(52px);
+
+        @media (max-width: 767px) {
+          transform: translateX(32px);
+        }
+      }
+
+      &:nth-child(2) {
+        transform: translateX(26px);
+
+        @media (max-width: 767px) {
+          transform: translateX(16px);
+        }
+      }
+
+      &:nth-child(3) {
+        transform: translateX(0);
+      }
+
+      &:nth-child(4) {
+        transform: translateX(-26px);
+
+        @media (max-width: 767px) {
+          transform: translateX(-16px);
+        }
+      }
+
+      &:nth-child(5) {
+        transform: translateX(-52px);
+
+        @media (max-width: 767px) {
+          transform: translateX(-32px);
+        }
+      }
+    }
+  }
+
+  &-item {
+    position: relative;
+    transition-duration: 0.4s;
+    transform: translateX(0);
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.5, 0, 0, 1);
+
+    &-icon {
+      transition-duration: 0s;
+      transition-property: transform;
+    }
+
+    &-button {
+      width: 100%;
+      height: 100%;
+      padding: 20px 32px;
+      box-sizing: border-box;
+      color: var(--barcelona-navigation-icon);
+    }
+
+    &-active {
+      color: var(--barcelona-primary-icon);
+    }
+
+    &-link {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      margin: 4px 2px;
+      display: flex;
+      cursor: pointer;
+      transition-property: transform;
+
+      .focus();
+    }
+
+    &-dot {
+      position: absolute;
+      height: 6px;
+      top: 10px;
+      width: 6px;
+      border-radius: 50%;
+      background-color: var(--barcelona-notification-badge-background);
+      left: calc(50% - 3px);
+      .fade-in();
+    }
+  }
+}

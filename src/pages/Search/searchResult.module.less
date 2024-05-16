@@ -1,0 +1,64 @@
+@import '@assets/less/variable.less';
+
+.search-result {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &-title {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+
+    text-decoration: none;
+
+    &-icon {
+      padding: 24px;
+      color: var(--barcelona-navigation-icon);
+      display: flex;
+
+      @media (max-width: 699px) {
+        padding-left: 8px;
+      }
+    }
+
+    &-text {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 16px 16px 0;
+      height: 32px;
+      border-bottom: 0.5px solid var(--barcelona-primary-outline);
+
+      overflow-y: hidden;
+
+      &-inner {
+        .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 600);
+        text-decoration: none;
+      }
+
+      &-icon {
+        color: var(--barcelona-navigation-icon);
+        display: flex;
+        text-decoration: none;
+        padding-right: 8px;
+      }
+    }
+  }
+
+  &-user {
+    width: 100%;
+
+    &-item {
+      padding-top: 4px;
+      padding-left: 16px;
+
+      &-follow {
+        margin-right: 16px;
+      }
+    }
+  }
+}

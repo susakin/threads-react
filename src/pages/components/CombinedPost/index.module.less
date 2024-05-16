@@ -1,0 +1,37 @@
+@import '@assets/less/variable.less';
+
+.combined-post {
+  padding-top: 4px;
+
+  &-has-padding-top {
+    padding-top: 12px;
+  }
+
+  &-has-border-top {
+    border-top: 0.5px solid var(--barcelona-primary-outline);
+  }
+
+  &-item {
+    &-not-first {
+      padding-top: 12px;
+    }
+
+    &:last-child {
+      padding-bottom: 8px;
+    }
+
+    &-no-line {
+      padding-top: 16px;
+    }
+  }
+
+  &-repost {
+    cursor: pointer;
+
+    &-username {
+      display: inline-flex;
+      .text(var(--barcelona-secondary-text), var(--system-13-font-size), 1.4, 600);
+      margin-right: 3px;
+    }
+  }
+}

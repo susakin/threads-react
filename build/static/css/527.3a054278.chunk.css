@@ -1,0 +1,214 @@
+.AXYqt {
+  align-items: stretch;
+  border: 1px solid var(--barcelona-primary-outline);
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  transition: -webkit-transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
+  transition:
+    transform 0.1s ease-in-out,
+    -webkit-transform 0.1s ease-in-out;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.AXYqt:active {
+  -webkit-transform: scale(0.98);
+  transform: scale(0.98);
+}
+.AXYqt img {
+  border-radius: inherit;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.AXYqt img,
+.AXYqt video {
+  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+.AXYqt video {
+  cursor: pointer;
+  display: block;
+}
+.eSJc6 {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .eSJc6 {
+    padding-left: var(--barcelona-lightbox-horizontal-padding);
+    padding-right: var(--barcelona-lightbox-horizontal-padding);
+  }
+}
+.JQKOj {
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+  -webkit-animation-name: JQKOj;
+  animation-name: JQKOj;
+}
+@-webkit-keyframes JQKOj {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes JQKOj {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.f3aza {
+  -webkit-animation-name: f3aza;
+  animation-name: f3aza;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-transform-origin: bottom;
+  transform-origin: bottom;
+}
+.GfSYk,
+.f3aza {
+  -webkit-animation-duration: 0.15s;
+  animation-duration: 0.15s;
+}
+.GfSYk {
+  -webkit-animation-name: GfSYk;
+  animation-name: GfSYk;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+@-webkit-keyframes f3aza {
+  0% {
+    opacity: 0;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@keyframes f3aza {
+  0% {
+    opacity: 0;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-webkit-keyframes GfSYk {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes GfSYk {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.llVxh:focus {
+  outline: 0;
+}
+.llVxh:focus-visible {
+  outline: auto;
+}
+.mixLD {
+  display: flex;
+  flex-direction: column;
+}
+.d16fB {
+  align-items: baseline;
+  border-top: 0.5px solid var(--barcelona-primary-outline);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+@media (max-width: 699px) {
+  .d16fB {
+    padding-left: var(--barcelona-post-horizontal-padding);
+    padding-right: var(--barcelona-post-horizontal-padding);
+  }
+}
+.fnL1x {
+  word-wrap: break-word;
+  color: var(--barcelona-primary-text);
+  font-family: var(--font-family-system);
+  font-size: var(--system-15-font-size);
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 100%;
+  min-width: 0;
+  text-align: left;
+  white-space: pre-line;
+  word-break: break-word;
+}
+.XyEeq {
+  color: var(--barcelona-secondary-text);
+  margin-left: auto;
+}
+.FKCC0 {
+  word-wrap: break-word;
+  border-top: 0.5px solid var(--barcelona-primary-outline);
+  color: var(--barcelona-primary-text);
+  display: flex;
+  font-family: var(--font-family-system);
+  font-size: var(--system-16-font-size);
+  font-weight: 600;
+  line-height: 1.3125;
+  max-width: 100%;
+  min-width: 0;
+  padding-top: 14px;
+  text-align: left;
+  white-space: pre-line;
+  word-break: break-word;
+}
+@media (max-width: 699px) {
+  .FKCC0 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

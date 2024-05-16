@@ -1,0 +1,17 @@
+@import '@assets/less/variable.less';
+
+.popup {
+  max-height: calc(100svh - var(--barcelona-mobile-header-height));
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 0.5px solid var(--barcelona-primary-outline);
+  background-color: var(--barcelona-elevated-background);
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  z-index: 1;
+  padding-bottom: env(safe-area-inset-bottom);
+  .scroll-in();
+}

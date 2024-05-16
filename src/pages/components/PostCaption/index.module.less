@@ -1,0 +1,26 @@
+@import '@assets/less/variable.less';
+
+.post-caption {
+  &-summary {
+    .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 400);
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 8px;
+  }
+
+  &-text {
+    margin-top: 3px;
+    overflow-wrap: anywhere;
+    .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 400);
+  }
+
+  &-reply {
+    margin-top: 4px;
+    .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 400);
+  }
+
+  &-media {
+    margin-top: 8px;
+  }
+}

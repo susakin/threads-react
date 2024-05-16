@@ -1,0 +1,40 @@
+@import '@assets/less/variable.less';
+
+.quoted-post {
+  padding: 16px var(--barcelona-quoted-post-horizontal-padding);
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--barcelona-primary-outline);
+
+  &-can-navigate {
+    cursor: pointer;
+  }
+
+  &-caption {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    overflow: hidden;
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &-full-name {
+      margin-left: 8px;
+      flex: 1;
+    }
+  }
+
+  &-quoted {
+    cursor: pointer;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 3px;
+    .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 400);
+  }
+}

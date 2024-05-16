@@ -1,0 +1,48 @@
+.controls {
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 100%;
+  padding: 16px 0;
+  cursor: pointer;
+
+  &-near-bottom {
+    bottom: 0;
+    left: 24px;
+    width: calc(100% - 48px);
+  }
+
+  &:hover {
+    .controls-inner {
+      transform: scaleY(2);
+    }
+  }
+
+  &-inner {
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    transform-origin: bottom;
+    background-color: var(--barcelona-media-outline);
+    transition-duration: 0.2s;
+    transition-property: transform;
+    bottom: 16px;
+    transform: scaleY(1);
+
+    &-progress {
+      height: 2px;
+      background-color: var(--barcelona-primary-icon);
+      position: absolute;
+      user-select: none;
+      transition-property: transform;
+      transition-timing-function: linear;
+      transform-origin: left;
+      width: 100%;
+      border-radius: 100px;
+
+      &-duration {
+        transition-duration: 0.2s;
+      }
+    }
+  }
+}

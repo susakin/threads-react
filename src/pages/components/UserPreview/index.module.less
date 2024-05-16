@@ -1,0 +1,54 @@
+.user-preview {
+  box-sizing: border-box;
+  padding-right: 8px;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-offset {
+    margin-right: 3px;
+  }
+
+  &-more {
+    height: 35px;
+    position: relative;
+
+    .user-preview-item {
+      position: absolute;
+
+      &:nth-child(1) {
+        top: 0;
+        right: 8px;
+      }
+
+      &:nth-child(2) {
+        left: 0;
+        top: 7px;
+      }
+
+      &:nth-child(3) {
+        left: 13px;
+        bottom: 0;
+      }
+    }
+  }
+
+  &-normal {
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .user-preview-item {
+      border: 2px solid transparent;
+      border-radius: 50%;
+
+      &:nth-child(2) {
+        border-right-width: 0;
+        border-color: var(--barcelona-primary-background);
+        margin-left: -6px;
+      }
+    }
+  }
+}

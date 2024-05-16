@@ -1,0 +1,52 @@
+@import '@assets/less/variable.less';
+
+.poll {
+  margin-top: 12px;
+  flex-direction: column;
+  display: flex;
+
+  &-option {
+    flex-direction: column;
+    display: flex;
+
+    &-item {
+      padding: 12px;
+      border: 1px solid var(--barcelona-composer-poll-option-outline);
+      border-radius: 12px;
+      color: var(--barcelona-primary-text);
+      touch-action: manipulation;
+      box-sizing: border-box;
+      display: block;
+      font-family: var(--font-family-system);
+      font-size: var(--system-15-font-size);
+      line-height: var(--system-15-line-height);
+      font-weight: var(--font-weight-system-semibold);
+      outline: none;
+
+      &:not(:first-child) {
+        margin-top: 8px;
+      }
+
+      &-dashed {
+        border-style: dashed;
+      }
+    }
+  }
+
+  &-hint {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &-text {
+      .text(var(--barcelona-secondary-text), var(--system-12-font-size), 1.4, 400);
+      flex: 1;
+    }
+
+    &-button {
+      flex-shrink: 0;
+      .text(var(--barcelona-secondary-text), var(--system-12-font-size), 1.4, 600);
+    }
+  }
+}

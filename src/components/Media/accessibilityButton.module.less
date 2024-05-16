@@ -1,0 +1,17 @@
+@import '@assets/less/variable.less';
+
+.accessibility-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  .active-scale();
+  background-color: var(--always-dark-overlay);
+  border-radius: 30px;
+
+  &-inner {
+    .text(var(--always-white), var(--system-13-font-size), 1.4, 600);
+    padding: 4px 10px;
+    border-radius: 30px;
+    backdrop-filter: blur(21.5px);
+  }
+}

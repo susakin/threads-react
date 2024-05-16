@@ -1,0 +1,24 @@
+@import '@assets/less/variable.less';
+
+.post-edit-modal {
+  width: 620px;
+  max-height: calc(100svh - 109px);
+  overflow-y: auto;
+  display: flex;
+  position: relative;
+  background-color: var(--barcelona-primary-background);
+  border-radius: 16px;
+  box-shadow: 0 10px 21px rgba(0, 0, 0, 0.08);
+  position: relative;
+  border: 0.5px solid var(--barcelona-primary-outline);
+  margin-top: 8px;
+
+  &-title {
+    width: 100%;
+    height: 46px;
+    .text(var(--always-white), var(--system-16-font-size), 1.3125, 700);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

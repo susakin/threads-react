@@ -1,0 +1,46 @@
+@import '@assets/less/variable.less';
+
+.post-summary {
+  display: flex;
+  min-height: 28px;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  grid-row-start: 4;
+
+  &-none-indent {
+    grid-column-end: span 2;
+    grid-column-start: 1;
+
+    .post-summary-avatar {
+      width: var(--barcelona-threadline-column-width);
+      padding-right: 12px;
+    }
+  }
+
+  &-indent {
+    grid-column-start: 2;
+
+    .post-summary-avatar {
+      width: auto;
+    }
+  }
+
+  &-split {
+    padding: 0 2px;
+    color: var(--barcelona-secondary-text);
+    cursor: pointer;
+  }
+
+  &-comment,
+  &-like {
+    text-decoration: none;
+    cursor: pointer;
+    .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 400);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

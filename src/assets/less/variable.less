@@ -1,0 +1,148 @@
+.active-scale (@scale: 0.96) {
+  transition: transform 0.1s ease-in-out;
+  transform-origin: center center;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(@scale);
+  }
+}
+
+.hover-scale(@scale: 1.07) {
+  transition: transform 0.2s;
+  transform-origin: center center;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(@scale);
+  }
+}
+
+.text (@color, @font-size, @line-height, @font-weight) {
+  min-width: 0;
+  max-width: 100%;
+  color: @color;
+  text-align: left;
+  font-weight: @font-weight;
+  word-wrap: break-word;
+  font-family: var(--font-family-system);
+  font-size: @font-size;
+  word-break: break-word;
+  white-space: pre-line;
+  line-height: @line-height;
+}
+
+.media {
+  min-width: 0;
+  .active-scale(0.98);
+  user-select: none;
+  align-items: stretch;
+  position: relative;
+  border-radius: 8px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid var(--barcelona-primary-outline);
+  box-sizing: border-box;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    border-radius: inherit;
+    user-select: none;
+    border-radius: 8px;
+  }
+
+  video {
+    object-fit: cover;
+    width: 100%;
+    display: block;
+    height: 100%;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+}
+
+.media-viewer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: 768px) {
+    padding-right: var(--barcelona-lightbox-horizontal-padding);
+    padding-left: var(--barcelona-lightbox-horizontal-padding);
+  }
+}
+
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 0.2s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.scroll-in {
+  animation-duration: 0.15s;
+  transform-origin: bottom;
+  animation-timing-function: ease-in-out;
+  animation-name: scroll-in;
+}
+
+.scale-in {
+  animation-duration: 0.15s;
+  animation-timing-function: ease-in-out;
+  animation-name: scale-in;
+}
+
+@keyframes scroll-in {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.focus {
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    outline: auto;
+  }
+}

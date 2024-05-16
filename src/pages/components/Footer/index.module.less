@@ -1,0 +1,16 @@
+.footer {
+  height: var(--barcelona-small-screen-nav-height);
+  padding-bottom: env(safe-area-inset-bottom);
+  backdrop-filter: blur(28.5px);
+  position: fixed;
+  background-color: var(--barcelona-header-background);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  grid-template-rows: 1fr;
+  z-index: 2;
+
+  @media (min-width: 699px) {
+    display: none;
+  }
+}

@@ -1,0 +1,60 @@
+.navigation-back {
+  height: 100%;
+  width: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.5, 0, 0, 1);
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
+  &-button {
+    color: var(--barcelona-primary-icon);
+    margin-left: 12px;
+
+    @media (max-width: 699px) {
+      position: absolute;
+      left: 2px;
+      margin-left: 0;
+    }
+  }
+
+  &-slide-in {
+    animation-name: slide-in;
+  }
+
+  &-slide-out {
+    animation-name: slide-out;
+    animation-fill-mode: forwards;
+  }
+
+  @media (max-width: 699px) {
+    //animation-duration: 0s;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-42px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-42px);
+  }
+}

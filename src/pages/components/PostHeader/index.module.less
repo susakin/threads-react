@@ -1,0 +1,24 @@
+.post-header {
+  &-inner {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+
+    &-name {
+      column-gap: 6px;
+      grid-column-start: 1;
+      align-self: center;
+      display: flex;
+      align-items: baseline;
+
+      &-username {
+        grid-column-start: 1;
+        align-self: center;
+      }
+
+      &-time {
+        text-decoration: none;
+      }
+    }
+  }
+}

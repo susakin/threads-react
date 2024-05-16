@@ -1,0 +1,19 @@
+@import '@assets/less/variable.less';
+
+.profile-action {
+  display: flex;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  justify-content: space-between;
+  flex-direction: row;
+  column-gap: 10px;
+
+  @media (max-width: 767px) {
+    padding-right: var(--barcelona-post-horizontal-padding);
+    padding-left: var(--barcelona-post-horizontal-padding);
+  }
+
+  &-button {
+    flex: 1;
+  }
+}

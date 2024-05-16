@@ -1,0 +1,72 @@
+@import '@assets/less/variable.less';
+
+.profile-summary {
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  @media (max-width: 767px) {
+    padding-right: var(--barcelona-post-horizontal-padding);
+    padding-left: var(--barcelona-post-horizontal-padding);
+  }
+
+  &-header {
+    grid-template-columns: minmax(0, 1fr) max-content;
+    display: grid;
+    align-items: center;
+    column-gap: 16px;
+
+    &-name {
+      grid-column-start: 1;
+
+      &-full-name {
+        text-align: left;
+        .text(var(--barcelona-primary-text), var(--system-24-font-size), 1.25, 700);
+
+        &-text {
+          cursor: pointer;
+        }
+      }
+
+      &-username {
+        margin-top: 2px;
+        .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 400);
+      }
+    }
+
+    &-avatar {
+      .active-scale();
+      grid-column-start: 2;
+      cursor: pointer;
+      height: 64px;
+      width: 64px;
+      position: relative;
+
+      @media (min-width: 768px) {
+        width: 84px;
+        height: 84px;
+      }
+
+      &-badge {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        bottom: -1.5px;
+        left: -5px;
+
+        @media (min-width: 768px) {
+          left: -1px;
+        }
+      }
+    }
+
+    &-biography {
+      margin-top: 16px;
+      .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 400);
+    }
+  }
+
+  &-biography {
+    margin-top: 16px;
+    .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 400);
+  }
+}

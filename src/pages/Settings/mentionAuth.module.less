@@ -1,0 +1,37 @@
+@import '@assets/less/variable.less';
+
+.mention-auth {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 16px 16px 16px;
+
+  @media (max-width: 699px) {
+    margin-top: 16px;
+  }
+
+  &-title {
+    display: flex;
+    padding: 16px 0;
+    justify-content: center;
+
+    &-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .text(var(--barcelona-primary-text), var(--system-16-font-size), 1.3125, 700);
+    }
+  }
+
+  &-hint {
+    padding-top: 16px;
+    padding-bottom: 8px;
+
+    &-title {
+      .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 600);
+    }
+
+    &-text {
+      .text(var(--barcelona-secondary-text), var(--system-12-font-size), 1.4, 400);
+    }
+  }
+}

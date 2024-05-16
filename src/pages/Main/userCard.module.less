@@ -1,0 +1,86 @@
+@import '@assets/less/variable.less';
+
+.user-card {
+  background-color: var(--barcelona-tertiary-background);
+  width: 156px;
+  height: 204px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  position: relative;
+  .active-scale();
+
+  &-inner {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    &-avatar {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      position: relative;
+
+      &-badge {
+        position: absolute;
+        bottom: -1.5px;
+        left: -5px;
+        display: flex;
+
+        @media (min-width: 768px) {
+          left: -1px;
+        }
+      }
+    }
+
+    &-profile {
+      padding-top: 8px;
+      padding-bottom: 11px;
+      max-width: 100%;
+
+      &-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &-full-name,
+        &-username {
+          text-decoration: none;
+          overflow-x: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          max-width: 100%;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &-full-name {
+          .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 600);
+        }
+
+        &-username {
+          .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 400);
+        }
+      }
+
+      &-follow-button {
+        width: 100%;
+      }
+    }
+  }
+
+  &-delete {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+
+    &-button {
+      padding: 4px;
+    }
+  }
+}

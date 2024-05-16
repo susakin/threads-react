@@ -1,0 +1,47 @@
+@import '@assets/less/variable.less';
+
+.switch-button {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 1;
+  border-radius: 100px;
+  box-shadow: 0 8px 24px 0 var(--barcelona-box-shadow-08);
+  border: 0.5px solid var(--barcelona-menu-outline);
+  background-color: var(--barcelona-elevated-background);
+  transition-duration: 0.2s;
+  transition-property: transform;
+
+  &:hover {
+    transform: scale(1.07);
+  }
+
+  .active-scale();
+
+  @media (min-width: 1230px) {
+    left: calc(50% - 615px + 19px);
+  }
+
+  @media (max-width: 699px) {
+    display: none;
+  }
+
+  &-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 18px 24px;
+
+    &-text {
+      .text(var(--barcelona-primary-text), var(--system-15-font-size), 1, 600);
+    }
+
+    &-icon {
+      display: flex;
+      margin-left: 8px;
+      color: var(--barcelona-secondary-icon);
+    }
+  }
+}

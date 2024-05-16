@@ -1,0 +1,18 @@
+@import '@assets/less/variable.less';
+
+.privacy {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+
+  &-mention {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 8px;
+
+    &-text {
+      .text(var(--barcelona-secondary-text), var(--system-12-font-size), 1.4, 400);
+    }
+  }
+}

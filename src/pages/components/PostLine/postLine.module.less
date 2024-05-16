@@ -1,0 +1,25 @@
+.post-line {
+  cursor: pointer;
+  padding-right: 12px;
+  grid-row-end: span 2;
+  grid-column-start: 1;
+  grid-row-start: 3;
+
+  &-inner {
+    padding-top: 10px;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+
+    &-bar {
+      width: 2px;
+      height: calc(100% - 4px);
+      left: calc(50% - 1px);
+      border-radius: 2px;
+      background-color: var(--barcelona-threadline);
+      position: absolute;
+      top: 10px;
+      bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.post-line {
+  padding-right: 12px;
+  box-sizing: border-box;
+  position: relative;
+  grid-row-start: 3;
+  grid-column-start: 1;
+  padding-top: 10px;
+
+  &-indent {
+    grid-row-end: span 2;
+  }
+
+  &-in-line {
+    padding-bottom: 4px;
+  }
+
+  &-inner {
+    display: flex;
+    position: absolute;
+    color: var(--barcelona-threadline);
+  }
+}

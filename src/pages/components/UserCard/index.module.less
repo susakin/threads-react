@@ -1,0 +1,111 @@
+@import '@assets/less/variable.less';
+
+.user-card {
+  padding: 24px;
+  width: 360px;
+  background-color: var(--barcelona-elevated-background);
+  border-radius: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.12);
+  .fade-in();
+
+  &-header {
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    align-items: center;
+
+    &-username {
+      margin-top: 2px;
+      line-height: 1.4;
+      font-weight: 400;
+      font-size: var(--system-15-font-size);
+    }
+
+    &-avatar {
+      grid-column-start: 2;
+      position: relative;
+
+      &-badge {
+        position: absolute;
+        left: -4px;
+        bottom: -4px;
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    &-full-name {
+      font-weight: 700;
+      line-height: 1.2;
+      font-size: var(--system-20-font-size);
+    }
+
+    &-name {
+      grid-column-start: 1;
+
+      a {
+        display: block;
+        text-decoration: none;
+
+        .text(var(--barcelona-primary-text), '', '', '');
+
+        &:visited {
+          color: var(--barcelona-primary-text);
+        }
+      }
+    }
+  }
+
+  &-follow {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  &-follower {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &-num {
+      .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 400);
+    }
+
+    &-facepile-users {
+      margin-right: 8px;
+      width: 32px;
+      height: 20px;
+      position: relative;
+
+      &-avatar {
+        position: absolute;
+
+        &:nth-child(1) {
+          left: 0;
+          top: 2px;
+        }
+
+        &:nth-child(2) {
+          left: 12px;
+          padding: 2px;
+          width: 20px;
+          height: 20px;
+          background-color: var(--barcelona-primary-background);
+          box-sizing: border-box;
+          padding: 2px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  &-biography {
+    margin-top: 8px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    overflow-y: hidden;
+    .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 400);
+  }
+}

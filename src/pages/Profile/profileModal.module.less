@@ -1,0 +1,54 @@
+@import '@assets/less/variable.less';
+
+.profile-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 12px;
+  align-items: flex-start;
+  padding-bottom: 12px;
+  border-bottom: solid 0.5px var(--barcelona-primary-outline);
+
+  &-label {
+    padding-bottom: 4px;
+    .text(var(--barcelona-primary-text), var(--system-14-font-size), 1.4, 600);
+    overflow-wrap: break-word;
+  }
+
+  &-value {
+    .text(var(--barcelona-primary-text), var(--system-14-font-size), 1.4, '');
+    overflow-wrap: break-word;
+  }
+}
+
+.profile-modal {
+  margin: 20px auto;
+  max-height: calc(100% - 40px);
+  width: 400px;
+
+  &-inner {
+    padding: 8px 16px;
+
+    &-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 16px;
+      padding-right: 16px;
+
+      &-badge {
+        display: inline-block;
+        margin-left: 4px;
+      }
+
+      &-avatar {
+        padding-top: 12px;
+        padding-left: 16px;
+      }
+
+      &-last {
+        border: none;
+      }
+    }
+  }
+}

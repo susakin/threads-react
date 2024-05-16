@@ -1,0 +1,30 @@
+@import '@assets/less/variable.less';
+
+.sign {
+  padding-bottom: 8px;
+  display: grid;
+  align-items: center;
+  color: var(--barcelona-secondary-icon);
+  grid-template-columns: var(--barcelona-threadline-column-width) minmax(0, 1fr) auto;
+
+  @media (max-width: 699px) {
+    padding-right: var(--barcelona-post-horizontal-padding);
+    padding-left: var(--barcelona-post-horizontal-padding);
+  }
+
+  &-icon {
+    padding-right: 12px;
+    grid-column-start: 1;
+    margin-left: auto;
+    display: flex;
+  }
+
+  &-text {
+    display: inline-flex;
+    column-gap: 0.1em;
+    margin-right: auto;
+    flex-direction: row;
+    align-items: center;
+    .text(var(--barcelona-secondary-text), var(--system-13-font-size), 1.4, 400);
+  }
+}

@@ -1,0 +1,71 @@
+@import '@assets/less/variable.less';
+
+.auth {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 370px;
+    width: 100%;
+
+    @media (max-width: 519px) {
+      max-width: 100%;
+    }
+
+    &-logo {
+      width: 60px;
+    }
+
+    &-form {
+      width: 100%;
+      padding: 24px;
+      box-sizing: border-box;
+
+      @media (max-width: 519px) {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      &-title {
+        .text(var(--barcelona-primary-text), var(--system-16-font-size), 1.3125, 700);
+        text-align: center;
+        margin-bottom: 16px;
+      }
+
+      &-item {
+        margin-bottom: 8px;
+
+        &-input {
+          border-radius: 12px;
+          line-height: 140%;
+          padding: 16px;
+          background-color: var(--barcelona-tertiary-background);
+          touch-action: manipulation;
+          font-size: var(--system-15-font-size);
+          outline: none;
+          color: var(--barcelona-primary-text);
+          width: 100%;
+          border: none;
+          box-sizing: border-box;
+          border: 1px solid transparent;
+
+          .focus();
+        }
+      }
+
+      &-submit {
+        &-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

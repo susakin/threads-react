@@ -1,0 +1,72 @@
+@import '@assets/less/variable.less';
+
+.delete-account {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 16px 16px 16px;
+
+  @media (max-width: 699px) {
+    margin-top: 16px;
+  }
+
+  &-title {
+    padding: 16px 0;
+    .text(var(--barcelona-primary-text), var(--system-16-font-size), 1.3125, 700);
+    display: flex;
+    justify-content: center;
+  }
+
+  &-user {
+    border: 1px solid var(--barcelona-primary-outline);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+
+    &-avatar {
+      display: flex;
+    }
+
+    &-profile {
+      display: flex;
+      flex-direction: column;
+      padding-left: 24px;
+
+      &-username {
+        .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 600);
+      }
+
+      &-full-name {
+        .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 400);
+      }
+    }
+  }
+
+  &-hint {
+    padding: 24px 8px 0 8px;
+
+    &-item {
+      padding-bottom: 16px;
+
+      &-title {
+        .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 600);
+      }
+
+      &-text {
+        margin-top: 8px;
+        .text(var(--barcelona-secondary-text), var(--system-13-font-size), 1.4, 400);
+      }
+    }
+  }
+
+  &-action {
+    padding-top: 16px;
+
+    &-button {
+      width: 100%;
+      height: 52px;
+      color: var(--barcelona-error-text);
+      background-color: var(--barcelona-tertiary-background);
+    }
+  }
+}

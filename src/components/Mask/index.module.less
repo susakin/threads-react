@@ -1,0 +1,86 @@
+@import '@assets/less/variable.less';
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  overscroll-behavior-y: contain;
+  overflow-y: auto;
+  box-sizing: border-box;
+  //touch-action: none;
+  scrollbar-width: none;
+  .fade-in();
+
+  &-lock {
+    overflow: hidden !important;
+  }
+
+  &-default {
+    background-color: var(--always-black);
+  }
+
+  &-blur {
+    background-color: var(--barcelona-dialog-backdrop-background);
+    backdrop-filter: blur(28.5px);
+  }
+
+  &-inner {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+
+    &-placeholder {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+
+    &-content {
+      z-index: 1;
+    }
+  }
+
+  &-pull-to-close {
+    scroll-snap-type: y mandatory;
+
+    .mask-inner-content {
+      height: 100%;
+    }
+  }
+
+  &-pull {
+    &-placeholder {
+      height: 100vh;
+      scroll-snap-align: start;
+    }
+  }
+
+  &-close {
+    position: fixed;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    padding: 24px;
+    z-index: 4;
+
+    &-button {
+      background-color: var(--barcelona-tertiary-background);
+    }
+  }
+}
+
+@supports (height: 100dvh) {
+  .mask-pull-placeholder {
+    height: 100dvh;
+  }
+}

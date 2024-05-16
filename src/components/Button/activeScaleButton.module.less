@@ -1,0 +1,57 @@
+@import '@assets/less/variable.less';
+
+.active-scale-button {
+  .active-scale(0.9);
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .focus();
+
+  &-circle {
+    .active-scale-button-layer {
+      position: absolute;
+      border-radius: 18px;
+      user-select: none;
+      transform: scale3d(0, 0, 0);
+      background-color: var(--barcelona-tertiary-background);
+
+      &-actived {
+        transition: transform 0.15s;
+        transform: scale3d(1, 1, 0.1);
+      }
+    }
+  }
+
+  &-square {
+    .active-scale-button-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      background-color: var(--barcelona-navigation-item-hover-background);
+      transition-property: opacity, transform;
+      transition-duration: 0.1s;
+      transition-timing-function: ease-out;
+      transform: scale(0.8);
+      border-radius: 8px;
+      -webkit-tap-highlight-color: transparent;
+
+      &-actived {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &-inner {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

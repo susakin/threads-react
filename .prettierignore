@@ -1,0 +1,5 @@
+# .prettierrc忽略校验
+/public/**
+/.husky/**
+/node_modules/**
+/dist/**

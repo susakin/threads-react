@@ -1,0 +1,34 @@
+@import '@assets/less/variable.less';
+
+.private-modify {
+  padding: 20px 12px;
+
+  &-header {
+    &-avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-title {
+      margin-top: 12px;
+      .text(var(--barcelona-primary-text), var(--system-20-font-size), 1.25, 700);
+      text-align: center;
+    }
+
+    &-subtitle {
+      margin-top: 10px;
+      .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 400);
+      text-align: center;
+    }
+  }
+
+  &-radio {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  &-button {
+    width: 100%;
+  }
+}

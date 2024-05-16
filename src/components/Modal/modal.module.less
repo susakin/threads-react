@@ -1,0 +1,59 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+
+  &-title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-inner {
+    background-color: var(--barcelona-primary-background);
+    border-radius: 16px;
+    box-shadow: 0 10px 21px rgba(0, 0, 0, 0.08);
+    position: relative;
+    border: 0.5px solid var(--barcelona-primary-outline);
+  }
+
+  &-scale-in {
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-name: scale-in;
+    animation-duration: 0.1s;
+  }
+
+  &-scale-out {
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-name: scale-out;
+    animation-duration: 0.1s;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+    transform-origin: center;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center;
+  }
+}
+
+@keyframes scale-out {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    transform-origin: center;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center;
+  }
+}

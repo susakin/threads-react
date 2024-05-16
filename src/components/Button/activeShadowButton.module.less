@@ -1,0 +1,43 @@
+@import '@assets/less/variable.less';
+
+.active-shadow-button {
+  position: relative;
+  cursor: pointer;
+
+  .focus();
+
+  &-inner {
+    z-index: 1;
+    position: relative;
+  }
+
+  &-shadow {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition-property: opacity;
+    background-color: var(--barcelona-secondary-background);
+    opacity: 0;
+    transition-duration: var(--fds-duration-extra-extra-short-out);
+    transition-timing-function: var(--fds-animation-fade-out);
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+
+  &-disabled {
+    opacity: 0.4;
+  }
+
+  &-danger {
+    color: var(--barcelona-error-text);
+  }
+
+  &:active {
+    .active-shadow-button-shadow {
+      opacity: 1;
+    }
+  }
+}

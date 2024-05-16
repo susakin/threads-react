@@ -1,0 +1,30 @@
+.mutil-step-container {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &-slide {
+    transition-property: opacity, transform;
+    box-sizing: border-box;
+    transition-timing-function: var(--fds-soft);
+    transition-duration: var(--fds-fast);
+    opacity: 0;
+    transform-origin: inherit;
+    pointer-events: none;
+    outline: none;
+
+    &-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &-mounted {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}

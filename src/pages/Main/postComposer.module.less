@@ -1,0 +1,42 @@
+@import '@assets/less/variable.less';
+
+.post-composer {
+  background: var(--barcelona-primary-background);
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+
+  &-inner {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    display: flex;
+
+    &-hint {
+      flex-grow: 1;
+      margin-left: 8px;
+      margin-right: 8px;
+      padding-left: 4px;
+      .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 'inherit');
+      user-select: none;
+      cursor: text;
+      display: flex;
+      align-items: center;
+    }
+
+    &-button {
+      flex-shrink: 0;
+      color: var(--barcelona-primary-button-text);
+    }
+  }
+
+  &-split {
+    width: 100%;
+    background-color: var(--barcelona-primary-outline);
+    margin: 0;
+    height: 0.5px;
+    border: none;
+  }
+}

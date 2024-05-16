@@ -1,0 +1,30 @@
+.post-header-action {
+  align-self: center;
+  grid-column-start: 2;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow: visible;
+
+  &-button {
+    margin-left: 10px;
+
+    &:first-child {
+      margin-right: 10px;
+      color: var(--barcelona-secondary-icon);
+    }
+  }
+
+  &-countdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &-value {
+      font-weight: 400;
+      color: var(--barcelona-secondary-text);
+    }
+  }
+}

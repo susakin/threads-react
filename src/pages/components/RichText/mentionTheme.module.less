@@ -1,0 +1,30 @@
+.mentionSuggestionsPopup {
+  width: 280px;
+  background-color: var(--barcelona-elevated-background);
+  box-shadow: 0 10.5px 21px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  border: 0.5px solid var(--barcelona-menu-outline);
+  max-height: 285px;
+  overflow-y: auto;
+  z-index: 3;
+
+  div:last-child {
+    :last-child {
+      border: none;
+    }
+  }
+}
+
+.mentionSuggestionsEntry {
+  padding: 0 16px;
+  border-bottom: 0.5px solid var(--barcelona-primary-outline);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--hover-overlay);
+  }
+}
+
+.mentionSuggestionsEntryFocused {
+  background-color: var(--hover-overlay);
+}

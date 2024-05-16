@@ -1,0 +1,69 @@
+.shinning {
+  animation-iteration-count: infinite;
+  animation-direction: var(--glimmer-animation-direction);
+  background-color: var(--barcelona-glimmer-background);
+  animation-duration: var(--glimmer-animation-duration);
+  animation-timing-function: var(--glimmer-animation-timing-function);
+  opacity: var(--glimmer-opacity-min);
+  outline: none;
+  animation-name: shinning;
+}
+
+.skeleton {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  row-gap: 48px;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 699px) {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  &-item {
+    column-gap: 12px;
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    grid-template-rows: auto;
+
+    &-avatar {
+      height: 36px;
+      width: 36px;
+      border-radius: 18px;
+      .shinning();
+    }
+
+    &-inner {
+      &-paragraph {
+        .shinning();
+        border-radius: 6px;
+        height: 15px;
+
+        &:nth-child(1) {
+          width: 16%;
+        }
+
+        &:nth-child(2) {
+          width: 90%;
+          margin-top: 6px;
+        }
+
+        &:nth-child(3) {
+          width: 75%;
+          margin-top: 6px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes shinning {
+  0% {
+    opacity: var(--glimmer-opacity-min);
+  }
+
+  100% {
+    opacity: var(--glimmer-opacity-max);
+  }
+}

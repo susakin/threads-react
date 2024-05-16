@@ -1,0 +1,25 @@
+.loading-container {
+  position: relative;
+  transition-duration: 0.2s;
+  transition-property: transform;
+  transform: none;
+  width: 100%;
+
+  &-active {
+    transform: translateY(84px);
+  }
+
+  &-spin {
+    height: 72px;
+    padding-top: 24px;
+    margin-top: -72px;
+    box-sizing: border-box;
+    flex: 72px 0;
+    align-items: flex-start;
+
+    &-inactive {
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+}

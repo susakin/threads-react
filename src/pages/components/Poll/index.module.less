@@ -1,0 +1,130 @@
+@import '@assets/less/variable.less';
+
+.poll {
+  margin-top: 8px;
+
+  &-hint,
+  &-countdown {
+    margin-top: 12px;
+    .text(var(--barcelona-secondary-text), var(--system-12-font-size), 1.4, 400);
+  }
+
+  &-option {
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      border-radius: 12px;
+      padding: 12px;
+      background-color: var(--barcelona-primary-background);
+      position: relative;
+      border: 1px solid var(--barcelona-poll-option-meter-background);
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      background-color: var(--barcelona-primary-background);
+      overflow: hidden;
+
+      &:not(:first-child) {
+        margin-top: 8px;
+      }
+
+      &-meter {
+        height: 100%;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-radius: 12px;
+        position: absolute;
+        background-color: var(--barcelona-poll-option-meter-background);
+        transition-property: transform;
+        transform-origin: center left;
+        transition-duration: 0.5s;
+        transition-delay: 0.4s;
+      }
+
+      &-text {
+        flex: 1;
+        z-index: 1;
+        .text(var(--barcelona-secondary-text), var(--system-15-font-size), 1.4, 600);
+        mix-blend-mode: exclusion;
+      }
+
+      &-avatar {
+        margin-right: 8px;
+        z-index: 1;
+        flex-shrink: 0;
+        display: flex;
+        transform: scale(1);
+        transition-duration: 0.5s;
+        transition-property: transform;
+        flex-shrink: 0;
+      }
+
+      &-percentage {
+        z-index: 1;
+        .text(var(--barcelona-secondary-text), var(--system-12-font-size), 1.4, 600);
+        mix-blend-mode: exclusion;
+        transform: scale(1);
+        transition-duration: 0.5s;
+        transition-property: transform;
+        flex-shrink: 0;
+        transition-delay: 0.4s;
+      }
+
+      &-overlay {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border-radius: 12px;
+        transition-duration: 0.1s;
+        transition-property: opacity;
+        position: absolute;
+        background-color: var(--barcelona-tertiary-background);
+      }
+
+      &:hover {
+        .poll-option-item-overlay {
+          opacity: 1;
+        }
+      }
+
+      &-over {
+        cursor: default;
+
+        .poll-option-item-text {
+          color: var(--barcelona-secondary-text);
+        }
+
+        .poll-option-item-percentage {
+          color: var(--barcelona-secondary-text);
+        }
+      }
+
+      &-can-vote {
+        .active-scale();
+      }
+
+      &-hightlighted {
+        .poll-option-item-meter {
+          background-color: var(
+            --barcelona-poll-option-meter-highlighted-background
+          );
+          transition-delay: 0s;
+        }
+
+        .poll-option-item-text {
+          color: var(--always-white);
+        }
+
+        .poll-option-item-percentage {
+          color: var(--always-white);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import '@assets/less/variable.less';
+
+.following-request {
+  padding-top: 16px;
+  padding-bottom: 4px;
+
+  &-inner {
+    padding: 16px;
+    border: 1px solid var(--barcelona-primary-outline);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    &-hint {
+      &-username {
+        .text(var(--barcelona-primary-text), var(--system-12-font-size), 1.4, 600);
+      }
+
+      &-text {
+        .text(var(--barcelona-primary-text), var(--system-12-font-size), 1.4, 400);
+      }
+    }
+
+    &-action {
+      &-button {
+        margin-left: 12px;
+        font-size: var(--system-12-font-size);
+      }
+    }
+  }
+}

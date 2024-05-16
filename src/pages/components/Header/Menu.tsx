@@ -1,0 +1,121 @@
+import React, { useContext, useRef } from 'react';
+import { Menu as MenuIcon } from '@components/Icon';
+import cs from 'classnames';
+import { Popover, PopoverMenu, MutilStepContainer } from '@components/index';
+import styles from './menu.module.less';
+import { logout } from '@services/auth';
+import { useFetch } from '@hooks/useFetch';
+import localforage from 'localforage';
+import { AuthContext } from '@context/AuthProvider';
+import { MenuItem } from '@components/Popover/Menu';
+import { Link } from 'react-router-dom';
+import { MutilStepContainerRef } from '@components/MutilStepContainer';
+import SwitchTheme from './SwitchTheme';
+
+const classNamePrefix = 'menu';
+
+const Menu: React.FC = () => {
+  const [visible, setVisible] = React.useState(false);
+  const { state: _state } = useContext(AuthContext);
+  const { user } = _state;
+  const mutilStepRef = useRef<MutilStepContainerRef>(null);
+
+  const { runAsync } = useFetch(logout, {
+    manual: true,
+    onSuccess() {
+      localforage.removeItem('token', () => {
+        window.location.reload();
+      });
+    },
+  });
+
+  const items: MenuItem[] = [
+    {
+      label: '外观',
+      onClick(e) {
+        e.stopPropagation();
+        mutilStepRef.current?.swipeNext();
+      },
+    },
+    {
+      label: (
+        <Link to="/saved" className={styles[`${classNamePrefix}-link`]}>
+          已收藏
+        </Link>
+      ),
+      className: styles[`${classNamePrefix}-menu-item`],
+    },
+    {
+      label: (
+        <Link to="/liked" className={styles[`${classNamePrefix}-link`]}>
+          你点赞过的内容
+        </Link>
+      ),
+      className: styles[`${classNamePrefix}-menu-item`],
+    },
+  ];
+
+  if (user) {
+    items.splice(1, 0, {
+      label: (
+        <Link
+          to="/settings/privacy"
+          className={styles[`${classNamePrefix}-link`]}
+        >
+          设置
+        </Link>
+      ),
+      className: styles[`${classNamePrefix}-menu-item`],
+    });
+
+    items.push({
+      label: '退出',
+      async onClick(e) {
+        e.stopPropagation();
+        await runAsync();
+      },
+    });
+  }
+  const content = (
+    <MutilStepContainer
+      ref={mutilStepRef}
+      className={styles[`${classNamePrefix}-menu`]}
+    >
+      <MutilStepContainer.Item>
+        <PopoverMenu items={items} shadow={false} />
+      </MutilStepContainer.Item>
+      <MutilStepContainer.Item>
+        <SwitchTheme
+          onBack={() => {
+            mutilStepRef.current?.swipePrev();
+          }}
+        />
+      </MutilStepContainer.Item>
+    </MutilStepContainer>
+  );
+
+  return (
+    <Popover
+      content={content}
+      onVisibleChange={v => setVisible(v)}
+      strategy={'fixed'}
+      hideWhenContentClick
+      placement="bottom-end"
+    >
+      <div className={styles[`${classNamePrefix}`]}>
+        <div className={styles[`${classNamePrefix}-outer`]}>
+          <MenuIcon fill="currentColor" size={24} viewBox="0 0 24 24" />
+        </div>
+        <div
+          className={cs(styles[`${classNamePrefix}-inner`], {
+            [styles[`${classNamePrefix}-inner-active`]]: visible,
+          })}
+        >
+          <MenuIcon fill="currentColor" size={24} viewBox="0 0 24 24" />
+        </div>
+      </div>
+    </Popover>
+  );
+};
+
+export default Menu;

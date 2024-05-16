@@ -1,0 +1,49 @@
+@import '@assets/less/variable.less';
+
+.media-viewer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &-inner {
+    .media-viewer-content();
+
+    &-item {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &-prev,
+  &-next {
+    position: absolute;
+    width: 92px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+
+    &-button {
+      background-color: var(--barcelona-tertiary-background);
+      color: var(--barcelona-secondary-icon);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &-prev,
+    &-next {
+      display: none;
+    }
+  }
+
+  &-prev {
+    left: 0;
+  }
+
+  &-next {
+    right: 0;
+  }
+}

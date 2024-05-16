@@ -1,0 +1,29 @@
+@import '@assets/less/variable.less';
+
+.follower-tabs {
+  min-height: 112px;
+  max-height: calc(100vh - 64px);
+  max-height: calc(100svh - 64px);
+  display: flex;
+  flex-direction: column;
+
+  &-header {
+    min-height: var(--barcelona-mobile-header-height);
+    height: auto;
+  }
+
+  &-user {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.tabs-title {
+  &-label {
+    .text(var(--barcelona-primary-text), var(--system-16-font-size), 1.3125, 700);
+  }
+
+  &-count {
+    .text(var(--barcelona-primary-text), var(--system-12-font-size), 1.4, 400);
+  }
+}

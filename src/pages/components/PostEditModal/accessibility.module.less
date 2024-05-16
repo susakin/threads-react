@@ -1,0 +1,94 @@
+@import '@assets/less/variable.less';
+
+.accessibility {
+  display: flex;
+  flex-direction: column;
+
+  &-inner {
+    max-height: calc(100vh - 193px);
+    max-height: calc(100svh - 193px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    &-priview {
+      margin-bottom: 20px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      @media (min-width: 700px) {
+        margin-bottom: 40px;
+        margin-top: 40px;
+      }
+
+      &-media {
+        height: 160px;
+        flex-shrink: 0;
+        aspect-ratio: 1;
+        position: relative;
+
+        img {
+          max-height: 100%;
+          width: 100%;
+          height: 100%;
+          bottom: 0;
+          max-width: 100%;
+          top: 0;
+          left: 0;
+          object-fit: cover;
+          border-radius: 8px;
+          box-sizing: border-box;
+          user-select: none;
+          outline-offset: -1px;
+          position: absolute;
+          border: 0;
+          outline: 1px solid var(--barcelona-primary-outline);
+        }
+      }
+    }
+
+    &-textarea {
+      padding: 16px 24px;
+      overflow-y: auto;
+      border-top: 1px solid var(--barcelona-primary-outline);
+
+      textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+        resize: none;
+        font-size: var(--system-15-font-size);
+        font-family: var(--font-family-system);
+        color: var(--barcelona-primary-text);
+        display: block;
+        background-color: transparent;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  &-action {
+    padding: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (max-width: 699px) {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    &-hint {
+      .text(var(--barcelona-secondary-text), var(--system-12-font-size), 1.4, 400);
+
+      &-error {
+        color: var(--barcelona-error-text);
+      }
+    }
+  }
+}

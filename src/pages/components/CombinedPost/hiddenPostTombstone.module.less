@@ -1,0 +1,21 @@
+@import '@assets/less/variable.less';
+
+.hidden-post-tombstone {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--barcelona-tertiary-background);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+
+  &-hint {
+    .text(var(--barcelona-secondary-text), var(--system-13-font-size), 1.4, 400);
+  }
+
+  &-button {
+    margin-left: 16px;
+    color: var(--barcelona-secondary-text);
+  }
+}

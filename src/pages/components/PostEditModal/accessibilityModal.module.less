@@ -1,0 +1,37 @@
+@import '@assets/less/variable.less';
+
+.accessibility-modal {
+  width: 620px;
+  max-height: calc(100svh - 109px);
+  overflow-y: auto;
+  display: flex;
+  position: relative;
+  background-color: var(--barcelona-primary-background);
+  border-radius: 16px;
+  box-shadow: 0 10px 21px rgba(0, 0, 0, 0.08);
+  position: relative;
+  border: 0.5px solid var(--barcelona-primary-outline);
+  margin-top: 8px;
+  flex-direction: column;
+
+  &-title {
+    width: 620px;
+    height: 46px;
+    grid-template-columns: minmax(64px, 100px) 1fr minmax(64px, 100px);
+    align-items: center;
+    display: grid;
+    max-width: calc(100vw - 32px);
+
+    &-button {
+      grid-column-start: 1;
+      padding-left: 24px;
+      .text(var(--always-white), var(--system-16-font-size), 1.3125, 600);
+    }
+
+    &-text {
+      grid-column-start: 2;
+      .text(var(--always-white), var(--system-16-font-size), 1.3125, 700);
+      text-align: center;
+    }
+  }
+}
