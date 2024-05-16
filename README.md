@@ -32,8 +32,8 @@
 git clone git@github.com:susakin/threads-react.git
 
 cd threads-react
-npm install
-npm run start
+yarn
+yarn start
 ```
 
 打开浏览器并访问: [http://127.0.0.1:3001](http://127.0.0.1:3001)
