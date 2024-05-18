@@ -11,7 +11,7 @@
   <a><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"/></a>
 </p>
 
-threads-react is a full-stack project that emulates the threads platform. It is built using React, NestJS, and MongoDB as its core technologies. Once our YouTube subscription count hits 500, I will also make the backend part of the project available as open source.
+threads-react is a full-stack project that emulates the threads platform. It is built using React, NestJS, and MongoDB as its core technologies. Once our YouTube subscriber count hits 500, I will also make the backend part of the project available as open source.
 
 ## Link
 
