@@ -48,5 +48,5 @@ The current project is in its early stages of development, with new features bei
 
 ## agreement
 
-[GPL](LICENSE)
+[GPL](../LICENSE)
 
