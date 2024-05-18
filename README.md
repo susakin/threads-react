@@ -11,7 +11,7 @@
   <a><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"/></a>
 </p>
 
-`threads-react` 是一个模仿 `threads` 的全栈项目。项目基于React，NesjJs，mongodb，当youtub订阅达到500的时候我会把后端项目也一起开源出来。
+`threads-react` 是一个模仿 `threads` 的全栈项目。项目基于React，NesjJs，mongodb，当youtube订阅达到500的时候我会把后端项目也一起开源出来。
 
 ## 链接
 
