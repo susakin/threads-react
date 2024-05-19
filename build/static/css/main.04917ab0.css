@@ -1307,6 +1307,7 @@
   border-radius: 16px;
   height: auto;
   overflow-x: hidden;
+  padding: 8px;
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1327,25 +1328,33 @@
   transform-origin: inherit;
 }
 .MrFqv {
-  min-width: 174px;
-}
-.MrFqv .ygDVP:first-child {
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
-}
-.MrFqv .ygDVP:last-child {
-  border-bottom-left-radius: inherit;
-  border-bottom-right-radius: inherit;
+  min-width: 220px;
 }
 .ygDVP {
-  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 12px;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  transition: -webkit-transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
+  transition:
+    transform 0.1s ease-in-out,
+    -webkit-transform 0.1s ease-in-out;
+}
+.ygDVP:active {
+  -webkit-transform: scale(0.96);
+  transform: scale(0.96);
+}
+.ygDVP:hover {
+  background-color: var(--barcelona-hovered-background);
 }
 .w6tT8 {
   background-color: var(--barcelona-primary-outline);
   border-width: 0;
   height: 0.5px;
-  margin: 0;
-  width: 100%;
+  margin: 8px 0 8px -12px;
+  width: calc(100% + 24px);
 }
 .bzxfh {
   align-items: center;
@@ -1362,7 +1371,7 @@
   font-family: var(--font-family-system);
   font-size: var(--system-15-font-size);
   font-weight: 600;
-  line-height: 0.9;
+  line-height: 1.4;
   max-width: 100%;
   min-width: 0;
   overflow-x: visible;
@@ -10044,9 +10053,6 @@ img[src=''] {
   -webkit-transform-origin: inherit;
   transform-origin: inherit;
 }
-.MEAAE {
-  padding: 0;
-}
 .qYanj,
 .zusw5 {
   align-items: center;
@@ -10061,11 +10067,9 @@ img[src=''] {
   width: 48px;
 }
 .yiljg {
-  box-sizing: border-box;
   color: inherit;
   display: flex;
-  height: 100%;
-  padding: 16px;
+  padding: 12px;
   text-decoration: none;
 }
 .qYanj {
