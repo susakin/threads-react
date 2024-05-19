@@ -1328,7 +1328,7 @@
   transform-origin: inherit;
 }
 .MrFqv {
-  min-width: 220px;
+  width: 220px;
 }
 .ygDVP {
   border-radius: 12px;
@@ -1381,6 +1381,7 @@
 }
 .RpQ4E {
   display: flex;
+  margin-left: 8px;
   width: 20px;
 }
 .MWK2x {
