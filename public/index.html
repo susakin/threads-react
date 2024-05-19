@@ -111,6 +111,7 @@
         --fds-gray-90: black;
         --fds-gray-100: black;
         --fds-green-55: black;
+        --fds-green-65: black;
         --fds-highlight: black;
         --fds-highlight-cell-background: black;
         --fds-primary-icon: white;
@@ -141,6 +142,8 @@
         --fds-spectrum-tomato-tint-30: black;
         --fds-spectrum-tomato-tint-90: black;
         --fds-strong: cubic-bezier(0.12, 0.8, 0.32, 1);
+        --fds-unified-blue-35: black;
+        --fds-unified-gray-20: black;
         --fds-white: black;
         --fds-white-alpha-05: rgba(255, 255, 255, 0.05);
         --fds-white-alpha-10: rgba(255, 255, 255, 0.1);
@@ -314,11 +317,15 @@
         --shadow-2: rgba(0, 0, 0, 0.2);
         --shadow-5: rgba(0, 0, 0, 0.5);
         --shadow-8: rgba(0, 0, 0, 0.8);
-        --shadow-inset: rgba(255, 255, 255, 0.05);
+        --shadow-base: 0 1px 2px var(--shadow-2);
         --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2),
           0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        --shadow-emphasis: 0 2px 12px var(--shadow-2);
+        --shadow-inset: rgba(255, 255, 255, 0.05);
+        --shadow-on-media: 0px 0px 1px rgba(0, 0, 0, 0.62);
         --shadow-persistent: 0px 0px 12px rgba(28, 43, 51, 0.6);
         --shadow-primary: 0px 0px 12px rgba(28, 43, 51, 0.1);
+        --shadow-responsive: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
         --surface-background: #242526;
         --switch-active: hsl(214, 100%, 59%);
         --text-highlight: rgba(24, 119, 242, 0.45);
@@ -337,6 +344,7 @@
         --toggle-button-active-background: #e6f2ff;
         --tooltip-background: rgba(11, 11, 11, 0.8);
         --tooltip-box-shadow: 0 2px 4px 0 var(--shadow-5);
+        --popover-border-color: transparent;
         --wash: #3e4042;
         --web-wash: #18191a;
         --warning: hsl(40, 89%, 52%);
@@ -373,6 +381,7 @@
         --button-height-medium: 36px;
         --button-padding-horizontal-large: 16px;
         --button-padding-horizontal-medium: 16px;
+        --button-padding-icon-only: 16px;
         --button-icon-padding-large: 16px;
         --button-icon-padding-medium: 16px;
         --button-inner-icon-spacing-large: 3px;
@@ -400,6 +409,7 @@
         --nav-list-cell-min-height: 0px;
         --nav-list-cell-padding-vertical: 16px;
         --nav-list-cell-padding-vertical-with-addon: 16px;
+        --nux-card-body-padding-end: 24px;
         --page-footer-padding-vertical: 16px;
         --section-header-addOnEnd-margin-horizontal: 8px;
         --section-header-addOnStart-margin-horizontal: 12px;
@@ -408,6 +418,8 @@
         --section-header-padding-vertical: 16px;
         --section-header-subtitle-margin-vertical: 14px;
         --section-header-subtitle-with-addOnEnd-margin-vertical: 6px;
+        --tab-height: 60px;
+        --tab-icon-padding-end: 0px;
         --text-badge-corner-radius: 4px;
         --text-badge-padding-horizontal: 6px;
         --text-badge-padding-vertical: 6px;
@@ -504,13 +516,17 @@
         --tertiary-label-line-height: 1.4545;
         --text-input-field-font-family: Placeholder Font;
         --text-input-field-font-size: 1rem;
+        --text-input-field-font-stretch: initial;
         --text-input-field-font-weight: 500;
         --text-input-field-line-height: 1.2941;
         --text-input-label-font-family: Placeholder Font;
         --text-input-label-font-size: 17px;
         --text-input-label-font-size-scale-multiplier: 0.75;
+        --text-input-label-font-stretch: initial;
         --text-input-label-font-weight: 400;
         --text-input-label-line-height: 1.2941;
+        --messenger-card-min-width: 360px;
+        --messenger-card-max-width: 480px;
         --dialog-size-medium-max-width: 700px;
         --dialog-size-medium-width: 100%;
         --dialog-size-small-max-width: 548px;
@@ -585,6 +601,7 @@
         --blue-8: 0, 55, 107;
         --blue-9: 0, 41, 82;
         --cyan-5: 39, 196, 245;
+        --font-family-monospace: Menlo, Monaco, Consolas, Courier New, monospace;
         --font-family-system: system-ui, -apple-system, BlinkMacSystemFont,
           Roboto, Helvetica, Arial, sans-serif;
         --font-weight-system-bold: 700;
@@ -645,6 +662,8 @@
         --system-32-font-size: 32px;
         --system-32-line-height: 40px;
         --yellow-5: 253, 203, 92;
+        --barcelona-cherry-blossom-red: rgb(228, 47, 101);
+        --barcelona-cherry-blossom-pink: rgb(255, 159, 197);
         --glimmer-stagger-time: 100ms;
         --base-line-clamp-line-height: calc(1.4 * 1em);
         --barcelona-desktop-header-height: 74px;
@@ -657,6 +676,7 @@
         --barcelona-large-screen-max-width: 620px;
         --barcelona-large-screen-max-page-width: 1230px;
         --barcelona-large-screen-padding: 344px;
+        --barcelona-large-screen-content-width: 572px;
         --barcelona-medium-screen-breakpoint: 700px;
         --barcelona-medium-screen-max-width: 520px;
         --barcelona-small-screen-nav-height: 68px;
@@ -667,15 +687,23 @@
         --barcelona-carousel-gap: 6px;
         --barcelona-lightbox-horizontal-padding: 92px;
         --barcelona-search-page-width: 572px;
-        --barcelona-deck-item-horizontal-padding: 24px;
+        --barcelona-columns-item-horizontal-padding: 24px;
+        --barcelona-user-list-item-padding: 16px;
+        --barcelona-side-navigation-width: 76px;
+        --barcelona-tombstone-padding-horizontal: 12px;
+        --barcelona-box-shadow-04: rgba(0, 0, 0, 0.04);
         --barcelona-box-shadow-08: rgba(0, 0, 0, 0.08);
         --barcelona-box-shadow-10: rgba(0, 0, 0, 0.1);
         --barcelona-box-shadow-12: rgba(0, 0, 0, 0.12);
+        --barcelona-box-shadow-15: rgba(0, 0, 0, 0.15);
         --barcelona-dark-backdrop-background: rgba(0, 0, 0, 0.7);
         --barcelona-onboarding-navigation-height: 52px;
         --barcelona-onboarding-small-screen-navigation-height: 38px;
         --barcelona-onboarding-content-width: 390px;
         --barcelona-notification-badge-background: rgb(255, 48, 64);
+        --barcelona-notification-badge-background-wide-gamut: color(
+          display-p3 1 0.18 0.25 / 1
+        );
         --barcelona-verified-badge-background: rgb(0, 149, 246);
         --barcelona-video-player-mute-button-background: rgb(40, 40, 40, 0.5);
         --barcelona-activity-icon-background-first-post: #007aff;
@@ -690,23 +718,32 @@
         --barcelona-activity-icon-background-subscribe: #24c3ff;
         --barcelona-activity-icon-background-warning: #ff0000;
         --barcelona-activity-icon-background-pinned-reply: #0d31eb;
+        --barcelona-medium-column-layout-width: 420px;
+        --barcelona-column-layout-max-width: 640px;
         --barcelona-primary-text: rgb(243, 245, 247);
         --barcelona-secondary-text: rgb(119, 119, 119);
         --barcelona-primary-button: rgb(255, 255, 255);
         --barcelona-primary-button-text: rgb(0, 0, 0);
         --barcelona-secondary-button: rgb(16, 16, 16);
+        --barcelona-liked-text: rgb(255, 48, 64);
+        --barcelona-liked-text-wide-gamut: color(display-p3 1 0.18 0.25 / 1);
         --barcelona-link-text: rgb(24, 163, 254);
         --barcelona-error-text: rgb(255, 48, 64);
         --barcelona-beta-text: rgb(149, 120, 179);
+        --barcelona-charcoal-text: rgb(204, 204, 204);
         --barcelona-primary-icon: rgb(243, 245, 247);
         --barcelona-secondary-icon: rgb(119, 119, 119);
         --barcelona-navigation-icon: rgb(77, 77, 77);
+        --barcelona-charcoal-icon: rgb(204, 204, 204);
         --barcelona-primary-background: rgb(16, 16, 16);
         --barcelona-elevated-background: rgb(24, 24, 24);
         --barcelona-secondary-background: rgb(10, 10, 10);
         --barcelona-tertiary-background: rgb(30, 30, 30);
         --barcelona-highlight-background: rgb(16, 16, 16);
         --barcelona-header-background: rgba(16, 16, 16, 0.85);
+        --barcelona-hovered-background: rgba(255, 255, 255, 0.04);
+        --barcelona-pressed-background: rgba(0, 0, 0, 0.06);
+        --barcelona-side-navigation-background: rgba(10, 10, 10, 0.85);
         --barcelona-primary-button-background: rgb(255, 255, 255);
         --barcelona-dialog-backdrop-background: rgba(16, 16, 16, 0.85);
         --barcelona-dialog-translucent-background: rgba(16, 16, 16, 0.9);
@@ -724,6 +761,7 @@
         );
         --barcelona-beta-background: rgba(155, 56, 255, 0.12);
         --barcelona-primary-outline: rgba(243, 245, 247, 0.15);
+        --barcelona-primary-column-outline: rgb(45, 45, 45);
         --barcelona-media-outline: rgba(243, 245, 247, 0.2);
         --barcelona-threadline: rgb(51, 54, 56);
         --barcelona-menu-outline: rgba(255, 255, 255, 0.04);
@@ -736,10 +774,10 @@
           255
         );
         --barcelona-switch-background-off: rgb(50, 53, 57);
+        --barcelona-cherry-blossom-lightpink: rgb(255, 207, 243);
         --color-scheme: dark;
-        --ig-elevated-separator: 54, 54, 54;
-        --barcelona-charcoal-icon: rgb(204, 204, 204);
-        --barcelona-primary-column-outline: rgb(45, 45, 45);
+        --barcelona-translucent-column-header-background: rgb(15, 15, 15);
+        --barcelona-tooltip-background: rgb(30, 30, 30);
       }
     </style>
     <style>
@@ -780,6 +818,7 @@
         --fds-gray-90: #303338;
         --fds-gray-100: #1c1e21;
         --fds-green-55: #00a400;
+        --fds-green-65: #51ce70;
         --fds-highlight: #3578e5;
         --fds-highlight-cell-background: #ecf3ff;
         --fds-primary-icon: #1c1e21;
@@ -810,6 +849,8 @@
         --fds-spectrum-tomato-tint-30: #f38e7b;
         --fds-spectrum-tomato-tint-90: #fdefed;
         --fds-strong: cubic-bezier(0.12, 0.8, 0.32, 1);
+        --fds-unified-blue-35: #1455b0;
+        --fds-unified-gray-20: #323436;
         --fds-white: #ffffff;
         --fds-white-alpha-05: rgba(255, 255, 255, 0.05);
         --fds-white-alpha-10: rgba(255, 255, 255, 0.1);
@@ -985,11 +1026,15 @@
         --shadow-2: rgba(0, 0, 0, 0.2);
         --shadow-5: rgba(0, 0, 0, 0.5);
         --shadow-8: rgba(0, 0, 0, 0.8);
-        --shadow-inset: rgba(255, 255, 255, 0.5);
+        --shadow-base: 0 1px 2px var(--shadow-2);
         --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2),
           0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        --shadow-emphasis: 0 2px 12px var(--shadow-2);
+        --shadow-inset: rgba(255, 255, 255, 0.5);
+        --shadow-on-media: 0px 0px 1px rgba(0, 0, 0, 0.62);
         --shadow-persistent: 0px 0px 12px rgba(52, 72, 84, 0.05);
         --shadow-primary: 0px 5px 12px rgba(52, 72, 84, 0.2);
+        --shadow-responsive: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
         --surface-background: #ffffff;
         --switch-active: hsl(214, 89%, 52%);
         --text-highlight: rgba(24, 119, 242, 0.2);
@@ -1008,6 +1053,7 @@
         --toggle-button-active-background: #e7f3ff;
         --tooltip-background: rgba(244, 244, 244, 0.8);
         --tooltip-box-shadow: 0 2px 4px 0 var(--shadow-5);
+        --popover-border-color: transparent;
         --wash: #e4e6eb;
         --web-wash: #f0f2f5;
         --warning: hsl(40, 89%, 52%);
@@ -1044,6 +1090,7 @@
         --button-height-medium: 36px;
         --button-padding-horizontal-large: 16px;
         --button-padding-horizontal-medium: 16px;
+        --button-padding-icon-only: 16px;
         --button-icon-padding-large: 16px;
         --button-icon-padding-medium: 16px;
         --button-inner-icon-spacing-large: 3px;
@@ -1071,6 +1118,7 @@
         --nav-list-cell-min-height: 0px;
         --nav-list-cell-padding-vertical: 16px;
         --nav-list-cell-padding-vertical-with-addon: 16px;
+        --nux-card-body-padding-end: 24px;
         --page-footer-padding-vertical: 16px;
         --section-header-addOnEnd-margin-horizontal: 8px;
         --section-header-addOnStart-margin-horizontal: 12px;
@@ -1079,6 +1127,8 @@
         --section-header-padding-vertical: 16px;
         --section-header-subtitle-margin-vertical: 14px;
         --section-header-subtitle-with-addOnEnd-margin-vertical: 6px;
+        --tab-height: 60px;
+        --tab-icon-padding-end: 0px;
         --text-badge-corner-radius: 4px;
         --text-badge-padding-horizontal: 6px;
         --text-badge-padding-vertical: 6px;
@@ -1175,13 +1225,17 @@
         --tertiary-label-line-height: 1.4545;
         --text-input-field-font-family: Placeholder Font;
         --text-input-field-font-size: 1rem;
+        --text-input-field-font-stretch: initial;
         --text-input-field-font-weight: 500;
         --text-input-field-line-height: 1.2941;
         --text-input-label-font-family: Placeholder Font;
         --text-input-label-font-size: 17px;
         --text-input-label-font-size-scale-multiplier: 0.75;
+        --text-input-label-font-stretch: initial;
         --text-input-label-font-weight: 400;
         --text-input-label-line-height: 1.2941;
+        --messenger-card-min-width: 360px;
+        --messenger-card-max-width: 480px;
         --dialog-size-medium-max-width: 700px;
         --dialog-size-medium-width: 100%;
         --dialog-size-small-max-width: 548px;
@@ -1256,6 +1310,7 @@
         --blue-8: 0, 55, 107;
         --blue-9: 0, 41, 82;
         --cyan-5: 39, 196, 245;
+        --font-family-monospace: Menlo, Monaco, Consolas, Courier New, monospace;
         --font-family-system: system-ui, -apple-system, BlinkMacSystemFont,
           Roboto, Helvetica, Arial, sans-serif;
         --font-weight-system-bold: 700;
@@ -1316,6 +1371,8 @@
         --system-32-font-size: 32px;
         --system-32-line-height: 40px;
         --yellow-5: 253, 203, 92;
+        --barcelona-cherry-blossom-red: rgb(228, 47, 101);
+        --barcelona-cherry-blossom-pink: rgb(255, 159, 197);
         --glimmer-stagger-time: 100ms;
         --base-line-clamp-line-height: calc(1.4 * 1em);
         --barcelona-desktop-header-height: 74px;
@@ -1328,6 +1385,7 @@
         --barcelona-large-screen-max-width: 620px;
         --barcelona-large-screen-max-page-width: 1230px;
         --barcelona-large-screen-padding: 344px;
+        --barcelona-large-screen-content-width: 572px;
         --barcelona-medium-screen-breakpoint: 700px;
         --barcelona-medium-screen-max-width: 520px;
         --barcelona-small-screen-nav-height: 68px;
@@ -1338,15 +1396,23 @@
         --barcelona-carousel-gap: 6px;
         --barcelona-lightbox-horizontal-padding: 92px;
         --barcelona-search-page-width: 572px;
-        --barcelona-deck-item-horizontal-padding: 24px;
+        --barcelona-columns-item-horizontal-padding: 24px;
+        --barcelona-user-list-item-padding: 16px;
+        --barcelona-side-navigation-width: 76px;
+        --barcelona-tombstone-padding-horizontal: 12px;
+        --barcelona-box-shadow-04: rgba(0, 0, 0, 0.04);
         --barcelona-box-shadow-08: rgba(0, 0, 0, 0.08);
         --barcelona-box-shadow-10: rgba(0, 0, 0, 0.1);
         --barcelona-box-shadow-12: rgba(0, 0, 0, 0.12);
+        --barcelona-box-shadow-15: rgba(0, 0, 0, 0.15);
         --barcelona-dark-backdrop-background: rgba(0, 0, 0, 0.7);
         --barcelona-onboarding-navigation-height: 52px;
         --barcelona-onboarding-small-screen-navigation-height: 38px;
         --barcelona-onboarding-content-width: 390px;
         --barcelona-notification-badge-background: rgb(255, 48, 64);
+        --barcelona-notification-badge-background-wide-gamut: color(
+          display-p3 1 0.18 0.25 / 1
+        );
         --barcelona-verified-badge-background: rgb(0, 149, 246);
         --barcelona-video-player-mute-button-background: rgb(40, 40, 40, 0.5);
         --barcelona-activity-icon-background-first-post: #007aff;
@@ -1361,17 +1427,23 @@
         --barcelona-activity-icon-background-subscribe: #24c3ff;
         --barcelona-activity-icon-background-warning: #ff0000;
         --barcelona-activity-icon-background-pinned-reply: #0d31eb;
+        --barcelona-medium-column-layout-width: 420px;
+        --barcelona-column-layout-max-width: 640px;
         --barcelona-primary-text: rgb(0, 0, 0);
         --barcelona-secondary-text: rgb(153, 153, 153);
         --barcelona-primary-button: rgb(0, 0, 0);
         --barcelona-primary-button-text: rgb(255, 255, 255);
         --barcelona-secondary-button: rgb(255, 255, 255);
+        --barcelona-liked-text: rgb(255, 48, 64);
+        --barcelona-liked-text-wide-gamut: color(display-p3 1 0.18 0.25 / 1);
         --barcelona-link-text: rgb(0, 149, 246);
         --barcelona-error-text: rgb(255, 48, 64);
         --barcelona-beta-text: rgb(149, 120, 179);
+        --barcelona-charcoal-text: rgb(66, 66, 66);
         --barcelona-primary-icon: rgb(0, 0, 0);
         --barcelona-secondary-icon: rgb(153, 153, 153);
         --barcelona-navigation-icon: rgb(184, 184, 184);
+        --barcelona-charcoal-icon: rgb(66, 66, 66);
         --barcelona-primary-background: rgb(255, 255, 255);
         --barcelona-elevated-background: rgb(255, 255, 255);
         --barcelona-secondary-background: rgb(250, 250, 250);
@@ -1379,6 +1451,9 @@
         --barcelona-highlight-background: rgb(239, 239, 239);
         --barcelona-primary-button-background: rgb(0, 0, 0);
         --barcelona-header-background: rgba(255, 255, 255, 0.85);
+        --barcelona-hovered-background: rgba(0, 0, 0, 0.04);
+        --barcelona-pressed-background: rgba(0, 0, 0, 0.06);
+        --barcelona-side-navigation-background: rgba(250, 250, 250, 0.85);
         --barcelona-dialog-backdrop-background: rgba(255, 255, 255, 0.85);
         --barcelona-dialog-translucent-background: rgba(255, 255, 255, 0.9);
         --barcelona-navigation-item-hover-background: rgba(0, 0, 0, 0.04);
@@ -1395,6 +1470,7 @@
         );
         --barcelona-beta-background: rgba(155, 56, 255, 0.04);
         --barcelona-primary-outline: rgba(0, 0, 0, 0.15);
+        --barcelona-primary-column-outline: rgb(213, 213, 213);
         --barcelona-media-outline: rgba(0, 0, 0, 0.15);
         --barcelona-threadline: rgb(229, 229, 229);
         --barcelona-menu-outline: rgba(0, 0, 0, 0.04);
@@ -1403,9 +1479,9 @@
         --barcelona-poll-option-meter-background: rgb(240, 240, 240);
         --barcelona-poll-option-meter-highlighted-background: rgb(0, 0, 0);
         --barcelona-switch-background-off: rgb(219, 223, 228);
-        --ig-elevated-separator: 219, 219, 219;
-        --barcelona-charcoal-icon: rgb(66, 66, 66);
-        --barcelona-primary-column-outline: rgb(213, 213, 213);
+        --barcelona-cherry-blossom-lightpink: rgb(255, 224, 247);
+        --barcelona-translucent-column-header-background: rgb(254, 254, 254);
+        --barcelona-tooltip-background: rgb(255, 255, 255);
       }
     </style>
     <style>

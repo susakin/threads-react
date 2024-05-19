@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { More, Edited } from '@components/Icon';
+import { More, Edited, Pin, Direction } from '@components/Icon';
 import {
   ActiveScaleButton,
   Popover,
@@ -32,6 +32,11 @@ import ReplyAuthModal from '../ReplyAuthModal';
 import { useBlock } from './useBlock';
 import { useNavigate } from 'react-router-dom';
 import { useMute } from './useMute';
+import UnSave from '@components/Icon/UnSave';
+import Save from '@components/Icon/Save';
+import Delete from '@components/Icon/Delete';
+import Unlike from '@components/Icon/Unlike';
+import Hide from '@components/Icon/Hide';
 
 const classNamePrefix = 'post-header-action';
 
@@ -193,14 +198,24 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   }
 
   const menu: PopoverMenuItem[] = useMemo(() => {
+    const { isSavedByViewer, id = '' } = post || {};
     const items: PopoverMenuItem[] = [
       {
-        label: `${post?.isSavedByViewer ? '取消' : ''}收藏`,
+        label: `${isSavedByViewer ? '取消' : ''}收藏`,
         onClick() {
-          post?.isSavedByViewer
-            ? _postUnSave(post?.id)
-            : _postSave(post?.id as string);
+          isSavedByViewer ? _postUnSave(id) : _postSave(id as string);
         },
+        icon: isSavedByViewer ? (
+          <UnSave viewBox="0 0 20 20" size={20} fill="currentColor" />
+        ) : (
+          <Save
+            viewBox="0 0 20 20"
+            size={20}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.5}
+          />
+        ),
       },
     ];
 
@@ -210,6 +225,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
           ? '取消置顶'
           : `置顶到${pinToProfile ? '主页' : '评论'}`,
         onClick: _onPinClick,
+        icon: <Pin viewBox="0 0 20 20" size={20} />,
       });
     }
 
@@ -224,12 +240,24 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
               likeAndViewCountsDisabled: !post?.likeAndViewCountsDisabled,
             });
           },
+          icon: <Unlike viewBox="0 0 20 20" size={20} />,
         },
         {
           label: '谁可以回复',
           onClick() {
             setReplyAuthVisible(true);
           },
+          split: true,
+          icon: (
+            <Direction
+              viewBox="0 0 24 24"
+              size={16}
+              style={{
+                transform: 'rotate(180deg)',
+                color: 'var(--barcelona-secondary-icon)',
+              }}
+            />
+          ),
         },
         {
           label: '删除',
@@ -245,6 +273,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
               },
             });
           },
+          icon: <Delete viewBox="0 0 20 20" size={20} />,
         },
       );
 
@@ -263,6 +292,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
           onClick: () => {
             onEditClick?.();
           },
+          split: true,
         });
       }
     } else {
@@ -272,6 +302,8 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
           onClick() {
             _hidePost(post?.id as string);
           },
+          icon: <Hide viewBox="0 0 20 20" size={20} />,
+          split: true,
         },
         muteItem,
       );

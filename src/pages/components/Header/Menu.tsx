@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import { Menu as MenuIcon } from '@components/Icon';
+import { Direction, Menu as MenuIcon } from '@components/Icon';
 import cs from 'classnames';
 import { Popover, PopoverMenu, MutilStepContainer } from '@components/index';
 import styles from './menu.module.less';
@@ -36,6 +36,16 @@ const Menu: React.FC = () => {
         e.stopPropagation();
         mutilStepRef.current?.swipeNext();
       },
+      icon: (
+        <Direction
+          viewBox="0 0 24 24"
+          size={16}
+          style={{
+            transform: 'rotate(180deg)',
+            color: 'var(--barcelona-secondary-icon)',
+          }}
+        />
+      ),
     },
     {
       label: (
@@ -43,7 +53,7 @@ const Menu: React.FC = () => {
           已收藏
         </Link>
       ),
-      className: styles[`${classNamePrefix}-menu-item`],
+      style: { padding: 0 },
     },
     {
       label: (
@@ -51,7 +61,7 @@ const Menu: React.FC = () => {
           你点赞过的内容
         </Link>
       ),
-      className: styles[`${classNamePrefix}-menu-item`],
+      style: { padding: 0 },
     },
   ];
 
@@ -65,7 +75,7 @@ const Menu: React.FC = () => {
           设置
         </Link>
       ),
-      className: styles[`${classNamePrefix}-menu-item`],
+      style: { padding: 0 },
     });
 
     items.push({

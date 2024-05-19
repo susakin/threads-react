@@ -8,7 +8,7 @@ import {
   Link,
 } from '@components/index';
 import { UserPreview } from '@pages/components';
-import { Instagram, MoreOutline } from '@components/Icon';
+import { Instagram, MoreOutline, Restrict, Restricted } from '@components/Icon';
 import FollowerModal from './FollowerModal';
 import ProfileModal from './ProfileModal';
 import styles from './profileFollower.module.less';
@@ -20,6 +20,8 @@ import Toast from '@components/Toast';
 import cs from 'classnames';
 import { useBlock } from '@pages/components/PostHeader/useBlock';
 import { UseMuteProps, useMute } from '@pages/components/PostHeader/useMute';
+import Info from '@components/Icon/Info';
+import RemoveFans from '@components/Icon/RemoveFans';
 
 const classNamePrefix = 'profile-follower';
 
@@ -104,8 +106,26 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
         onClick() {
           setProfileModalVisible(true);
         },
+        icon: <Info viewBox="0 0 24 24" size={20} />,
+        split: true,
       },
     ];
+
+    if (!isOwn) {
+      items.push(muteItem, {
+        label: `${isRestricting ? '取消' : ''}限制 `,
+        onClick() {
+          !isRestricting
+            ? _restricte(user?.id as any)
+            : _unrestricte(user?.id as string);
+        },
+        icon: isRestricting ? (
+          <Restricted viewBox="0 0 20 20" size={20} />
+        ) : (
+          <Restrict viewBox="0 0 20 20" size={20} />
+        ),
+      });
+    }
     if (user?.friendshipStatus?.followedBy) {
       items.push({
         label: '移除粉丝',
@@ -120,22 +140,14 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
             },
           });
         },
+        icon: <RemoveFans viewBox="0 0 20 20" size={20} />,
+        split: true,
       });
     }
     if (!isOwn) {
-      items.push(
-        muteItem,
-        {
-          label: `${isRestricting ? '取消' : ''}限制 `,
-          onClick() {
-            !isRestricting
-              ? _restricte(user?.id as any)
-              : _unrestricte(user?.id as string);
-          },
-        },
-        item,
-      );
+      items.push(item);
     }
+
     return items;
   }, [user?.friendshipStatus?.followedBy, isRestricting, item]);
 

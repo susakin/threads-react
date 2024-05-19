@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ActiveShadowButton from '@components/Button/ActiveShadowButon';
 import { Spin } from '@components/Icon';
 import cs from 'classnames';
 import styles from './menu.module.less';
@@ -11,6 +10,8 @@ export type MenuItem = {
   danger?: boolean;
   className?: string;
   disabled?: boolean;
+  split?: boolean;
+  style?: React.CSSProperties;
   onClick?: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => void | Promise<void | never>;
@@ -32,9 +33,11 @@ const MenuItems: React.FC<MenuItemsProps> = ({
   className,
   onClick,
 }) => {
+  const classNamePrefix = 'menu-items';
+
   return (
-    <div className={cs(styles['menu-items'], className)} style={style}>
-      {items?.map((item, index) => {
+    <div className={cs(styles[`${classNamePrefix}`], className)} style={style}>
+      {items?.map(item => {
         if (!item) {
           return null;
         }
@@ -44,9 +47,6 @@ const MenuItems: React.FC<MenuItemsProps> = ({
               {...item}
               onClick={item?.onClick || (e => onClick?.(item, e))}
             />
-            {index !== items?.length - 1 && (
-              <hr className={styles['menu-item-split']} />
-            )}
           </>
         );
       })}
@@ -61,6 +61,8 @@ const MenuItem: React.FC<MenuItem> = ({
   danger,
   className,
   disabled,
+  split,
+  style,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const classNamePrefix = 'menu-item';
@@ -72,34 +74,37 @@ const MenuItem: React.FC<MenuItem> = ({
   }
 
   return (
-    <ActiveShadowButton
-      className={cs(
-        styles[`${classNamePrefix}`],
-        {
-          [styles[`${classNamePrefix}-danger`]]: danger,
-          [styles[`${classNamePrefix}-disabled`]]: disabled,
-        },
-        className,
-      )}
-      disabled={loading}
-      onClick={handleClick}
-    >
-      <div className={styles[`${classNamePrefix}-inner`]}>
-        <span className={styles[`${classNamePrefix}-inner-label`]}>
-          {label}
-        </span>
-        {icon && (
-          <span className={styles[`${classNamePrefix}-inner-icon`]}>
-            {icon}
-          </span>
+    <>
+      <div
+        className={cs(
+          styles[`${classNamePrefix}`],
+          {
+            [styles[`${classNamePrefix}-danger`]]: danger,
+            [styles[`${classNamePrefix}-disabled`]]: disabled,
+          },
+          className,
         )}
-        {loading && (
-          <span className={styles[`${classNamePrefix}-inner-loading`]}>
-            <Spin viewBox="0 0 100 100" size={14} />
+        onClick={loading ? undefined : handleClick}
+        style={style}
+      >
+        <div className={styles[`${classNamePrefix}-inner`]}>
+          <span className={styles[`${classNamePrefix}-inner-label`]}>
+            {label}
           </span>
-        )}
+          {icon && (
+            <span className={styles[`${classNamePrefix}-inner-icon`]}>
+              {icon}
+            </span>
+          )}
+          {loading && (
+            <span className={styles[`${classNamePrefix}-inner-loading`]}>
+              <Spin viewBox="0 0 100 100" size={14} />
+            </span>
+          )}
+        </div>
       </div>
-    </ActiveShadowButton>
+      {split && <hr className={styles[`${classNamePrefix}-split`]} />}
+    </>
   );
 };
 

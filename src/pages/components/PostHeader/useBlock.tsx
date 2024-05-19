@@ -1,9 +1,12 @@
+import React from 'react';
 import { User } from '@typings/index';
 import { PostHeaderActionProps } from './PostHeaderAction';
 import { useFetch } from '@hooks/useFetch';
 import { block, unblock } from '@services/profile';
 import { Toast } from '@components/index';
 import Modal from '@components/Modal';
+import Block from '@components/Icon/Block';
+import Blocked from '@components/Icon/Blocked';
 
 type UseBlockProps = {
   user?: User;
@@ -36,6 +39,11 @@ export const useBlock = ({
   const item = {
     label: `${confirmText}拉黑`,
     danger: true,
+    icon: isBlocking ? (
+      <Block viewBox="0 0 20 20" size={20} />
+    ) : (
+      <Blocked viewBox="0 0 20 20" size={20} />
+    ),
     onClick() {
       Modal.confirm({
         title: `${confirmText}拉黑${user?.username}？`,

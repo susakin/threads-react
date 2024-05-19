@@ -1,8 +1,11 @@
+import React from 'react';
 import { User } from '@typings/index';
 import { PostHeaderActionProps } from './PostHeaderAction';
 import { useFetch } from '@hooks/useFetch';
 import { Toast } from '@components/index';
 import { mute, unmute } from '@services/post';
+import Mute from '@components/Icon/Mute';
+import Muted from '@components/Icon/Muted';
 
 export type UseMuteProps = {
   user?: User;
@@ -13,7 +16,7 @@ export const useMute = ({
   onUserFriendshipStatusUpdate,
 }: UseMuteProps) => {
   const friendshipStatus = user?.friendshipStatus;
-
+  const muting = friendshipStatus?.muting;
   const { run: _mute } = useFetch(mute, {
     manual: true,
     onSuccess() {
@@ -31,11 +34,14 @@ export const useMute = ({
   });
 
   const item = {
-    label: `${friendshipStatus?.muting ? '重新看' : '不看'}`,
+    icon: muting ? (
+      <Mute viewBox="0 0 20 20" size={20} />
+    ) : (
+      <Muted viewBox="0 0 20 20" size={20} />
+    ),
+    label: `${muting ? '重新看' : '不看'}`,
     onClick() {
-      friendshipStatus?.muting
-        ? _unmute(user?.id as string)
-        : _mute(user?.id as string);
+      muting ? _unmute(user?.id as string) : _mute(user?.id as string);
     },
   };
 

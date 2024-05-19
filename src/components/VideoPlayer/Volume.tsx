@@ -1,7 +1,7 @@
 import React from 'react';
 import cs from 'classnames';
 import styles from './volume.module.less';
-import { Mute, Volume as VolumeIcon } from '@components/Icon';
+import { MuteOff, Volume as VolumeIcon } from '@components/Icon';
 
 type VolumeProps = {
   muted?: boolean;
@@ -29,7 +29,7 @@ const Volume: React.FC<VolumeProps> = ({
     >
       <div className={styles[`volume-button`]}>
         {muted ? (
-          <Mute
+          <MuteOff
             className={styles[`volume-icon`]}
             size={inViewer ? 16 : 12}
             viewBox="0 0 48 48"

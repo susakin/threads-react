@@ -195,24 +195,31 @@ const RichText: React.FC<RichTextProps> = ({
     let offset = 0;
     blocks.slice(notEmptyBlockIndex).forEach((block, index) => {
       const text = block.getText();
-      const trimmedText = text.trimStart();
+      const trimmedText = text?.trimStart();
       block?.findEntityRanges(
         char => {
           const entityKey = char?.getEntity();
           return entityKey !== null;
         },
         (start, end) => {
-          const trimmedStart =
-            index === 0 ? start - (text.length - trimmedText.length) : start;
+          const isFirst = index === 0;
+          const trimmedStart = isFirst
+            ? start - (text.length - trimmedText.length)
+            : start;
+
           const entityKey = block.getEntityAt(start);
           const entity = contentState.getEntity(entityKey);
           const entityType = entity.getType();
           const entityData = entity.getData();
-          const entityText = text.slice(trimmedStart, end);
+          const entityText = text.slice(
+            isFirst ? text.length - trimmedText.length : trimmedStart,
+            end,
+          );
           const entityTypeMap: Record<string, string> = {
             '#mention': 'tag',
             mention: 'mention',
           };
+
           const type = entityTypeMap[entityType] as any;
           (entityData?.mention?.name === entityText?.substring(1) ||
             !entityData?.mention?.name) &&

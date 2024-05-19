@@ -6,6 +6,8 @@ import {
   Repost,
   Share,
   Reposted,
+  Link,
+  ShareTo,
 } from '@components/Icon';
 import {
   ActiveScaleButton,
@@ -25,6 +27,7 @@ import { OnFollowingChange } from '../FollowButton';
 import PrivateModifyModal from '../PrivateModifyModal';
 import { useCurrentUser } from '@context/AuthProvider';
 import cs from 'classnames';
+import { isSupportTouch } from '@utils/index';
 
 const classNamePrefix = 'post-action';
 
@@ -147,10 +150,16 @@ const PostAction: React.FC<PostActionProps> = ({
       size,
     };
 
-    const shareItems = [{ label: '复制链接', onClick: onCopy }];
-    if (navigator?.share) {
+    const shareItems: any[] = [
+      {
+        label: '复制链接',
+        onClick: onCopy,
+        icon: <Link viewBox="0 0 18 18" size={21} fill="transparent" />,
+      },
+    ];
+    if (navigator?.share && isSupportTouch) {
       shareItems.push({
-        label: '分享到',
+        label: '分享到...',
         onClick() {
           navigator.share({
             url: postUrl,
@@ -158,6 +167,7 @@ const PostAction: React.FC<PostActionProps> = ({
             text: `@${post?.user?.username || ''} • ${post?.caption || '帖子'}`,
           });
         },
+        icon: <ShareTo viewBox="0 0 19 19" size={20} fill="transparent" />,
       });
     }
     return [

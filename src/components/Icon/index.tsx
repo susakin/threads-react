@@ -25,7 +25,7 @@ export { default as Threads } from './Threads';
 export { default as Spin } from './Spin';
 
 export { default as Volume } from './Volume';
-export { default as Mute } from './Mute';
+export { default as MuteOff } from './MuteOff';
 export { default as Close } from './Close';
 export { default as CloseStrong } from './CloseStrong';
 
@@ -79,3 +79,11 @@ export { default as Tag } from './Tag';
 
 export { default as Star } from './Star';
 export { default as Switch } from './Switch';
+
+export { default as Restrict } from './Restrict';
+
+export { default as Restricted } from './Restricted';
+
+export { default as Link } from './Link';
+
+export { default as ShareTo } from './ShareTo';
