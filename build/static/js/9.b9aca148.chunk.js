@@ -21,7 +21,7 @@
           'settings-title': 'UePeV',
           settings: 'd_0v6',
         },
-        a = i(949),
+        a = i(4134),
         o = i(8467),
         l = i(1631),
         r = {
@@ -36,7 +36,7 @@
           'privacy-mention-text': 'YniuD',
         },
         d = i(6098),
-        u = i(4666),
+        u = i(813),
         m = i(8420),
         v = i(6515),
         f = i(8048),

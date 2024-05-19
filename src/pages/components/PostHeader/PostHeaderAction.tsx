@@ -1,5 +1,16 @@
 import React, { useMemo, useState } from 'react';
-import { More, Edited, Pin, Direction } from '@components/Icon';
+import {
+  More,
+  Edited,
+  Pin,
+  Direction,
+  UnFollow,
+  UnSave,
+  Save,
+  Unlike,
+  Delete,
+  Hide,
+} from '@components/Icon';
 import {
   ActiveScaleButton,
   Popover,
@@ -32,11 +43,6 @@ import ReplyAuthModal from '../ReplyAuthModal';
 import { useBlock } from './useBlock';
 import { useNavigate } from 'react-router-dom';
 import { useMute } from './useMute';
-import UnSave from '@components/Icon/UnSave';
-import Save from '@components/Icon/Save';
-import Delete from '@components/Icon/Delete';
-import Unlike from '@components/Icon/Unlike';
-import Hide from '@components/Icon/Hide';
 
 const classNamePrefix = 'post-header-action';
 
@@ -309,10 +315,11 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
       );
       if (friendshipStatus?.following) {
         items.push({
-          label: '取消关注',
+          label: '停止关注',
           onClick: () => {
             runUnfollow(post?.user.id as string);
           },
+          icon: <UnFollow viewBox="0 0 20 20" size={20} />,
         });
       } else {
         items.push(item);

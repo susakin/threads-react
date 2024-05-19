@@ -13,9 +13,9 @@
         l = i(9439),
         t = i(7313),
         r = i(8467),
-        a = i(949),
+        a = i(4134),
         s = i(4113),
-        c = i(4666),
+        c = i(813),
         u = {
           media: 'myphf',
           'media-viewer-content': 'PYbOk',
@@ -737,7 +737,7 @@
                         hideWhenContentClick: !0,
                         placement: 'bottom-end',
                         content: (0, x.jsx)(s.mX, { items: X }),
-                        children: (0, x.jsx)(c.HG, {
+                        children: (0, x.jsx)(c.gC, {
                           size: 24,
                           viewBox: '0 0 24 24',
                         }),

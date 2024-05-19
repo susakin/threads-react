@@ -14,7 +14,7 @@
         c = t(5861),
         s = t(9439),
         i = t(7313),
-        l = t(4666),
+        l = t(813),
         o = {
           media: 'kuSYb',
           'media-viewer-content': 'CkC5c',
@@ -288,7 +288,7 @@
             })
           );
         },
-        w = t(949),
+        w = t(4134),
         b = {
           search: 'Td5z1',
           'search-post-list': 'D9qmX',

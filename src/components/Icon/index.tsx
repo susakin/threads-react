@@ -87,3 +87,15 @@ export { default as Restricted } from './Restricted';
 export { default as Link } from './Link';
 
 export { default as ShareTo } from './ShareTo';
+
+export { default as UnFollow } from './UnFollow';
+
+export { default as UnSave } from './UnSave';
+
+export { default as Save } from './Save';
+
+export { default as Delete } from './Delete';
+
+export { default as Unlike } from './Unlike';
+
+export { default as Hide } from './Hide';
