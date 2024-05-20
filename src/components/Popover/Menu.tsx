@@ -17,43 +17,6 @@ export type MenuItem = {
   ) => void | Promise<void | never>;
 };
 
-type MenuItemsProps = {
-  items?: MenuItem[];
-  style?: React.CSSProperties;
-  className?: string;
-  onClick?: (
-    item: MenuItem,
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => void;
-};
-
-const MenuItems: React.FC<MenuItemsProps> = ({
-  items,
-  style,
-  className,
-  onClick,
-}) => {
-  const classNamePrefix = 'menu-items';
-
-  return (
-    <div className={cs(styles[`${classNamePrefix}`], className)} style={style}>
-      {items?.map(item => {
-        if (!item) {
-          return null;
-        }
-        return (
-          <>
-            <MenuItem
-              {...item}
-              onClick={item?.onClick || (e => onClick?.(item, e))}
-            />
-          </>
-        );
-      })}
-    </div>
-  );
-};
-
 const MenuItem: React.FC<MenuItem> = ({
   label,
   icon,
@@ -108,17 +71,48 @@ const MenuItem: React.FC<MenuItem> = ({
   );
 };
 
-const Menu: React.FC<
-  Pick<MenuItemsProps, 'items' | 'onClick'> & { shadow?: boolean }
-> = ({ items, onClick, shadow = true }) => {
-  const classNamePrefix = 'menu';
+const classNamePrefix = 'menu';
+
+type MenuProps = {
+  items?: MenuItem[];
+  className?: string;
+  shadow?: boolean;
+  onClick?: (
+    item: MenuItem,
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => void;
+};
+
+const Menu: React.FC<MenuProps> = ({
+  items,
+  onClick,
+  shadow = true,
+  className,
+}) => {
   return (
     <div
-      className={cs(styles[`${classNamePrefix}`], {
-        [styles[`${classNamePrefix}-shadow`]]: shadow,
-      })}
+      className={cs(
+        styles[`${classNamePrefix}`],
+        {
+          [styles[`${classNamePrefix}-shadow`]]: shadow,
+        },
+        className,
+      )}
     >
-      <MenuItems items={items} onClick={onClick} />
+      <div className={cs(styles[`${classNamePrefix}-inner`])}>
+        {items?.map(item => {
+          if (!item) {
+            return null;
+          }
+          return (
+            <MenuItem
+              key={item.key}
+              {...item}
+              onClick={item?.onClick || (e => onClick?.(item, e))}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

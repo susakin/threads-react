@@ -14,6 +14,7 @@ import Sign from './Sign';
 import Username from '../Username';
 import Time from '@components/Time';
 import { useNavigate } from 'react-router-dom';
+import { PostHeaderProps } from '../PostHeader';
 
 const classNamePrefix = 'combined-post';
 
@@ -34,7 +35,8 @@ export type CombinedPostProps = {
   hasRepostSign?: boolean;
 } & PostHeaderActionProps &
   Pick<PostSummaryProps, 'onCommentCountClick'> &
-  Pick<PostActionProps, 'onReply'>;
+  Pick<PostActionProps, 'onReply'> &
+  Pick<PostHeaderProps, 'onPostSuccess'>;
 
 const CombinedPost: React.FC<CombinedPostProps> = ({
   combinedPost,

@@ -5,23 +5,24 @@ import PostHeaderAction, { PostHeaderActionProps } from './PostHeaderAction';
 import styles from './index.module.less';
 import PostEditModal from '../PostEditModal';
 import Time from '@components/Time';
+import { TextEntity } from '@typings/index';
 
 const classNamePrefix = 'post-header';
 
 export type PostHeaderProps = {
   className?: string;
-  hasAction?: boolean;
-} & Omit<PostHeaderActionProps, 'username'>;
+  onPostSuccess?: () => void;
+} & Omit<PostHeaderActionProps, 'username' | 'onEditClick' | 'onTagClick'>;
 
 const PostHeader: React.FC<PostHeaderProps> = ({
   className,
-  hasAction = true,
   post,
+  onPostSuccess,
   ...rest
 }) => {
   const { user, code, createdAt } = post || {};
   const [postEditVisible, setPostEditVisible] = useState<boolean>(false);
-
+  const [textEntity, setTextEntity] = useState<TextEntity>();
   return (
     <>
       <div className={cs(styles[`${classNamePrefix}`], className)}>
@@ -41,9 +42,14 @@ const PostHeader: React.FC<PostHeaderProps> = ({
           </div>
           <PostHeaderAction
             post={post}
-            hasAction={hasAction}
             onEditClick={() => {
               setPostEditVisible(true);
+            }}
+            onTagClick={() => {
+              setPostEditVisible(true);
+              setTextEntity(
+                post?.textEntities?.find(item => item.type === 'tag'),
+              );
             }}
             {...rest}
           />
@@ -52,9 +58,14 @@ const PostHeader: React.FC<PostHeaderProps> = ({
       <PostEditModal
         visible={postEditVisible}
         onUpdate={rest?.onPostUpdate}
-        editPost={post}
+        editPost={textEntity ? undefined : post}
+        textEntity={textEntity}
+        onSuccess={_post => {
+          _post?.id !== post?.id && onPostSuccess?.();
+        }}
         onClose={() => {
           setPostEditVisible(false);
+          setTextEntity(undefined);
         }}
       />
     </>

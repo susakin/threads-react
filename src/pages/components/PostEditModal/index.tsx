@@ -14,7 +14,7 @@ import useViewport from '@hooks/useViewport';
 import { AuthContext } from '@context/AuthProvider';
 import { uniqueId, cloneDeep } from 'lodash';
 import { createPost, updatePost } from '@services/post';
-import { Media, Post, ReplyAuth, User } from '@typings/index';
+import { Media, Post, ReplyAuth, TextEntity } from '@typings/index';
 import { useCountDown } from 'ahooks';
 import { useNavigate } from 'react-router-dom';
 import { OnFollowingChange } from '../FollowButton';
@@ -27,7 +27,7 @@ type PostEditModalProps = {
   title?: React.ReactNode;
   quotedPost?: Post;
   editPost?: Post;
-  mentionUser?: User;
+  textEntity?: TextEntity;
   onUpdate?: (
     id: string,
     updateFiled: Pick<
@@ -74,19 +74,21 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
   editPost,
   onUpdate,
   onFollowingChange,
-  mentionUser,
+  textEntity,
   onSuccess,
 }) => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
-  const [editPosts, setEditPosts] = useState<EditPost[]>([
-    editPost
-      ? editPost
-      : {
-          caption: mentionUser ? `@${mentionUser.username}` : '',
-          id: uniqueId(),
-          quotedPost,
-        },
-  ]);
+  const [editPosts, setEditPosts] = useState<EditPost[]>(() => {
+    return [
+      editPost
+        ? editPost
+        : {
+            caption: textEntity ? `${textEntity.displayText} ` : '',
+            id: uniqueId(),
+            quotedPost,
+          },
+    ];
+  });
   const { viewportWidth } = useViewport();
   const { state } = useContext(AuthContext);
   const now = Date.now();
@@ -249,14 +251,14 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
           editPost
             ? editPost
             : {
-                caption: mentionUser ? `@${mentionUser.username} ` : '',
+                caption: textEntity ? `${textEntity.displayText} ` : '',
                 id: uniqueId(),
                 quotedPost,
-                textEntities: mentionUser
+                textEntities: textEntity
                   ? [
                       {
-                        type: 'mention',
-                        displayText: `@${mentionUser.username}`,
+                        type: textEntity?.type,
+                        displayText: textEntity.displayText,
                         blockOffset: 0,
                         blockIndex: 0,
                       },

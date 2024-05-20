@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Button } from '@components/index';
 import cs from 'classnames';
 import styles from './profileAction.module.less';
@@ -30,6 +30,13 @@ const ProfileAction: React.FC<ProfileActionProps> = ({
   const hasMention =
     mentionAuth === 'everyone' ||
     (mentionAuth === 'following' && friendshipStatus?.following);
+
+  const textEntity = useMemo(() => {
+    return {
+      type: 'mention',
+      displayText: `@${user?.username}`,
+    };
+  }, [user]);
 
   function onShare() {
     const url = `${window.location.origin}/@${username}`;
@@ -132,7 +139,7 @@ const ProfileAction: React.FC<ProfileActionProps> = ({
       />
       <PostEditModal
         visible={postEditVisible}
-        mentionUser={user}
+        textEntity={textEntity as any}
         onClose={() => {
           setPostEditVisible(false);
         }}

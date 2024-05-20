@@ -32,6 +32,7 @@ type PostListProps = {
     | 'hasRepostSign'
     | 'onCommentCountClick'
     | 'onReply'
+    | 'onPostSuccess'
   >;
 
 function PostList<T extends Record<string, any>>({
@@ -52,6 +53,7 @@ function PostList<T extends Record<string, any>>({
   randomRender,
   onCommentCountClick,
   onReply,
+  onPostSuccess,
   hasRepostSign,
   hasFirstSign,
   ...rest
@@ -252,6 +254,7 @@ function PostList<T extends Record<string, any>>({
                           }),
                         });
                       }}
+                      onPostSuccess={onPostSuccess}
                     />
                   </HideableComponent>
                 );

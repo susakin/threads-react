@@ -10,6 +10,7 @@ import {
   Unlike,
   Delete,
   Hide,
+  Tag,
 } from '@components/Icon';
 import {
   ActiveScaleButton,
@@ -55,6 +56,7 @@ export type PostHeaderActionProps = {
   hasPined?: boolean;
   pinToWhere?: 'profile' | 'comment';
   onEditClick?: () => void;
+  onTagClick?: () => void;
   onUserFriendshipStatusUpdate?: (
     uid: string,
     friendshipStatus: FriendshipStatus,
@@ -63,7 +65,7 @@ export type PostHeaderActionProps = {
   OnFollowingChange;
 
 const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
-  hasAction,
+  hasAction = true,
   post,
   onPostUpdate,
   onDelete,
@@ -73,6 +75,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   hasPined,
   pinToWhere,
   onEditClick,
+  onTagClick,
   onUserFriendshipStatusUpdate,
 }) => {
   const {
@@ -81,6 +84,8 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     id = '',
     isPinnedToProfile,
     isPinnedToComment,
+    isSavedByViewer,
+    textEntities,
   } = post || {};
 
   const { friendshipStatus } = post?.user || {};
@@ -204,8 +209,24 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   }
 
   const menu: PopoverMenuItem[] = useMemo(() => {
-    const { isSavedByViewer, id = '' } = post || {};
+    const hasTag = textEntities?.some(item => item.type === 'tag');
     const items: PopoverMenuItem[] = [
+      hasTag
+        ? {
+            label: '用标记创建',
+            icon: (
+              <Tag
+                viewBox="2 2 20 20"
+                size={20}
+                strokeLinecap="round"
+                strokeWidth={1.5}
+                stroke="currentColor"
+              />
+            ),
+            split: true,
+            onClick: onTagClick,
+          }
+        : (null as any),
       {
         label: `${isSavedByViewer ? '取消' : ''}收藏`,
         onClick() {

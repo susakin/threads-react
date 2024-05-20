@@ -1,4 +1,4 @@
-/*! For license information please see main.d8560289.js.LICENSE.txt */
+/*! For license information please see main.434e1331.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -2695,9 +2695,9 @@
             return h;
           },
         });
-        var r = n(4942),
-          o = n(9439),
-          i = n(1413),
+        var r = n(1413),
+          o = n(4942),
+          i = n(9439),
           a = n(7313),
           u = n(813),
           s = n(6123),
@@ -2711,7 +2711,7 @@
             focus: 'Mvs1S',
             menu: 'OOimG',
             'menu-shadow': 'L5fpa',
-            'menu-items': 'MrFqv',
+            'menu-inner': 'Dh3XW',
             'menu-item': 'ygDVP',
             'menu-item-split': 'w6tT8',
             'menu-item-inner': 'bzxfh',
@@ -2723,46 +2723,9 @@
           },
           f = n(6417),
           d = function (e) {
-            var t = e.items,
-              n = e.style,
-              r = e.className,
-              o = e.onClick;
-            return (0, f.jsx)('div', {
-              className: c()(l[''.concat('menu-items')], r),
-              style: n,
-              children:
-                null === t || void 0 === t
-                  ? void 0
-                  : t.map(function (e) {
-                      return e
-                        ? (0, f.jsx)(f.Fragment, {
-                            children: (0, f.jsx)(
-                              p,
-                              (0, i.Z)(
-                                (0, i.Z)({}, e),
-                                {},
-                                {
-                                  onClick:
-                                    (null === e || void 0 === e
-                                      ? void 0
-                                      : e.onClick) ||
-                                    function (t) {
-                                      return null === o || void 0 === o
-                                        ? void 0
-                                        : o(e, t);
-                                    },
-                                },
-                              ),
-                            ),
-                          })
-                        : null;
-                    }),
-            });
-          },
-          p = function (e) {
             var t,
               n = e.label,
-              i = e.icon,
+              r = e.icon,
               s = e.onClick,
               d = e.danger,
               p = e.className,
@@ -2770,7 +2733,7 @@
               v = e.split,
               y = e.style,
               g = (0, a.useState)(!1),
-              m = (0, o.Z)(g, 2),
+              m = (0, i.Z)(g, 2),
               b = m[0],
               w = m[1],
               x = 'menu-item';
@@ -2780,8 +2743,8 @@
                   className: c()(
                     l[''.concat(x)],
                     ((t = {}),
-                    (0, r.Z)(t, l[''.concat(x, '-danger')], d),
-                    (0, r.Z)(t, l[''.concat(x, '-disabled')], h),
+                    (0, o.Z)(t, l[''.concat(x, '-danger')], d),
+                    (0, o.Z)(t, l[''.concat(x, '-disabled')], h),
                     t),
                     p,
                   ),
@@ -2803,10 +2766,10 @@
                         className: l[''.concat(x, '-inner-label')],
                         children: n,
                       }),
-                      i &&
+                      r &&
                         (0, f.jsx)('span', {
                           className: l[''.concat(x, '-inner-icon')],
-                          children: i,
+                          children: r,
                         }),
                       b &&
                         (0, f.jsx)('span', {
@@ -2823,18 +2786,48 @@
               ],
             });
           },
+          p = 'menu',
           h = function (e) {
             var t = e.items,
               n = e.onClick,
-              o = e.shadow,
-              i = void 0 === o || o,
-              a = 'menu';
+              i = e.shadow,
+              a = void 0 === i || i,
+              u = e.className;
             return (0, f.jsx)('div', {
               className: c()(
-                l[''.concat(a)],
-                (0, r.Z)({}, l[''.concat(a, '-shadow')], i),
+                l[''.concat(p)],
+                (0, o.Z)({}, l[''.concat(p, '-shadow')], a),
+                u,
               ),
-              children: (0, f.jsx)(d, { items: t, onClick: n }),
+              children: (0, f.jsx)('div', {
+                className: c()(l[''.concat(p, '-inner')]),
+                children:
+                  null === t || void 0 === t
+                    ? void 0
+                    : t.map(function (e) {
+                        return e
+                          ? (0, f.jsx)(
+                              d,
+                              (0, r.Z)(
+                                (0, r.Z)({}, e),
+                                {},
+                                {
+                                  onClick:
+                                    (null === e || void 0 === e
+                                      ? void 0
+                                      : e.onClick) ||
+                                    function (t) {
+                                      return null === n || void 0 === n
+                                        ? void 0
+                                        : n(e, t);
+                                    },
+                                },
+                              ),
+                              e.key,
+                            )
+                          : null;
+                      }),
+              }),
             });
           };
       },
@@ -23062,62 +23055,66 @@
           He = function (e) {
             var t,
               n = e.hasAction,
-              r = e.post,
-              o = e.onPostUpdate,
-              l = e.onDelete,
-              f = e.onPinChange,
-              d = e.onFollowingChange,
-              p = e.hasPin,
-              h = e.hasPined,
-              v = e.pinToWhere,
-              g = e.onEditClick,
-              m = e.onUserFriendshipStatusUpdate,
-              b = r || {},
-              w = b.captionIsEdited,
-              x = b.createdAt,
-              C = void 0 === x ? 0 : x,
-              k = b.id,
-              S = void 0 === k ? '' : k,
-              E = b.isPinnedToProfile,
-              D = b.isPinnedToComment,
-              j = ((null === r || void 0 === r ? void 0 : r.user) || {})
+              r = void 0 === n || n,
+              o = e.post,
+              l = e.onPostUpdate,
+              f = e.onDelete,
+              d = e.onPinChange,
+              p = e.onFollowingChange,
+              h = e.hasPin,
+              v = e.hasPined,
+              g = e.pinToWhere,
+              m = e.onEditClick,
+              b = e.onTagClick,
+              w = e.onUserFriendshipStatusUpdate,
+              x = o || {},
+              C = x.captionIsEdited,
+              k = x.createdAt,
+              S = void 0 === k ? 0 : k,
+              E = x.id,
+              D = void 0 === E ? '' : E,
+              j = x.isPinnedToProfile,
+              P = x.isPinnedToComment,
+              A = x.isSavedByViewer,
+              T = x.textEntities,
+              L = ((null === o || void 0 === o ? void 0 : o.user) || {})
                 .friendshipStatus,
-              P = (0, a.useState)(!1),
-              A = (0, i.Z)(P, 2),
-              T = A[0],
-              L = A[1],
-              R = 'profile' === v,
-              M = (0, ze.r)({
-                user: null === r || void 0 === r ? void 0 : r.user,
-                onUserFriendshipStatusUpdate: m,
+              R = (0, a.useState)(!1),
+              M = (0, i.Z)(R, 2),
+              F = M[0],
+              N = M[1],
+              Z = 'profile' === g,
+              I = (0, ze.r)({
+                user: null === o || void 0 === o ? void 0 : o.user,
+                onUserFriendshipStatusUpdate: w,
               }).item,
-              F = (0, Ue.l)({
-                user: null === r || void 0 === r ? void 0 : r.user,
-                onUserFriendshipStatusUpdate: m,
+              B = (0, Ue.l)({
+                user: null === o || void 0 === o ? void 0 : o.user,
+                onUserFriendshipStatusUpdate: w,
               }).item,
-              N = (0, y.i)(Pe.fR, {
+              z = (0, y.i)(Pe.fR, {
                 manual: !0,
                 onSuccess: function () {
-                  null === l || void 0 === l || l(S),
+                  null === f || void 0 === f || f(D),
                     s.FN.show('\u5df2\u5220\u9664');
                 },
               }).run,
-              Z = (0, y.i)(R ? Pe.Cj : Pe.yk, {
+              U = (0, y.i)(Z ? Pe.Cj : Pe.yk, {
                 manual: !0,
                 onSuccess: function () {
                   s.FN.show('\u5df2\u7f6e\u9876'),
-                    null === f || void 0 === f || f(S, !0);
+                    null === d || void 0 === d || d(D, !0);
                 },
               }).run,
-              I = (0, y.i)(R ? Pe.ef : Pe.S2, {
+              K = (0, y.i)(Z ? Pe.ef : Pe.S2, {
                 manual: !0,
                 onSuccess: function () {
                   s.FN.show('\u5df2\u53d6\u6d88\u7f6e\u9876'),
-                    null === f || void 0 === f || f(S, !1);
+                    null === d || void 0 === d || d(D, !1);
                 },
               }).run,
-              B = (0, c.s0)(),
-              z = (0, y.i)(Pe.sm, {
+              H = (0, c.s0)(),
+              W = (0, y.i)(Pe.sm, {
                 manual: !0,
                 onSuccess: function () {
                   s.FN.show({
@@ -23126,93 +23123,109 @@
                     hasMinWith: !0,
                     action: '\u67e5\u770b\u5168\u90e8',
                     onActionClick: function () {
-                      B('/saved');
+                      H('/saved');
                     },
                   }),
-                    null === o || void 0 === o || o(S, { isSavedByViewer: !0 });
+                    null === l || void 0 === l || l(D, { isSavedByViewer: !0 });
                 },
               }).run,
-              U = (0, y.i)(Pe.YL, {
+              V = (0, y.i)(Pe.YL, {
                 manual: !0,
                 onSuccess: function () {
                   s.FN.show('\u5df2\u53d6\u6d88\u6536\u85cf'),
-                    null === o || void 0 === o || o(S, { isSavedByViewer: !1 });
+                    null === l || void 0 === l || l(D, { isSavedByViewer: !1 });
                 },
               }).run,
-              K = (0, y.i)(Pe.jp, {
+              q = (0, y.i)(Pe.jp, {
                 manual: !0,
                 onSuccess: function () {
-                  null === o || void 0 === o || o(S, { isHiddenByViewer: !0 });
+                  null === l || void 0 === l || l(D, { isHiddenByViewer: !0 });
                 },
               }).run,
-              H = (0, y.i)(de.fv, {
+              $ = (0, y.i)(de.fv, {
                 manual: !0,
                 onSuccess: function () {
-                  null === d ||
-                    void 0 === d ||
-                    d(null === r || void 0 === r ? void 0 : r.user.id, {
+                  null === p ||
+                    void 0 === p ||
+                    p(null === o || void 0 === o ? void 0 : o.user.id, {
                       following: !1,
                     }),
                     s.FN.show('\u5df2\u505c\u6b62\u5173\u6ce8');
                 },
               }).run,
-              W = (0, y.i)(Pe.Uu, {
+              Y = (0, y.i)(Pe.Uu, {
                 manual: !0,
                 onSuccess: function (e, t) {
                   var n = (0, i.Z)(t, 2),
                     r = n[0],
-                    a = n[1].likeAndViewCountsDisabled;
-                  null === o ||
-                    void 0 === o ||
-                    o(r, { likeAndViewCountsDisabled: a }),
+                    o = n[1].likeAndViewCountsDisabled;
+                  null === l ||
+                    void 0 === l ||
+                    l(r, { likeAndViewCountsDisabled: o }),
                     s.FN.show(
-                      a
+                      o
                         ? '\u70b9\u8d5e\u548c\u5206\u4eab\u5df2\u9690\u85cf'
                         : '\u70b9\u8d5e\u548c\u5206\u4eab\u5df2\u53d6\u6d88\u9690\u85cf',
                     );
                 },
               }),
-              V = W.run,
-              q = (0, a.useMemo)(
+              G = Y.run,
+              Q = (0, a.useMemo)(
                 function () {
                   var e = 3e5;
-                  return Date.now() - C < e ? C + e - Date.now() : 0;
+                  return Date.now() - S < e ? S + e - Date.now() : 0;
                 },
-                [C],
+                [S],
               ),
-              $ = Fe({ leftTime: q }),
-              Y = (0, i.Z)($, 1)[0],
-              G = R ? E : D;
-            function Q() {
-              G
-                ? I(S)
-                : h
+              J = Fe({ leftTime: Q }),
+              X = (0, i.Z)(J, 1)[0],
+              ee = Z ? j : P;
+            function te() {
+              ee
+                ? K(D)
+                : v
                 ? _.Z.confirm({
                     title:
                       '\u662f\u5426\u66ff\u6362\u5f53\u524d\u7f6e\u9876\u5185\u5bb9\uff1f',
-                    content: R
+                    content: Z
                       ? '\u4e00\u6b21\u53ea\u80fd\u5728\u4e3b\u9875\u4e2d\u7f6e\u9876\u4e00\u6761\u4e32\u6587\u3002'
                       : '\u4e00\u6b21\u53ea\u80fd\u5728\u4e32\u6587\u4e2d\u7f6e\u9876\u4e00\u6761\u56de\u590d\u3002',
                     okType: 'default',
                     onOk: function () {
-                      Z(S);
+                      U(D);
                     },
                   })
-                : Z(S);
+                : U(D);
             }
-            var J = (0, a.useMemo)(
+            var ne = (0, a.useMemo)(
               function () {
-                var e = r || {},
-                  t = e.isSavedByViewer,
-                  n = e.id,
-                  o = void 0 === n ? '' : n,
-                  i = [
+                var e =
+                    null === T || void 0 === T
+                      ? void 0
+                      : T.some(function (e) {
+                          return 'tag' === e.type;
+                        }),
+                  t = [
+                    e
+                      ? {
+                          label: '\u7528\u6807\u8bb0\u521b\u5efa',
+                          icon: (0, O.jsx)(u.Vp, {
+                            viewBox: '2 2 20 20',
+                            size: 20,
+                            strokeLinecap: 'round',
+                            strokeWidth: 1.5,
+                            stroke: 'currentColor',
+                          }),
+                          split: !0,
+                          onClick: b,
+                        }
+                      : null,
                     {
-                      label: ''.concat(t ? '\u53d6\u6d88' : '', '\u6536\u85cf'),
+                      label: ''.concat(A ? '\u53d6\u6d88' : '', '\u6536\u85cf'),
                       onClick: function () {
-                        t ? U(o) : z(o);
+                        A ? V(D) : W(D);
                       },
-                      icon: t
+                      icon: A
                         ? (0, O.jsx)(u.JH, {
                             viewBox: '0 0 20 20',
                             size: 20,
@@ -23228,36 +23241,36 @@
                     },
                   ];
                 return (
-                  p &&
-                    i.unshift({
-                      label: G
+                  h &&
+                    t.unshift({
+                      label: ee
                         ? '\u53d6\u6d88\u7f6e\u9876'
                         : '\u7f6e\u9876\u5230'.concat(
-                            R ? '\u4e3b\u9875' : '\u8bc4\u8bba',
+                            Z ? '\u4e3b\u9875' : '\u8bc4\u8bba',
                           ),
-                      onClick: Q,
+                      onClick: te,
                       icon: (0, O.jsx)(u.lO, {
                         viewBox: '0 0 20 20',
                         size: 20,
                       }),
                     }),
-                  null !== j && void 0 !== j && j.isOwn
-                    ? (i.push(
+                  null !== L && void 0 !== L && L.isOwn
+                    ? (t.push(
                         {
                           label: ''.concat(
-                            null !== r &&
-                              void 0 !== r &&
-                              r.likeAndViewCountsDisabled
+                            null !== o &&
+                              void 0 !== o &&
+                              o.likeAndViewCountsDisabled
                               ? '\u53d6\u6d88'
                               : '',
                             '\u9690\u85cf\u83b7\u8d5e\u6570\u548c\u5206\u4eab\u6b21\u6570',
                           ),
                           onClick: function () {
-                            V(null === r || void 0 === r ? void 0 : r.id, {
+                            G(null === o || void 0 === o ? void 0 : o.id, {
                               likeAndViewCountsDisabled: !(
-                                null !== r &&
-                                void 0 !== r &&
-                                r.likeAndViewCountsDisabled
+                                null !== o &&
+                                void 0 !== o &&
+                                o.likeAndViewCountsDisabled
                               ),
                             });
                           },
@@ -23269,7 +23282,7 @@
                         {
                           label: '\u8c01\u53ef\u4ee5\u56de\u590d',
                           onClick: function () {
-                            L(!0);
+                            N(!0);
                           },
                           split: !0,
                           icon: (0, O.jsx)(u.Nm, {
@@ -23292,7 +23305,7 @@
                               okType: 'danger',
                               okText: '\u5220\u9664',
                               onOk: function () {
-                                N(o);
+                                z(D);
                               },
                             });
                           },
@@ -23302,9 +23315,9 @@
                           }),
                         },
                       ),
-                      Y > 0 &&
-                        q &&
-                        i.unshift({
+                      X > 0 &&
+                        Q &&
+                        t.unshift({
                           label: (0, O.jsxs)('div', {
                             className: je[''.concat(Ke, '-countdown')],
                             children: [
@@ -23316,20 +23329,20 @@
                               (0, O.jsx)('div', {
                                 className:
                                   je[''.concat(Ke, '-countdown-value')],
-                                children: Le()(Y).format('mm:ss'),
+                                children: Le()(X).format('mm:ss'),
                               }),
                             ],
                           }),
                           onClick: function () {
-                            null === g || void 0 === g || g();
+                            null === m || void 0 === m || m();
                           },
                           split: !0,
                         }))
-                    : (i.push(
+                    : (t.push(
                         {
                           label: '\u9690\u85cf',
                           onClick: function () {
-                            K(null === r || void 0 === r ? void 0 : r.id);
+                            q(null === o || void 0 === o ? void 0 : o.id);
                           },
                           icon: (0, O.jsx)(u.c, {
                             viewBox: '0 0 20 20',
@@ -23337,14 +23350,14 @@
                           }),
                           split: !0,
                         },
-                        F,
+                        B,
                       ),
-                      null !== j && void 0 !== j && j.following
-                        ? i.push({
+                      null !== L && void 0 !== L && L.following
+                        ? t.push({
                             label: '\u505c\u6b62\u5173\u6ce8',
                             onClick: function () {
-                              H(
-                                null === r || void 0 === r ? void 0 : r.user.id,
+                              $(
+                                null === o || void 0 === o ? void 0 : o.user.id,
                               );
                             },
                             icon: (0, O.jsx)(u.un, {
@@ -23352,28 +23365,28 @@
                               size: 20,
                             }),
                           })
-                        : i.push(M)),
-                  i
+                        : t.push(I)),
+                  t
                 );
               },
               [
-                r,
-                Y,
-                p,
-                null === r ||
-                void 0 === r ||
-                null === (t = r.user) ||
+                o,
+                X,
+                h,
+                null === o ||
+                void 0 === o ||
+                null === (t = o.user) ||
                 void 0 === t
                   ? void 0
                   : t.friendshipStatus,
-                G,
-                h,
-                null === r || void 0 === r
+                ee,
+                v,
+                null === o || void 0 === o
                   ? void 0
-                  : r.likeAndViewCountsDisabled,
-                null === r || void 0 === r ? void 0 : r.replyAuth,
-                null === r || void 0 === r ? void 0 : r.isSavedByViewer,
-                F,
+                  : o.likeAndViewCountsDisabled,
+                null === o || void 0 === o ? void 0 : o.replyAuth,
+                null === o || void 0 === o ? void 0 : o.isSavedByViewer,
+                B,
               ],
             );
             return (0, O.jsxs)('div', {
@@ -23382,7 +23395,7 @@
                 e.stopPropagation();
               },
               children: [
-                w &&
+                C &&
                   (0, O.jsx)(s.vC, {
                     className: je[''.concat(Ke, '-button')],
                     size: 20,
@@ -23397,13 +23410,13 @@
                       viewBox: '0 0 20.1325 21.186',
                     }),
                   }),
-                n &&
-                  0 !== J.length &&
+                r &&
+                  0 !== ne.length &&
                   (0, O.jsx)(s.J2, {
                     placement: 'bottom-end',
                     offset: 5,
                     hideWhenContentClick: !0,
-                    content: (0, O.jsx)(s.mX, { items: J }),
+                    content: (0, O.jsx)(s.mX, { items: ne }),
                     children: (0, O.jsx)(s.vC, {
                       className: je[''.concat(Ke, '-button')],
                       size: 20,
@@ -23415,11 +23428,11 @@
                     }),
                   }),
                 (0, O.jsx)(Be, {
-                  post: r,
-                  onPostUpdate: o,
-                  visible: T,
+                  post: o,
+                  onPostUpdate: l,
+                  visible: F,
                   onClose: function () {
-                    L(!1);
+                    N(!1);
                   },
                 }),
               ],
@@ -23432,22 +23445,25 @@
             'post-header-inner-name-time': 'GKd5b',
           },
           Ve = n(2379),
-          qe = ['className', 'hasAction', 'post'],
+          qe = ['className', 'post', 'onPostSuccess'],
           $e = 'post-header',
           Ye = function (e) {
             var t = e.className,
-              n = e.hasAction,
-              o = void 0 === n || n,
-              u = e.post,
-              s = (0, C.Z)(e, qe),
-              c = u || {},
-              l = c.user,
-              f = c.code,
-              p = c.createdAt,
-              h = (0, a.useState)(!1),
-              v = (0, i.Z)(h, 2),
-              y = v[0],
-              g = v[1];
+              n = e.post,
+              o = e.onPostSuccess,
+              u = (0, C.Z)(e, qe),
+              s = n || {},
+              c = s.user,
+              l = s.code,
+              f = s.createdAt,
+              p = (0, a.useState)(!1),
+              h = (0, i.Z)(p, 2),
+              v = h[0],
+              y = h[1],
+              g = (0, a.useState)(),
+              m = (0, i.Z)(g, 2),
+              b = m[0],
+              w = m[1];
             return (0, O.jsxs)(O.Fragment, {
               children: [
                 (0, O.jsx)('div', {
@@ -23459,14 +23475,14 @@
                         className: We[''.concat($e, '-inner-name')],
                         children: [
                           (0, O.jsx)(ye, {
-                            user: l,
+                            user: c,
                             className:
                               We[''.concat($e, '-inner-name-username')],
-                            onFollowingChange: s.onFollowingChange,
+                            onFollowingChange: u.onFollowingChange,
                           }),
                           (0, O.jsx)(Ve.Z, {
-                            time: p,
-                            linkTo: '/post/'.concat(f),
+                            time: f,
+                            linkTo: '/post/'.concat(l),
                             keepWeek: !1,
                             className: We[''.concat($e, '-inner-name-time')],
                           }),
@@ -23476,25 +23492,44 @@
                         He,
                         (0, r.Z)(
                           {
-                            post: u,
-                            hasAction: o,
+                            post: n,
                             onEditClick: function () {
-                              g(!0);
+                              y(!0);
+                            },
+                            onTagClick: function () {
+                              var e;
+                              y(!0),
+                                w(
+                                  null === n ||
+                                    void 0 === n ||
+                                    null === (e = n.textEntities) ||
+                                    void 0 === e
+                                    ? void 0
+                                    : e.find(function (e) {
+                                        return 'tag' === e.type;
+                                      }),
+                                );
                             },
                           },
-                          s,
+                          u,
                         ),
                       ),
                     ],
                   }),
                 }),
                 (0, O.jsx)(bn, {
-                  visible: y,
+                  visible: v,
                   onUpdate:
-                    null === s || void 0 === s ? void 0 : s.onPostUpdate,
-                  editPost: u,
+                    null === u || void 0 === u ? void 0 : u.onPostUpdate,
+                  editPost: b ? void 0 : n,
+                  textEntity: b,
+                  onSuccess: function (e) {
+                    (null === e || void 0 === e ? void 0 : e.id) !==
+                      (null === n || void 0 === n ? void 0 : n.id) &&
+                      (null === o || void 0 === o || o());
+                  },
                   onClose: function () {
-                    g(!1);
+                    y(!1), w(void 0);
                   },
                 }),
               ],
@@ -26336,19 +26371,21 @@
               f = e.editPost,
               d = e.onUpdate,
               p = e.onFollowingChange,
-              v = e.mentionUser,
+              v = e.textEntity,
               y = e.onSuccess,
               g = (0, a.useState)(!1),
               C = (0, i.Z)(g, 2),
               k = C[0],
               S = C[1],
-              E = (0, a.useState)([
-                f || {
-                  caption: v ? '@'.concat(v.username) : '',
-                  id: (0, D.uniqueId)(),
-                  quotedPost: l,
-                },
-              ]),
+              E = (0, a.useState)(function () {
+                return [
+                  f || {
+                    caption: v ? ''.concat(v.displayText, ' ') : '',
+                    id: (0, D.uniqueId)(),
+                    quotedPost: l,
+                  },
+                ];
+              }),
               j = (0, i.Z)(E, 2),
               P = j[0],
               A = j[1],
@@ -26750,14 +26787,15 @@
                   ? !k &&
                     A([
                       f || {
-                        caption: v ? '@'.concat(v.username, ' ') : '',
+                        caption: v ? ''.concat(v.displayText, ' ') : '',
                         id: (0, D.uniqueId)(),
                         quotedPost: l,
                         textEntities: v
                           ? [
                               {
-                                type: 'mention',
-                                displayText: '@'.concat(v.username),
+                                type:
+                                  null === v || void 0 === v ? void 0 : v.type,
+                                displayText: v.displayText,
                                 blockOffset: 0,
                                 blockIndex: 0,
                               },
@@ -28179,6 +28217,7 @@
             'randomRender',
             'onCommentCountClick',
             'onReply',
+            'onPostSuccess',
             'hasRepostSign',
             'hasFirstSign',
           ];
@@ -28203,15 +28242,16 @@
               S = e.randomRender,
               E = e.onCommentCountClick,
               D = e.onReply,
-              j = e.hasRepostSign,
-              P = e.hasFirstSign,
-              A = (0, C.Z)(e, pr);
+              j = e.onPostSuccess,
+              P = e.hasRepostSign,
+              A = e.hasFirstSign,
+              T = (0, C.Z)(e, pr);
             return (0, O.jsx)('div', {
               className: d()(dr[''.concat('post-list')], t),
               children: (0, O.jsx)(
                 jt,
                 (0, r.Z)(
-                  (0, r.Z)({}, A),
+                  (0, r.Z)({}, T),
                   {},
                   {
                     children: function (e) {
@@ -28221,9 +28261,9 @@
                         d = e.data,
                         _ = e.deleteItem,
                         C = e.itemFieldUpdate,
-                        A = e.updateData,
-                        T = 'profile' === b,
-                        L =
+                        T = e.updateData,
+                        L = 'profile' === b,
+                        R =
                           null === d ||
                           void 0 === d ||
                           null === (t = d[0]) ||
@@ -28233,7 +28273,7 @@
                           null === (f = c[0]) ||
                           void 0 === f
                             ? void 0
-                            : f[T ? 'isPinnedToProfile' : 'isPinnedToComment'];
+                            : f[L ? 'isPinnedToProfile' : 'isPinnedToComment'];
                       return (0, O.jsx)(O.Fragment, {
                         children:
                           null === d || void 0 === d
@@ -28253,8 +28293,8 @@
                                         indent: h,
                                         hasPaddingTop: p,
                                         hasReplyTo: v,
-                                        hasFirstSign: P,
-                                        hasRepostSign: j,
+                                        hasFirstSign: A,
+                                        hasRepostSign: P,
                                         replyToPostId: w,
                                         lastChildLineType: a,
                                         ignoreMutingUser: k,
@@ -28262,7 +28302,7 @@
                                         lastChildHasSummaryUserPreview: u,
                                         onReply: function (e, t) {
                                           null === D || void 0 === D || D(e, t),
-                                            A(function (n) {
+                                            T(function (n) {
                                               return n.map(function (n) {
                                                 for (
                                                   var o,
@@ -28353,13 +28393,13 @@
                                         pinToWhere: b,
                                         hasPinSign: x,
                                         hasPin: n,
-                                        hasPined: L,
+                                        hasPined: R,
                                         hasBorderTop: !!t || (c && l),
                                         onUserFriendshipStatusUpdate: function (
                                           e,
                                           t,
                                         ) {
-                                          A(function (n) {
+                                          T(function (n) {
                                             return n.map(function (n) {
                                               var o;
                                               return (0, r.Z)(
@@ -28449,10 +28489,10 @@
                                               );
                                         },
                                         onPinChange: function (e, t) {
-                                          var n = T
+                                          var n = L
                                             ? 'isPinnedToProfile'
                                             : 'isPinnedToComment';
-                                          A(function (a) {
+                                          T(function (a) {
                                             if (t) {
                                               var u, s;
                                               null !== (u = a[0]) &&
@@ -28527,7 +28567,7 @@
                                         onFollowingChange: function (e, t) {
                                           var n = t.following,
                                             o = t.outgoingRequest;
-                                          A(function (t) {
+                                          T(function (t) {
                                             return t.map(function (t) {
                                               var i;
                                               return (0, r.Z)(
@@ -28604,6 +28644,7 @@
                                             ),
                                           );
                                         },
+                                        onPostSuccess: j,
                                       }),
                                     ],
                                   },
@@ -81359,7 +81400,7 @@
           596: '2b7ccf5d',
           653: '56db5f35',
           849: '284ff43a',
-          997: '41e74bb1',
+          997: '16bfca22',
         }[e] +
         '.chunk.js'
       );

@@ -202,6 +202,9 @@ const ProfilePosts: React.FC<ProfilePostsProps> = ({
               hasLoadingContainer
               request={fetchUserPost}
               onDataChange={onUserFieldUpdated}
+              onPostSuccess={() => {
+                postListRef.current?.reload?.(true);
+              }}
               emptyPlaceholder={
                 user?.friendshipStatus?.isOwn ? (
                   <Button

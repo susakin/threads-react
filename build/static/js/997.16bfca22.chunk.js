@@ -239,8 +239,8 @@
           });
         },
         C = i(6123),
-        k = i.n(C),
-        y = {
+        y = i.n(C),
+        k = {
           media: 'UcyVj',
           'media-viewer-content': 'nCblV',
           'fade-in': 'bBmxF',
@@ -257,23 +257,23 @@
           'profile-modal-inner-item-avatar': 'dBd5a',
           'profile-modal-inner-item-last': 'WQ6VW',
         },
-        N = i(658),
-        S = i.n(N),
+        S = i(658),
+        N = i.n(S),
         U = function (e) {
           var n = e.label,
             i = e.value,
             o = e.className,
             l = 'profile-item';
           return (0, x.jsxs)('div', {
-            className: k()(y[''.concat(l)], o),
+            className: y()(k[''.concat(l)], o),
             children: [
               (0, x.jsx)('div', {
-                className: y[''.concat(l, '-label')],
+                className: k[''.concat(l, '-label')],
                 children: n,
               }),
               !!i &&
                 (0, x.jsx)('div', {
-                  className: y[''.concat(l, '-value')],
+                  className: k[''.concat(l, '-value')],
                   children: i,
                 }),
             ],
@@ -305,13 +305,13 @@
                         fill: 'rgb(0, 149, 246)',
                         size: 12,
                         viewBox: '0 0 40 40',
-                        className: y[''.concat(B, '-inner-item-badge')],
+                        className: k[''.concat(B, '-inner-item-badge')],
                       }),
                     ')',
                   ],
                 }),
                 suffix: (0, x.jsx)('div', {
-                  className: y[''.concat(B, '-inner-item-avatar')],
+                  className: k[''.concat(B, '-inner-item-avatar')],
                   children: (0, x.jsx)(s.qE, { url: a, size: 54 }),
                 }),
               },
@@ -319,7 +319,7 @@
                 label: '\u52a0\u5165\u65f6\u95f4',
                 value: (0, x.jsxs)(x.Fragment, {
                   children: [
-                    S()(u).format('YYYY\u5e74MM\u6708'),
+                    N()(u).format('YYYY\u5e74MM\u6708'),
                     ' \xb7 #',
                     ' ',
                     (0, x.jsx)(s.T0, { value: f }),
@@ -329,7 +329,7 @@
               { label: '\u6240\u5728\u5730', value: p },
             ],
             j = (0, x.jsx)('div', {
-              className: y[''.concat(B, '-inner')],
+              className: k[''.concat(B, '-inner')],
               children: h.map(function (e, n) {
                 var i = e.label,
                   o = e.value,
@@ -337,15 +337,15 @@
                 return (0, x.jsxs)(
                   'div',
                   {
-                    className: y[''.concat(B, '-inner-item')],
+                    className: k[''.concat(B, '-inner-item')],
                     children: [
                       (0, x.jsx)(U, {
                         label: i,
                         value: o,
-                        className: k()(
+                        className: y()(
                           (0, d.Z)(
                             {},
-                            y[''.concat(B, '-inner-item-last')],
+                            k[''.concat(B, '-inner-item-last')],
                             n === h.length - 1,
                           ),
                         ),
@@ -360,7 +360,7 @@
           return m
             ? (0, x.jsx)(s.Wb, { visible: n, onClose: i, children: j })
             : (0, x.jsx)(v.Z, {
-                className: y[''.concat(B)],
+                className: k[''.concat(B)],
                 visible: n,
                 onClose: i,
                 animationType: 'scale-in',
@@ -389,7 +389,7 @@
         R = i(1040),
         T = i(5306),
         W = i(1595),
-        V = function (e) {
+        E = function (e) {
           return (0, x.jsxs)(
             W.Z,
             (0, o.Z)(
@@ -437,7 +437,7 @@
             ),
           );
         },
-        A = function (e) {
+        V = function (e) {
           return (0, x.jsxs)(
             W.Z,
             (0, o.Z)(
@@ -481,7 +481,7 @@
             ),
           );
         },
-        E = 'profile-follower',
+        A = 'profile-follower',
         M = function (e) {
           var n,
             i,
@@ -496,17 +496,17 @@
             g = (0, t.useState)(!1),
             w = (0, l.Z)(g, 2),
             C = w[0],
-            y = w[1],
-            N =
+            k = w[1],
+            S =
               null === v ||
               void 0 === v ||
               null === (n = v.friendshipStatus) ||
               void 0 === n
                 ? void 0
                 : n.isOwn,
-            S =
+            N =
               (null === v || void 0 === v ? void 0 : v.isPrivate) &&
-              !N &&
+              !S &&
               !(
                 null !== v &&
                 void 0 !== v &&
@@ -612,14 +612,14 @@
                     {
                       label: '\u5173\u4e8e\u8fd9\u4e2a\u4e3b\u9875',
                       onClick: function () {
-                        y(!0);
+                        k(!0);
                       },
-                      icon: (0, x.jsx)(V, { viewBox: '0 0 24 24', size: 20 }),
+                      icon: (0, x.jsx)(E, { viewBox: '0 0 24 24', size: 20 }),
                       split: !0,
                     },
                   ];
                 return (
-                  N ||
+                  S ||
                     n.push(D, {
                       label: ''.concat(
                         U ? '\u53d6\u6d88' : '',
@@ -656,10 +656,10 @@
                           },
                         });
                       },
-                      icon: (0, x.jsx)(A, { viewBox: '0 0 20 20', size: 20 }),
+                      icon: (0, x.jsx)(V, { viewBox: '0 0 20 20', size: 20 }),
                       split: !0,
                     }),
-                  N || n.push(H),
+                  S || n.push(H),
                   n
                 );
               },
@@ -675,12 +675,12 @@
               ],
             );
           return (0, x.jsxs)('div', {
-            className: L[''.concat(E)],
+            className: L[''.concat(A)],
             children: [
               (0, x.jsxs)('div', {
-                className: L[''.concat(E, '-preview')],
+                className: L[''.concat(A, '-preview')],
                 onClick: function () {
-                  !S && b(!0);
+                  !N && b(!0);
                 },
                 role: 'button',
                 tabIndex: 0,
@@ -694,8 +694,8 @@
                           }),
                   }),
                   (0, x.jsxs)('span', {
-                    className: k()(
-                      (0, d.Z)({}, L[''.concat(E, '-preview-count')], !S),
+                    className: y()(
+                      (0, d.Z)({}, L[''.concat(A, '-preview-count')], !N),
                     ),
                     children: [
                       (0, x.jsx)(s.T0, { value: W }),
@@ -706,33 +706,33 @@
               }),
               O &&
                 (0, x.jsxs)('div', {
-                  className: L[''.concat(E, '-bio')],
+                  className: L[''.concat(A, '-bio')],
                   children: [
                     (0, x.jsx)('span', {
-                      className: L[''.concat(E, '-bio-split')],
+                      className: L[''.concat(A, '-bio-split')],
                       children: '\xb7',
                     }),
                     (0, x.jsx)(s.rU, {
-                      className: L[''.concat(E, '-bio-link')],
+                      className: L[''.concat(A, '-bio-link')],
                       href: O,
                     }),
                   ],
                 }),
               (0, x.jsxs)('div', {
-                className: L[''.concat(E, '-action')],
+                className: L[''.concat(A, '-action')],
                 children: [
                   (0, x.jsx)(s.vC, {
                     size: 24,
-                    className: L[''.concat(E, '-action-button')],
+                    className: L[''.concat(A, '-action-button')],
                     children: (0, x.jsx)(c.mr, {
                       size: 24,
                       viewBox: '0 0 24 24',
                     }),
                   }),
-                  !N &&
+                  !S &&
                     (0, x.jsx)(s.vC, {
                       size: 24,
-                      className: L[''.concat(E, '-action-button')],
+                      className: L[''.concat(A, '-action-button')],
                       children: (0, x.jsx)(s.J2, {
                         hideWhenContentClick: !0,
                         placement: 'bottom-end',
@@ -756,7 +756,7 @@
                 user: v,
                 visible: C,
                 onClose: function () {
-                  y(!1);
+                  k(!1);
                 },
               }),
             ],
@@ -779,8 +779,8 @@
             w = (0, t.useState)(!1),
             Z = (0, l.Z)(w, 2),
             C = Z[0],
-            k = Z[1],
-            y = j || i(9389);
+            y = Z[1],
+            k = j || i(9389);
           return (0, x.jsxs)(x.Fragment, {
             children: [
               (0, x.jsxs)('div', {
@@ -797,7 +797,7 @@
                               u[''.concat(O, '-header-name-full-name')],
                             children: (0, x.jsx)('span', {
                               onClick: function () {
-                                k(!0);
+                                y(!0);
                               },
                               role: 'button',
                               tabIndex: 0,
@@ -820,7 +820,7 @@
                         role: 'button',
                         tabIndex: 0,
                         children: [
-                          (0, x.jsx)(s.qE, { url: y, size: '100%' }),
+                          (0, x.jsx)(s.qE, { url: k, size: '100%' }),
                           b &&
                             (0, x.jsx)('div', {
                               className:
@@ -842,7 +842,7 @@
                 ],
               }),
               (0, x.jsx)(s.N1, {
-                url: y,
+                url: k,
                 visible: v,
                 onClose: function () {
                   f(!1);
@@ -852,7 +852,7 @@
                 visible: C,
                 user: n,
                 onClose: function () {
-                  k(!1);
+                  y(!1);
                 },
               }),
             ],
@@ -975,7 +975,7 @@
             l = e.labelAction,
             t = 'profile-edit-item';
           return (0, x.jsxs)('div', {
-            className: k()(K[''.concat(t)], n),
+            className: y()(K[''.concat(t)], n),
             children: [
               (0, x.jsxs)('div', {
                 className: K[''.concat(t, '-label')],
@@ -1012,19 +1012,19 @@
             g = v.isPrivate,
             Z = (0, t.useState)(),
             C = (0, l.Z)(Z, 2),
-            y = C[0],
-            N = C[1];
+            k = C[0],
+            S = C[1];
           (0, t.useEffect)(function () {
-            N({ profilePicUrl: m, bioLink: j, biography: b, isPrivate: g });
+            S({ profilePicUrl: m, bioLink: j, biography: b, isPrivate: g });
           }, []);
-          var S = (0, P.i)(h.Nq, {
+          var N = (0, P.i)(h.Nq, {
               manual: !0,
               onSuccess: function () {
-                null === r || void 0 === r || r(y);
+                null === r || void 0 === r || r(k);
               },
             }),
-            U = S.run,
-            B = S.loading;
+            U = N.run,
+            B = N.loading;
           (0, t.useEffect)(
             function () {
               null === a || void 0 === a || a(B);
@@ -1051,9 +1051,9 @@
                     ],
                   }),
                   suffix: (0, x.jsx)(ne, {
-                    url: null === y || void 0 === y ? void 0 : y.profilePicUrl,
+                    url: null === k || void 0 === k ? void 0 : k.profilePicUrl,
                     onUrlChange: function (e) {
-                      N(function (n) {
+                      S(function (n) {
                         return (0, o.Z)(
                           (0, o.Z)({}, n),
                           {},
@@ -1067,9 +1067,9 @@
                   label: '\u4e2a\u6027\u7b7e\u540d',
                   children: (0, x.jsx)(H.Z, {
                     placeholder: '\u7559\u4e0b\u4e2a\u6027\u7b7e\u540d',
-                    value: null === y || void 0 === y ? void 0 : y.biography,
+                    value: null === k || void 0 === k ? void 0 : k.biography,
                     onChange: function (e) {
-                      N(function (n) {
+                      S(function (n) {
                         var i;
                         return (0, o.Z)(
                           (0, o.Z)({}, n),
@@ -1092,9 +1092,9 @@
                   children: (0, x.jsx)(H.Z, {
                     placeholder: 'https://www.example.com',
                     maxLength: 240,
-                    value: null === y || void 0 === y ? void 0 : y.bioLink,
+                    value: null === k || void 0 === k ? void 0 : k.bioLink,
                     onChange: function (e) {
-                      N(function (n) {
+                      S(function (n) {
                         var i;
                         return (0, o.Z)(
                           (0, o.Z)({}, n),
@@ -1108,7 +1108,7 @@
                         );
                       });
                     },
-                    className: k()(
+                    className: y()(
                       K[''.concat(ie, '-inner-textarea')],
                       K[''.concat(ie, '-inner-link')],
                     ),
@@ -1117,7 +1117,7 @@
                 {
                   label: '\u79c1\u5bc6\u4e3b\u9875',
                   labelAction: (0, x.jsx)(s.rs, {
-                    checked: null === y || void 0 === y ? void 0 : y.isPrivate,
+                    checked: null === k || void 0 === k ? void 0 : k.isPrivate,
                     onChange: function (e) {
                       z.Z.confirm({
                         title: e
@@ -1127,7 +1127,7 @@
                           ? '\u53ea\u6709\u6279\u51c6\u7684\u7c89\u4e1d\u624d\u80fd\u67e5\u770b\u4f60\u7684\u5185\u5bb9\u5e76\u4e0e\u4e4b\u4e92\u52a8\u3002'
                           : 'Threads \u5185\u5916\u7684\u4efb\u4f55\u4eba\u90fd\u80fd\u770b\u5230\u4f60\u7684\u5185\u5bb9\u5e76\u4e0e\u4e4b\u4e92\u52a8\u3002',
                         onOk: function () {
-                          N(function (n) {
+                          S(function (n) {
                             return (0, o.Z)(
                               (0, o.Z)({}, n),
                               {},
@@ -1141,15 +1141,15 @@
                 },
               ];
             },
-            [i, y],
+            [i, k],
           );
           function L() {
-            var e = (y || {}).bioLink;
-            if (null !== y && void 0 !== y && y.bioLink && !I.Bu(e, 'url'))
+            var e = (k || {}).bioLink;
+            if (null !== k && void 0 !== k && k.bioLink && !I.Bu(e, 'url'))
               return void q.Z.show(
                 '\u8bf7\u8f93\u5165\u6709\u6548\u7f51\u5740',
               );
-            U(y);
+            U(k);
           }
           return (
             (0, t.useImperativeHandle)(n, function () {
@@ -1171,7 +1171,7 @@
                         (0, x.jsx)(oe, {
                           label: i,
                           labelAction: t,
-                          className: k()(
+                          className: y()(
                             (0, d.Z)(
                               {},
                               K[''.concat(ie, '-inner-last')],
@@ -1280,8 +1280,19 @@
             C =
               'everyone' === g ||
               ('following' === g &&
-                (null === j || void 0 === j ? void 0 : j.following));
-          var y = {
+                (null === j || void 0 === j ? void 0 : j.following)),
+            k = (0, t.useMemo)(
+              function () {
+                return {
+                  type: 'mention',
+                  displayText: '@'.concat(
+                    null === n || void 0 === n ? void 0 : n.username,
+                  ),
+                };
+              },
+              [n],
+            );
+          var S = {
               user: n,
               onUserFriendshipStatusUpdate: function (e, l) {
                 null === i ||
@@ -1299,19 +1310,19 @@
                   });
               },
             },
-            N = (0, R.r)(y),
-            S = N.item,
-            U = N.unblockLoading;
+            N = (0, R.r)(S),
+            U = N.item,
+            B = N.unblockLoading;
           return (0, x.jsxs)(x.Fragment, {
             children: [
               (0, x.jsx)('div', {
-                className: k()(D[''.concat(de)]),
+                className: y()(D[''.concat(de)]),
                 children: Z
                   ? (0, x.jsx)(s.zx, {
-                      loading: U,
+                      loading: B,
                       className: D[''.concat(de, '-button')],
                       onClick: function () {
-                        S.onClick();
+                        U.onClick();
                       },
                       children: '\u53d6\u6d88\u62c9\u9ed1',
                     })
@@ -1388,7 +1399,7 @@
               }),
               (0, x.jsx)(a.K2, {
                 visible: p,
-                mentionUser: n,
+                textEntity: k,
                 onClose: function () {
                   m(!1);
                 },
@@ -1424,10 +1435,10 @@
               [null === d || void 0 === d ? void 0 : d.id],
             ),
             C = (0, r.s0)(),
-            k = (0, t.useState)(!1),
-            y = (0, l.Z)(k, 2),
-            N = y[0],
-            S = y[1],
+            y = (0, t.useState)(!1),
+            k = (0, l.Z)(y, 2),
+            S = k[0],
+            N = k[1],
             U = (function () {
               var e = (0, p.Z)(
                 (0, f.Z)().mark(function e(n) {
@@ -1774,6 +1785,14 @@
                             hasLoadingContainer: !0,
                             request: U,
                             onDataChange: z,
+                            onPostSuccess: function () {
+                              var e, n;
+                              null === (e = j.current) ||
+                                void 0 === e ||
+                                null === (n = e.reload) ||
+                                void 0 === n ||
+                                n.call(e, !0);
+                            },
                             emptyPlaceholder:
                               null !== d &&
                               void 0 !== d &&
@@ -1784,7 +1803,7 @@
                                     className:
                                       me[''.concat(xe, '-create-post')],
                                     onClick: function () {
-                                      S(!0);
+                                      N(!0);
                                     },
                                     children:
                                       '\u53d1\u5e03\u4f60\u7684\u9996\u7bc7\u4e32\u6587',
@@ -1848,7 +1867,7 @@
                   ],
                 }),
                 (0, x.jsx)(a.K2, {
-                  visible: N,
+                  visible: S,
                   onSuccess: function () {
                     var e, n;
                     null === (e = j.current) ||
@@ -1858,7 +1877,7 @@
                       n.call(e);
                   },
                   onClose: function () {
-                    S(!1);
+                    N(!1);
                   },
                 }),
               ],
@@ -1884,7 +1903,7 @@
           });
         },
         Ce = i(3479),
-        ke = {
+        ye = {
           media: 'NKBvZ',
           'media-viewer-content': 'uWJYO',
           'fade-in': 'CcUVL',
@@ -1897,9 +1916,9 @@
           'following-request-inner-hint-text': 'YkDyf',
           'following-request-inner-action-button': 'sMZF2',
         },
-        ye = i(6023),
-        Ne = 'following-request',
-        Se = function (e) {
+        ke = i(6023),
+        Se = 'following-request',
+        Ne = function (e) {
           var n,
             i = e.user,
             l = e.onUserFieldUpdate,
@@ -1951,37 +1970,37 @@
             void 0 !== n &&
             n.outgoingRequestedBy
             ? (0, x.jsx)('div', {
-                className: ke[''.concat(Ne)],
+                className: ye[''.concat(Se)],
                 children: (0, x.jsxs)('div', {
-                  className: ke[''.concat(Ne, '-inner')],
+                  className: ye[''.concat(Se, '-inner')],
                   children: [
                     (0, x.jsxs)('div', {
-                      className: ke[''.concat(Ne, '-inner-hint')],
+                      className: ye[''.concat(Se, '-inner-hint')],
                       children: [
                         (0, x.jsx)('div', {
-                          className: ke[''.concat(Ne, '-inner-hint-username')],
+                          className: ye[''.concat(Se, '-inner-hint-username')],
                           children:
                             null === i || void 0 === i ? void 0 : i.username,
                         }),
                         (0, x.jsx)('div', {
-                          className: ke[''.concat(Ne, '-inner-hint-text')],
+                          className: ye[''.concat(Se, '-inner-hint-text')],
                           children: '\u8bf7\u6c42\u5173\u6ce8\u4f60',
                         }),
                       ],
                     }),
                     (0, x.jsxs)('div', {
-                      className: ke[''.concat(Ne, '-inner-action')],
+                      className: ye[''.concat(Se, '-inner-action')],
                       children: [
-                        (0, x.jsx)(ye.Z, {
-                          className: ke[''.concat(Ne, '-inner-action-button')],
+                        (0, x.jsx)(ke.Z, {
+                          className: ye[''.concat(Se, '-inner-action-button')],
                           loading: u,
                           onClick: function () {
                             c(null === i || void 0 === i ? void 0 : i.id);
                           },
                           children: '\u62d2\u7edd',
                         }),
-                        (0, x.jsx)(ye.Z, {
-                          className: ke[''.concat(Ne, '-inner-action-button')],
+                        (0, x.jsx)(ke.Z, {
+                          className: ye[''.concat(Se, '-inner-action-button')],
                           type: 'primary',
                           loading: a,
                           onClick: function () {
@@ -2020,50 +2039,50 @@
             w = (0, r.UO)(),
             Z = w.username,
             C = w.action,
-            k = (0, Ue.Z)(
+            y = (0, Ue.Z)(
               (null === (e = g.user) || void 0 === e ? void 0 : e.username) ===
                 Z
                 ? g.user
                 : void 0,
               'profile-'.concat(Z),
             ),
-            y = (0, l.Z)(k, 2),
-            N = y[0],
-            S = y[1];
+            k = (0, l.Z)(y, 2),
+            S = k[0],
+            N = k[1];
           Be();
           var U = null === Z || void 0 === Z ? void 0 : Z.substring(1),
             B =
-              (((null === N || void 0 === N ? void 0 : N.isPrivate) &&
+              (((null === S || void 0 === S ? void 0 : S.isPrivate) &&
                 !(
-                  null !== N &&
-                  void 0 !== N &&
-                  null !== (n = N.friendshipStatus) &&
+                  null !== S &&
+                  void 0 !== S &&
+                  null !== (n = S.friendshipStatus) &&
                   void 0 !== n &&
                   n.following
                 )) ||
-                (null === N ||
-                void 0 === N ||
-                null === (i = N.friendshipStatus) ||
+                (null === S ||
+                void 0 === S ||
+                null === (i = S.friendshipStatus) ||
                 void 0 === i
                   ? void 0
                   : i.blocking) ||
-                (null === N ||
-                void 0 === N ||
-                null === (s = N.friendshipStatus) ||
+                (null === S ||
+                void 0 === S ||
+                null === (s = S.friendshipStatus) ||
                 void 0 === s
                   ? void 0
                   : s.blockedBy)) &&
               !(
-                null !== N &&
-                void 0 !== N &&
-                null !== (u = N.friendshipStatus) &&
+                null !== S &&
+                void 0 !== S &&
+                null !== (u = S.friendshipStatus) &&
                 void 0 !== u &&
                 u.isOwn
               ),
             F = (0, P.i)(h.dQ, {
               manual: !0,
               onSuccess: function (e) {
-                S(e);
+                N(e);
               },
               onError: function () {
                 m(!0);
@@ -2074,14 +2093,14 @@
             z = F.run;
           return (
             (0, (0, Ce.Z)().setTitle)(
-              N
+              S
                 ? ''
                     .concat(
-                      null === N || void 0 === N ? void 0 : N.fullName,
+                      null === S || void 0 === S ? void 0 : S.fullName,
                       '(@',
                     )
                     .concat(
-                      null === N || void 0 === N ? void 0 : N.username,
+                      null === S || void 0 === S ? void 0 : S.username,
                       ')',
                     )
                 : '',
@@ -2089,17 +2108,17 @@
             (0, t.useEffect)(
               function () {
                 var e, n;
-                null !== N &&
-                  void 0 !== N &&
-                  null !== (e = N.friendshipStatus) &&
+                null !== S &&
+                  void 0 !== S &&
+                  null !== (e = S.friendshipStatus) &&
                   void 0 !== e &&
                   e.isOwn &&
                   (null === (n = g.user) || void 0 === n
                     ? void 0
                     : n.isPrivate) !==
-                    (null === N || void 0 === N ? void 0 : N.isPrivate) &&
-                  N &&
-                  S(function (e) {
+                    (null === S || void 0 === S ? void 0 : S.isPrivate) &&
+                  S &&
+                  N(function (e) {
                     var n;
                     return (
                       (e.isPrivate =
@@ -2110,13 +2129,13 @@
                     );
                   });
               },
-              [g.user, N],
+              [g.user, S],
             ),
             (0, t.useLayoutEffect)(
               function () {
-                !N && z(U);
+                !S && z(U);
               },
-              [U, N],
+              [U, S],
             ),
             L
               ? (0, x.jsx)('div', {
@@ -2134,26 +2153,26 @@
               ? (0, x.jsx)(a.jC, { className: be[''.concat(Fe, '-error')] })
               : (0, x.jsxs)(a._z, {
                   children: [
-                    (0, x.jsx)(Se, {
-                      user: N,
+                    (0, x.jsx)(Ne, {
+                      user: S,
                       onUserFieldUpdate: function (e) {
-                        S(function (n) {
+                        N(function (n) {
                           return (0, o.Z)((0, o.Z)({}, n), e);
                         });
                       },
                     }),
                     (0, x.jsx)(Q, {
-                      user: N,
+                      user: S,
                       onUserFieldUpdate: function (e) {
-                        S(function (n) {
+                        N(function (n) {
                           return (0, o.Z)((0, o.Z)({}, n), e);
                         });
                       },
                     }),
                     (0, x.jsx)(ve, {
-                      user: N,
+                      user: S,
                       onUserFieldUpdate: function (e) {
-                        S(function (n) {
+                        N(function (n) {
                           return (0, o.Z)((0, o.Z)({}, n), e);
                         }),
                           b({ type: 'UPDATE_USER', payload: { user: e } });
@@ -2161,10 +2180,10 @@
                     }),
                     (0, x.jsx)(je, {
                       isBanned: B,
-                      user: N,
+                      user: S,
                       activeKey: C || '',
                       onUserFieldUpdate: function (e) {
-                        S(function (n) {
+                        N(function (n) {
                           return (0, o.Z)((0, o.Z)({}, n), e);
                         });
                       },
@@ -2172,9 +2191,9 @@
                     B &&
                       (0, x.jsx)(Ze, {
                         hint:
-                          null !== N &&
-                          void 0 !== N &&
-                          null !== (d = N.friendshipStatus) &&
+                          null !== S &&
+                          void 0 !== S &&
+                          null !== (d = S.friendshipStatus) &&
                           void 0 !== d &&
                           d.blocking
                             ? '\u5185\u5bb9\u65e0\u6cd5\u663e\u793a'
