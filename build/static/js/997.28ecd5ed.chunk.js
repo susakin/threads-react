@@ -6,7 +6,7 @@
       i.r(n),
         i.d(n, {
           default: function () {
-            return Le;
+            return Fe;
           },
         });
       var o = i(1413),
@@ -280,7 +280,7 @@
           });
         },
         B = 'profile-modal',
-        F = function (e) {
+        z = function (e) {
           var n = e.visible,
             i = e.onClose,
             o = e.user || {},
@@ -367,7 +367,7 @@
                 children: j,
               });
         },
-        L = {
+        F = {
           media: 'npAvx',
           'media-viewer-content': 'kDa5m',
           'fade-in': 'LMR1d',
@@ -383,7 +383,7 @@
           'profile-follower-bio-split': 'J7Roi',
           'profile-follower-bio-link': 'PAAHB',
         },
-        z = i(6515),
+        L = i(6515),
         P = i(8048),
         q = i(5146),
         R = i(1040),
@@ -481,8 +481,9 @@
             ),
           );
         },
-        A = 'profile-follower',
-        M = function (e) {
+        A = i(9910),
+        M = 'profile-follower',
+        O = function (e) {
           var n,
             i,
             r,
@@ -523,9 +524,9 @@
                 : r.restricting,
             B = v || {},
             W = B.followerCount,
-            M = B.profileContextFacepileUsers,
-            O = B.bioLink,
-            Q = {
+            O = B.profileContextFacepileUsers,
+            Q = B.bioLink,
+            D = {
               user: v,
               onUserFriendshipStatusUpdate: function (e, n) {
                 null === f ||
@@ -543,9 +544,9 @@
                   });
               },
             },
-            D = (0, T.l)(Q).item,
-            H = (0, R.r)(Q).item,
-            K = (0, P.i)(h.VR, {
+            H = (0, T.l)(D).item,
+            K = (0, R.r)(D).item,
+            I = (0, P.i)(h.VR, {
               manual: !0,
               onSuccess: function () {
                 q.Z.show('\u5df2\u79fb\u9664'),
@@ -565,7 +566,7 @@
                     });
               },
             }).run,
-            I = (0, P.i)(h.as, {
+            J = (0, P.i)(h.as, {
               manual: !0,
               onSuccess: function () {
                 q.Z.show('\u5df2\u9650\u5236'),
@@ -585,7 +586,7 @@
                     });
               },
             }).run,
-            J = (0, P.i)(h.ce, {
+            X = (0, P.i)(h.ce, {
               manual: !0,
               onSuccess: function () {
                 q.Z.show('\u5df2\u53d6\u6d88\u9650\u5236'),
@@ -605,10 +606,27 @@
                     });
               },
             }).run,
-            X = (0, t.useMemo)(
+            Y = (0, t.useMemo)(
               function () {
                 var e,
                   n = [
+                    {
+                      label: '\u590d\u5236\u94fe\u63a5',
+                      icon: (0, x.jsx)(c.rU, {
+                        viewBox: '0 0 18 18',
+                        size: 21,
+                        fill: 'transparent',
+                      }),
+                      onClick: function () {
+                        (0, A.zp)(
+                          ''
+                            .concat(window.location.origin, '/@')
+                            .concat(
+                              null === v || void 0 === v ? void 0 : v.username,
+                            ),
+                        );
+                      },
+                    },
                     {
                       label: '\u5173\u4e8e\u8fd9\u4e2a\u4e3b\u9875',
                       onClick: function () {
@@ -620,15 +638,15 @@
                   ];
                 return (
                   S ||
-                    n.push(D, {
+                    n.push(H, {
                       label: ''.concat(
                         U ? '\u53d6\u6d88' : '',
                         '\u9650\u5236 ',
                       ),
                       onClick: function () {
                         U
-                          ? J(null === v || void 0 === v ? void 0 : v.id)
-                          : I(null === v || void 0 === v ? void 0 : v.id);
+                          ? X(null === v || void 0 === v ? void 0 : v.id)
+                          : J(null === v || void 0 === v ? void 0 : v.id);
                       },
                       icon: U
                         ? (0, x.jsx)(c.F5, { viewBox: '0 0 20 20', size: 20 })
@@ -642,7 +660,7 @@
                     n.push({
                       label: '\u79fb\u9664\u7c89\u4e1d',
                       onClick: function () {
-                        z.Z.confirm({
+                        L.Z.confirm({
                           title: '\u79fb\u9664\u7c89\u4e1d\uff1f',
                           content:
                             '\u6211\u4eec\u4e0d\u4f1a\u544a\u8bc9'.concat(
@@ -652,14 +670,14 @@
                           okText: '\u79fb\u9664',
                           okType: 'danger',
                           onOk: function () {
-                            K(null === v || void 0 === v ? void 0 : v.id);
+                            I(null === v || void 0 === v ? void 0 : v.id);
                           },
                         });
                       },
                       icon: (0, x.jsx)(V, { viewBox: '0 0 20 20', size: 20 }),
                       split: !0,
                     }),
-                  S || n.push(H),
+                  S || n.push(K),
                   n
                 );
               },
@@ -671,14 +689,14 @@
                   ? void 0
                   : u.followedBy,
                 U,
-                H,
+                K,
               ],
             );
           return (0, x.jsxs)('div', {
-            className: L[''.concat(A)],
+            className: F[''.concat(M)],
             children: [
               (0, x.jsxs)('div', {
-                className: L[''.concat(A, '-preview')],
+                className: F[''.concat(M, '-preview')],
                 onClick: function () {
                   !N && b(!0);
                 },
@@ -687,15 +705,15 @@
                 children: [
                   (0, x.jsx)(a.EA, {
                     urls:
-                      null === M || void 0 === M
+                      null === O || void 0 === O
                         ? void 0
-                        : M.map(function (e) {
+                        : O.map(function (e) {
                             return e.profilePicUrl;
                           }),
                   }),
                   (0, x.jsxs)('span', {
                     className: y()(
-                      (0, d.Z)({}, L[''.concat(A, '-preview-count')], !N),
+                      (0, d.Z)({}, F[''.concat(M, '-preview-count')], !N),
                     ),
                     children: [
                       (0, x.jsx)(s.T0, { value: W }),
@@ -704,26 +722,26 @@
                   }),
                 ],
               }),
-              O &&
+              Q &&
                 (0, x.jsxs)('div', {
-                  className: L[''.concat(A, '-bio')],
+                  className: F[''.concat(M, '-bio')],
                   children: [
                     (0, x.jsx)('span', {
-                      className: L[''.concat(A, '-bio-split')],
+                      className: F[''.concat(M, '-bio-split')],
                       children: '\xb7',
                     }),
                     (0, x.jsx)(s.rU, {
-                      className: L[''.concat(A, '-bio-link')],
-                      href: O,
+                      className: F[''.concat(M, '-bio-link')],
+                      href: Q,
                     }),
                   ],
                 }),
               (0, x.jsxs)('div', {
-                className: L[''.concat(A, '-action')],
+                className: F[''.concat(M, '-action')],
                 children: [
                   (0, x.jsx)(s.vC, {
                     size: 24,
-                    className: L[''.concat(A, '-action-button')],
+                    className: F[''.concat(M, '-action-button')],
                     children: (0, x.jsx)(c.mr, {
                       size: 24,
                       viewBox: '0 0 24 24',
@@ -732,11 +750,11 @@
                   !S &&
                     (0, x.jsx)(s.vC, {
                       size: 24,
-                      className: L[''.concat(A, '-action-button')],
+                      className: F[''.concat(M, '-action-button')],
                       children: (0, x.jsx)(s.J2, {
                         hideWhenContentClick: !0,
                         placement: 'bottom-end',
-                        content: (0, x.jsx)(s.mX, { items: X }),
+                        content: (0, x.jsx)(s.mX, { items: Y }),
                         children: (0, x.jsx)(c.gC, {
                           size: 24,
                           viewBox: '0 0 24 24',
@@ -752,7 +770,7 @@
                   b(!1);
                 },
               }),
-              (0, x.jsx)(F, {
+              (0, x.jsx)(z, {
                 user: v,
                 visible: C,
                 onClose: function () {
@@ -762,8 +780,8 @@
             ],
           });
         },
-        O = 'profile-summary',
-        Q = function (e) {
+        Q = 'profile-summary',
+        D = function (e) {
           var n = e.user,
             o = e.onUserFieldUpdate,
             r = (0, t.useState)(!1),
@@ -784,17 +802,17 @@
           return (0, x.jsxs)(x.Fragment, {
             children: [
               (0, x.jsxs)('div', {
-                className: u[''.concat(O)],
+                className: u[''.concat(Q)],
                 children: [
                   (0, x.jsxs)('div', {
-                    className: u[''.concat(O, '-header')],
+                    className: u[''.concat(Q, '-header')],
                     children: [
                       (0, x.jsxs)('div', {
-                        className: u[''.concat(O, '-header-name')],
+                        className: u[''.concat(Q, '-header-name')],
                         children: [
                           (0, x.jsx)('div', {
                             className:
-                              u[''.concat(O, '-header-name-full-name')],
+                              u[''.concat(Q, '-header-name-full-name')],
                             children: (0, x.jsx)('span', {
                               onClick: function () {
                                 y(!0);
@@ -802,18 +820,18 @@
                               role: 'button',
                               tabIndex: 0,
                               className:
-                                u[''.concat(O, '-header-name-full-name-text')],
+                                u[''.concat(Q, '-header-name-full-name-text')],
                               children: m,
                             }),
                           }),
                           (0, x.jsx)('div', {
-                            className: u[''.concat(O, '-header-name-username')],
+                            className: u[''.concat(Q, '-header-name-username')],
                             children: h,
                           }),
                         ],
                       }),
                       (0, x.jsxs)('div', {
-                        className: u[''.concat(O, '-header-avatar')],
+                        className: u[''.concat(Q, '-header-avatar')],
                         onClick: function () {
                           f(!0);
                         },
@@ -824,7 +842,7 @@
                           b &&
                             (0, x.jsx)('div', {
                               className:
-                                u[''.concat(O, '-header-avatar-badge')],
+                                u[''.concat(Q, '-header-avatar-badge')],
                               children: (0, x.jsx)(c.sA, {
                                 viewBox: '-4 0 27 19',
                                 size: 25,
@@ -835,10 +853,10 @@
                     ],
                   }),
                   (0, x.jsx)('div', {
-                    className: u[''.concat(O, '-biography')],
+                    className: u[''.concat(Q, '-biography')],
                     children: (0, x.jsx)(a.uR, { text: g }),
                   }),
-                  (0, x.jsx)(M, { user: n, onUserFieldUpdate: o }),
+                  (0, x.jsx)(O, { user: n, onUserFieldUpdate: o }),
                 ],
               }),
               (0, x.jsx)(s.N1, {
@@ -848,7 +866,7 @@
                   f(!1);
                 },
               }),
-              (0, x.jsx)(F, {
+              (0, x.jsx)(z, {
                 visible: C,
                 user: n,
                 onClose: function () {
@@ -858,7 +876,7 @@
             ],
           });
         },
-        D = {
+        H = {
           media: 'lRlL8',
           'media-viewer-content': 'h8O8o',
           'fade-in': 'CUMXt',
@@ -868,8 +886,8 @@
           'profile-action': 'ehwQ4',
           'profile-action-button': 'VLhMQ',
         },
-        H = i(6867),
-        K = {
+        K = i(6867),
+        I = {
           media: 'DyeXe',
           'media-viewer-content': 'haYbK',
           'fade-in': 'vKa2h',
@@ -888,9 +906,9 @@
           'profile-edit-inner-textarea': 'Z4yXG',
           'profile-edit-inner-link': 'eiWCi',
         },
-        I = i(9236),
-        J = i(4925),
-        X = {
+        J = i(9236),
+        X = i(4925),
+        Y = {
           media: 't8xDy',
           'media-viewer-content': 'A1cIV',
           'fade-in': 'Bftt_',
@@ -900,14 +918,14 @@
           'avatar-selector': 'yiHsr',
           'avatar-selector-empty': 'OSVjG',
         },
-        Y = i(9904),
-        _ = i(2568),
-        G = i(2116),
-        $ = ['onUrlChange'],
-        ee = 'avatar-selector',
-        ne = function (e) {
+        _ = i(9904),
+        G = i(2568),
+        $ = i(2116),
+        ee = ['onUrlChange'],
+        ne = 'avatar-selector',
+        ie = function (e) {
           var n = e.onUrlChange,
-            i = (0, J.Z)(e, $),
+            i = (0, X.Z)(e, ee),
             o = (0, t.useState)(null === i || void 0 === i ? void 0 : i.url),
             r = (0, l.Z)(o, 2),
             s = r[0],
@@ -933,7 +951,7 @@
                   u(o), null === n || void 0 === n || n(o);
                 },
                 children: (0, x.jsx)('div', {
-                  className: X[''.concat(ee, '-upload')],
+                  className: Y[''.concat(ne, '-upload')],
                   children: '\u4e0a\u4f20\u56fe\u7247',
                 }),
               }),
@@ -948,15 +966,15 @@
                   u(''), null === n || void 0 === n || n('');
                 },
               }),
-            (0, x.jsx)(_.Z, {
+            (0, x.jsx)(G.Z, {
               placement: 'bottom-end',
-              content: (0, x.jsx)(G.Z, { items: d }),
+              content: (0, x.jsx)($.Z, { items: d }),
               children: (0, x.jsx)('div', {
-                className: X[''.concat(ee)],
+                className: Y[''.concat(ne)],
                 children: s
-                  ? (0, x.jsx)(Y.Z, { size: 52, url: s })
+                  ? (0, x.jsx)(_.Z, { size: 52, url: s })
                   : (0, x.jsx)('div', {
-                      className: X[''.concat(ee, '-empty')],
+                      className: Y[''.concat(ne, '-empty')],
                       children: (0, x.jsx)(c.ZP, {
                         fill: 'currentColor',
                         size: 32,
@@ -967,38 +985,38 @@
             })
           );
         },
-        ie = 'profile-edit',
-        oe = function (e) {
+        oe = 'profile-edit',
+        le = function (e) {
           var n = e.className,
             i = e.label,
             o = e.children,
             l = e.labelAction,
             t = 'profile-edit-item';
           return (0, x.jsxs)('div', {
-            className: y()(K[''.concat(t)], n),
+            className: y()(I[''.concat(t)], n),
             children: [
               (0, x.jsxs)('div', {
-                className: K[''.concat(t, '-label')],
+                className: I[''.concat(t, '-label')],
                 children: [
                   (0, x.jsx)('div', {
-                    className: K[''.concat(t, '-label-inner')],
+                    className: I[''.concat(t, '-label-inner')],
                     children: i,
                   }),
                   (0, x.jsx)('div', {
-                    className: K[''.concat(t, '-label-action')],
+                    className: I[''.concat(t, '-label-action')],
                     children: l,
                   }),
                 ],
               }),
               !!o &&
                 (0, x.jsx)('div', {
-                  className: K[''.concat(t, '-inner')],
+                  className: I[''.concat(t, '-inner')],
                   children: o,
                 }),
             ],
           });
         },
-        le = (0, t.forwardRef)(function (e, n) {
+        te = (0, t.forwardRef)(function (e, n) {
           var i = e.user,
             r = e.onUserFieldUpdate,
             a = e.onSubmitLoading,
@@ -1031,16 +1049,16 @@
             },
             [B],
           );
-          var F = (0, t.useMemo)(
+          var z = (0, t.useMemo)(
             function () {
               return [
                 {
                   label: '\u59d3\u540d',
                   children: (0, x.jsxs)('div', {
-                    className: K[''.concat(ie, '-inner-name')],
+                    className: I[''.concat(oe, '-inner-name')],
                     children: [
                       (0, x.jsx)(c.HE, {
-                        className: K[''.concat(ie, '-inner-name-icon')],
+                        className: I[''.concat(oe, '-inner-name-icon')],
                         size: 14,
                         viewBox: '0 0 14 21',
                       }),
@@ -1050,7 +1068,7 @@
                       ')',
                     ],
                   }),
-                  suffix: (0, x.jsx)(ne, {
+                  suffix: (0, x.jsx)(ie, {
                     url: null === k || void 0 === k ? void 0 : k.profilePicUrl,
                     onUrlChange: function (e) {
                       S(function (n) {
@@ -1065,7 +1083,7 @@
                 },
                 {
                   label: '\u4e2a\u6027\u7b7e\u540d',
-                  children: (0, x.jsx)(H.Z, {
+                  children: (0, x.jsx)(K.Z, {
                     placeholder: '\u7559\u4e0b\u4e2a\u6027\u7b7e\u540d',
                     value: null === k || void 0 === k ? void 0 : k.biography,
                     onChange: function (e) {
@@ -1084,12 +1102,12 @@
                       });
                     },
                     maxLength: 150,
-                    className: K[''.concat(ie, '-inner-textarea')],
+                    className: I[''.concat(oe, '-inner-textarea')],
                   }),
                 },
                 {
                   label: '\u94fe\u63a5',
-                  children: (0, x.jsx)(H.Z, {
+                  children: (0, x.jsx)(K.Z, {
                     placeholder: 'https://www.example.com',
                     maxLength: 240,
                     value: null === k || void 0 === k ? void 0 : k.bioLink,
@@ -1109,8 +1127,8 @@
                       });
                     },
                     className: y()(
-                      K[''.concat(ie, '-inner-textarea')],
-                      K[''.concat(ie, '-inner-link')],
+                      I[''.concat(oe, '-inner-textarea')],
+                      I[''.concat(oe, '-inner-link')],
                     ),
                   }),
                 },
@@ -1119,7 +1137,7 @@
                   labelAction: (0, x.jsx)(s.rs, {
                     checked: null === k || void 0 === k ? void 0 : k.isPrivate,
                     onChange: function (e) {
-                      z.Z.confirm({
+                      L.Z.confirm({
                         title: e
                           ? '\u5207\u6362\u4e3a\u79c1\u5bc6\u4e3b\u9875\uff1f'
                           : '\u5207\u6362\u4e3a\u516c\u5f00\u4e3b\u9875\uff1f',
@@ -1143,9 +1161,9 @@
             },
             [i, k],
           );
-          function L() {
+          function F() {
             var e = (k || {}).bioLink;
-            if (null !== k && void 0 !== k && k.bioLink && !I.Bu(e, 'url'))
+            if (null !== k && void 0 !== k && k.bioLink && !J.Bu(e, 'url'))
               return void q.Z.show(
                 '\u8bf7\u8f93\u5165\u6709\u6548\u7f51\u5740',
               );
@@ -1153,12 +1171,12 @@
           }
           return (
             (0, t.useImperativeHandle)(n, function () {
-              return { submit: L };
+              return { submit: F };
             }),
             (0, x.jsxs)('div', {
-              className: K[''.concat(ie)],
+              className: I[''.concat(oe)],
               children: [
-                F.map(function (e, n) {
+                z.map(function (e, n) {
                   var i = e.label,
                     o = e.children,
                     l = e.suffix,
@@ -1166,16 +1184,16 @@
                   return (0, x.jsxs)(
                     'div',
                     {
-                      className: K[''.concat(ie, '-inner')],
+                      className: I[''.concat(oe, '-inner')],
                       children: [
-                        (0, x.jsx)(oe, {
+                        (0, x.jsx)(le, {
                           label: i,
                           labelAction: t,
                           className: y()(
                             (0, d.Z)(
                               {},
-                              K[''.concat(ie, '-inner-last')],
-                              n === F.length - 1,
+                              I[''.concat(oe, '-inner-last')],
+                              n === z.length - 1,
                             ),
                           ),
                           children: o,
@@ -1190,7 +1208,7 @@
                   (0, x.jsx)(s.zx, {
                     type: 'primary',
                     size: 'large',
-                    onClick: L,
+                    onClick: F,
                     loading: B,
                     children: '\u5b8c\u6210',
                   }),
@@ -1198,10 +1216,10 @@
             })
           );
         });
-      le.displayName = 'ProfileEdit';
-      var te = le,
-        re = { 'profile-edit-modal': 'AZEI7' },
-        ae = function (e) {
+      te.displayName = 'ProfileEdit';
+      var re = te,
+        ae = { 'profile-edit-modal': 'AZEI7' },
+        se = function (e) {
           var n = e.visible,
             i = e.onClose,
             o = e.user,
@@ -1229,8 +1247,8 @@
                     n.call(e);
                 },
                 children: (0, x.jsx)('div', {
-                  className: re[''.concat('profile-edit-modal')],
-                  children: (0, x.jsx)(te, {
+                  className: ae[''.concat('profile-edit-modal')],
+                  children: (0, x.jsx)(re, {
                     onSubmitLoading: function (e) {
                       d(e);
                     },
@@ -1247,7 +1265,7 @@
                 visible: n,
                 onClose: i,
                 style: { width: 520 },
-                children: (0, x.jsx)(te, {
+                children: (0, x.jsx)(re, {
                   user: o,
                   onUserFieldUpdate: function (e) {
                     null === r || void 0 === r || r(e),
@@ -1256,8 +1274,7 @@
                 }),
               });
         },
-        se = i(6021),
-        ce = i(9910),
+        ce = i(6021),
         ue = i(1114),
         de = 'profile-action',
         ve = function (e) {
@@ -1316,11 +1333,11 @@
           return (0, x.jsxs)(x.Fragment, {
             children: [
               (0, x.jsx)('div', {
-                className: y()(D[''.concat(de)]),
+                className: y()(H[''.concat(de)]),
                 children: Z
                   ? (0, x.jsx)(s.zx, {
                       loading: B,
-                      className: D[''.concat(de, '-button')],
+                      className: H[''.concat(de, '-button')],
                       onClick: function () {
                         U.onClick();
                       },
@@ -1330,7 +1347,7 @@
                   ? (0, x.jsxs)(x.Fragment, {
                       children: [
                         (0, x.jsx)(s.zx, {
-                          className: D[''.concat(de, '-button')],
+                          className: H[''.concat(de, '-button')],
                           onClick: function () {
                             d(!0);
                           },
@@ -1338,7 +1355,7 @@
                         }),
                         ue.Y &&
                           (0, x.jsx)(s.zx, {
-                            className: D[''.concat(de, '-button')],
+                            className: H[''.concat(de, '-button')],
                             onClick: function () {
                               var e,
                                 n = ''
@@ -1348,7 +1365,7 @@
                               void 0 !== e &&
                               e.share
                                 ? navigator.share({ title: b, url: n })
-                                : (0, ce.zp)(n);
+                                : (0, A.zp)(n);
                             },
                             children: '\u5206\u4eab\u4e3b\u9875',
                           }),
@@ -1356,9 +1373,9 @@
                     })
                   : (0, x.jsxs)(x.Fragment, {
                       children: [
-                        (0, x.jsx)(se.Z, {
+                        (0, x.jsx)(ce.Z, {
                           user: n,
-                          className: D[''.concat(de, '-button')],
+                          className: H[''.concat(de, '-button')],
                           type:
                             (null !== j && void 0 !== j && j.following) ||
                             (null !== j && void 0 !== j && j.followedBy)
@@ -1380,7 +1397,7 @@
                         }),
                         C &&
                           (0, x.jsx)(s.zx, {
-                            className: D[''.concat(de, '-button')],
+                            className: H[''.concat(de, '-button')],
                             onClick: function () {
                               m(!0);
                             },
@@ -1389,7 +1406,7 @@
                       ],
                     }),
               }),
-              (0, x.jsx)(ae, {
+              (0, x.jsx)(se, {
                 user: n,
                 visible: u,
                 onUserFieldUpdate: i,
@@ -1541,7 +1558,7 @@
                 return e.apply(this, arguments);
               };
             })(),
-            F = (function () {
+            z = (function () {
               var e = (0, p.Z)(
                 (0, f.Z)().mark(function e(n) {
                   var i, o, l, t, r, a, s, c;
@@ -1592,7 +1609,7 @@
                 return e.apply(this, arguments);
               };
             })();
-          function L() {
+          function F() {
             return (
               arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
@@ -1624,7 +1641,7 @@
               );
             });
           }
-          function z() {
+          function L() {
             (arguments.length > 0 && void 0 !== arguments[0]
               ? arguments[0]
               : []
@@ -1657,9 +1674,9 @@
             (0, t.useEffect)(
               function () {
                 var e, n, i;
-                null === (e = j.current) || void 0 === e || e.updateData(L),
-                  null === (n = b.current) || void 0 === n || n.updateData(L),
-                  null === (i = g.current) || void 0 === i || i.updateData(L);
+                null === (e = j.current) || void 0 === e || e.updateData(F),
+                  null === (n = b.current) || void 0 === n || n.updateData(F),
+                  null === (i = g.current) || void 0 === i || i.updateData(F);
               },
               [
                 null === d ||
@@ -1784,7 +1801,7 @@
                             indent: !0,
                             hasLoadingContainer: !0,
                             request: U,
-                            onDataChange: z,
+                            onDataChange: L,
                             onPostSuccess: function () {
                               var e, n;
                               null === (e = j.current) ||
@@ -1826,7 +1843,7 @@
                             hasLoadingContainer: !0,
                             indent: !0,
                             request: B,
-                            onDataChange: z,
+                            onDataChange: L,
                             emptyPlaceholder:
                               '\u8fd8\u6ca1\u6709\u56de\u590d\u3002',
                             actionRef: b,
@@ -1856,8 +1873,8 @@
                               null === d || void 0 === d ? void 0 : d.id,
                               '-repost',
                             ),
-                            request: F,
-                            onDataChange: z,
+                            request: z,
+                            onDataChange: L,
                             emptyPlaceholder: '\u6682\u65e0\u8f6c\u53d1\u3002',
                             actionRef: g,
                           }),
@@ -2021,8 +2038,8 @@
             window.scrollTo({ top: 0, left: 0 });
           }, []);
         },
-        Fe = 'profile',
-        Le = function () {
+        ze = 'profile',
+        Fe = function () {
           var e,
             n,
             i,
@@ -2079,7 +2096,7 @@
                 void 0 !== u &&
                 u.isOwn
               ),
-            F = (0, P.i)(h.dQ, {
+            z = (0, P.i)(h.dQ, {
               manual: !0,
               onSuccess: function (e) {
                 N(e);
@@ -2089,8 +2106,8 @@
               },
               ignoreErrorMsg: !0,
             }),
-            L = F.loading,
-            z = F.run;
+            F = z.loading,
+            L = z.run;
           return (
             (0, (0, Ce.Z)().setTitle)(
               S
@@ -2133,13 +2150,13 @@
             ),
             (0, t.useLayoutEffect)(
               function () {
-                !S && z(U);
+                !S && L(U);
               },
               [U, S],
             ),
-            L
+            F
               ? (0, x.jsx)('div', {
-                  className: be[''.concat(Fe, '-loading')],
+                  className: be[''.concat(ze, '-loading')],
                   children: (0, x.jsx)(c.yC, {
                     size: 20,
                     viewBox: '0 0 100 100',
@@ -2150,7 +2167,7 @@
                 !Z.startsWith('@') ||
                 '@' === Z ||
                 p
-              ? (0, x.jsx)(a.jC, { className: be[''.concat(Fe, '-error')] })
+              ? (0, x.jsx)(a.jC, { className: be[''.concat(ze, '-error')] })
               : (0, x.jsxs)(a._z, {
                   children: [
                     (0, x.jsx)(Ne, {
@@ -2161,7 +2178,7 @@
                         });
                       },
                     }),
-                    (0, x.jsx)(Q, {
+                    (0, x.jsx)(D, {
                       user: S,
                       onUserFieldUpdate: function (e) {
                         N(function (n) {

@@ -21,7 +21,9 @@ import cs from 'classnames';
 import { useBlock } from '@pages/components/PostHeader/useBlock';
 import { UseMuteProps, useMute } from '@pages/components/PostHeader/useMute';
 import Info from '@components/Icon/Info';
+import { Link as LinkIcon } from '@components/Icon';
 import RemoveFans from '@components/Icon/RemoveFans';
+import { copyText } from '@utils/clipboard';
 
 const classNamePrefix = 'profile-follower';
 
@@ -101,6 +103,13 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
 
   const menus = useMemo<PopoverMenuItem[]>(() => {
     const items: any = [
+      {
+        label: '复制链接',
+        icon: <LinkIcon viewBox="0 0 18 18" size={21} fill="transparent" />,
+        onClick() {
+          copyText(`${window.location.origin}/@${user?.username}`);
+        },
+      },
       {
         label: '关于这个主页',
         onClick() {

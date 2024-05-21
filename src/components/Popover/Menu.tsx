@@ -17,6 +17,43 @@ export type MenuItem = {
   ) => void | Promise<void | never>;
 };
 
+type MenuItemsProps = {
+  items?: MenuItem[];
+  style?: React.CSSProperties;
+  className?: string;
+  onClick?: (
+    item: MenuItem,
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => void;
+};
+
+const MenuItems: React.FC<MenuItemsProps> = ({
+  items,
+  style,
+  className,
+  onClick,
+}) => {
+  const classNamePrefix = 'menu-items';
+
+  return (
+    <div className={cs(styles[`${classNamePrefix}`], className)} style={style}>
+      {items?.map(item => {
+        if (!item) {
+          return null;
+        }
+        return (
+          <>
+            <MenuItem
+              {...item}
+              onClick={item?.onClick || (e => onClick?.(item, e))}
+            />
+          </>
+        );
+      })}
+    </div>
+  );
+};
+
 const MenuItem: React.FC<MenuItem> = ({
   label,
   icon,
@@ -29,6 +66,8 @@ const MenuItem: React.FC<MenuItem> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const classNamePrefix = 'menu-item';
+  const _disabled = disabled || loading;
+
   function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     setLoading(true);
     Promise.resolve(onClick?.(event)).finally(() => {
@@ -43,11 +82,11 @@ const MenuItem: React.FC<MenuItem> = ({
           styles[`${classNamePrefix}`],
           {
             [styles[`${classNamePrefix}-danger`]]: danger,
-            [styles[`${classNamePrefix}-disabled`]]: disabled,
+            [styles[`${classNamePrefix}-disabled`]]: _disabled,
           },
           className,
         )}
-        onClick={loading ? undefined : handleClick}
+        onClick={_disabled ? undefined : handleClick}
         style={style}
       >
         <div className={styles[`${classNamePrefix}-inner`]}>
@@ -71,48 +110,17 @@ const MenuItem: React.FC<MenuItem> = ({
   );
 };
 
-const classNamePrefix = 'menu';
-
-type MenuProps = {
-  items?: MenuItem[];
-  className?: string;
-  shadow?: boolean;
-  onClick?: (
-    item: MenuItem,
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => void;
-};
-
-const Menu: React.FC<MenuProps> = ({
-  items,
-  onClick,
-  shadow = true,
-  className,
-}) => {
+const Menu: React.FC<
+  Pick<MenuItemsProps, 'items' | 'onClick'> & { shadow?: boolean }
+> = ({ items, onClick, shadow = true }) => {
+  const classNamePrefix = 'menu';
   return (
     <div
-      className={cs(
-        styles[`${classNamePrefix}`],
-        {
-          [styles[`${classNamePrefix}-shadow`]]: shadow,
-        },
-        className,
-      )}
+      className={cs(styles[`${classNamePrefix}`], {
+        [styles[`${classNamePrefix}-shadow`]]: shadow,
+      })}
     >
-      <div className={cs(styles[`${classNamePrefix}-inner`])}>
-        {items?.map(item => {
-          if (!item) {
-            return null;
-          }
-          return (
-            <MenuItem
-              key={item.key}
-              {...item}
-              onClick={item?.onClick || (e => onClick?.(item, e))}
-            />
-          );
-        })}
-      </div>
+      <MenuItems items={items} onClick={onClick} />
     </div>
   );
 };
