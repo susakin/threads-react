@@ -7861,11 +7861,6 @@ img[src=''] {
   display: grid;
   grid-template-columns: 48px 1fr;
 }
-@media (max-width: 699px) {
-  .zf9eR {
-    grid-template-columns: 60px 1fr;
-  }
-}
 .vBrdZ {
   cursor: pointer;
 }
