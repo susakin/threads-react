@@ -14,7 +14,7 @@
         o = t(9439),
         a = t(7313),
         l = t(4134),
-        c = t(4113),
+        c = t(6975),
         s = {
           media: 'Ksrat',
           'media-viewer-content': 'nWJBe',
@@ -345,24 +345,24 @@
         U = t(2135),
         W = t(6023),
         q = t(2568),
-        O = 'user-card',
-        X = function (n) {
+        X = 'user-card',
+        Y = function (n) {
           var e = n.user,
             t = n.className,
             i = n.onDelete,
             r = n.onFollowingChange,
             o = e.isVerified;
           return (0, d.jsxs)('div', {
-            className: D()(K[''.concat(O)], t),
+            className: D()(K[''.concat(X)], t),
             children: [
               (0, d.jsxs)(U.rU, {
                 to: '/@'.concat(
                   null === e || void 0 === e ? void 0 : e.username,
                 ),
-                className: K[''.concat(O, '-inner')],
+                className: K[''.concat(X, '-inner')],
                 children: [
                   (0, d.jsxs)('div', {
-                    className: K[''.concat(O, '-inner-avatar')],
+                    className: K[''.concat(X, '-inner-avatar')],
                     children: [
                       (0, d.jsx)(M.Z, {
                         size: 80,
@@ -371,7 +371,7 @@
                       }),
                       o &&
                         (0, d.jsx)('div', {
-                          className: K[''.concat(O, '-inner-avatar-badge')],
+                          className: K[''.concat(X, '-inner-avatar-badge')],
                           children: (0, d.jsx)(b.sA, {
                             viewBox: '-4 0 27 19',
                             size: 25,
@@ -380,7 +380,7 @@
                     ],
                   }),
                   (0, d.jsx)('div', {
-                    className: K[''.concat(O, '-inner-profile')],
+                    className: K[''.concat(X, '-inner-profile')],
                     children: (0, d.jsx)(
                       q.Z,
                       {
@@ -391,12 +391,12 @@
                         trigger: 'hover',
                         placement: 'bottom-start',
                         children: (0, d.jsxs)('div', {
-                          className: K[''.concat(O, '-inner-profile-inner')],
+                          className: K[''.concat(X, '-inner-profile-inner')],
                           children: [
                             (0, d.jsx)('span', {
                               className:
                                 K[
-                                  ''.concat(O, '-inner-profile-inner-full-name')
+                                  ''.concat(X, '-inner-profile-inner-full-name')
                                 ],
                               children:
                                 null === e || void 0 === e
@@ -406,7 +406,7 @@
                             (0, d.jsx)('span', {
                               className:
                                 K[
-                                  ''.concat(O, '-inner-profile-inner-username')
+                                  ''.concat(X, '-inner-profile-inner-username')
                                 ],
                               children:
                                 null === e || void 0 === e
@@ -420,7 +420,7 @@
                     ),
                   }),
                   (0, d.jsx)(l.eg, {
-                    className: K[''.concat(O, '-inner-profile-follow-button')],
+                    className: K[''.concat(X, '-inner-profile-follow-button')],
                     user: e,
                     type: 'primary',
                     onFollowingChange: r,
@@ -428,10 +428,10 @@
                 ],
               }),
               (0, d.jsx)('div', {
-                className: K[''.concat(O, '-delete')],
+                className: K[''.concat(X, '-delete')],
                 children: (0, d.jsx)(W.Z, {
                   type: 'text',
-                  className: K[''.concat(O, '-delete-button')],
+                  className: K[''.concat(X, '-delete-button')],
                   onClick: function (n) {
                     n.stopPropagation(),
                       n.preventDefault(),
@@ -443,15 +443,15 @@
             ],
           });
         },
-        Y = t(8048),
-        _ = t(3703),
-        J = 'recommend',
+        _ = t(8048),
+        J = t(3703),
+        O = 'recommend',
         Q = function () {
           var n = (0, a.useState)([]),
             e = (0, o.Z)(n, 2),
             t = e[0],
             i = e[1];
-          return (0, Y.i)(_.o, {
+          return (0, _.i)(J.o, {
             onSuccess: function (n) {
               i(null === n || void 0 === n ? void 0 : n.users);
             },
@@ -459,23 +459,23 @@
           }).loading || !t.length
             ? null
             : (0, d.jsxs)('div', {
-                className: w[''.concat(J)],
+                className: w[''.concat(O)],
                 children: [
                   (0, d.jsx)('div', {
-                    className: w[''.concat(J, '-title')],
+                    className: w[''.concat(O, '-title')],
                     children: (0, d.jsx)('span', {
-                      className: w[''.concat(J, '-title-text')],
+                      className: w[''.concat(O, '-title-text')],
                       children: '\u4e3a\u4f60\u63a8\u8350',
                     }),
                   }),
                   (0, d.jsx)(F, {
-                    className: w[''.concat(J, '-scroll-container')],
+                    className: w[''.concat(O, '-scroll-container')],
                     children: t.map(function (n) {
                       return (0, d.jsx)(
-                        X,
+                        Y,
                         {
                           user: n,
-                          className: w[''.concat(J, '-user')],
+                          className: w[''.concat(O, '-user')],
                           onDelete: function (n) {
                             i(function (e) {
                               return e.filter(function (e) {
@@ -737,7 +737,7 @@
                             randomRender: function (n) {
                               return 9 === n ? (0, d.jsx)(Q, {}) : null;
                             },
-                            spin: C ? null : (0, d.jsx)(c.Od, {}),
+                            spin: C ? null : (0, d.jsx)(c.N7, {}),
                             cacheKey: 'recommend',
                             indentWhenTransparentLine: !0,
                             hasBorderTop: !1,
@@ -770,7 +770,7 @@
                             onDataChange: function (n) {
                               z(n.length > 0);
                             },
-                            spin: S ? null : (0, d.jsx)(c.Od, {}),
+                            spin: S ? null : (0, d.jsx)(c.N7, {}),
                             pageSize: 10,
                             request: E,
                             emptyPlaceholder:

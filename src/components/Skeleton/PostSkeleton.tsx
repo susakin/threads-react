@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './index.module.less';
+import styles from './postSkeleton.module.less';
 
-const classNamePrefix = 'skeleton';
+const classNamePrefix = 'post-skeleton';
 
-type SkeletonProps = {
+type PostSkeletonProps = {
   skeletonLength?: number;
 };
 
-const Skeleton: React.FC<SkeletonProps> = ({ skeletonLength = 15 }) => {
+const PostSkeleton: React.FC<PostSkeletonProps> = ({ skeletonLength = 15 }) => {
   return (
     <div className={styles[`${classNamePrefix}`]}>
       {new Array(skeletonLength).fill(null).map((item, index) => {
@@ -39,4 +39,4 @@ const Skeleton: React.FC<SkeletonProps> = ({ skeletonLength = 15 }) => {
   );
 };
 
-export default Skeleton;
+export default PostSkeleton;

@@ -8,14 +8,13 @@ import { NavigationContext } from '@context/NavigationProvider';
 
 type RecommendProps = {
   currentUid?: string;
-  gray?: boolean;
   hidden?: boolean;
   style?: React.CSSProperties;
 };
 
 const classNamePrefix = 'recommend';
 
-const Recommend: React.FC<RecommendProps> = ({ gray, hidden, style }) => {
+const Recommend: React.FC<RecommendProps> = ({ hidden, style }) => {
   const userListRef = useRef<ActionRefType>(null);
   const { state } = useContext(NavigationContext);
   const { navigationEmitter } = state;
@@ -52,7 +51,6 @@ const Recommend: React.FC<RecommendProps> = ({ gray, hidden, style }) => {
       hasLastItemSplit={true}
       style={style}
       className={cs(styles[`${classNamePrefix}`], {
-        [styles[`${classNamePrefix}-gray`]]: gray,
         [styles[`${classNamePrefix}-hidden`]]: hidden,
       })}
       itemClassName={styles[`${classNamePrefix}-item`]}

@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { PageContainer } from '@pages/components';
 import PostComposer from './PostComposer';
-import { Tabs, Skeleton } from '@components/index';
+import { Tabs, PostSkeleton } from '@components/index';
 import styles from './index.module.less';
 import { getTimeline, getFollowingPosts } from '@services/main';
 import { RequestType, PostList } from '@pages/components';
@@ -138,7 +138,7 @@ const Main: React.FC = () => {
                 }
                 return null;
               }}
-              spin={hasFetchedRecommend ? null : <Skeleton />}
+              spin={hasFetchedRecommend ? null : <PostSkeleton />}
               cacheKey="recommend"
               indentWhenTransparentLine
               hasBorderTop={false}
@@ -165,7 +165,7 @@ const Main: React.FC = () => {
               onDataChange={data => {
                 setHasFetchedFollowing(data.length > 0);
               }}
-              spin={hasFetchedFollowing ? null : <Skeleton />}
+              spin={hasFetchedFollowing ? null : <PostSkeleton />}
               pageSize={10}
               request={fetchFollowingPosts}
               emptyPlaceholder="暂时还没有帖子。"

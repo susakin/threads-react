@@ -74,6 +74,8 @@ export { default as RadioGroup } from './RadioGroup';
 
 export { default as MutilStepContainer } from './MutilStepContainer';
 
-export { default as Skeleton } from './Skeleton';
+export { default as PostSkeleton } from './Skeleton/PostSkeleton';
 
 export { default as DragModal } from './Modal/DragModal';
+
+export { default as SearchInput } from './SearchInput';

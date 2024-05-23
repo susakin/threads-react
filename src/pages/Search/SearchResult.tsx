@@ -11,15 +11,11 @@ const classNamePrefix = 'search-result';
 type SearchResultProps = {
   className?: string;
   searchVal?: string;
-  onSearchPostClick?: (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-  ) => void;
 };
 
 const SearchResult: React.FC<SearchResultProps> = ({
   className,
   searchVal,
-  onSearchPostClick,
 }) => {
   const _searchVal = searchVal?.trim();
   const queryUsers: RequestType = async ({ page, pageSize, query }) => {
@@ -45,7 +41,6 @@ const SearchResult: React.FC<SearchResultProps> = ({
       <Link
         to={`/search?serp_type=default&q=${_searchVal}`}
         className={styles[`${classNamePrefix}-title`]}
-        onClick={onSearchPostClick}
       >
         <div className={styles[`${classNamePrefix}-title-icon`]}>
           <Search size={16} viewBox="0 0 26 26" />
