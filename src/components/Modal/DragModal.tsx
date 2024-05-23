@@ -110,6 +110,8 @@ const DragModal: React.FC<DragModalProps> = ({
       ? ((viewportHeight - transform) as number) - dragBarHeight
       : '';
 
+  console.log(viewportHeight, transform, _contentHeight);
+
   return (
     <Mask
       visible={visible}

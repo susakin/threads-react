@@ -1,4 +1,4 @@
-/*! For license information please see main.dc3f98d4.js.LICENSE.txt */
+/*! For license information please see main.2bf264b5.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -17614,62 +17614,65 @@
                 );
               }, []);
             var C = 'number' === typeof p ? c - p - 28 : '';
-            return (0, d.jsx)(m.Z, {
-              visible: t,
-              onClose: _,
-              renderToBody: !0,
-              hasClose: !1,
-              color: 'rgba(0,0,0,.7)',
-              contentClassName: Yu[''.concat(Gu, '-content')],
-              children: (0, d.jsxs)('div', {
-                className: Yu[''.concat(Gu)],
-                style: {
-                  transform: 'translateY('.concat(
-                    'number' === typeof p ? ''.concat(p, 'px') : ''.concat(p),
-                    ')',
-                  ),
-                  transition: g ? '' : 'transform 0.3s ease',
-                },
-                role: 'dialog',
-                children: [
-                  (0, d.jsx)('div', {
-                    className: Yu[''.concat(Gu, '-drag')],
-                    ref: i,
-                    onTouchStart: function (e) {
-                      (w.current = e.touches[0].screenY),
-                        (x.current = p),
-                        b(!0);
-                    },
-                    onTouchEnd: function () {
-                      var e = (function (e) {
-                        return s.current.reduce(function (t, n) {
-                          return Math.abs(n - e) < Math.abs(t - e) ? n : t;
-                        }, 1 / 0);
-                      })(p);
-                      h(e),
-                        p >= c
-                          ? null === _ || void 0 === _ || _()
-                          : e >= c &&
-                            setTimeout(function () {
-                              null === _ || void 0 === _ || _();
-                            }, 300),
-                        b(!1),
-                        (w.current = 0),
-                        (x.current = 0);
-                    },
-                    children: (0, d.jsx)('div', {
-                      className: Yu[''.concat(Gu, '-drag-bar')],
+            return (
+              console.log(c, p, C),
+              (0, d.jsx)(m.Z, {
+                visible: t,
+                onClose: _,
+                renderToBody: !0,
+                hasClose: !1,
+                color: 'rgba(0,0,0,.7)',
+                contentClassName: Yu[''.concat(Gu, '-content')],
+                children: (0, d.jsxs)('div', {
+                  className: Yu[''.concat(Gu)],
+                  style: {
+                    transform: 'translateY('.concat(
+                      'number' === typeof p ? ''.concat(p, 'px') : ''.concat(p),
+                      ')',
+                    ),
+                    transition: g ? '' : 'transform 0.3s ease',
+                  },
+                  role: 'dialog',
+                  children: [
+                    (0, d.jsx)('div', {
+                      className: Yu[''.concat(Gu, '-drag')],
+                      ref: i,
+                      onTouchStart: function (e) {
+                        (w.current = e.touches[0].screenY),
+                          (x.current = p),
+                          b(!0);
+                      },
+                      onTouchEnd: function () {
+                        var e = (function (e) {
+                          return s.current.reduce(function (t, n) {
+                            return Math.abs(n - e) < Math.abs(t - e) ? n : t;
+                          }, 1 / 0);
+                        })(p);
+                        h(e),
+                          p >= c
+                            ? null === _ || void 0 === _ || _()
+                            : e >= c &&
+                              setTimeout(function () {
+                                null === _ || void 0 === _ || _();
+                              }, 300),
+                          b(!1),
+                          (w.current = 0),
+                          (x.current = 0);
+                      },
+                      children: (0, d.jsx)('div', {
+                        className: Yu[''.concat(Gu, '-drag-bar')],
+                      }),
                     }),
-                  }),
-                  (0, d.jsx)('div', {
-                    className: Yu[''.concat(Gu, '-inner')],
-                    ref: o,
-                    style: { height: C },
-                    children: r,
-                  }),
-                ],
-              }),
-            });
+                    (0, d.jsx)('div', {
+                      className: Yu[''.concat(Gu, '-inner')],
+                      ref: o,
+                      style: { height: C },
+                      children: r,
+                    }),
+                  ],
+                }),
+              })
+            );
           };
         n(6879);
       },
