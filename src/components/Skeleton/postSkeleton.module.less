@@ -32,6 +32,24 @@
       width: 36px;
       border-radius: 18px;
       .shinning();
+      position: relative;
+
+      &-badge {
+        position: absolute;
+        padding: 2px;
+        top: 20px;
+        left: 20px;
+        border-radius: 11px;
+        background: var(--barcelona-elevated-background);
+
+        &-dot {
+          .shinning();
+          width: 18px;
+          height: 18px;
+          border-radius: 9px;
+          background-color: var(--barcelona-glimmer-background);
+        }
+      }
     }
 
     &-inner {

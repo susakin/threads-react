@@ -4,6 +4,7 @@ import React, {
   useState,
   useImperativeHandle,
   useRef,
+  useMemo,
 } from 'react';
 import { PreloadWithObserver } from '@components/index';
 import LoadingContainer from '../LoadingContainer';
@@ -58,7 +59,7 @@ export type ListProps<T extends ListItem, U extends Record<string, any>> = {
   onFetchEnd?: () => void;
   debounceWait?: number;
   cacheKey?: string;
-  spin?: React.ReactNode;
+  spin?: React.ReactNode | ((dataLengths: number) => React.ReactNode);
   hasLoadingContainer?: boolean;
 };
 
@@ -237,6 +238,11 @@ function List<T extends ListItem, U extends Record<string, any>>({
   const Container: any = hasLoadingContainer
     ? LoadingContainer
     : React.Fragment;
+
+  const _spin = useMemo(() => {
+    return typeof spin === 'function' ? spin(data?.length) : spin;
+  }, [data?.length]);
+
   return (
     <Container
       loading={paginationState?.loading && useLoadingContainerRef.current}
@@ -249,7 +255,7 @@ function List<T extends ListItem, U extends Record<string, any>>({
       })}
       <PreloadWithObserver
         key={key}
-        spin={spin}
+        spin={_spin}
         onLoad={run as any}
         visible={
           ((length && length < paginationState?.total) ||

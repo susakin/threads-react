@@ -96,26 +96,26 @@
           var e,
             n = t.type,
             i = t.path,
-            o = t.emitter,
-            r = t.active,
-            c = (0, a.useContext)(l.k),
-            s = c.dispatch,
-            d = c.state,
-            v = d.navigationEmitter,
-            p = d.unreadNotificationNum,
-            f = (0, a.useRef)(null),
-            h = (0, b.i)(x.vk, {
+            r = t.emitter,
+            c = t.active,
+            s = (0, a.useContext)(l.k),
+            d = s.dispatch,
+            v = s.state,
+            p = v.navigationEmitter,
+            f = v.unreadNotificationNum,
+            h = (0, a.useRef)(null),
+            C = (0, b.i)(x.vk, {
               manual: !0,
               ignoreErrorMsg: !0,
               onSuccess: function (t) {
-                s({
+                d({
                   type: 'SET_UNREAD_NOTIFICATION_NUM',
                   payload: { unreadNotificationNum: t },
                 });
               },
             }),
-            C = h.run;
-          function j(t) {
+            j = C.run;
+          function N(t) {
             return null === t || void 0 === t
               ? void 0
               : t.map(function (t) {
@@ -137,14 +137,14 @@
                   };
                 });
           }
-          var N = (0, b.i)(x.zJ, {
+          var w = (0, b.i)(x.zJ, {
               manual: !0,
               onSuccess: function () {
-                (p || 0) > 0 && C();
+                (f || 0) > 0 && j();
               },
               ignoreErrorMsg: !0,
             }).run,
-            w = (function () {
+            S = (function () {
               var t = (0, y.Z)(
                 (0, m.Z)().mark(function t(e) {
                   var n, i, a, o, r, c, l, u, s;
@@ -173,11 +173,11 @@
                                 ? void 0
                                 : n.map(function (t) {
                                     return t.id;
-                                  })).length && N({ ids: s }),
+                                  })).length && w({ ids: s }),
                             t.abrupt('return', {
                               success: 200 == c,
                               msg: l,
-                              data: j(
+                              data: N(
                                 null === u || void 0 === u
                                   ? void 0
                                   : u.activities,
@@ -197,33 +197,33 @@
                 return t.apply(this, arguments);
               };
             })();
-          function S(t) {
+          function E(t) {
             var e, n;
             i === t &&
               (window.scrollY
                 ? window.scrollTo(0, 0)
-                : null === f ||
-                  void 0 === f ||
-                  null === (e = f.current) ||
+                : null === h ||
+                  void 0 === h ||
+                  null === (e = h.current) ||
                   void 0 === e ||
                   null === (n = e.reload) ||
                   void 0 === n ||
                   n.call(e, !0));
           }
-          null === v ||
-            void 0 === v ||
-            v.useSubscription(function (t) {
+          null === p ||
+            void 0 === p ||
+            p.useSubscription(function (t) {
               'activity' === (null === t || void 0 === t ? void 0 : t.type) &&
-                S(null === t || void 0 === t ? void 0 : t.path);
+                E(null === t || void 0 === t ? void 0 : t.path);
             }),
-            null === o ||
-              void 0 === o ||
-              null === (e = o.useSubscription) ||
+            null === r ||
+              void 0 === r ||
+              null === (e = r.useSubscription) ||
               void 0 === e ||
-              e.call(o, function (t) {
-                r && S(t);
+              e.call(r, function (t) {
+                c && E(t);
               });
-          var E = (0, a.useMemo)(
+          var Z = (0, a.useMemo)(
             function () {
               return { type: n };
             },
@@ -231,16 +231,19 @@
           );
           return (0, u.jsx)(u.Fragment, {
             children: (0, u.jsx)(g.Z7, {
-              actionRef: f,
+              actionRef: h,
               hasLoadingContainer: !0,
               cacheKey: 'activity-'.concat(n),
               ignoreErrorMsg: !0,
               pageSize: 15,
               hasLastItemSplit: !0,
               hasFollower: !1,
-              params: E,
+              params: Z,
+              spin: function (t) {
+                return t ? null : (0, u.jsx)(o.N7, { hasBadge: !0 });
+              },
               emptyPlaceholder: '\u8fd8\u6ca1\u6709\u52a8\u6001\u3002',
-              request: w,
+              request: S,
               itemClassName: k[''.concat('activity-list', '-user')],
             }),
           });

@@ -12,8 +12,8 @@
       var i = t(4165),
         r = t(5861),
         o = t(9439),
-        a = t(7313),
-        l = t(4134),
+        l = t(7313),
+        a = t(4134),
         c = t(6975),
         s = {
           media: 'Ksrat',
@@ -32,8 +32,8 @@
         d = t(6417),
         v = 'post-composer',
         f = function () {
-          var n = (0, a.useContext)(u.Vo).state.user,
-            e = (0, a.useState)(!1),
+          var n = (0, l.useContext)(u.Vo).state.user,
+            e = (0, l.useState)(!1),
             t = (0, o.Z)(e, 2),
             i = t[0],
             r = t[1];
@@ -71,7 +71,7 @@
                 ],
               }),
               (0, d.jsx)('hr', { className: s[''.concat(v, '-split')] }),
-              (0, d.jsx)(l.K2, {
+              (0, d.jsx)(a.K2, {
                 visible: i,
                 onClose: function () {
                   r(!1);
@@ -84,8 +84,8 @@
         p = { 'main-tabs': 'g1fyS' },
         m = t(2846),
         h = t(6031),
-        g = t(4747),
-        x = t(8467),
+        x = t(4747),
+        g = t(8467),
         j = t(1413),
         w = {
           media: 'HtRj4',
@@ -132,7 +132,7 @@
               void 0 !== t
                 ? t
                 : 1e3,
-            o = (0, a.useMemo)(function () {
+            o = (0, l.useMemo)(function () {
               return y()(
                 function () {
                   for (var n = [], e = 0; e < arguments.length; e++)
@@ -152,9 +152,9 @@
         },
         R = t(1114),
         E = t(6123),
-        D = t.n(E),
-        I = 'scroll-container';
-      function L(n) {
+        I = t.n(E),
+        L = 'scroll-container';
+      function P(n) {
         var e = n.getBoundingClientRect();
         return {
           childCards: Array.from(n.children).filter(function (n) {
@@ -165,7 +165,7 @@
           containerWidth: null === e || void 0 === e ? void 0 : e.width,
         };
       }
-      function P(n, e) {
+      function D(n, e) {
         var t = e.left,
           i = e.top;
         'scrollBehavior' in document.documentElement.style
@@ -182,16 +182,16 @@
       var F = function (n) {
           var e = n.className,
             t = n.children,
-            i = (0, a.useRef)(null),
-            r = (0, a.useState)(0),
-            l = (0, o.Z)(r, 2),
-            s = l[0],
-            u = l[1],
-            v = (0, a.useState)(0),
+            i = (0, l.useRef)(null),
+            r = (0, l.useState)(0),
+            a = (0, o.Z)(r, 2),
+            s = a[0],
+            u = a[1],
+            v = (0, l.useState)(0),
             f = (0, o.Z)(v, 2),
             p = f[0],
             m = f[1];
-          (0, a.useEffect)(
+          (0, l.useEffect)(
             function () {
               setTimeout(function () {
                 i.current && m(i.current.scrollWidth - i.current.clientWidth);
@@ -214,30 +214,30 @@
             { wait: 50, leading: !0 },
           ).run;
           return (0, d.jsxs)('div', {
-            className: D()(N[''.concat(I)], e),
+            className: I()(N[''.concat(L)], e),
             children: [
               0 !== s &&
                 (0, d.jsx)('div', {
-                  className: N[''.concat(I, '-prev')],
+                  className: N[''.concat(L, '-prev')],
                   children: (0, d.jsx)(c.ZJ, {
-                    className: N[''.concat(I, '-prev-button')],
+                    className: N[''.concat(L, '-prev-button')],
                     size: 44,
                     onClick: function () {
                       !(function (n) {
                         for (
                           var e,
                             t,
-                            i = L(n),
+                            i = P(n),
                             r = i.childCards,
                             o = i.containerLeft,
-                            a = i.containerRight,
-                            l = r.length - 1;
-                          l >= 0;
-                          l--
+                            l = i.containerRight,
+                            a = r.length - 1;
+                          a >= 0;
+                          a--
                         ) {
                           var c,
                             s =
-                              null === (c = r[l]) || void 0 === c
+                              null === (c = r[a]) || void 0 === c
                                 ? void 0
                                 : c.getBoundingClientRect();
                           if (s.left <= o - 10) {
@@ -249,8 +249,8 @@
                           var u =
                             (null === (e = t) || void 0 === e
                               ? void 0
-                              : e.right) - a;
-                          u && P(n, { left: n.scrollLeft + u });
+                              : e.right) - l;
+                          u && D(n, { left: n.scrollLeft + u });
                         }
                       })(null === i || void 0 === i ? void 0 : i.current);
                     },
@@ -261,44 +261,44 @@
                   }),
                 }),
               (0, d.jsxs)('div', {
-                className: N[''.concat(I, '-inner')],
+                className: N[''.concat(L, '-inner')],
                 ref: i,
                 onScroll: R.Y ? void 0 : h,
                 children: [
                   (0, d.jsx)('span', {
-                    className: N[''.concat(I, '-inner-placeholder')],
+                    className: N[''.concat(L, '-inner-placeholder')],
                   }),
                   t,
                   (0, d.jsx)('span', {
-                    className: N[''.concat(I, '-inner-placeholder')],
+                    className: N[''.concat(L, '-inner-placeholder')],
                   }),
                 ],
               }),
               p !== Math.ceil(s) &&
                 (0, d.jsx)('div', {
-                  className: N[''.concat(I, '-next')],
+                  className: N[''.concat(L, '-next')],
                   children: (0, d.jsx)(c.ZJ, {
-                    className: N[''.concat(I, '-next-button')],
+                    className: N[''.concat(L, '-next-button')],
                     size: 44,
                     onClick: function () {
                       !(function (n) {
                         for (
                           var e,
                             t,
-                            i = L(n),
+                            i = P(n),
                             r = i.childCards,
                             o = i.containerLeft,
-                            a = i.containerRight,
-                            l = 0;
-                          l < r.length;
-                          l++
+                            l = i.containerRight,
+                            a = 0;
+                          a < r.length;
+                          a++
                         ) {
                           var c,
                             s =
-                              null === (c = r[l]) || void 0 === c
+                              null === (c = r[a]) || void 0 === c
                                 ? void 0
                                 : c.getBoundingClientRect();
-                          if (s.right >= a + 10) {
+                          if (s.right >= l + 10) {
                             t = s;
                             break;
                           }
@@ -308,7 +308,7 @@
                             (null === (e = t) || void 0 === e
                               ? void 0
                               : e.left) - o;
-                          u && P(n, { left: n.scrollLeft + u });
+                          u && D(n, { left: n.scrollLeft + u });
                         }
                       })(null === i || void 0 === i ? void 0 : i.current);
                     },
@@ -353,7 +353,7 @@
             r = n.onFollowingChange,
             o = e.isVerified;
           return (0, d.jsxs)('div', {
-            className: D()(K[''.concat(X)], t),
+            className: I()(K[''.concat(X)], t),
             children: [
               (0, d.jsxs)(U.rU, {
                 to: '/@'.concat(
@@ -387,7 +387,7 @@
                         openDelay: 300,
                         content: R.Y
                           ? null
-                          : (0, d.jsx)(l.Oe, { user: e, onFollowingChange: r }),
+                          : (0, d.jsx)(a.Oe, { user: e, onFollowingChange: r }),
                         trigger: 'hover',
                         placement: 'bottom-start',
                         children: (0, d.jsxs)('div', {
@@ -419,7 +419,7 @@
                       null === e || void 0 === e ? void 0 : e.id,
                     ),
                   }),
-                  (0, d.jsx)(l.eg, {
+                  (0, d.jsx)(a.eg, {
                     className: K[''.concat(X, '-inner-profile-follow-button')],
                     user: e,
                     type: 'primary',
@@ -447,7 +447,7 @@
         J = t(3703),
         O = 'recommend',
         Q = function () {
-          var n = (0, a.useState)([]),
+          var n = (0, l.useState)([]),
             e = (0, o.Z)(n, 2),
             t = e[0],
             i = e[1];
@@ -519,9 +519,9 @@
         },
         A = 'switch-button',
         H = function () {
-          var n = (0, x.TH)().pathname,
+          var n = (0, g.TH)().pathname,
             e = null === n || void 0 === n ? void 0 : n.includes('following'),
-            t = (0, a.useContext)(g.k).state.navigationEmitter;
+            t = (0, l.useContext)(x.k).state.navigationEmitter;
           return (0, d.jsx)('div', {
             className: V[''.concat(A)],
             children: (0, d.jsxs)(U.rU, {
@@ -553,35 +553,27 @@
           });
         },
         G = function () {
-          var n = (0, a.useRef)(null),
-            e = (0, a.useRef)(null),
-            t = (0, x.TH)().pathname,
-            s = (0, a.useState)('/'),
+          var n = (0, l.useRef)(null),
+            e = (0, l.useRef)(null),
+            t = (0, g.TH)().pathname,
+            s = (0, l.useState)('/'),
             u = (0, o.Z)(s, 2),
             v = u[0],
             j = u[1];
-          (0, a.useLayoutEffect)(
+          (0, l.useLayoutEffect)(
             function () {
               var n = '/following' === t ? '/following' : '/';
               j(n),
-                null === B || void 0 === B || B.emit({ type: 'main', path: n });
+                null === b || void 0 === b || b.emit({ type: 'main', path: n });
             },
             [t],
           );
-          var w = (0, x.s0)(),
-            N = (0, a.useState)(!1),
-            b = (0, o.Z)(N, 2),
-            C = b[0],
-            k = b[1],
-            y = (0, a.useState)(!1),
-            Z = (0, o.Z)(y, 2),
-            S = Z[0],
-            z = Z[1],
-            T = (0, a.useCallback)(
+          var w = (0, g.s0)(),
+            N = (0, l.useCallback)(
               (function () {
                 var n = (0, r.Z)(
                   (0, i.Z)().mark(function n(e) {
-                    var t, r, o, a, l, c;
+                    var t, r, o, l, a, c;
                     return (0, i.Z)().wrap(function (n) {
                       for (;;)
                         switch ((n.prev = n.next)) {
@@ -600,12 +592,12 @@
                           case 3:
                             return (
                               (o = n.sent),
-                              (a = o.code),
-                              (l = o.msg),
+                              (l = o.code),
+                              (a = o.msg),
                               (c = o.data),
                               n.abrupt('return', {
-                                success: 200 == a,
-                                msg: l,
+                                success: 200 == l,
+                                msg: a,
                                 data: (
                                   (null === c || void 0 === c
                                     ? void 0
@@ -631,12 +623,12 @@
               })(),
               [],
             ),
-            B = (0, a.useContext)(g.k).state.navigationEmitter;
-          function R(t) {
+            b = (0, l.useContext)(x.k).state.navigationEmitter;
+          function C(t) {
             if (window.scrollY) window.scrollTo(0, 0);
             else {
               if (t !== v) return;
-              var i, r, o, a;
+              var i, r, o, l;
               if ('/' === v)
                 null === (i = n.current) ||
                   void 0 === i ||
@@ -648,16 +640,16 @@
                   void 0 === e ||
                   null === (o = e.current) ||
                   void 0 === o ||
-                  null === (a = o.reload) ||
-                  void 0 === a ||
-                  a.call(o, !0);
+                  null === (l = o.reload) ||
+                  void 0 === l ||
+                  l.call(o, !0);
             }
           }
-          var E = (0, a.useCallback)(
+          var k = (0, l.useCallback)(
             (function () {
               var n = (0, r.Z)(
                 (0, i.Z)().mark(function n(e) {
-                  var t, r, o, a, l, c;
+                  var t, r, o, l, a, c;
                   return (0, i.Z)().wrap(function (n) {
                     for (;;)
                       switch ((n.prev = n.next)) {
@@ -676,12 +668,12 @@
                         case 3:
                           return (
                             (o = n.sent),
-                            (a = o.code),
-                            (l = o.msg),
+                            (l = o.code),
+                            (a = o.msg),
                             (c = o.data),
                             n.abrupt('return', {
-                              success: 200 == a,
-                              msg: l,
+                              success: 200 == l,
+                              msg: a,
                               data: (
                                 (null === c || void 0 === c
                                   ? void 0
@@ -708,23 +700,23 @@
             [],
           );
           return (
-            null === B ||
-              void 0 === B ||
-              B.useSubscription(function (n) {
-                'main' === n.type && void 0 === n.path && R(t);
+            null === b ||
+              void 0 === b ||
+              b.useSubscription(function (n) {
+                'main' === n.type && void 0 === n.path && C(t);
               }),
             (0, d.jsx)(d.Fragment, {
-              children: (0, d.jsxs)(l._z, {
+              children: (0, d.jsxs)(a._z, {
                 children: [
                   (0, d.jsx)(f, {}),
                   (0, d.jsxs)(c.mQ, {
                     activeKey: v,
                     headerClassName: p[''.concat('main', '-tabs')],
                     onTabTitleClick: function (n) {
-                      null === B ||
-                        void 0 === B ||
-                        B.emit({ type: 'main', path: n }),
-                        R(n),
+                      null === b ||
+                        void 0 === b ||
+                        b.emit({ type: 'main', path: n }),
+                        C(n),
                         j(n),
                         w(''.concat(n), { replace: !0 });
                     },
@@ -733,24 +725,23 @@
                         c.mQ.Tab,
                         {
                           title: '\u4e3a\u4f60\u63a8\u8350',
-                          children: (0, d.jsx)(l.p_, {
+                          children: (0, d.jsx)(a.p_, {
                             randomRender: function (n) {
                               return 9 === n ? (0, d.jsx)(Q, {}) : null;
                             },
-                            spin: C ? null : (0, d.jsx)(c.N7, {}),
+                            spin: function (n) {
+                              return n ? null : (0, d.jsx)(c.N7, {});
+                            },
                             cacheKey: 'recommend',
                             indentWhenTransparentLine: !0,
                             hasBorderTop: !1,
                             ignoreMutingUser: !1,
                             actionRef: n,
                             pageSize: 10,
-                            request: T,
+                            request: N,
                             emptyPlaceholder:
                               '\u6682\u65f6\u8fd8\u6ca1\u6709\u5e16\u5b50\u3002',
                             hasLoadingContainer: !0,
-                            onDataChange: function (n) {
-                              k(n.length > 0);
-                            },
                           }),
                         },
                         '/',
@@ -759,7 +750,7 @@
                         c.mQ.Tab,
                         {
                           title: '\u5df2\u5173\u6ce8',
-                          children: (0, d.jsx)(l.p_, {
+                          children: (0, d.jsx)(a.p_, {
                             cacheKey: 'following',
                             hasBorderTop: !1,
                             indentWhenTransparentLine: !0,
@@ -767,12 +758,11 @@
                             actionRef: e,
                             hasLoadingContainer: !0,
                             hasRepostSign: !0,
-                            onDataChange: function (n) {
-                              z(n.length > 0);
+                            spin: function (n) {
+                              return n ? null : (0, d.jsx)(c.N7, {});
                             },
-                            spin: S ? null : (0, d.jsx)(c.N7, {}),
                             pageSize: 10,
-                            request: E,
+                            request: k,
                             emptyPlaceholder:
                               '\u6682\u65f6\u8fd8\u6ca1\u6709\u5e16\u5b50\u3002',
                           }),

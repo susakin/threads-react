@@ -39,11 +39,6 @@ const Main: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const [hasFetchedRecommend, setHasFetchedRecommend] =
-    useState<boolean>(false);
-  const [hasFetchedFollowing, setHasFetchedFollowing] =
-    useState<boolean>(false);
-
   const fetchTimeline: RequestType = useCallback(async ({ page, pageSize }) => {
     const { code, msg, data } = await getTimeline<any, any>({
       page,
@@ -138,7 +133,9 @@ const Main: React.FC = () => {
                 }
                 return null;
               }}
-              spin={hasFetchedRecommend ? null : <PostSkeleton />}
+              spin={len => {
+                return len ? null : <PostSkeleton />;
+              }}
               cacheKey="recommend"
               indentWhenTransparentLine
               hasBorderTop={false}
@@ -148,9 +145,6 @@ const Main: React.FC = () => {
               request={fetchTimeline}
               emptyPlaceholder="暂时还没有帖子。"
               hasLoadingContainer
-              onDataChange={data => {
-                setHasFetchedRecommend(data.length > 0);
-              }}
             />
           </Tabs.Tab>
           <Tabs.Tab title="已关注" key="/following">
@@ -162,10 +156,9 @@ const Main: React.FC = () => {
               actionRef={followingActionRef}
               hasLoadingContainer
               hasRepostSign
-              onDataChange={data => {
-                setHasFetchedFollowing(data.length > 0);
+              spin={len => {
+                return len ? null : <PostSkeleton />;
               }}
-              spin={hasFetchedFollowing ? null : <PostSkeleton />}
               pageSize={10}
               request={fetchFollowingPosts}
               emptyPlaceholder="暂时还没有帖子。"

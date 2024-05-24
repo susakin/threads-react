@@ -7,6 +7,7 @@ import { useFetch } from '@hooks/useFetch';
 import { UserActivity } from '@pages/components/User';
 import { ActionRefType } from '@pages/components/List';
 import { EventEmitter } from 'ahooks/lib/useEventEmitter';
+import { PostSkeleton } from '@components/index';
 
 export type ActivityListProps = {
   type?: string;
@@ -127,6 +128,9 @@ const ActivityList: React.FC<ActivityListProps> = ({
         hasLastItemSplit={true}
         hasFollower={false}
         params={params}
+        spin={len => {
+          return len ? null : <PostSkeleton hasBadge />;
+        }}
         emptyPlaceholder="还没有动态。"
         request={request}
         itemClassName={styles[`${classNamePrefix}-user`]}

@@ -4437,11 +4437,38 @@ img[src=''] {
   grid-template-rows: auto;
 }
 .uaztC {
+  -webkit-animation-direction: var(--glimmer-animation-direction);
+  animation-direction: var(--glimmer-animation-direction);
+  -webkit-animation-duration: var(--glimmer-animation-duration);
+  animation-duration: var(--glimmer-animation-duration);
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: j02bP;
+  animation-name: j02bP;
+  -webkit-animation-timing-function: var(--glimmer-animation-timing-function);
+  animation-timing-function: var(--glimmer-animation-timing-function);
+  background-color: var(--barcelona-glimmer-background);
   border-radius: 18px;
   height: 36px;
+  opacity: var(--glimmer-opacity-min);
+  outline: none;
+  position: relative;
   width: 36px;
 }
-.uaztC,
+.lHrMn {
+  background: var(--barcelona-elevated-background);
+  border-radius: 11px;
+  left: 20px;
+  padding: 2px;
+  position: absolute;
+  top: 20px;
+}
+.TAjig {
+  border-radius: 9px;
+  height: 18px;
+  width: 18px;
+}
+.TAjig,
 .vXQ66 {
   -webkit-animation-direction: var(--glimmer-animation-direction);
   animation-direction: var(--glimmer-animation-direction);
