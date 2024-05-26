@@ -13,7 +13,7 @@
         l = i(9439),
         t = i(7313),
         r = i(8467),
-        a = i(4134),
+        a = i(1959),
         s = i(6975),
         c = i(813),
         u = {
@@ -179,7 +179,7 @@
           return (0, x.jsx)('div', {
             className: m[''.concat(b)],
             children: (0, x.jsxs)(s.mQ, {
-              headerClassName: m[''.concat(b, '-header')],
+              tabClassName: m[''.concat(b, '-header')],
               disabledContentScroll: !1,
               children: [
                 (0, x.jsx)(
@@ -1743,7 +1743,7 @@
                         { replace: !0 },
                       );
                   },
-                  onTabTitleClick: function (e) {
+                  onTabClick: function (e) {
                     var n,
                       i,
                       o,
@@ -1778,7 +1778,7 @@
                             r.call(t, !0));
                     }
                   },
-                  headerClassName: me[''.concat(xe, '-header')],
+                  tabClassName: me[''.concat(xe, '-header')],
                   children: [
                     (0, x.jsx)(
                       s.mQ.Tab,

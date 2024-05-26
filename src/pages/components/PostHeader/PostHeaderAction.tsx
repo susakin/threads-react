@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import {
   More,
   Edited,
-  Pin,
   Direction,
   UnFollow,
   UnSave,
@@ -23,10 +22,6 @@ import styles from './postHeaderAction.module.less';
 import { OnPostUpdate } from '../Post';
 import {
   deletePost,
-  pin,
-  unpin,
-  pinToComment,
-  unpinToComment,
   hidePost,
   updateLikeAndViewCounts,
   postSave,
@@ -34,35 +29,33 @@ import {
 } from '@services/post';
 import { useFetch } from '@hooks/useFetch';
 import { unfollow } from '@services/profile';
-import { useCountDown } from 'ahooks';
 import Modal from '@components/Modal';
 import { FriendshipStatus, Post } from '@typings/index';
-import dayjs from 'dayjs';
 import { OnFollowingChange } from '../FollowButton';
 
 import ReplyAuthModal from '../ReplyAuthModal';
 import { useBlock } from './useBlock';
 import { useNavigate } from 'react-router-dom';
 import { useMute } from './useMute';
+import { usePin, UsePinProps } from './usePin';
+import { useEdit, UseEditProps } from './useEdit';
 
 const classNamePrefix = 'post-header-action';
 
 export type PostHeaderActionProps = {
   hasAction?: boolean;
   onDelete?: (id: string) => void;
-  onPinChange?: (id: string, pinned: boolean) => void;
   post?: Post;
   hasPin?: boolean;
-  hasPined?: boolean;
-  pinToWhere?: 'profile' | 'comment';
-  onEditClick?: () => void;
   onTagClick?: () => void;
   onUserFriendshipStatusUpdate?: (
     uid: string,
     friendshipStatus: FriendshipStatus,
   ) => void;
 } & OnPostUpdate &
-  OnFollowingChange;
+  OnFollowingChange &
+  Pick<UseEditProps, 'onEditClick'> &
+  Pick<UsePinProps, 'hasPined' | 'onPinChange' | 'pinToWhere'>;
 
 const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   hasAction = true,
@@ -74,25 +67,29 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   hasPin,
   hasPined,
   pinToWhere,
-  onEditClick,
   onTagClick,
+  onEditClick,
   onUserFriendshipStatusUpdate,
 }) => {
   const {
     captionIsEdited,
     createdAt = 0,
     id = '',
-    isPinnedToProfile,
-    isPinnedToComment,
     isSavedByViewer,
     textEntities,
   } = post || {};
 
   const { friendshipStatus } = post?.user || {};
   const [replyAuthVisible, setReplyAuthVisible] = useState<boolean>(false);
-  const pinToProfile = pinToWhere === 'profile';
 
   const { item } = useBlock({ user: post?.user, onUserFriendshipStatusUpdate });
+  const { item: editItem } = useEdit({ createdAt, onEditClick });
+  const { item: pinItem } = usePin({
+    post,
+    hasPined,
+    onPinChange,
+    pinToWhere,
+  });
 
   const { item: muteItem } = useMute({
     user: post?.user,
@@ -107,21 +104,6 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     },
   });
 
-  const { run: _pin } = useFetch(pinToProfile ? pin : pinToComment, {
-    manual: true,
-    onSuccess() {
-      Toast.show('已置顶');
-      onPinChange?.(id as string, true);
-    },
-  });
-
-  const { run: _unpin } = useFetch(pinToProfile ? unpin : unpinToComment, {
-    manual: true,
-    onSuccess() {
-      Toast.show('已取消置顶');
-      onPinChange?.(id as string, false);
-    },
-  });
   const navigate = useNavigate();
   const { run: _postSave } = useFetch(postSave, {
     manual: true,
@@ -174,43 +156,10 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     },
   });
 
-  const leftTime = useMemo(() => {
-    const step = 5 * 60 * 1000;
-
-    if (Date.now() - createdAt < step) {
-      return createdAt + step - Date.now();
-    }
-    return 0;
-  }, [createdAt]);
-
-  const [countdown] = useCountDown({ leftTime });
-
-  const _hasPined = pinToProfile ? isPinnedToProfile : isPinnedToComment;
-
-  function _onPinClick() {
-    if (_hasPined) {
-      _unpin(id);
-    } else {
-      if (hasPined) {
-        Modal.confirm({
-          title: '是否替换当前置顶内容？',
-          content: pinToProfile
-            ? '一次只能在主页中置顶一条串文。'
-            : '一次只能在串文中置顶一条回复。',
-          okType: 'default',
-          onOk() {
-            _pin(id);
-          },
-        });
-      } else {
-        _pin(id);
-      }
-    }
-  }
-
   const menu: PopoverMenuItem[] = useMemo(() => {
     const hasTag = textEntities?.some(item => item.type === 'tag');
     const items: PopoverMenuItem[] = [
+      editItem as any,
       hasTag
         ? {
             label: '用标记创建',
@@ -247,13 +196,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     ];
 
     if (hasPin) {
-      items.unshift({
-        label: _hasPined
-          ? '取消置顶'
-          : `置顶到${pinToProfile ? '主页' : '评论'}`,
-        onClick: _onPinClick,
-        icon: <Pin viewBox="0 0 20 20" size={20} />,
-      });
+      items.unshift(pinItem);
     }
 
     if (friendshipStatus?.isOwn) {
@@ -303,25 +246,6 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
           icon: <Delete viewBox="0 0 20 20" size={20} />,
         },
       );
-
-      if (countdown > 0 && leftTime) {
-        items.unshift({
-          label: (
-            <div className={styles[`${classNamePrefix}-countdown`]}>
-              <div className={styles[`${classNamePrefix}-countdown-lable`]}>
-                编辑
-              </div>
-              <div className={styles[`${classNamePrefix}-countdown-value`]}>
-                {dayjs(countdown).format('mm:ss')}
-              </div>
-            </div>
-          ),
-          onClick: () => {
-            onEditClick?.();
-          },
-          split: true,
-        });
-      }
     } else {
       items.push(
         {
@@ -350,15 +274,15 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     return items;
   }, [
     post,
-    countdown,
     hasPin,
     post?.user?.friendshipStatus,
-    _hasPined,
     hasPined,
     post?.likeAndViewCountsDisabled,
     post?.replyAuth,
     post?.isSavedByViewer,
     muteItem,
+    pinItem,
+    editItem,
   ]);
 
   return (

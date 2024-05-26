@@ -1,3 +1,5 @@
+@import '@pages/components/PageContainer/index.module.less';
+
 .activity {
   position: relative;
   top: var(--header-height);
@@ -5,4 +7,27 @@
   flex-direction: column;
   display: flex;
   width: 100%;
+
+  &-tab {
+    overflow-x: auto;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    margin-bottom: 4px;
+    background-color: var(--barcelona-primary-background);
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 100%;
+    z-index: 1;
+    align-self: center;
+
+    @media (max-width: 699px) {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+
+  &-inner {
+    .page-container();
+  }
 }

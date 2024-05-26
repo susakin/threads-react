@@ -99,7 +99,7 @@ const Main: React.FC = () => {
     navigate(`${path}`, { replace: true });
   };
 
-  function onTabTitleClick(key: string) {
+  function onTabClick(key: string) {
     navigationEmitter?.emit({
       type: 'main',
       path: key as any,
@@ -122,8 +122,8 @@ const Main: React.FC = () => {
         <PostComposer />
         <Tabs
           activeKey={activeKey}
-          headerClassName={styles[`${classNamePrefix}-tabs`]}
-          onTabTitleClick={onTabTitleClick}
+          tabClassName={styles[`${classNamePrefix}-tabs`]}
+          onTabClick={onTabClick}
         >
           <Tabs.Tab title="为你推荐" key="/">
             <PostList

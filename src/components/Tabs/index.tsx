@@ -5,8 +5,10 @@ import { usePropsValue } from 'hooks/usePropsValue';
 import { attachPropertiesToComponent } from '@utils/attachPropertiesToComponent';
 import styles from './index.module.less';
 import { ShouldRender } from '@utils/ShouldRender';
+import TabHeader from './Tab';
+import ButtonTab from './ButtonTab';
 
-export type TabProps = {
+export type TabItemProps = {
   title: React.ReactNode;
   disabled?: boolean;
   forceRender?: boolean;
@@ -14,7 +16,7 @@ export type TabProps = {
   destroyOnClose?: boolean;
 };
 
-export const Tab: React.FC<TabProps> = () => {
+export const Tab: React.FC<TabItemProps> = () => {
   return null;
 };
 
@@ -23,21 +25,24 @@ export type TabsProps = {
   defaultActiveKey?: string | null;
   onChange?: (key: string) => void;
   children?: React.ReactNode;
-  headerClassName?: string;
+  tabClassName?: string;
+  contentClassName?: string;
   disabledContentScroll?: boolean;
-  onTabTitleClick?: (key: string) => void;
+  onTabClick?: (key: string) => void;
+  tabType?: 'default' | 'button';
 };
 
 const classNamePrefix = 'tabs';
 
 const Tabs: React.FC<TabsProps> = props => {
   const keyToIndexRecord: Record<string, number> = {};
+  const { tabType = 'default' } = props;
   let firstActiveKey: string | null = null;
 
-  const panes: React.ReactElement<TabProps>[] = [];
+  const panes: React.ReactElement<TabItemProps>[] = [];
 
   traverseReactNode(props.children, (child, index) => {
-    if (!isValidElement<TabProps>(child)) return;
+    if (!isValidElement<TabItemProps>(child)) return;
 
     const key = child.key;
     if (typeof key !== 'string') return;
@@ -57,6 +62,16 @@ const Tabs: React.FC<TabsProps> = props => {
     },
   });
 
+  const tabProps = {
+    panes,
+    activeKey: activeKey as any,
+    className: props.tabClassName,
+    onClick: (key: string) => {
+      props?.onTabClick?.(key);
+      setActiveKey(key.toString());
+    },
+  };
+
   return (
     <>
       <div
@@ -65,70 +80,37 @@ const Tabs: React.FC<TabsProps> = props => {
             !props.disabledContentScroll,
         })}
       >
-        <div
-          className={cs(
-            styles[`${classNamePrefix}-header`],
-            props.headerClassName,
-          )}
-        >
+        {tabType === 'default' ? (
+          <TabHeader
+            keyToIndex={keyToIndexRecord[activeKey as any]}
+            {...tabProps}
+          />
+        ) : (
+          <ButtonTab {...tabProps} />
+        )}
+        <div className={props?.contentClassName}>
           {panes.map(pane => {
+            if (pane.props.children === undefined) {
+              return null;
+            }
+            const active = pane.key === activeKey;
             return (
-              <div
-                className={cs(styles[`${classNamePrefix}-header-item`], {
-                  [styles[`${classNamePrefix}-header-item-active`]]:
-                    pane.key === activeKey,
-                })}
-                role="tab"
+              <ShouldRender
                 key={pane.key}
-                aria-selected={pane.key === activeKey}
-                tabIndex={0}
-                onClick={() => {
-                  const { key } = pane;
-                  if (pane.props.disabled) return;
-                  if (key === undefined || key === null) {
-                    return;
-                  }
-                  props?.onTabTitleClick?.(key);
-                  setActiveKey(key.toString());
-                }}
+                active={active}
+                forceRender={pane.props.forceRender}
+                destroyOnClose={pane.props?.destroyOnClose}
               >
-                {pane?.props?.title}
-              </div>
+                <div
+                  className={styles[`${classNamePrefix}-content`]}
+                  style={{ display: active ? 'block' : 'none' }}
+                >
+                  {pane.props.children}
+                </div>
+              </ShouldRender>
             );
           })}
-          {panes.length !== 0 && (
-            <div
-              className={styles[`${classNamePrefix}-header-line`]}
-              style={{
-                width: `${(1 / panes.length) * 100}%`,
-                transform: `translateX(${
-                  keyToIndexRecord[activeKey as any] * 100
-                }%)`,
-              }}
-            />
-          )}
         </div>
-        {panes.map(pane => {
-          if (pane.props.children === undefined) {
-            return null;
-          }
-          const active = pane.key === activeKey;
-          return (
-            <ShouldRender
-              key={pane.key}
-              active={active}
-              forceRender={pane.props.forceRender}
-              destroyOnClose={pane.props?.destroyOnClose}
-            >
-              <div
-                className={styles[`${classNamePrefix}-content`]}
-                style={{ display: active ? 'block' : 'none' }}
-              >
-                {pane.props.children}
-              </div>
-            </ShouldRender>
-          );
-        })}
       </div>
     </>
   );

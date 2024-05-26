@@ -157,7 +157,7 @@ const ProfilePosts: React.FC<ProfilePostsProps> = ({
     postListRef.current?.reload?.(true);
   });
 
-  function onTabTitleClick(key: string) {
+  function onTabClick(key: string) {
     const isCurrentKey = key === activeKey;
     if (isCurrentKey) {
       if (window.scrollY) {
@@ -184,8 +184,8 @@ const ProfilePosts: React.FC<ProfilePostsProps> = ({
         onChange={key => {
           changeUrl(key ? `/${key}` : '');
         }}
-        onTabTitleClick={onTabTitleClick}
-        headerClassName={styles[`${classNamePrefix}-header`]}
+        onTabClick={onTabClick}
+        tabClassName={styles[`${classNamePrefix}-header`]}
       >
         <Tabs.Tab title="串文" key="">
           {!isBanned && (

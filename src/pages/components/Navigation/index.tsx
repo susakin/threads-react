@@ -157,6 +157,7 @@ const Navigation: React.FC<NavigationProps> = ({
           navigationEmitter?.emit({
             type: 'activity',
             path: pathname.replace('/activity', '') as any,
+            fromNavigation: true,
           });
         break;
       case 'create':

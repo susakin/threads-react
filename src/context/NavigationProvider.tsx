@@ -11,6 +11,7 @@ type NavigationEmitterParams =
   | { type: 'newPost' }
   | {
       type: 'activity';
+      fromNavigation?: boolean;
       path?:
         | ''
         | '/follows'

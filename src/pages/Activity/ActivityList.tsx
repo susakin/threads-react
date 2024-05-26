@@ -104,7 +104,7 @@ const ActivityList: React.FC<ActivityListProps> = ({
 
   navigationEmitter?.useSubscription(props => {
     if (props?.type !== 'activity') return;
-    reload(props?.path);
+    props?.fromNavigation && reload(props?.path);
   });
 
   emitter?.useSubscription?.(path => {

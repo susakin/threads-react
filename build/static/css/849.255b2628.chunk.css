@@ -889,7 +889,7 @@
 }
 .CiIVX {
   background-color: var(--barcelona-elevated-background);
-  border: 0.5px solid var(--barcelona-menu-outline);
+  border: 0.5px solid var(--barcelona-primary-outline);
   border-radius: 100px;
   bottom: 32px;
   box-shadow: 0 8px 24px 0 var(--barcelona-box-shadow-08);

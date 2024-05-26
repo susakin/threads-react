@@ -18,10 +18,11 @@ const PostSkeleton: React.FC<PostSkeletonProps> = ({
         const animationDelay = `calc(${index}* var(--glimmer-stagger-time, 200ms))`;
         return (
           <div className={styles[`${classNamePrefix}-item`]} key={index}>
-            <div
-              className={styles[`${classNamePrefix}-item-avatar`]}
-              style={{ animationDelay }}
-            >
+            <div className={styles[`${classNamePrefix}-item-avatar`]}>
+              <div
+                className={styles[`${classNamePrefix}-item-avatar-inner`]}
+                style={{ animationDelay }}
+              />
               {hasBadge && (
                 <div className={styles[`${classNamePrefix}-item-avatar-badge`]}>
                   <div
@@ -33,6 +34,7 @@ const PostSkeleton: React.FC<PostSkeletonProps> = ({
                 </div>
               )}
             </div>
+
             <div className={styles[`${classNamePrefix}-item-inner`]}>
               {new Array(3).fill(0).map((i, index) => (
                 <div

@@ -71,7 +71,7 @@ const FollowerTabs: React.FC<FollowerModalProps> = ({ user }) => {
   return (
     <div className={styles[`${classNamePrefix}`]}>
       <Tabs
-        headerClassName={styles[`${classNamePrefix}-header`]}
+        tabClassName={styles[`${classNamePrefix}-header`]}
         disabledContentScroll={false}
       >
         <Tabs.Tab

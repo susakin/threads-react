@@ -13,7 +13,7 @@
         r = t(5861),
         o = t(9439),
         l = t(7313),
-        a = t(4134),
+        a = t(1959),
         c = t(6975),
         s = {
           media: 'Ksrat',
@@ -711,8 +711,8 @@
                   (0, d.jsx)(f, {}),
                   (0, d.jsxs)(c.mQ, {
                     activeKey: v,
-                    headerClassName: p[''.concat('main', '-tabs')],
-                    onTabTitleClick: function (n) {
+                    tabClassName: p[''.concat('main', '-tabs')],
+                    onTabClick: function (n) {
                       null === b ||
                         void 0 === b ||
                         b.emit({ type: 'main', path: n }),

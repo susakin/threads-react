@@ -116,11 +116,11 @@ function List<T extends ListItem, U extends Record<string, any>>({
           ...params,
         } as RequestParams<U>);
         if (success) {
-          setData(prevData => [
-            ...(useLoadingContainerRef.current ? [] : prevData),
-            ...data,
-          ]);
-          useLoadingContainerRef.current = false;
+          setData(prevData => {
+            const useLoadingContainer = useLoadingContainerRef.current;
+            useLoadingContainerRef.current = false;
+            return [...(useLoadingContainer ? [] : prevData), ...data];
+          });
           setPaginationState(prevState => ({
             ...prevState,
             total: total as number,

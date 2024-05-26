@@ -21,9 +21,9 @@
           'settings-title': 'UePeV',
           settings: 'd_0v6',
         },
-        a = i(4134),
+        a = i(1959),
         o = i(8467),
-        l = i(1631),
+        l = i(4733),
         r = {
           media: 'R6ib8',
           'media-viewer-content': 'Y73mS',

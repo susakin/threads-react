@@ -28,11 +28,15 @@
     grid-template-rows: auto;
 
     &-avatar {
-      height: 36px;
-      width: 36px;
-      border-radius: 18px;
-      .shinning();
       position: relative;
+
+      &-inner {
+        height: 36px;
+        width: 36px;
+        border-radius: 18px;
+        .shinning();
+        position: relative;
+      }
 
       &-badge {
         position: absolute;
