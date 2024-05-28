@@ -87,7 +87,7 @@ function App() {
         <Threads
           className={styles[`${classNamePrefix}-placeholder-logo`]}
           fill="currentColor"
-          size={45}
+          size={50}
           viewBox="0 0 192 192"
         />
       </div>

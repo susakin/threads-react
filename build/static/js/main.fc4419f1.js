@@ -1,4 +1,4 @@
-/*! For license information please see main.b9fd792b.js.LICENSE.txt */
+/*! For license information please see main.fc4419f1.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -82056,7 +82056,7 @@
                 children: (0, h.jsx)(c.US, {
                   className: l[''.concat('app', '-placeholder-logo')],
                   fill: 'currentColor',
-                  size: 45,
+                  size: 50,
                   viewBox: '0 0 192 192',
                 }),
               })
