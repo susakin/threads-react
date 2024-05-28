@@ -41,7 +41,12 @@ type PostProps = {
   > &
   Pick<
     PostHeaderProps,
-    'onFollowingChange' | 'hasPin' | 'hasPined' | 'pinToWhere' | 'onPostSuccess'
+    | 'onFollowingChange'
+    | 'hasPin'
+    | 'hasPined'
+    | 'pinToWhere'
+    | 'onPostSuccess'
+    | 'onUsernameClick'
   > &
   Pick<PostSummaryProps, 'onCommentCountClick'>;
 

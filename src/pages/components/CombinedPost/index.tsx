@@ -36,7 +36,7 @@ export type CombinedPostProps = {
 } & PostHeaderActionProps &
   Pick<PostSummaryProps, 'onCommentCountClick'> &
   Pick<PostActionProps, 'onReply'> &
-  Pick<PostHeaderProps, 'onPostSuccess'>;
+  Pick<PostHeaderProps, 'onPostSuccess' | 'onUsernameClick'>;
 
 const CombinedPost: React.FC<CombinedPostProps> = ({
   combinedPost,

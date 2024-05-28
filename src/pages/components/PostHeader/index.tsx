@@ -5,19 +5,21 @@ import PostHeaderAction, { PostHeaderActionProps } from './PostHeaderAction';
 import styles from './index.module.less';
 import PostEditModal from '../PostEditModal';
 import Time from '@components/Time';
-import { TextEntity } from '@typings/index';
+import { TextEntity, User } from '@typings/index';
 
 const classNamePrefix = 'post-header';
 
 export type PostHeaderProps = {
   className?: string;
   onPostSuccess?: () => void;
+  onUsernameClick?: (user?: User) => void;
 } & Omit<PostHeaderActionProps, 'username' | 'onEditClick' | 'onTagClick'>;
 
 const PostHeader: React.FC<PostHeaderProps> = ({
   className,
   post,
   onPostSuccess,
+  onUsernameClick,
   ...rest
 }) => {
   const { user, code, createdAt } = post || {};
@@ -32,6 +34,7 @@ const PostHeader: React.FC<PostHeaderProps> = ({
               user={user}
               className={styles[`${classNamePrefix}-inner-name-username`]}
               onFollowingChange={rest.onFollowingChange as any}
+              onClick={onUsernameClick}
             />
             <Time
               time={createdAt}

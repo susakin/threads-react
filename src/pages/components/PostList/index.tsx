@@ -33,6 +33,7 @@ type PostListProps = {
     | 'onCommentCountClick'
     | 'onReply'
     | 'onPostSuccess'
+    | 'onUsernameClick'
   >;
 
 function PostList<T extends Record<string, any>>({
@@ -56,6 +57,7 @@ function PostList<T extends Record<string, any>>({
   onPostSuccess,
   hasRepostSign,
   hasFirstSign,
+  onUsernameClick,
   ...rest
 }: PostListProps & ListProps<CombinedPostItem, T>) {
   return (
@@ -86,6 +88,7 @@ function PostList<T extends Record<string, any>>({
                       lastChildLineType={lastChildLineType}
                       ignoreMutingUser={ignoreMutingUser}
                       indentWhenTransparentLine={indentWhenTransparentLine}
+                      onUsernameClick={onUsernameClick}
                       lastChildHasSummaryUserPreview={
                         lastChildHasSummaryUserPreview
                       }

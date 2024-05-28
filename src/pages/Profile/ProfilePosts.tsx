@@ -149,12 +149,16 @@ const ProfilePosts: React.FC<ProfilePostsProps> = ({
     props.type === 'newPost' && postListRef.current?.reload?.();
   });
 
-  navigationEmitter?.useSubscription(props => {
-    if (props.type !== 'profile') return;
+  function reload() {
     if (window.scrollY) {
       return window.scrollTo(0, 0);
     }
     postListRef.current?.reload?.(true);
+  }
+
+  navigationEmitter?.useSubscription(props => {
+    if (props.type !== 'profile') return;
+    reload();
   });
 
   function onTabClick(key: string) {
@@ -204,6 +208,11 @@ const ProfilePosts: React.FC<ProfilePostsProps> = ({
               onDataChange={onUserFieldUpdated}
               onPostSuccess={() => {
                 postListRef.current?.reload?.(true);
+              }}
+              onUsernameClick={_user => {
+                if (_user?.username === user?.username) {
+                  reload();
+                }
               }}
               emptyPlaceholder={
                 user?.friendshipStatus?.isOwn ? (

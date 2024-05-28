@@ -13,18 +13,20 @@ import { isSupportTouch } from '@utils/index';
 
 const classNamePrefix = 'username';
 
-type usenameProps = {
+type UsernameProps = {
   user?: User;
   className?: string;
   username?: string;
   disableLink?: boolean;
   hasVerified?: boolean;
+  onClick?: (user?: User) => void;
 } & PickFollowButtonProps;
 
-const Usename: React.FC<usenameProps> = ({
+const Username: React.FC<UsernameProps> = ({
   className,
   disableLink,
   hasVerified = true,
+  onClick,
   ...rest
 }) => {
   const [user, setUser] = useState<User>(rest?.user as User);
@@ -108,6 +110,7 @@ const Usename: React.FC<usenameProps> = ({
             to={`/@${username}`}
             onClick={e => {
               e.stopPropagation();
+              onClick?.(rest?.user);
             }}
             onMouseEnter={fetchUser}
             onFocus={fetchUser}
@@ -128,4 +131,4 @@ const Usename: React.FC<usenameProps> = ({
   );
 };
 
-export default Usename;
+export default Username;
