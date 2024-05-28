@@ -1,4 +1,4 @@
-/*! For license information please see main.fc4419f1.js.LICENSE.txt */
+/*! For license information please see main.48b7347f.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -24135,6 +24135,11 @@
                           ((null === t || void 0 === t
                             ? void 0
                             : t.likeCount) || 0) > 0 &&
+                            !(
+                              null !== t &&
+                              void 0 !== t &&
+                              t.likeAndViewCountsDisabled
+                            ) &&
                             (0, O.jsx)(s.DP, {
                               count:
                                 null === t || void 0 === t

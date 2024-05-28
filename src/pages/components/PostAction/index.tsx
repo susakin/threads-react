@@ -194,7 +194,7 @@ const PostAction: React.FC<PostActionProps> = ({
               stroke="currentColor"
               fill={post?.isLikedByViewer ? 'currentColor' : 'transparent'}
             />
-            {(post?.likeCount || 0) > 0 && (
+            {(post?.likeCount || 0) > 0 && !post?.likeAndViewCountsDisabled && (
               <ScrollCountText
                 count={post?.likeCount}
                 className={styles[`${classNamePrefix}-button-scroll-text`]}
