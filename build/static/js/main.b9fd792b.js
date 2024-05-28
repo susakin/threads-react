@@ -1,4 +1,4 @@
-/*! For license information please see main.7b3703e9.js.LICENSE.txt */
+/*! For license information please see main.b9fd792b.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -22660,90 +22660,91 @@
           },
           de = n(3201),
           pe = n(1114),
-          he = ['className', 'disableLink', 'hasVerified'],
+          he = ['className', 'disableLink', 'hasVerified', 'onClick'],
           ve = 'username',
           ye = function (e) {
             var t = e.className,
               n = e.disableLink,
               o = e.hasVerified,
               c = void 0 === o || o,
-              f = (0, C.Z)(e, he),
-              p = (0, a.useState)(null === f || void 0 === f ? void 0 : f.user),
-              h = (0, i.Z)(p, 2),
-              v = h[0],
-              g = h[1],
-              m = (0, a.useState)(!1),
-              b = (0, i.Z)(m, 2),
-              w = b[0],
-              x = b[1],
-              _ = (0, a.useRef)(!1),
-              k = (0, y.i)(de.dQ, {
+              f = e.onClick,
+              p = (0, C.Z)(e, he),
+              h = (0, a.useState)(null === p || void 0 === p ? void 0 : p.user),
+              v = (0, i.Z)(h, 2),
+              g = v[0],
+              m = v[1],
+              b = (0, a.useState)(!1),
+              w = (0, i.Z)(b, 2),
+              x = w[0],
+              _ = w[1],
+              k = (0, a.useRef)(!1),
+              S = (0, y.i)(de.dQ, {
                 manual: !0,
                 onSuccess: function (e) {
-                  g(e), x(!0), (_.current = !0);
+                  m(e), _(!0), (k.current = !0);
                 },
                 ignoreErrorMsg: !0,
                 onError: function () {
-                  _.current = !0;
+                  k.current = !0;
                 },
               }).runAsync;
             (0, a.useLayoutEffect)(
               function () {
-                g(f.user);
+                m(p.user);
               },
-              [f.user],
+              [p.user],
             );
-            var S =
-                f.username ||
-                (null === v || void 0 === v ? void 0 : v.username),
-              E =
-                null !== S && void 0 !== S && S.startsWith('@')
-                  ? S.slice(1)
-                  : S;
-            function D() {
-              !_.current && f.username && k(E);
+            var E =
+                p.username ||
+                (null === g || void 0 === g ? void 0 : g.username),
+              D =
+                null !== E && void 0 !== E && E.startsWith('@')
+                  ? E.slice(1)
+                  : E;
+            function j() {
+              !k.current && p.username && S(D);
             }
             return (
               (0, a.useLayoutEffect)(
                 function () {
-                  v && !pe.Y && x(!0);
+                  g && !pe.Y && _(!0);
                 },
-                [v],
+                [g],
               ),
               (0, O.jsxs)('div', {
                 className: d()(fe[''.concat(ve)], t),
                 children: [
                   n
-                    ? S
+                    ? E
                     : (0, O.jsx)(
                         s.J2,
                         {
                           openDelay: 300,
-                          enabled: w,
+                          enabled: x,
                           content: pe.Y
                             ? null
-                            : v &&
+                            : g &&
                               (0, O.jsx)(
                                 _e,
                                 (0, r.Z)(
-                                  (0, r.Z)({ user: v }, f),
+                                  (0, r.Z)({ user: g }, p),
                                   {},
                                   {
                                     onFollowingChange: function (e, t) {
                                       var n,
                                         o = t.following,
                                         i = t.outgoingRequest;
-                                      null === f ||
-                                        void 0 === f ||
-                                        null === (n = f.onFollowingChange) ||
+                                      null === p ||
+                                        void 0 === p ||
+                                        null === (n = p.onFollowingChange) ||
                                         void 0 === n ||
-                                        n.call(f, e, {
+                                        n.call(p, e, {
                                           following: o,
                                           outgoingRequest: i,
                                         }),
-                                        !f.user &&
-                                          f.username &&
-                                          g(function (e) {
+                                        !p.user &&
+                                          p.username &&
+                                          m(function (e) {
                                             return (0, r.Z)(
                                               (0, r.Z)({}, e),
                                               {},
@@ -22769,18 +22770,25 @@
                           trigger: 'hover',
                           placement: 'bottom-start',
                           children: (0, O.jsx)(l.rU, {
-                            to: '/@'.concat(E),
+                            to: '/@'.concat(D),
                             onClick: function (e) {
-                              e.stopPropagation();
+                              e.stopPropagation(),
+                                null === f ||
+                                  void 0 === f ||
+                                  f(
+                                    null === p || void 0 === p
+                                      ? void 0
+                                      : p.user,
+                                  );
                             },
-                            onMouseEnter: D,
-                            onFocus: D,
-                            children: S,
+                            onMouseEnter: j,
+                            onFocus: j,
+                            children: E,
                           }),
                         },
-                        null === v || void 0 === v ? void 0 : v.id,
+                        null === g || void 0 === g ? void 0 : g.id,
                       ),
-                  (null === v || void 0 === v ? void 0 : v.isVerified) &&
+                  (null === g || void 0 === g ? void 0 : g.isVerified) &&
                     c &&
                     (0, O.jsx)(u.we, {
                       fill: 'rgb(0, 149, 246)',
@@ -23662,25 +23670,26 @@
             'post-header-inner-name-time': 'GKd5b',
           },
           $e = n(2379),
-          Ye = ['className', 'post', 'onPostSuccess'],
+          Ye = ['className', 'post', 'onPostSuccess', 'onUsernameClick'],
           Ge = 'post-header',
           Qe = function (e) {
             var t = e.className,
               n = e.post,
               o = e.onPostSuccess,
-              u = (0, C.Z)(e, Ye),
-              s = n || {},
-              c = s.user,
-              l = s.code,
-              f = s.createdAt,
-              p = (0, a.useState)(!1),
-              h = (0, i.Z)(p, 2),
-              v = h[0],
-              y = h[1],
-              g = (0, a.useState)(),
-              m = (0, i.Z)(g, 2),
-              b = m[0],
-              w = m[1];
+              u = e.onUsernameClick,
+              s = (0, C.Z)(e, Ye),
+              c = n || {},
+              l = c.user,
+              f = c.code,
+              p = c.createdAt,
+              h = (0, a.useState)(!1),
+              v = (0, i.Z)(h, 2),
+              y = v[0],
+              g = v[1],
+              m = (0, a.useState)(),
+              b = (0, i.Z)(m, 2),
+              w = b[0],
+              x = b[1];
             return (0, O.jsxs)(O.Fragment, {
               children: [
                 (0, O.jsx)('div', {
@@ -23692,14 +23701,15 @@
                         className: qe[''.concat(Ge, '-inner-name')],
                         children: [
                           (0, O.jsx)(ye, {
-                            user: c,
+                            user: l,
                             className:
                               qe[''.concat(Ge, '-inner-name-username')],
-                            onFollowingChange: u.onFollowingChange,
+                            onFollowingChange: s.onFollowingChange,
+                            onClick: u,
                           }),
                           (0, O.jsx)($e.Z, {
-                            time: f,
-                            linkTo: '/post/'.concat(l),
+                            time: p,
+                            linkTo: '/post/'.concat(f),
                             keepWeek: !1,
                             className: qe[''.concat(Ge, '-inner-name-time')],
                           }),
@@ -23711,12 +23721,12 @@
                           {
                             post: n,
                             onEditClick: function () {
-                              y(!0);
+                              g(!0);
                             },
                             onTagClick: function () {
                               var e;
-                              y(!0),
-                                w(
+                              g(!0),
+                                x(
                                   null === n ||
                                     void 0 === n ||
                                     null === (e = n.textEntities) ||
@@ -23728,25 +23738,25 @@
                                 );
                             },
                           },
-                          u,
+                          s,
                         ),
                       ),
                     ],
                   }),
                 }),
                 (0, O.jsx)(xn, {
-                  visible: v,
+                  visible: y,
                   onUpdate:
-                    null === u || void 0 === u ? void 0 : u.onPostUpdate,
-                  editPost: b ? void 0 : n,
-                  textEntity: b,
+                    null === s || void 0 === s ? void 0 : s.onPostUpdate,
+                  editPost: w ? void 0 : n,
+                  textEntity: w,
                   onSuccess: function (e) {
                     (null === e || void 0 === e ? void 0 : e.id) !==
                       (null === n || void 0 === n ? void 0 : n.id) &&
                       (null === o || void 0 === o || o());
                   },
                   onClose: function () {
-                    y(!1), w(void 0);
+                    g(!1), x(void 0);
                   },
                 }),
               ],
@@ -28451,6 +28461,7 @@
             'onPostSuccess',
             'hasRepostSign',
             'hasFirstSign',
+            'onUsernameClick',
           ];
         var yr = function (e) {
             var t = e.className,
@@ -28476,13 +28487,14 @@
               j = e.onPostSuccess,
               P = e.hasRepostSign,
               A = e.hasFirstSign,
-              T = (0, C.Z)(e, vr);
+              T = e.onUsernameClick,
+              L = (0, C.Z)(e, vr);
             return (0, O.jsx)('div', {
               className: d()(hr[''.concat('post-list')], t),
               children: (0, O.jsx)(
                 At,
                 (0, r.Z)(
-                  (0, r.Z)({}, T),
+                  (0, r.Z)({}, L),
                   {},
                   {
                     children: function (e) {
@@ -28492,9 +28504,9 @@
                         d = e.data,
                         _ = e.deleteItem,
                         C = e.itemFieldUpdate,
-                        T = e.updateData,
-                        L = 'profile' === b,
-                        R =
+                        L = e.updateData,
+                        R = 'profile' === b,
+                        M =
                           null === d ||
                           void 0 === d ||
                           null === (t = d[0]) ||
@@ -28504,7 +28516,7 @@
                           null === (f = c[0]) ||
                           void 0 === f
                             ? void 0
-                            : f[L ? 'isPinnedToProfile' : 'isPinnedToComment'];
+                            : f[R ? 'isPinnedToProfile' : 'isPinnedToComment'];
                       return (0, O.jsx)(O.Fragment, {
                         children:
                           null === d || void 0 === d
@@ -28530,10 +28542,11 @@
                                         lastChildLineType: a,
                                         ignoreMutingUser: k,
                                         indentWhenTransparentLine: y,
+                                        onUsernameClick: T,
                                         lastChildHasSummaryUserPreview: u,
                                         onReply: function (e, t) {
                                           null === D || void 0 === D || D(e, t),
-                                            T(function (n) {
+                                            L(function (n) {
                                               return n.map(function (n) {
                                                 for (
                                                   var o,
@@ -28624,13 +28637,13 @@
                                         pinToWhere: b,
                                         hasPinSign: x,
                                         hasPin: n,
-                                        hasPined: R,
+                                        hasPined: M,
                                         hasBorderTop: !!t || (c && l),
                                         onUserFriendshipStatusUpdate: function (
                                           e,
                                           t,
                                         ) {
-                                          T(function (n) {
+                                          L(function (n) {
                                             return n.map(function (n) {
                                               var o;
                                               return (0, r.Z)(
@@ -28720,10 +28733,10 @@
                                               );
                                         },
                                         onPinChange: function (e, t) {
-                                          var n = L
+                                          var n = R
                                             ? 'isPinnedToProfile'
                                             : 'isPinnedToComment';
-                                          T(function (a) {
+                                          L(function (a) {
                                             if (t) {
                                               var u, s;
                                               null !== (u = a[0]) &&
@@ -28798,7 +28811,7 @@
                                         onFollowingChange: function (e, t) {
                                           var n = t.following,
                                             o = t.outgoingRequest;
-                                          T(function (t) {
+                                          L(function (t) {
                                             return t.map(function (t) {
                                               var i;
                                               return (0, r.Z)(
@@ -81611,7 +81624,7 @@
           653: '0ad22251',
           849: '995b94ec',
           864: 'd3455417',
-          997: '56736725',
+          997: 'e2316830',
         }[e] +
         '.chunk.js'
       );

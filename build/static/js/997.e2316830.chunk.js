@@ -1670,6 +1670,15 @@
                 });
             });
           }
+          function P() {
+            var e, n;
+            if (window.scrollY) return window.scrollTo(0, 0);
+            null === (e = j.current) ||
+              void 0 === e ||
+              null === (n = e.reload) ||
+              void 0 === n ||
+              n.call(e, !0);
+          }
           return (
             (0, t.useEffect)(
               function () {
@@ -1715,17 +1724,7 @@
             null === w ||
               void 0 === w ||
               w.useSubscription(function (e) {
-                var n, i;
-                if ('profile' === e.type)
-                  return window.scrollY
-                    ? window.scrollTo(0, 0)
-                    : void (
-                        null === (n = j.current) ||
-                        void 0 === n ||
-                        null === (i = n.reload) ||
-                        void 0 === i ||
-                        i.call(n, !0)
-                      );
+                'profile' === e.type && P();
               }),
             (0, x.jsxs)(x.Fragment, {
               children: [
@@ -1809,6 +1808,14 @@
                                 null === (n = e.reload) ||
                                 void 0 === n ||
                                 n.call(e, !0);
+                            },
+                            onUsernameClick: function (e) {
+                              (null === e || void 0 === e
+                                ? void 0
+                                : e.username) ===
+                                (null === d || void 0 === d
+                                  ? void 0
+                                  : d.username) && P();
                             },
                             emptyPlaceholder:
                               null !== d &&
