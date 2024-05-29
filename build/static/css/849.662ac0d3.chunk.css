@@ -172,7 +172,6 @@
 .Ms_GT {
   word-wrap: break-word;
   align-items: center;
-  color: var(--barcelona-secondary-text);
   cursor: text;
   display: flex;
   flex-grow: 1;
@@ -191,8 +190,11 @@
   white-space: pre-line;
   word-break: break-word;
 }
+.BgYya,
+.Ms_GT {
+  color: var(--barcelona-secondary-text);
+}
 .BgYya {
-  color: var(--barcelona-primary-button-text);
   flex-shrink: 0;
 }
 .J45oc {

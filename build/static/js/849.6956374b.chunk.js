@@ -60,8 +60,6 @@
                     children: '\u5199\u5199\u4e32\u6587...',
                   }),
                   (0, d.jsx)(c.zx, {
-                    style: { borderRadius: '36px' },
-                    type: 'primary',
                     className: s[''.concat(v, '-inner-button')],
                     onClick: function () {
                       r(!0);
@@ -81,8 +79,8 @@
             ],
           });
         },
-        p = { 'main-tabs': 'g1fyS' },
-        m = t(2846),
+        m = { 'main-tabs': 'g1fyS' },
+        p = t(2846),
         h = t(6031),
         x = t(4747),
         g = t(8467),
@@ -112,8 +110,8 @@
         b = t(813),
         C = t(5330),
         k = t(1909),
-        y = t.n(k),
-        Z = t(3168),
+        Z = t.n(k),
+        y = t(3168),
         S = t(6881),
         z = t(2320),
         T = t(9391);
@@ -126,14 +124,14 @@
                   typeof n,
                 ),
               ));
-          var i = (0, Z.Z)(n),
+          var i = (0, y.Z)(n),
             r =
               null !== (t = null === e || void 0 === e ? void 0 : e.wait) &&
               void 0 !== t
                 ? t
                 : 1e3,
             o = (0, l.useMemo)(function () {
-              return y()(
+              return Z()(
                 function () {
                   for (var n = [], e = 0; e < arguments.length; e++)
                     n[e] = arguments[e];
@@ -189,12 +187,12 @@
             u = a[1],
             v = (0, l.useState)(0),
             f = (0, o.Z)(v, 2),
-            p = f[0],
-            m = f[1];
+            m = f[0],
+            p = f[1];
           (0, l.useEffect)(
             function () {
               setTimeout(function () {
-                i.current && m(i.current.scrollWidth - i.current.clientWidth);
+                i.current && p(i.current.scrollWidth - i.current.clientWidth);
               });
             },
             [t],
@@ -274,7 +272,7 @@
                   }),
                 ],
               }),
-              p !== Math.ceil(s) &&
+              m !== Math.ceil(s) &&
                 (0, d.jsx)('div', {
                   className: N[''.concat(L, '-next')],
                   children: (0, d.jsx)(c.ZJ, {
@@ -583,7 +581,7 @@
                               (r = e.pageSize),
                               (n.next = 3),
                               (i = { page: t, pageSize: r }),
-                              (0, m.Z)({
+                              (0, p.Z)({
                                 url: '/post/timeline',
                                 method: 'get',
                                 params: i,
@@ -659,7 +657,7 @@
                             (r = e.pageSize),
                             (n.next = 3),
                             (i = { page: t, pageSize: r }),
-                            (0, m.Z)({
+                            (0, p.Z)({
                               url: '/post/following-posts',
                               method: 'get',
                               params: i,
@@ -711,7 +709,7 @@
                   (0, d.jsx)(f, {}),
                   (0, d.jsxs)(c.mQ, {
                     activeKey: v,
-                    tabClassName: p[''.concat('main', '-tabs')],
+                    tabClassName: m[''.concat('main', '-tabs')],
                     onTabClick: function (n) {
                       null === b ||
                         void 0 === b ||

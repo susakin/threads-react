@@ -1,4 +1,4 @@
-/*! For license information please see main.48b7347f.js.LICENSE.txt */
+/*! For license information please see main.b725d06c.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -23267,30 +23267,29 @@
               d = e.onPinChange,
               p = e.onFollowingChange,
               h = e.hasPin,
-              v = e.hasPined,
-              g = e.pinToWhere,
-              m = e.onTagClick,
-              b = e.onEditClick,
-              w = e.onUserFriendshipStatusUpdate,
-              x = o || {},
-              C = x.captionIsEdited,
-              k = x.createdAt,
-              S = void 0 === k ? 0 : k,
-              E = x.id,
-              D = void 0 === E ? '' : E,
-              j = x.isSavedByViewer,
-              P = x.textEntities,
-              A = ((null === o || void 0 === o ? void 0 : o.user) || {})
+              v = e.pinToWhere,
+              g = e.onTagClick,
+              m = e.onEditClick,
+              x = e.onUserFriendshipStatusUpdate,
+              C = o || {},
+              k = C.captionIsEdited,
+              S = C.createdAt,
+              E = void 0 === S ? 0 : S,
+              D = C.id,
+              j = void 0 === D ? '' : D,
+              P = C.isSavedByViewer,
+              A = C.textEntities,
+              T = ((null === o || void 0 === o ? void 0 : o.user) || {})
                 .friendshipStatus,
-              T = (0, a.useState)(!1),
-              L = (0, i.Z)(T, 2),
-              R = L[0],
-              M = L[1],
-              F = (0, Me.r)({
+              L = (0, a.useState)(!1),
+              R = (0, i.Z)(L, 2),
+              M = R[0],
+              F = R[1],
+              N = (0, Me.r)({
                 user: null === o || void 0 === o ? void 0 : o.user,
-                onUserFriendshipStatusUpdate: w,
+                onUserFriendshipStatusUpdate: x,
               }).item,
-              N = (function (e) {
+              Z = (function (e) {
                 var t,
                   n = e.createdAt,
                   r = e.onEditClick,
@@ -23327,75 +23326,118 @@
                     }),
                   { item: t }
                 );
-              })({ createdAt: S, onEditClick: b }),
-              Z = N.item,
-              I = (function (e) {
+              })({ createdAt: E, onEditClick: m }),
+              I = Z.item,
+              B = (function (e) {
                 var t = e.post,
                   n = e.pinToWhere,
                   r = e.onPinChange,
-                  o = e.hasPined,
-                  i = t || {},
-                  a = i.id,
-                  c = i.isPinnedToProfile,
-                  l = i.isPinnedToComment,
-                  f = 'profile' === n,
-                  d = f ? c : l,
-                  p = (0, y.i)(f ? Pe.Cj : Pe.yk, {
+                  o = t || {},
+                  i = o.id,
+                  a = o.isPinnedToProfile,
+                  c = o.isPinnedToComment,
+                  l = 'profile' === n,
+                  f = l ? a : c,
+                  d = (0, y.i)(l ? Pe.WL : Pe.h_, { manual: !0 }),
+                  p = d.runAsync,
+                  h = d.loading;
+                function v() {
+                  return (v = (0, w.Z)(
+                    (0, b.Z)().mark(function e() {
+                      var n;
+                      return (0, b.Z)().wrap(
+                        function (e) {
+                          for (;;)
+                            switch ((e.prev = e.next)) {
+                              case 0:
+                                if (!f) {
+                                  e.next = 4;
+                                  break;
+                                }
+                                m(i), (e.next = 14);
+                                break;
+                              case 4:
+                                return (
+                                  (e.prev = 4),
+                                  (e.next = 7),
+                                  p(
+                                    null === t || void 0 === t
+                                      ? void 0
+                                      : t.replyToPostId,
+                                  )
+                                );
+                              case 7:
+                                null !== (n = e.sent) && void 0 !== n && n.data
+                                  ? _.Z.confirm({
+                                      title:
+                                        '\u662f\u5426\u66ff\u6362\u5f53\u524d\u7f6e\u9876\u5185\u5bb9\uff1f',
+                                      content: l
+                                        ? '\u4e00\u6b21\u53ea\u80fd\u5728\u4e3b\u9875\u4e2d\u7f6e\u9876\u4e00\u6761\u4e32\u6587\u3002'
+                                        : '\u4e00\u6b21\u53ea\u80fd\u5728\u4e32\u6587\u4e2d\u7f6e\u9876\u4e00\u6761\u56de\u590d\u3002',
+                                      okType: 'default',
+                                      onOk: function () {
+                                        g(i);
+                                      },
+                                    })
+                                  : g(i),
+                                  (e.next = 14);
+                                break;
+                              case 11:
+                                (e.prev = 11), (e.t0 = e.catch(4)), g(i);
+                              case 14:
+                              case 'end':
+                                return e.stop();
+                            }
+                        },
+                        e,
+                        null,
+                        [[4, 11]],
+                      );
+                    }),
+                  )).apply(this, arguments);
+                }
+                var g = (0, y.i)(l ? Pe.Cj : Pe.yk, {
                     manual: !0,
                     onSuccess: function () {
                       s.FN.show('\u5df2\u7f6e\u9876'),
-                        null === r || void 0 === r || r(a, !0);
+                        null === r || void 0 === r || r(i, !0);
                     },
                   }).run,
-                  h = (0, y.i)(f ? Pe.ef : Pe.S2, {
+                  m = (0, y.i)(l ? Pe.ef : Pe.S2, {
                     manual: !0,
                     onSuccess: function () {
                       s.FN.show('\u5df2\u53d6\u6d88\u7f6e\u9876'),
-                        null === r || void 0 === r || r(a, !1);
+                        null === r || void 0 === r || r(i, !1);
                     },
-                  }).run;
-                return {
-                  item: {
-                    label: d
+                  }).run,
+                  x = {
+                    label: f
                       ? '\u53d6\u6d88\u7f6e\u9876'
                       : '\u7f6e\u9876\u5230'.concat(
-                          f ? '\u4e3b\u9875' : '\u8bc4\u8bba',
+                          l ? '\u4e3b\u9875' : '\u8bc4\u8bba',
                         ),
                     onClick: function () {
-                      d
-                        ? h(a)
-                        : o
-                        ? _.Z.confirm({
-                            title:
-                              '\u662f\u5426\u66ff\u6362\u5f53\u524d\u7f6e\u9876\u5185\u5bb9\uff1f',
-                            content: f
-                              ? '\u4e00\u6b21\u53ea\u80fd\u5728\u4e3b\u9875\u4e2d\u7f6e\u9876\u4e00\u6761\u4e32\u6587\u3002'
-                              : '\u4e00\u6b21\u53ea\u80fd\u5728\u4e32\u6587\u4e2d\u7f6e\u9876\u4e00\u6761\u56de\u590d\u3002',
-                            okType: 'default',
-                            onOk: function () {
-                              p(a);
-                            },
-                          })
-                        : p(a);
+                      return v.apply(this, arguments);
                     },
                     icon: (0, O.jsx)(u.lO, { viewBox: '0 0 20 20', size: 20 }),
-                  },
-                };
-              })({ post: o, hasPined: v, onPinChange: d, pinToWhere: g }),
-              B = I.item,
-              z = (0, Fe.l)({
+                    loading: h,
+                  };
+                return { item: x };
+              })({ post: o, onPinChange: d, pinToWhere: v }),
+              z = B.item,
+              U = (0, Fe.l)({
                 user: null === o || void 0 === o ? void 0 : o.user,
-                onUserFriendshipStatusUpdate: w,
+                onUserFriendshipStatusUpdate: x,
               }).item,
-              U = (0, y.i)(Pe.fR, {
+              K = (0, y.i)(Pe.fR, {
                 manual: !0,
                 onSuccess: function () {
-                  null === f || void 0 === f || f(D),
+                  null === f || void 0 === f || f(j),
                     s.FN.show('\u5df2\u5220\u9664');
                 },
               }).run,
-              K = (0, c.s0)(),
-              H = (0, y.i)(Pe.sm, {
+              H = (0, c.s0)(),
+              W = (0, y.i)(Pe.sm, {
                 manual: !0,
                 onSuccess: function () {
                   s.FN.show({
@@ -23404,26 +23446,26 @@
                     hasMinWith: !0,
                     action: '\u67e5\u770b\u5168\u90e8',
                     onActionClick: function () {
-                      K('/saved');
+                      H('/saved');
                     },
                   }),
-                    null === l || void 0 === l || l(D, { isSavedByViewer: !0 });
+                    null === l || void 0 === l || l(j, { isSavedByViewer: !0 });
                 },
               }).run,
-              W = (0, y.i)(Pe.YL, {
+              V = (0, y.i)(Pe.YL, {
                 manual: !0,
                 onSuccess: function () {
                   s.FN.show('\u5df2\u53d6\u6d88\u6536\u85cf'),
-                    null === l || void 0 === l || l(D, { isSavedByViewer: !1 });
+                    null === l || void 0 === l || l(j, { isSavedByViewer: !1 });
                 },
               }).run,
-              V = (0, y.i)(Pe.jp, {
+              q = (0, y.i)(Pe.jp, {
                 manual: !0,
                 onSuccess: function () {
-                  null === l || void 0 === l || l(D, { isHiddenByViewer: !0 });
+                  null === l || void 0 === l || l(j, { isHiddenByViewer: !0 });
                 },
               }).run,
-              q = (0, y.i)(de.fv, {
+              $ = (0, y.i)(de.fv, {
                 manual: !0,
                 onSuccess: function () {
                   null === p ||
@@ -23434,7 +23476,7 @@
                     s.FN.show('\u5df2\u505c\u6b62\u5173\u6ce8');
                 },
               }).run,
-              $ = (0, y.i)(Pe.Uu, {
+              Y = (0, y.i)(Pe.Uu, {
                 manual: !0,
                 onSuccess: function (e, t) {
                   var n = (0, i.Z)(t, 2),
@@ -23450,17 +23492,17 @@
                     );
                 },
               }),
-              Y = $.run,
-              G = (0, a.useMemo)(
+              G = Y.run,
+              Q = (0, a.useMemo)(
                 function () {
                   var e =
-                      null === P || void 0 === P
+                      null === A || void 0 === A
                         ? void 0
-                        : P.some(function (e) {
+                        : A.some(function (e) {
                             return 'tag' === e.type;
                           }),
                     t = [
-                      Z,
+                      I,
                       e
                         ? {
                             label: '\u7528\u6807\u8bb0\u521b\u5efa',
@@ -23472,18 +23514,18 @@
                               stroke: 'currentColor',
                             }),
                             split: !0,
-                            onClick: m,
+                            onClick: g,
                           }
                         : null,
                       {
                         label: ''.concat(
-                          j ? '\u53d6\u6d88' : '',
+                          P ? '\u53d6\u6d88' : '',
                           '\u6536\u85cf',
                         ),
                         onClick: function () {
-                          j ? W(D) : H(D);
+                          P ? V(j) : W(j);
                         },
-                        icon: j
+                        icon: P
                           ? (0, O.jsx)(u.JH, {
                               viewBox: '0 0 20 20',
                               size: 20,
@@ -23499,8 +23541,8 @@
                       },
                     ];
                   return (
-                    h && t.unshift(B),
-                    null !== A && void 0 !== A && A.isOwn
+                    h && t.unshift(z),
+                    null !== T && void 0 !== T && T.isOwn
                       ? t.push(
                           {
                             label: ''.concat(
@@ -23512,7 +23554,7 @@
                               '\u9690\u85cf\u83b7\u8d5e\u6570\u548c\u5206\u4eab\u6b21\u6570',
                             ),
                             onClick: function () {
-                              Y(null === o || void 0 === o ? void 0 : o.id, {
+                              G(null === o || void 0 === o ? void 0 : o.id, {
                                 likeAndViewCountsDisabled: !(
                                   null !== o &&
                                   void 0 !== o &&
@@ -23528,7 +23570,7 @@
                           {
                             label: '\u8c01\u53ef\u4ee5\u56de\u590d',
                             onClick: function () {
-                              M(!0);
+                              F(!0);
                             },
                             split: !0,
                             icon: (0, O.jsx)(u.Nm, {
@@ -23551,7 +23593,7 @@
                                 okType: 'danger',
                                 okText: '\u5220\u9664',
                                 onOk: function () {
-                                  U(D);
+                                  K(j);
                                 },
                               });
                             },
@@ -23565,7 +23607,7 @@
                           {
                             label: '\u9690\u85cf',
                             onClick: function () {
-                              V(null === o || void 0 === o ? void 0 : o.id);
+                              q(null === o || void 0 === o ? void 0 : o.id);
                             },
                             icon: (0, O.jsx)(u.c, {
                               viewBox: '0 0 20 20',
@@ -23573,13 +23615,13 @@
                             }),
                             split: !0,
                           },
-                          z,
+                          U,
                         ),
-                        null !== A && void 0 !== A && A.following
+                        null !== T && void 0 !== T && T.following
                           ? t.push({
                               label: '\u505c\u6b62\u5173\u6ce8',
                               onClick: function () {
-                                q(
+                                $(
                                   null === o || void 0 === o
                                     ? void 0
                                     : o.user.id,
@@ -23590,7 +23632,7 @@
                                 size: 20,
                               }),
                             })
-                          : t.push(F)),
+                          : t.push(N)),
                     t
                   );
                 },
@@ -23603,15 +23645,14 @@
                   void 0 === t
                     ? void 0
                     : t.friendshipStatus,
-                  v,
                   null === o || void 0 === o
                     ? void 0
                     : o.likeAndViewCountsDisabled,
                   null === o || void 0 === o ? void 0 : o.replyAuth,
                   null === o || void 0 === o ? void 0 : o.isSavedByViewer,
+                  U,
                   z,
-                  B,
-                  Z,
+                  I,
                 ],
               );
             return (0, O.jsxs)('div', {
@@ -23620,7 +23661,7 @@
                 e.stopPropagation();
               },
               children: [
-                C &&
+                k &&
                   (0, O.jsx)(s.vC, {
                     className: je[''.concat(We, '-button')],
                     size: 20,
@@ -23636,12 +23677,12 @@
                     }),
                   }),
                 r &&
-                  0 !== G.length &&
+                  0 !== Q.length &&
                   (0, O.jsx)(s.J2, {
                     placement: 'bottom-end',
                     offset: 5,
                     hideWhenContentClick: !0,
-                    content: (0, O.jsx)(s.mX, { items: G }),
+                    content: (0, O.jsx)(s.mX, { items: Q }),
                     children: (0, O.jsx)(s.vC, {
                       className: je[''.concat(We, '-button')],
                       size: 20,
@@ -23655,9 +23696,9 @@
                 (0, O.jsx)(Re, {
                   post: o,
                   onPostUpdate: l,
-                  visible: R,
+                  visible: M,
                   onClose: function () {
-                    M(!1);
+                    F(!1);
                   },
                 }),
               ],
@@ -26364,12 +26405,9 @@
                   className: sn[''.concat(cn, '-footer')],
                   children: [
                     (0, O.jsx)(s.zx, {
-                      type: 'primary',
                       disabled: !p || D < 0,
                       onClick: h,
                       loading: v,
-                      disabledType: 'gray',
-                      style: { borderRadius: '36px' },
                       children: g ? '\u786e\u5b9a' : '\u53d1\u5e03',
                     }),
                     C &&
@@ -28273,12 +28311,12 @@
                         F =
                           w &&
                           (M
-                            ? null === (c = e.user) ||
+                            ? (null === (c = e.user) ||
                               void 0 === c ||
                               null === (l = c.friendshipStatus) ||
                               void 0 === l
-                              ? void 0
-                              : l.isOwn
+                                ? void 0
+                                : l.isOwn) && !e.replyToPostId
                             : b ===
                               (null === e || void 0 === e
                                 ? void 0
@@ -28503,31 +28541,17 @@
                   {},
                   {
                     children: function (e) {
-                      var t,
-                        c,
-                        f,
-                        d = e.data,
-                        _ = e.deleteItem,
-                        C = e.itemFieldUpdate,
-                        L = e.updateData,
-                        R = 'profile' === b,
-                        M =
-                          null === d ||
-                          void 0 === d ||
-                          null === (t = d[0]) ||
-                          void 0 === t ||
-                          null === (c = t.posts) ||
-                          void 0 === c ||
-                          null === (f = c[0]) ||
-                          void 0 === f
-                            ? void 0
-                            : f[R ? 'isPinnedToProfile' : 'isPinnedToComment'];
+                      var t = e.data,
+                        c = e.deleteItem,
+                        f = e.itemFieldUpdate,
+                        d = e.updateData,
+                        _ = 'profile' === b;
                       return (0, O.jsx)(O.Fragment, {
                         children:
-                          null === d || void 0 === d
+                          null === t || void 0 === t
                             ? void 0
-                            : d.map(function (e, t) {
-                                var c = 0 === t;
+                            : t.map(function (e, t) {
+                                var C = 0 === t;
                                 return (0, O.jsxs)(
                                   s.nQ,
                                   {
@@ -28551,7 +28575,7 @@
                                         lastChildHasSummaryUserPreview: u,
                                         onReply: function (e, t) {
                                           null === D || void 0 === D || D(e, t),
-                                            L(function (n) {
+                                            d(function (n) {
                                               return n.map(function (n) {
                                                 for (
                                                   var o,
@@ -28642,13 +28666,12 @@
                                         pinToWhere: b,
                                         hasPinSign: x,
                                         hasPin: n,
-                                        hasPined: M,
-                                        hasBorderTop: !!t || (c && l),
+                                        hasBorderTop: !!t || (C && l),
                                         onUserFriendshipStatusUpdate: function (
                                           e,
                                           t,
                                         ) {
-                                          L(function (n) {
+                                          d(function (n) {
                                             return n.map(function (n) {
                                               var o;
                                               return (0, r.Z)(
@@ -28705,7 +28728,7 @@
                                           void 0 === n
                                             ? void 0
                                             : n.length) || 0) > 1
-                                            ? C(
+                                            ? f(
                                                 null === e || void 0 === e
                                                   ? void 0
                                                   : e.id,
@@ -28731,17 +28754,17 @@
                                                   },
                                                 ),
                                               )
-                                            : _(
+                                            : c(
                                                 null === e || void 0 === e
                                                   ? void 0
                                                   : e.id,
                                               );
                                         },
                                         onPinChange: function (e, t) {
-                                          var n = R
+                                          var n = _
                                             ? 'isPinnedToProfile'
                                             : 'isPinnedToComment';
-                                          L(function (a) {
+                                          d(function (a) {
                                             if (t) {
                                               var u, s;
                                               null !== (u = a[0]) &&
@@ -28816,7 +28839,7 @@
                                         onFollowingChange: function (e, t) {
                                           var n = t.following,
                                             o = t.outgoingRequest;
-                                          L(function (t) {
+                                          d(function (t) {
                                             return t.map(function (t) {
                                               var i;
                                               return (0, r.Z)(
@@ -28866,7 +28889,7 @@
                                         },
                                         onPostUpdate: function (t, n) {
                                           var o;
-                                          C(
+                                          f(
                                             null === e || void 0 === e
                                               ? void 0
                                               : e.id,
@@ -32796,7 +32819,7 @@
             return g;
           },
           Bf: function () {
-            return C;
+            return S;
           },
           CP: function () {
             return i;
@@ -32808,37 +32831,40 @@
             return d;
           },
           J3: function () {
-            return T;
+            return R;
           },
           M4: function () {
-            return S;
+            return D;
           },
           MG: function () {
-            return P;
+            return T;
           },
           NJ: function () {
             return a;
           },
           Ns: function () {
-            return L;
+            return M;
           },
           O$: function () {
-            return k;
+            return E;
           },
           S2: function () {
             return b;
           },
           Uu: function () {
-            return A;
+            return L;
+          },
+          WL: function () {
+            return w;
           },
           Xe: function () {
-            return _;
+            return k;
           },
           YL: function () {
             return f;
           },
           bK: function () {
-            return D;
+            return j;
           },
           ef: function () {
             return v;
@@ -32846,20 +32872,23 @@
           fR: function () {
             return u;
           },
+          h_: function () {
+            return x;
+          },
           ij: function () {
             return p;
           },
           j4: function () {
-            return E;
+            return O;
           },
           jp: function () {
-            return j;
+            return A;
           },
           mT: function () {
             return s;
           },
           o: function () {
-            return O;
+            return P;
           },
           qb: function () {
             return o;
@@ -32871,10 +32900,10 @@
             return y;
           },
           ru: function () {
-            return x;
+            return C;
           },
           si: function () {
-            return w;
+            return _;
           },
           sm: function () {
             return l;
@@ -32958,78 +32987,87 @@
               method: 'patch',
             });
           },
-          w = function (e) {
+          w = function () {
+            return (0, r.Z)({ url: 'post/profile-pinned', method: 'get' });
+          },
+          x = function (e) {
+            return (0, r.Z)({
+              url: 'post/'.concat(e, '/pinned'),
+              method: 'get',
+            });
+          },
+          _ = function (e) {
             return (0, r.Z)({ url: 'post/detail/'.concat(e), method: 'get' });
           },
-          x = function (e, t) {
+          C = function (e, t) {
             return (0, r.Z)({
               url: 'post/replies/'.concat(e),
               method: 'get',
               params: t,
             });
           },
-          _ = function (e, t) {
+          k = function (e, t) {
             return (0, r.Z)({
               url: 'post/reply-after-id/'.concat(e),
               method: 'get',
               params: t,
             });
           },
-          C = function (e) {
+          S = function (e) {
             return (0, r.Z)({ url: 'post/search', method: 'get', params: e });
           },
-          k = function (e, t) {
+          E = function (e, t) {
             return (0, r.Z)({
               url: 'post/user/'.concat(e),
               method: 'get',
               params: t,
             });
           },
-          S = function (e, t) {
+          D = function (e, t) {
             return (0, r.Z)({
               url: 'post/replies/uid/'.concat(e),
               method: 'get',
               params: t,
             });
           },
-          E = function (e, t) {
+          O = function (e, t) {
             return (0, r.Z)({
               url: 'repost/user/'.concat(e),
               method: 'get',
               params: t,
             });
           },
-          D = function (e) {
+          j = function (e) {
             return (0, r.Z)({ url: 'like/posts', method: 'get', params: e });
           },
-          O = function (e) {
+          P = function (e) {
             return (0, r.Z)({
               url: 'save-post/posts',
               method: 'get',
               params: e,
             });
           },
-          j = function (e) {
+          A = function (e) {
             return (0, r.Z)({ url: 'hide-post/'.concat(e), method: 'post' });
           },
-          P = function (e) {
+          T = function (e) {
             return (0, r.Z)({ url: 'hide-post/'.concat(e), method: 'delete' });
           },
-          A = function (e, t) {
+          L = function (e, t) {
             return (0, r.Z)({
               url: 'post/'.concat(e, '/like-and-view-counts'),
               method: 'patch',
               data: t,
             });
           },
-          T = function (e, t) {
+          R = function (e, t) {
             return (0, r.Z)({
               url: 'post/'.concat(e, '/reply-auth'),
               method: 'patch',
               data: t,
             });
           },
-          L = function (e) {
+          M = function (e) {
             return (0, r.Z)({ url: 'vote', method: 'post', data: e });
           };
       },
@@ -81624,10 +81662,10 @@
           27: 'e116c24e',
           69: 'cba7f6df',
           152: '22bd32da',
-          527: '5664d262',
+          527: '741a76af',
           596: '63c38699',
           653: '0ad22251',
-          849: '995b94ec',
+          849: '6956374b',
           864: 'd3455417',
           997: 'e2316830',
         }[e] +
@@ -81644,7 +81682,7 @@
           152: '7325ff01',
           527: '3a054278',
           596: '7100a5cc',
-          849: '255b2628',
+          849: '662ac0d3',
           864: 'c745ec70',
           997: '45eb6d00',
         }[e] +
