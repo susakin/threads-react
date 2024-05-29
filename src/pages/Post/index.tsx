@@ -158,9 +158,12 @@ const Post: React.FC = () => {
                 lastChildHasSummaryUserPreview={false}
                 ignoreMutingUser={false}
                 indent
+                hasPin={true}
+                pinToWhere="profile"
                 onDataChange={data => {
                   const posts = data[data?.length - 1]?.posts;
-                  setLastPost(posts?.[posts?.length - 1]);
+                  const post = posts?.[posts?.length - 1];
+                  setLastPost(post?.code === code ? post : firstPost);
                 }}
                 onCommentCountClick={() => {
                   if (lastPostId?.id && fetchEnd) {
@@ -199,7 +202,10 @@ const Post: React.FC = () => {
                 <PostList
                   pinToWhere="comment"
                   ignoreMutingUser={false}
-                  hasPin={firstPost?.user?.friendshipStatus?.isOwn}
+                  hasPin={
+                    firstPost?.user?.friendshipStatus?.isOwn &&
+                    firstPost?.id === lastPostId?.id
+                  }
                   hasPinSign={true}
                   key={lastPostId?.id}
                   replyToPostId={firstPost?.id}
@@ -231,6 +237,7 @@ const Post: React.FC = () => {
                       setHasFirstReply(!!data.length);
                     }}
                     key={`${firstPostId?.id}-${code}`}
+                    pinToWhere="comment"
                     hasPin={firstPost?.user?.friendshipStatus?.isOwn}
                     hasPinSign={true}
                     replyToPostId={firstPostId?.id}

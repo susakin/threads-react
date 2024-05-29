@@ -164,12 +164,9 @@ const PostEdit: React.FC<PostEditProps> = ({
       </div>
       <div className={styles[`${classNamePrefix}-footer`]}>
         <Button
-          type="primary"
           disabled={!canSubmit || length < 0}
           onClick={onSubmit}
           loading={isUploading}
-          disabledType="gray"
-          style={{ borderRadius: '36px' }}
         >
           {editing ? '确定' : '发布'}
         </Button>

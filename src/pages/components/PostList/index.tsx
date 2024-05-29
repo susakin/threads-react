@@ -65,10 +65,7 @@ function PostList<T extends Record<string, any>>({
       <List<CombinedPostItem, T> {...rest}>
         {({ data, deleteItem, itemFieldUpdate, updateData }) => {
           const pinToProfile = pinToWhere === 'profile';
-          const hasPined =
-            data?.[0]?.posts?.[0]?.[
-              pinToProfile ? 'isPinnedToProfile' : 'isPinnedToComment'
-            ];
+
           return (
             <>
               {data?.map((item, index) => {
@@ -134,7 +131,6 @@ function PostList<T extends Record<string, any>>({
                       pinToWhere={pinToWhere}
                       hasPinSign={hasPinSign}
                       hasPin={hasPin}
-                      hasPined={hasPined}
                       hasBorderTop={!!index || (isFirst && hasBorderTop)}
                       onUserFriendshipStatusUpdate={(uid, friendshipStatus) => {
                         updateData(data => {

@@ -43,7 +43,6 @@ type PostProps = {
     PostHeaderProps,
     | 'onFollowingChange'
     | 'hasPin'
-    | 'hasPined'
     | 'pinToWhere'
     | 'onPostSuccess'
     | 'onUsernameClick'

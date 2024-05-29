@@ -117,7 +117,7 @@ const CombinedPost: React.FC<CombinedPostProps> = ({
         const _hasPin =
           hasPin &&
           (pinToProfile
-            ? post.user?.friendshipStatus?.isOwn
+            ? post.user?.friendshipStatus?.isOwn && !post.replyToPostId
             : replyToPostId === post?.replyToPostId);
 
         const _hasPinSign =

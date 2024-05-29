@@ -55,7 +55,7 @@ export type PostHeaderActionProps = {
 } & OnPostUpdate &
   OnFollowingChange &
   Pick<UseEditProps, 'onEditClick'> &
-  Pick<UsePinProps, 'hasPined' | 'onPinChange' | 'pinToWhere'>;
+  Pick<UsePinProps, 'onPinChange' | 'pinToWhere'>;
 
 const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   hasAction = true,
@@ -65,7 +65,6 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   onPinChange,
   onFollowingChange,
   hasPin,
-  hasPined,
   pinToWhere,
   onTagClick,
   onEditClick,
@@ -86,7 +85,6 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   const { item: editItem } = useEdit({ createdAt, onEditClick });
   const { item: pinItem } = usePin({
     post,
-    hasPined,
     onPinChange,
     pinToWhere,
   });
@@ -276,7 +274,6 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     post,
     hasPin,
     post?.user?.friendshipStatus,
-    hasPined,
     post?.likeAndViewCountsDisabled,
     post?.replyAuth,
     post?.isSavedByViewer,

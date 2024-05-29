@@ -115,6 +115,20 @@ export const unpinToComment = <T>(id: string) => {
   });
 };
 
+export const getProfilePinned = <T>() => {
+  return request<T>({
+    url: `post/profile-pinned`,
+    method: 'get',
+  });
+};
+
+export const getPostPinned = <T>(id: string) => {
+  return request<T>({
+    url: `post/${id}/pinned`,
+    method: 'get',
+  });
+};
+
 export const getPostDetail = <T>(id: string) => {
   return request<T>({
     url: `post/detail/${id}`,
