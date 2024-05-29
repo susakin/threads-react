@@ -1,4 +1,4 @@
-/*! For license information please see main.b725d06c.js.LICENSE.txt */
+/*! For license information please see main.4dc5d288.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -24304,6 +24304,11 @@
                             ((null === t || void 0 === t
                               ? void 0
                               : t.repostCount) || 0) > 0 &&
+                              !(
+                                null !== t &&
+                                void 0 !== t &&
+                                t.likeAndViewCountsDisabled
+                              ) &&
                               (0, O.jsx)(s.DP, {
                                 count:
                                   null === t || void 0 === t

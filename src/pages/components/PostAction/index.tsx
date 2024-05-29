@@ -272,12 +272,13 @@ const PostAction: React.FC<PostActionProps> = ({
               ) : (
                 <Reposted {...props} fill="currentColor" />
               )}
-              {(post?.repostCount || 0) > 0 && (
-                <ScrollCountText
-                  count={post?.repostCount}
-                  className={styles[`${classNamePrefix}-button-scroll-text`]}
-                />
-              )}
+              {(post?.repostCount || 0) > 0 &&
+                !post?.likeAndViewCountsDisabled && (
+                  <ScrollCountText
+                    count={post?.repostCount}
+                    className={styles[`${classNamePrefix}-button-scroll-text`]}
+                  />
+                )}
             </ActiveScaleButton>
           </Popover>
         ),
