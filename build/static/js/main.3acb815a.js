@@ -1,4 +1,4 @@
-/*! For license information please see main.8938d2a3.js.LICENSE.txt */
+/*! For license information please see main.3acb815a.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16154,7 +16154,7 @@
                         onReady: function () {
                           P(!0);
                         },
-                        progressInterval: 20,
+                        progressInterval: 200,
                         onProgress: function (e) {
                           var t = e.played;
                           x && H && E(t), console.log(t, 'percentage');

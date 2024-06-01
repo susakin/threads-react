@@ -185,7 +185,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             onReady={() => {
               setReady(true);
             }}
-            progressInterval={20}
+            progressInterval={200}
             onProgress={({ played }) => {
               playing && hasControls && setPercentage(played);
               console.log(played, 'percentage');
