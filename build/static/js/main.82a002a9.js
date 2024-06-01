@@ -1,4 +1,4 @@
-/*! For license information please see main.3acb815a.js.LICENSE.txt */
+/*! For license information please see main.82a002a9.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16191,7 +16191,9 @@
                               void 0 === t ||
                               t.seekTo(e, 'fraction'),
                               console.log(e, 'onSeekTo'),
-                              _(!0);
+                              setTimeout(function () {
+                                return _(!0);
+                              }, 100);
                           },
                         }),
                     ],
