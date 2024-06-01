@@ -177,7 +177,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             muted={muted}
             className={styles[`${classPrefix}-audio`]}
             url={url}
-            loop={true}
+            //loop={true}
             playing={playing}
             playsinline={true}
             preload="none"
@@ -189,6 +189,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             progressInterval={150}
             onProgress={({ playedSeconds }) => {
               playing && setCurrentTime(playedSeconds);
+              console.log(playedSeconds, 'playedSeconds');
             }}
             onDuration={(duration: number) => {
               setDuration(duration);
@@ -220,6 +221,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
               }}
               onSeekTo={time => {
                 playerRef.current?.seekTo(time, 'seconds');
+                console.log(time, 'onSeekTo');
                 setCurrentTime(time);
                 setPlaying(true);
               }}
