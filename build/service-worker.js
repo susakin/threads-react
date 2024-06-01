@@ -33,7 +33,7 @@ define(['./workbox-f5b72648'], function (s) {
     s.clientsClaim(),
     s.precacheAndRoute(
       [
-        { url: '/index.html', revision: 'a12faec72f6336b26ce8df567974371c' },
+        { url: '/index.html', revision: '8c0c7be2a73d05448e76897d5849cc33' },
         { url: '/static/css/152.d247877b.chunk.css', revision: null },
         { url: '/static/css/527.3a054278.chunk.css', revision: null },
         { url: '/static/css/596.7100a5cc.chunk.css', revision: null },
