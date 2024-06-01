@@ -20,7 +20,8 @@
 【Threads Clone】#03：[useCacheState](https://www.youtube.com/watch?v=yTzHwWWqpok)  
 【Threads Clone】#04：[videoScheduler](https://www.youtube.com/watch?v=rdcjZ6LHGOs)  
 【Threads Clone】#05：[HideableComponent & Image](https://www.youtube.com/watch?v=b6DMlS_dHks)<br/>
-【Threads Clone】#06：[Mask](https://www.youtube.com/watch?v=H5z3Jufel6A)
+【Threads Clone】#06：[Mask](https://www.youtube.com/watch?v=H5z3Jufel6A)<br/>
+【Threads Clone】#07：[Threads web app open resource！ 开源啦 ](https://www.youtube.com/watch?v=sIEHxKcvVBw&t=5s)
 
 ## 注意
 
