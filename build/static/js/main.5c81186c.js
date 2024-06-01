@@ -1,4 +1,4 @@
-/*! For license information please see main.7564bd33.js.LICENSE.txt */
+/*! For license information please see main.5c81186c.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16001,53 +16001,52 @@
               o = e.className,
               i = e.style,
               s = e.controls,
-              l = e.disabledSchedule,
-              f = void 0 !== l && l,
-              p = e.playWhenInView,
-              h = void 0 !== p && p,
-              v = (0, u.useState)(!0),
-              y = (0, a.Z)(v, 2),
-              g = y[0],
-              m = y[1],
-              b = (0, u.useState)(!1),
-              w = (0, a.Z)(b, 2),
-              x = w[0],
-              _ = w[1],
-              C = (0, u.useState)(0),
-              k = (0, a.Z)(C, 2),
-              S = k[0],
-              E = k[1],
-              D = (0, u.useState)(!1),
-              O = (0, a.Z)(D, 2),
-              j = O[0],
-              P = O[1],
-              A = (0, u.useState)(!1),
-              T = (0, a.Z)(A, 2),
-              L = T[0],
-              R = T[1],
-              M = u.useRef(null),
-              F = u.useRef(!1),
+              f = e.disabledSchedule,
+              p = void 0 !== f && f,
+              h = e.playWhenInView,
+              v = void 0 !== h && h,
+              y = (0, u.useState)(!0),
+              g = (0, a.Z)(y, 2),
+              m = g[0],
+              b = g[1],
+              w = (0, u.useState)(!1),
+              x = (0, a.Z)(w, 2),
+              _ = x[0],
+              C = x[1],
+              k = (0, u.useState)(0),
+              S = (0, a.Z)(k, 2),
+              E = S[0],
+              D = S[1],
+              O = (0, u.useState)(!1),
+              j = (0, a.Z)(O, 2),
+              P = j[0],
+              A = j[1],
+              T = (0, u.useState)(!1),
+              L = (0, a.Z)(T, 2),
+              R = L[0],
+              M = L[1],
+              F = u.useRef(null),
               N = u.useRef(!1),
-              Z = u.useRef((0, Ea.uniqueId)()),
-              I = u.useRef(null),
-              B = (0, u.useState)(!1),
-              z = (0, a.Z)(B, 2),
-              U = z[0],
-              K = z[1],
-              H = (s || n) && j,
-              W = (0, u.useRef)(void 0),
-              V = da({ threshold: 0.2, triggerOnce: !h }),
+              Z = u.useRef(!1),
+              I = u.useRef((0, Ea.uniqueId)()),
+              B = u.useRef(null),
+              z = (0, u.useState)(!1),
+              U = (0, a.Z)(z, 2),
+              K = U[0],
+              H = U[1],
+              W = (s || n) && P,
+              V = da({ threshold: 0.2, triggerOnce: !v }),
               q = (0, a.Z)(V, 2),
               $ = q[0],
               Y = q[1];
             (0, u.useEffect)(
               function () {
                 function e() {
-                  var e = null === I || void 0 === I ? void 0 : I.current;
+                  var e = null === B || void 0 === B ? void 0 : B.current;
                   if (e) {
                     var t =
                       window.innerHeight - e.getBoundingClientRect().bottom;
-                    K(t <= 20);
+                    H(t <= 20);
                   }
                 }
                 return (
@@ -16058,13 +16057,13 @@
                   }
                 );
               },
-              [null === I || void 0 === I ? void 0 : I.current, n],
+              [null === B || void 0 === B ? void 0 : B.current, n],
             ),
               (0, u.useEffect)(
                 function () {
-                  F.current = x;
+                  N.current = _;
                 },
-                [x],
+                [_],
               );
             var G = (0, u.useCallback)(
               function (e) {
@@ -16075,29 +16074,29 @@
             (0, u.useEffect)(
               function () {
                 void 0 !== (null === e || void 0 === e ? void 0 : e.playing) &&
-                  _(null === e || void 0 === e ? void 0 : e.playing);
+                  C(null === e || void 0 === e ? void 0 : e.playing);
               },
               [e.playing],
             ),
               (0, u.useEffect)(
                 function () {
-                  Y && R(!0),
-                    h &&
+                  Y && M(!0),
+                    v &&
                       setTimeout(function () {
-                        _(Y);
+                        C(Y);
                       });
                 },
-                [Y, h],
+                [Y, v],
               ),
               (0, u.useEffect)(function () {
                 var e = function () {
-                    N.current && (_(!0), (N.current = !1));
+                    Z.current && (C(!0), (Z.current = !1));
                   },
                   t = function () {
-                    null !== F &&
-                      void 0 !== F &&
-                      F.current &&
-                      (_(!1), (N.current = !0));
+                    null !== N &&
+                      void 0 !== N &&
+                      N.current &&
+                      (C(!1), (Z.current = !0));
                   };
                 return (
                   window.addEventListener('focus', e),
@@ -16110,7 +16109,7 @@
               }, []),
               (0, u.useEffect)(function () {
                 return function () {
-                  Sa.v.removePlayer(Z.current);
+                  Sa.v.removePlayer(I.current);
                 };
               }, []);
             var Q = (0, u.useMemo)(function () {
@@ -16123,88 +16122,83 @@
               J = (0, u.useCallback)(
                 function (e) {
                   var t = (0, a.Z)(e, 1)[0];
-                  L &&
-                    (Sa.v.setPlayer(Z.current, {
+                  R &&
+                    (Sa.v.setPlayer(I.current, {
                       setPlaying: function (e) {
-                        _(e);
+                        C(e);
                       },
                       rect: DOMRectReadOnly.fromRect(t.boundingClientRect),
                       visiblePercentage: t.intersectionRatio,
                     }),
                     Sa.v.play());
                 },
-                [L, h, f, j, H],
+                [R, v, p, P, W],
               );
             return (
-              (0, ka.S)(f ? null : I, Q, J),
+              (0, ka.S)(p ? null : B, Q, J),
               (0, d.jsx)('div', {
                 className: c()(pa[''.concat(Da)], o),
                 style: i,
                 ref: G,
                 children:
-                  L &&
+                  R &&
                   (0, d.jsxs)('div', {
                     className: pa[''.concat(Da, '-inner')],
-                    ref: I,
+                    ref: B,
                     children: [
                       (0, d.jsx)(ta.Z, {
-                        ref: M,
-                        muted: g,
+                        ref: F,
+                        muted: m,
                         className: pa[''.concat(Da, '-audio')],
                         url: t,
                         loop: !0,
-                        playing: x,
+                        playing: _,
                         playsinline: !0,
                         preload: 'none',
                         width: '100%',
                         height: '100%',
                         onReady: function () {
-                          P(!0);
+                          A(!0);
                         },
-                        progressInterval: 200,
+                        progressInterval: l.Y ? 800 : 200,
                         onProgress: function (e) {
                           var t = e.played;
-                          void 0 === W.current || W.current >= 400
-                            ? (x && H && E(t),
-                              console.log(t, 'onProgress'),
-                              (W.current = void 0))
-                            : (W.current += 200);
+                          console.log(t, 'played'), _ && W && D(t);
                         },
                       }),
-                      !j &&
+                      !P &&
                         (0, d.jsx)(ru.Z, {
                           spinning: !0,
                           size: 18,
                           className: pa[''.concat(Da, '-inner-spin')],
                         }),
                       (0, d.jsx)(Ca, {
-                        muted: g,
+                        muted: m,
                         inViewer: n,
-                        nearBottom: U,
+                        nearBottom: K,
                         onClick: function () {
-                          j &&
-                            m(function (e) {
+                          P &&
+                            b(function (e) {
                               return !e;
                             });
                         },
                       }),
-                      H &&
+                      W &&
                         (0, d.jsx)(ya, {
-                          percentage: S,
-                          nearBottom: U,
-                          ready: j,
+                          percentage: E,
+                          nearBottom: K,
+                          ready: P,
                           onPause: function () {
-                            _(!1);
+                            C(!1);
                           },
                           onSeekTo: function (e) {
                             var t;
-                            null === (t = M.current) ||
+                            null === (t = F.current) ||
                               void 0 === t ||
                               t.seekTo(e, 'fraction'),
                               console.log(e, 'onSeekTo'),
-                              E(e),
-                              _(!0),
-                              (W.current = 0);
+                              D(e),
+                              C(!0);
                           },
                         }),
                     ],

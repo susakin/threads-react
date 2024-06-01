@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useInView } from 'react-intersection-observer';
 import cs from 'classnames';
@@ -15,6 +9,7 @@ import { useIntersectionObserver } from '@hooks/useIntersectionObserver';
 import { playerScheduler } from './scheduler';
 import { uniqueId } from 'lodash';
 import { Spin } from '..';
+import { isSupportTouch } from '@utils/index';
 
 type VideoPlayerProps = {
   url: string;
@@ -61,8 +56,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
   const [nearBottom, setNearBottom] = useState<boolean>(false);
 
   const hasControls = (controls || inViewer) && ready;
-
-  const timeGapRef = useRef<number | undefined>(undefined);
 
   const [inViewRef, inView] = useInView({
     threshold: 0.2,
@@ -193,18 +186,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             onReady={() => {
               setReady(true);
             }}
-            progressInterval={200}
+            progressInterval={isSupportTouch ? 800 : 200}
             onProgress={({ played }) => {
-              if (
-                timeGapRef.current === undefined ||
-                timeGapRef.current >= 400
-              ) {
-                playing && hasControls && setPercentage(played);
-                console.log(played, 'onProgress');
-                timeGapRef.current = undefined;
-              } else {
-                timeGapRef.current += 200;
-              }
+              console.log(played, 'played');
+              playing && hasControls && setPercentage(played);
             }}
           />
           {!ready && (
@@ -235,7 +220,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
                 console.log(percentage, 'onSeekTo');
                 setPercentage(percentage);
                 setPlaying(true);
-                timeGapRef.current = 0;
               }}
             />
           )}
