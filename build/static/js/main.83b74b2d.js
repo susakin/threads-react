@@ -1,4 +1,4 @@
-/*! For license information please see main.1eef19db.js.LICENSE.txt */
+/*! For license information please see main.83b74b2d.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16029,10 +16029,11 @@
               U = z[0],
               K = z[1],
               H = (s || n) && j,
-              W = da({ threshold: 0.2, triggerOnce: !h }),
-              V = (0, a.Z)(W, 2),
-              q = V[0],
-              $ = V[1];
+              W = (0, u.useRef)(!1),
+              V = da({ threshold: 0.2, triggerOnce: !h }),
+              q = (0, a.Z)(V, 2),
+              $ = q[0],
+              Y = q[1];
             (0, u.useEffect)(
               function () {
                 function e() {
@@ -16059,11 +16060,11 @@
                 },
                 [x],
               );
-            var Y = (0, u.useCallback)(
+            var G = (0, u.useCallback)(
               function (e) {
-                q(e), r && (r.current = e);
+                $(e), r && (r.current = e);
               },
-              [q],
+              [$],
             );
             (0, u.useEffect)(
               function () {
@@ -16074,13 +16075,13 @@
             ),
               (0, u.useEffect)(
                 function () {
-                  $ && R(!0),
+                  Y && R(!0),
                     h &&
                       setTimeout(function () {
-                        _($);
+                        _(Y);
                       });
                 },
-                [$, h],
+                [Y, h],
               ),
               (0, u.useEffect)(function () {
                 var e = function () {
@@ -16106,14 +16107,14 @@
                   Sa.v.removePlayer(Z.current);
                 };
               }, []);
-            var G = (0, u.useMemo)(function () {
+            var Q = (0, u.useMemo)(function () {
                 return {
                   threshold: Oa,
                   rootMargin: '-56px 0px 0px 0px',
                   root: null,
                 };
               }, []),
-              Q = (0, u.useCallback)(
+              J = (0, u.useCallback)(
                 function (e) {
                   var t = (0, a.Z)(e, 1)[0];
                   L &&
@@ -16129,11 +16130,11 @@
                 [L, h, f, j, H],
               );
             return (
-              (0, ka.S)(f ? null : I, G, Q),
+              (0, ka.S)(f ? null : I, Q, J),
               (0, d.jsx)('div', {
                 className: c()(pa[''.concat(Da)], o),
                 style: i,
-                ref: Y,
+                ref: G,
                 children:
                   L &&
                   (0, d.jsxs)('div', {
@@ -16157,7 +16158,7 @@
                         progressInterval: 200,
                         onProgress: function (e) {
                           var t = e.played;
-                          x && H && E(t), console.log(t, 'percentage');
+                          W.current || (x && H && E(t)), (W.current = !1);
                         },
                       }),
                       !j &&
@@ -16191,9 +16192,8 @@
                               void 0 === t ||
                               t.seekTo(e, 'fraction'),
                               console.log(e, 'onSeekTo'),
-                              setTimeout(function () {
-                                return _(!0);
-                              }, 500);
+                              (W.current = !0),
+                              _(!0);
                           },
                         }),
                     ],

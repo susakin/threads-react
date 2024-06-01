@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import ReactPlayer from 'react-player';
 import { useInView } from 'react-intersection-observer';
 import cs from 'classnames';
@@ -55,6 +61,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
   const [nearBottom, setNearBottom] = useState<boolean>(false);
 
   const hasControls = (controls || inViewer) && ready;
+
+  const onSeekedRef = useRef<boolean>(false);
 
   const [inViewRef, inView] = useInView({
     threshold: 0.2,
@@ -187,8 +195,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             }}
             progressInterval={200}
             onProgress={({ played }) => {
-              playing && hasControls && setPercentage(played);
-              console.log(played, 'percentage');
+              if (!onSeekedRef.current) {
+                playing && hasControls && setPercentage(played);
+              }
+              onSeekedRef.current = false;
             }}
           />
           {!ready && (
@@ -218,7 +228,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
                 playerRef.current?.seekTo(percentage, 'fraction');
                 console.log(percentage, 'onSeekTo');
                 //setCurrentTime(time);
-                setTimeout(() => setPlaying(true), 500);
+                onSeekedRef.current = true;
+                setPlaying(true);
               }}
             />
           )}
