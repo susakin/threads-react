@@ -1,4 +1,4 @@
-/*! For license information please see main.b5a59d04.js.LICENSE.txt */
+/*! For license information please see main.61468c32.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16162,7 +16162,7 @@
                           P(!0);
                         },
                         progressInterval:
-                          null !== W && void 0 !== W && W.current ? 950 : 200,
+                          null !== W && void 0 !== W && W.current ? 400 : 50,
                         onProgress: function (e) {
                           var t = e.played;
                           x && H && E(t),
