@@ -1,4 +1,4 @@
-/*! For license information please see main.c7d03cbe.js.LICENSE.txt */
+/*! For license information please see main.f3ab53df.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16062,7 +16062,7 @@
             ),
               (0, u.useEffect)(
                 function () {
-                  (F.current = x), (W.current = !1);
+                  F.current = x;
                 },
                 [x],
               );
@@ -16162,10 +16162,14 @@
                           P(!0);
                         },
                         progressInterval:
-                          null !== W && void 0 !== W && W.current ? 800 : 200,
+                          null !== W && void 0 !== W && W.current ? 800 : 400,
                         onProgress: function (e) {
                           var t = e.played;
-                          x && H && E(t);
+                          x && H && E(t),
+                            null !== W &&
+                              void 0 !== W &&
+                              W.current &&
+                              (W.current = !1);
                         },
                       }),
                       !j &&

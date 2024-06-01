@@ -85,7 +85,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
 
   useEffect(() => {
     playingRef.current = playing;
-    onSeekRef.current = false;
   }, [playing]);
 
   const setRefs = useCallback(
@@ -192,9 +191,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             onReady={() => {
               setReady(true);
             }}
-            progressInterval={onSeekRef?.current ? 800 : 200}
+            progressInterval={onSeekRef?.current ? 800 : 400}
             onProgress={({ played }) => {
               playing && hasControls && setPercentage(played);
+              if (onSeekRef?.current) {
+                onSeekRef.current = false;
+              }
             }}
           />
           {!ready && (
