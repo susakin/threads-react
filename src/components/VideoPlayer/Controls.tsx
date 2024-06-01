@@ -135,7 +135,7 @@ const Controls: React.FC<ControlsProps> = ({
             [styles[`${classNamePrefix}-inner-progress-duration`]]:
               linearRef.current && scaleX > preScaleXRef.current,
           })}
-          style={{ transform: `scaleX(${100 * scaleX}%)` }}
+          style={{ transform: `scaleX(${scaleX})` }}
         />
       </div>
     </div>

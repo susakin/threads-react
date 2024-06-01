@@ -222,7 +222,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
               onSeekTo={time => {
                 playerRef.current?.seekTo(time, 'seconds');
                 console.log(time, 'onSeekTo');
-                setCurrentTime(time);
+                //setCurrentTime(time);
                 setPlaying(true);
               }}
             />

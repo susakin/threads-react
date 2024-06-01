@@ -1,4 +1,4 @@
-/*! For license information please see main.e4960a12.js.LICENSE.txt */
+/*! For license information please see main.e1c7b40f.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -15944,7 +15944,7 @@
                         h.current && b > v.current,
                       ),
                     ),
-                    style: { transform: 'scaleX('.concat(100 * b, '%)') },
+                    style: { transform: 'scaleX('.concat(b, ')') },
                   }),
                 }),
               })
@@ -16205,7 +16205,6 @@
                               void 0 === t ||
                               t.seekTo(e, 'seconds'),
                               console.log(e, 'onSeekTo'),
-                              E(e),
                               _(!0);
                           },
                         }),
