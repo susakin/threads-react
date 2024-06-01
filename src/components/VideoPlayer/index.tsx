@@ -62,7 +62,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
 
   const hasControls = (controls || inViewer) && ready;
 
-  const timeGapRef = useRef<number>(0);
+  const timeGapRef = useRef<number | undefined>(undefined);
 
   const [inViewRef, inView] = useInView({
     threshold: 0.2,
@@ -195,10 +195,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             }}
             progressInterval={200}
             onProgress={({ played }) => {
-              playing && hasControls && setPercentage(played);
-              if (!timeGapRef.current || timeGapRef.current >= 500) {
+              if (
+                timeGapRef.current === undefined ||
+                timeGapRef.current >= 400
+              ) {
+                playing && hasControls && setPercentage(played);
                 console.log(played, 'onProgress');
-                timeGapRef.current = 0;
+                timeGapRef.current = undefined;
               } else {
                 timeGapRef.current += 200;
               }
@@ -232,7 +235,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
                 console.log(percentage, 'onSeekTo');
                 setPercentage(percentage);
                 setPlaying(true);
-                timeGapRef.current = -1;
+                timeGapRef.current = 0;
               }}
             />
           )}

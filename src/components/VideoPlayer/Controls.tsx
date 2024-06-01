@@ -94,23 +94,25 @@ const Controls: React.FC<ControlsProps> = ({
     };
 
     if (ready) {
-      if (isSupportTouch) {
-        document.addEventListener('touchmove', handleTouchMove as any);
-        document.addEventListener('touchend', handleUp as any);
-      } else {
-        document.addEventListener('mousemove', handleMouseMove as any);
-        document.addEventListener('mouseup', handleUp as any);
-      }
+      document.addEventListener(
+        isSupportTouch ? 'touchmove' : 'mousemove',
+        isSupportTouch ? handleTouchMove : (handleMouseMove as any),
+      );
+      document.addEventListener(
+        isSupportTouch ? 'touchend' : 'mouseup',
+        handleUp as any,
+      );
     }
 
     return () => {
-      if (isSupportTouch) {
-        document.removeEventListener('touchmove', handleTouchMove as any);
-        document.removeEventListener('touchend', handleUp as any);
-      } else {
-        document.removeEventListener('mousemove', handleMouseMove as any);
-        document.removeEventListener('mouseup', handleUp as any);
-      }
+      document.removeEventListener(
+        isSupportTouch ? 'touchmove' : 'mousemove',
+        isSupportTouch ? handleTouchMove : (handleMouseMove as any),
+      );
+      document.removeEventListener(
+        isSupportTouch ? 'touchend' : 'mouseup',
+        handleUp as any,
+      );
     };
   }, [ready]);
 

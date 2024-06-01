@@ -1,4 +1,4 @@
-/*! For license information please see main.f6bb8502.js.LICENSE.txt */
+/*! For license information please see main.7564bd33.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -15889,17 +15889,23 @@
                     };
                   return (
                     t &&
-                      (l.Y
-                        ? (document.addEventListener('touchmove', o),
-                          document.addEventListener('touchend', r))
-                        : (document.addEventListener('mousemove', e),
-                          document.addEventListener('mouseup', r))),
+                      (document.addEventListener(
+                        l.Y ? 'touchmove' : 'mousemove',
+                        l.Y ? o : e,
+                      ),
+                      document.addEventListener(
+                        l.Y ? 'touchend' : 'mouseup',
+                        r,
+                      )),
                     function () {
-                      l.Y
-                        ? (document.removeEventListener('touchmove', o),
-                          document.removeEventListener('touchend', r))
-                        : (document.removeEventListener('mousemove', e),
-                          document.removeEventListener('mouseup', r));
+                      document.removeEventListener(
+                        l.Y ? 'touchmove' : 'mousemove',
+                        l.Y ? o : e,
+                      ),
+                        document.removeEventListener(
+                          l.Y ? 'touchend' : 'mouseup',
+                          r,
+                        );
                     }
                   );
                 },
@@ -16029,7 +16035,7 @@
               U = z[0],
               K = z[1],
               H = (s || n) && j,
-              W = (0, u.useRef)(0),
+              W = (0, u.useRef)(void 0),
               V = da({ threshold: 0.2, triggerOnce: !h }),
               q = (0, a.Z)(V, 2),
               $ = q[0],
@@ -16158,10 +16164,11 @@
                         progressInterval: 200,
                         onProgress: function (e) {
                           var t = e.played;
-                          x && H && E(t),
-                            !W.current || W.current >= 500
-                              ? (console.log(t, 'onProgress'), (W.current = 0))
-                              : (W.current += 200);
+                          void 0 === W.current || W.current >= 400
+                            ? (x && H && E(t),
+                              console.log(t, 'onProgress'),
+                              (W.current = void 0))
+                            : (W.current += 200);
                         },
                       }),
                       !j &&
@@ -16197,7 +16204,7 @@
                               console.log(e, 'onSeekTo'),
                               E(e),
                               _(!0),
-                              (W.current = -1);
+                              (W.current = 0);
                           },
                         }),
                     ],
