@@ -195,8 +195,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             }}
             progressInterval={200}
             onProgress={({ played }) => {
+              playing && hasControls && setPercentage(played);
               if (!timeGapRef.current || timeGapRef.current >= 500) {
-                playing && hasControls && setPercentage(played);
                 console.log(played, 'onProgress');
                 timeGapRef.current = 0;
               } else {
@@ -231,8 +231,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
                 playerRef.current?.seekTo(percentage, 'fraction');
                 console.log(percentage, 'onSeekTo');
                 setPercentage(percentage);
-                timeGapRef.current = -1;
                 setPlaying(true);
+                timeGapRef.current = -1;
               }}
             />
           )}
