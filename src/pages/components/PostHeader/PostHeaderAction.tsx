@@ -247,7 +247,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     } else {
       items.push(
         {
-          label: '隐藏',
+          label: '没兴趣',
           onClick() {
             _hidePost(post?.id as string);
           },

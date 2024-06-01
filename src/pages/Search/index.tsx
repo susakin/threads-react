@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo, useRef, useState } from 'react';
 import { PageContainer, RequestType } from '../components';
 import styles from './index.module.less';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -10,24 +10,38 @@ import { uniqueId } from 'lodash';
 import cs from 'classnames';
 import SearchInput from '@components/SearchInput';
 import SearchResult from './SearchResult';
+import Tabs from '@components/Tabs';
+import { ActionRefType } from '@pages/components/List';
 
 const classNamePrefix = 'search';
 
 const Search: React.FC = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const q = searchParams.get('q');
+  const filter = searchParams.get('filter');
   const [searchVal, setSearchVal] = useState<string>(`${q || ''}`);
   const navigate = useNavigate();
   const serpType = searchParams.get('serp_type');
   const { state } = useContext(AuthContext);
   const { user } = state;
+  const defaultListRef = useRef<ActionRefType>(null);
+  const recentListRef = useRef<ActionRefType>(null);
 
-  const fetchPost: RequestType = async ({ page, pageSize, caption, tag }) => {
+  const [activeKey, setActiveKey] = useState<string>(filter || '');
+
+  const fetchPost: RequestType = async ({
+    page,
+    pageSize,
+    caption,
+    tag,
+    filter,
+  }) => {
     const { code, data, msg }: any = await searchPost({
       page,
       pageSize,
       caption,
       tag,
+      filter,
     });
 
     return {
@@ -53,6 +67,29 @@ const Search: React.FC = () => {
     }
   }, [q, serpType]);
 
+  const recentParams = useMemo(() => {
+    return {
+      ...params,
+      filter: 'recent',
+    };
+  }, [params]);
+
+  function reload(key?: string) {
+    setSearchParams(
+      { q: q as any, serp_type: serpType as any, filter: key ? key : '' },
+      { replace: true },
+    );
+    if (key === activeKey) {
+      if (window.scrollY) {
+        window.scrollTo(0, 0);
+      } else {
+        !activeKey
+          ? defaultListRef?.current?.reload?.(true)
+          : recentListRef?.current?.reload?.(true);
+      }
+    }
+  }
+
   return (
     <PageContainer>
       <div className={styles[`${classNamePrefix}`]}>
@@ -77,15 +114,50 @@ const Search: React.FC = () => {
         </div>
         <Recommend currentUid={user?.id} hidden={q !== null || !!searchVal} />
         {q !== null && (
-          <PostList
-            indent
-            emptyPlaceholder="没有结果"
-            hasBorderTop={false}
-            request={fetchPost}
-            cacheKey={`search-${serpType}-${q}`}
-            params={params}
-            className={cs(styles[`${classNamePrefix}-post-list`])}
-          />
+          <div className={styles[`${classNamePrefix}-post`]}>
+            <Tabs
+              tabType="button"
+              activeKey={activeKey}
+              onChange={key => {
+                setActiveKey(key);
+              }}
+              onTabClick={key => {
+                reload(key);
+              }}
+              tabClassName={styles[`${classNamePrefix}-post-tab`]}
+            >
+              <Tabs.Tab title="热门" key={''}>
+                <PostList
+                  indent
+                  emptyPlaceholder="没有结果"
+                  hasBorderTop={false}
+                  hasLoadingContainer
+                  request={fetchPost}
+                  cacheKey={`search-${serpType}-${q}`}
+                  hasReplyTo
+                  actionRef={defaultListRef}
+                  pageSize={10}
+                  params={params}
+                  className={cs(styles[`${classNamePrefix}-post-list`])}
+                />
+              </Tabs.Tab>
+              <Tabs.Tab title="近期" key={'recent'}>
+                <PostList
+                  indent
+                  hasLoadingContainer
+                  emptyPlaceholder="没有结果"
+                  hasBorderTop={false}
+                  pageSize={10}
+                  request={fetchPost}
+                  cacheKey={`search-recent-${serpType}-${q}`}
+                  hasReplyTo
+                  actionRef={recentListRef}
+                  params={recentParams}
+                  className={cs(styles[`${classNamePrefix}-post-list`])}
+                />
+              </Tabs.Tab>
+            </Tabs>
+          </div>
         )}
         {q === null && searchVal?.length !== 0 && (
           <SearchResult searchVal={searchVal} />

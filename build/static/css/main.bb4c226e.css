@@ -1740,6 +1740,7 @@
   max-width: 100%;
 }
 .vDTPi {
+  flex: 1 1;
   min-width: 100px;
 }
 .xrcff {

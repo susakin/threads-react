@@ -18,14 +18,22 @@
 }
 .HQOj2 {
   height: 44px;
+  width: 100%;
+}
+.F380r {
+  margin-top: 12px;
 }
 .D9qmX,
-.HQOj2,
-.Z4ukF {
+.F380r {
   width: 100%;
+}
+.byHDD {
+  background-color: var(--barcelona-primary-background);
+  z-index: 1;
 }
 .Z4ukF {
   margin-top: 12px;
+  width: 100%;
 }
 .EPGFp {
   display: none;
@@ -205,7 +213,7 @@
 .frilI {
   color: var(--barcelona-navigation-icon);
   display: flex;
-  padding: 24px;
+  padding: 24px 24px 24px 12px;
 }
 @media (max-width: 699px) {
   .frilI {
@@ -221,7 +229,7 @@
   height: 32px;
   justify-content: space-between;
   overflow-y: hidden;
-  padding: 16px 16px 16px 0;
+  padding: 16px 0;
 }
 .g9FsJ {
   word-wrap: break-word;
@@ -249,9 +257,5 @@
   width: 100%;
 }
 .aGJwH {
-  padding-left: 16px;
   padding-top: 4px;
-}
-._OAT2 {
-  margin-right: 16px;
 }

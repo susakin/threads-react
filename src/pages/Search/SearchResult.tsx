@@ -67,7 +67,6 @@ const SearchResult: React.FC<SearchResultProps> = ({
         hasLastItemSplit={true}
         className={styles[`${classNamePrefix}-user`]}
         itemClassName={styles[`${classNamePrefix}-user-item`]}
-        followButtonClassName={styles[`${classNamePrefix}-user-item-follow`]}
       />
     </div>
   );
