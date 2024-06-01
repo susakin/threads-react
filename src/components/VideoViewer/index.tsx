@@ -3,6 +3,7 @@ import { Mask } from '../index';
 import useAspectRotioStyle from '@hooks/useAspectRatioInViewer';
 import styles from './index.module.less';
 import { MediaDimensions } from '@typings/index';
+import { isSupportTouch } from '@utils/index';
 
 type VideoViewerProps = {
   videoContainerRef: React.RefObject<HTMLElement>;
@@ -57,7 +58,7 @@ const VideoViewer: React.FC<VideoViewerProps> = ({
     <Mask
       visible={visible}
       onClose={onClose}
-      pullToClose
+      pullToClose={!isSupportTouch}
       contentClassName={styles[`${classPrefix}`]}
       disabledPlayerScheduler={disabledPlayerScheduler}
     >

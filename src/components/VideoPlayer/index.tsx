@@ -43,8 +43,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
   } = props;
   const [muted, setMuted] = useState<boolean>(true);
   const [playing, setPlaying] = useState<boolean>(false);
-  const [currentTime, setCurrentTime] = useState<number>(0);
-  const [duration, setDuration] = useState<number>(0);
+  const [percentage, setPercentage] = useState<number>(0);
   const [ready, setReady] = useState<boolean>(false);
   const [inViewed, setInViewed] = useState<boolean>(false);
 
@@ -186,13 +185,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             onReady={() => {
               setReady(true);
             }}
-            progressInterval={300}
-            onProgress={({ playedSeconds }) => {
-              playing && setCurrentTime(playedSeconds);
-              console.log(playedSeconds, 'playedSeconds');
-            }}
-            onDuration={(duration: number) => {
-              setDuration(duration);
+            progressInterval={20}
+            onProgress={({ played }) => {
+              playing && hasControls && setPercentage(played);
+              console.log(played, 'percentage');
             }}
           />
           {!ready && (
@@ -212,16 +208,15 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
           />
           {hasControls && (
             <Controls
-              duration={duration}
+              percentage={percentage}
               nearBottom={nearBottom}
-              currentTime={currentTime}
               ready={ready}
               onPause={() => {
                 setPlaying(false);
               }}
-              onSeekTo={time => {
-                playerRef.current?.seekTo(time, 'seconds');
-                console.log(time, 'onSeekTo');
+              onSeekTo={percentage => {
+                playerRef.current?.seekTo(percentage, 'fraction');
+                console.log(percentage, 'onSeekTo');
                 //setCurrentTime(time);
                 setPlaying(true);
               }}

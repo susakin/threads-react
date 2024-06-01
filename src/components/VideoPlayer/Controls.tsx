@@ -4,34 +4,31 @@ import styles from './controls.module.less';
 import { isSupportTouch } from '@utils/index';
 
 type ControlsProps = {
-  duration: number;
-  currentTime: number;
   ready?: boolean;
-  onSeekTo?: (currentTime: number) => void;
+  onSeekTo?: (percentage: number) => void;
   onPause?: () => void;
   nearBottom?: boolean;
+  percentage: number;
 };
 
 const classNamePrefix = 'controls';
 
 const Controls: React.FC<ControlsProps> = ({
-  duration,
   ready,
-  currentTime,
   onSeekTo,
   nearBottom,
   onPause,
+  percentage,
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const linearRef = useRef<boolean>(true);
   const preScaleXRef = useRef<number>(0);
   const isDownRef = useRef<boolean>(false);
-  const [scaleX, setScaleX] = useState<number>(currentTime / duration);
+  const [scaleX, setScaleX] = useState<number>(percentage);
 
   useLayoutEffect(() => {
-    const x = +(currentTime / duration).toFixed(4);
-    setScaleX(x);
-  }, [currentTime, duration]);
+    setScaleX(percentage);
+  }, [percentage]);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     isDownRef.current = true;
@@ -59,9 +56,7 @@ const Controls: React.FC<ControlsProps> = ({
       const divRight = containerRef.current.getBoundingClientRect().right;
       const distance = divRight - clientX;
       const divWidth = containerRef.current.offsetWidth;
-      let calculatedPercentage = +((divWidth - distance) / divWidth)?.toFixed(
-        4,
-      );
+      let calculatedPercentage = (divWidth - distance) / divWidth;
       calculatedPercentage = Math.min(1, Math.max(calculatedPercentage, 0));
 
       setScaleX(calculatedPercentage);
@@ -85,8 +80,7 @@ const Controls: React.FC<ControlsProps> = ({
         e.preventDefault();
         isDownRef.current = false;
         linearRef.current = true;
-        const time = +(preScaleXRef.current * duration).toFixed(4);
-        onSeekTo?.(time);
+        onSeekTo?.(preScaleXRef.current);
       }
     };
 

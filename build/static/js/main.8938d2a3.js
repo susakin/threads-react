@@ -1,4 +1,4 @@
-/*! For license information please see main.4bde9dcd.js.LICENSE.txt */
+/*! For license information please see main.8938d2a3.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -15833,69 +15833,62 @@
           },
           va = 'controls',
           ya = function (e) {
-            var t = e.duration,
-              n = e.ready,
-              r = e.currentTime,
-              i = e.onSeekTo,
-              s = e.nearBottom,
-              f = e.onPause,
-              p = u.useRef(null),
-              h = (0, u.useRef)(!0),
-              v = (0, u.useRef)(0),
-              y = (0, u.useRef)(!1),
-              g = (0, u.useState)(r / t),
-              m = (0, a.Z)(g, 2),
-              b = m[0],
-              w = m[1];
+            var t = e.ready,
+              n = e.onSeekTo,
+              r = e.nearBottom,
+              i = e.onPause,
+              s = e.percentage,
+              f = u.useRef(null),
+              p = (0, u.useRef)(!0),
+              h = (0, u.useRef)(0),
+              v = (0, u.useRef)(!1),
+              y = (0, u.useState)(s),
+              g = (0, a.Z)(y, 2),
+              m = g[0],
+              b = g[1];
             (0, u.useLayoutEffect)(
               function () {
-                var e = +(r / t).toFixed(4);
-                w(e);
+                b(s);
               },
-              [r, t],
+              [s],
             );
             (0, u.useLayoutEffect)(
               function () {
-                v.current = b;
+                h.current = m;
               },
-              [b],
+              [m],
             );
-            var x = function (e) {
-              if (p.current) {
-                var t;
-                null === f || void 0 === f || f(), (h.current = !1);
-                var n = p.current.getBoundingClientRect().right - e,
-                  r = p.current.offsetWidth,
-                  o = +(null === (t = (r - n) / r) || void 0 === t
-                    ? void 0
-                    : t.toFixed(4));
-                (o = Math.min(1, Math.max(o, 0))), w(o);
+            var w = function (e) {
+              if (f.current) {
+                null === i || void 0 === i || i(), (p.current = !1);
+                var t = f.current.getBoundingClientRect().right - e,
+                  n = f.current.offsetWidth,
+                  r = (n - t) / n;
+                (r = Math.min(1, Math.max(r, 0))), b(r);
               }
             };
             return (
               (0, u.useEffect)(
                 function () {
                   var e = function (e) {
-                      y.current &&
-                        (e.stopPropagation(), e.preventDefault(), x(e.clientX));
+                      v.current &&
+                        (e.stopPropagation(), e.preventDefault(), w(e.clientX));
                     },
                     r = function (e) {
-                      if (y.current) {
-                        e.stopPropagation(),
-                          e.preventDefault(),
-                          (y.current = !1),
-                          (h.current = !0);
-                        var n = +(v.current * t).toFixed(4);
-                        null === i || void 0 === i || i(n);
-                      }
+                      v.current &&
+                        (e.stopPropagation(),
+                        e.preventDefault(),
+                        (v.current = !1),
+                        (p.current = !0),
+                        null === n || void 0 === n || n(h.current));
                     },
                     o = function (e) {
                       var t = e.touches[0];
-                      y.current &&
-                        (e.stopPropagation(), e.preventDefault(), x(t.clientX));
+                      v.current &&
+                        (e.stopPropagation(), e.preventDefault(), w(t.clientX));
                     };
                   return (
-                    n &&
+                    t &&
                       (l.Y
                         ? (document.addEventListener('touchmove', o),
                           document.addEventListener('touchend', r))
@@ -15910,27 +15903,27 @@
                     }
                   );
                 },
-                [n],
+                [t],
               ),
               (0, d.jsx)('div', {
                 className: c()(
                   ha[''.concat(va)],
-                  (0, o.Z)({}, ha[''.concat(va, '-near-bottom')], s),
+                  (0, o.Z)({}, ha[''.concat(va, '-near-bottom')], r),
                 ),
-                ref: p,
-                onMouseDown: n
+                ref: f,
+                onMouseDown: t
                   ? function (e) {
-                      (y.current = !0),
+                      (v.current = !0),
                         e.stopPropagation(),
                         e.preventDefault(),
-                        x(e.clientX);
+                        w(e.clientX);
                     }
                   : void 0,
-                onTouchStart: n
+                onTouchStart: t
                   ? function (e) {
-                      e.stopPropagation(), e.preventDefault(), (y.current = !0);
+                      e.stopPropagation(), e.preventDefault(), (v.current = !0);
                       var t = e.touches[0];
-                      x(t.clientX);
+                      w(t.clientX);
                     }
                   : void 0,
                 children: (0, d.jsx)('div', {
@@ -15941,10 +15934,10 @@
                       (0, o.Z)(
                         {},
                         ha[''.concat(va, '-inner-progress-duration')],
-                        h.current && b > v.current,
+                        p.current && m > h.current,
                       ),
                     ),
-                    style: { transform: 'scaleX('.concat(b, ')') },
+                    style: { transform: 'scaleX('.concat(m, ')') },
                   }),
                 }),
               })
@@ -16018,7 +16011,7 @@
               k = (0, a.Z)(C, 2),
               S = k[0],
               E = k[1],
-              D = (0, u.useState)(0),
+              D = (0, u.useState)(!1),
               O = (0, a.Z)(D, 2),
               j = O[0],
               P = O[1],
@@ -16026,32 +16019,28 @@
               T = (0, a.Z)(A, 2),
               L = T[0],
               R = T[1],
-              M = (0, u.useState)(!1),
-              F = (0, a.Z)(M, 2),
-              N = F[0],
-              Z = F[1],
+              M = u.useRef(null),
+              F = u.useRef(!1),
+              N = u.useRef(!1),
+              Z = u.useRef((0, Ea.uniqueId)()),
               I = u.useRef(null),
-              B = u.useRef(!1),
-              z = u.useRef(!1),
-              U = u.useRef((0, Ea.uniqueId)()),
-              K = u.useRef(null),
-              H = (0, u.useState)(!1),
-              W = (0, a.Z)(H, 2),
-              V = W[0],
-              q = W[1],
-              $ = (s || n) && L,
-              Y = da({ threshold: 0.2, triggerOnce: !h }),
-              G = (0, a.Z)(Y, 2),
-              Q = G[0],
-              J = G[1];
+              B = (0, u.useState)(!1),
+              z = (0, a.Z)(B, 2),
+              U = z[0],
+              K = z[1],
+              H = (s || n) && j,
+              W = da({ threshold: 0.2, triggerOnce: !h }),
+              V = (0, a.Z)(W, 2),
+              q = V[0],
+              $ = V[1];
             (0, u.useEffect)(
               function () {
                 function e() {
-                  var e = null === K || void 0 === K ? void 0 : K.current;
+                  var e = null === I || void 0 === I ? void 0 : I.current;
                   if (e) {
                     var t =
                       window.innerHeight - e.getBoundingClientRect().bottom;
-                    q(t <= 20);
+                    K(t <= 20);
                   }
                 }
                 return (
@@ -16062,19 +16051,19 @@
                   }
                 );
               },
-              [null === K || void 0 === K ? void 0 : K.current, n],
+              [null === I || void 0 === I ? void 0 : I.current, n],
             ),
               (0, u.useEffect)(
                 function () {
-                  B.current = x;
+                  F.current = x;
                 },
                 [x],
               );
-            var X = (0, u.useCallback)(
+            var Y = (0, u.useCallback)(
               function (e) {
-                Q(e), r && (r.current = e);
+                q(e), r && (r.current = e);
               },
-              [Q],
+              [q],
             );
             (0, u.useEffect)(
               function () {
@@ -16085,23 +16074,23 @@
             ),
               (0, u.useEffect)(
                 function () {
-                  J && Z(!0),
+                  $ && R(!0),
                     h &&
                       setTimeout(function () {
-                        _(J);
+                        _($);
                       });
                 },
-                [J, h],
+                [$, h],
               ),
               (0, u.useEffect)(function () {
                 var e = function () {
-                    z.current && (_(!0), (z.current = !1));
+                    N.current && (_(!0), (N.current = !1));
                   },
                   t = function () {
-                    null !== B &&
-                      void 0 !== B &&
-                      B.current &&
-                      (_(!1), (z.current = !0));
+                    null !== F &&
+                      void 0 !== F &&
+                      F.current &&
+                      (_(!1), (N.current = !0));
                   };
                 return (
                   window.addEventListener('focus', e),
@@ -16114,21 +16103,21 @@
               }, []),
               (0, u.useEffect)(function () {
                 return function () {
-                  Sa.v.removePlayer(U.current);
+                  Sa.v.removePlayer(Z.current);
                 };
               }, []);
-            var ee = (0, u.useMemo)(function () {
+            var G = (0, u.useMemo)(function () {
                 return {
                   threshold: Oa,
                   rootMargin: '-56px 0px 0px 0px',
                   root: null,
                 };
               }, []),
-              te = (0, u.useCallback)(
+              Q = (0, u.useCallback)(
                 function (e) {
                   var t = (0, a.Z)(e, 1)[0];
-                  N &&
-                    (Sa.v.setPlayer(U.current, {
+                  L &&
+                    (Sa.v.setPlayer(Z.current, {
                       setPlaying: function (e) {
                         _(e);
                       },
@@ -16137,22 +16126,22 @@
                     }),
                     Sa.v.play());
                 },
-                [N, h, f, L, $],
+                [L, h, f, j, H],
               );
             return (
-              (0, ka.S)(f ? null : K, ee, te),
+              (0, ka.S)(f ? null : I, G, Q),
               (0, d.jsx)('div', {
                 className: c()(pa[''.concat(Da)], o),
                 style: i,
-                ref: X,
+                ref: Y,
                 children:
-                  N &&
+                  L &&
                   (0, d.jsxs)('div', {
                     className: pa[''.concat(Da, '-inner')],
-                    ref: K,
+                    ref: I,
                     children: [
                       (0, d.jsx)(ta.Z, {
-                        ref: I,
+                        ref: M,
                         muted: g,
                         className: pa[''.concat(Da, '-audio')],
                         url: t,
@@ -16163,18 +16152,15 @@
                         width: '100%',
                         height: '100%',
                         onReady: function () {
-                          R(!0);
+                          P(!0);
                         },
-                        progressInterval: 300,
+                        progressInterval: 20,
                         onProgress: function (e) {
-                          var t = e.playedSeconds;
-                          x && E(t), console.log(t, 'playedSeconds');
-                        },
-                        onDuration: function (e) {
-                          P(e);
+                          var t = e.played;
+                          x && H && E(t), console.log(t, 'percentage');
                         },
                       }),
-                      !L &&
+                      !j &&
                         (0, d.jsx)(ru.Z, {
                           spinning: !0,
                           size: 18,
@@ -16183,28 +16169,27 @@
                       (0, d.jsx)(Ca, {
                         muted: g,
                         inViewer: n,
-                        nearBottom: V,
+                        nearBottom: U,
                         onClick: function () {
-                          L &&
+                          j &&
                             m(function (e) {
                               return !e;
                             });
                         },
                       }),
-                      $ &&
+                      H &&
                         (0, d.jsx)(ya, {
-                          duration: j,
-                          nearBottom: V,
-                          currentTime: S,
-                          ready: L,
+                          percentage: S,
+                          nearBottom: U,
+                          ready: j,
                           onPause: function () {
                             _(!1);
                           },
                           onSeekTo: function (e) {
                             var t;
-                            null === (t = I.current) ||
+                            null === (t = M.current) ||
                               void 0 === t ||
-                              t.seekTo(e, 'seconds'),
+                              t.seekTo(e, 'fraction'),
                               console.log(e, 'onSeekTo'),
                               _(!0);
                           },
@@ -16318,7 +16303,7 @@
               (0, d.jsx)(m.Z, {
                 visible: t,
                 onClose: n,
-                pullToClose: !0,
+                pullToClose: !l.Y,
                 contentClassName: Na[''.concat(Za)],
                 disabledPlayerScheduler: a,
                 children: (0, d.jsx)('div', {
