@@ -1,4 +1,4 @@
-/*! For license information please see main.83b74b2d.js.LICENSE.txt */
+/*! For license information please see main.61798c6a.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16029,7 +16029,7 @@
               U = z[0],
               K = z[1],
               H = (s || n) && j,
-              W = (0, u.useRef)(!1),
+              W = (0, u.useRef)(0),
               V = da({ threshold: 0.2, triggerOnce: !h }),
               q = (0, a.Z)(V, 2),
               $ = q[0],
@@ -16158,7 +16158,9 @@
                         progressInterval: 200,
                         onProgress: function (e) {
                           var t = e.played;
-                          W.current || (x && H && E(t)), (W.current = !1);
+                          !W.current || W.current >= 400
+                            ? (x && H && E(t), (W.current = 0))
+                            : (W.current += 200);
                         },
                       }),
                       !j &&
@@ -16192,7 +16194,7 @@
                               void 0 === t ||
                               t.seekTo(e, 'fraction'),
                               console.log(e, 'onSeekTo'),
-                              (W.current = !0),
+                              (W.current = -1),
                               _(!0);
                           },
                         }),
