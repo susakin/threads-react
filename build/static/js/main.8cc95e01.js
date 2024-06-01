@@ -1,4 +1,4 @@
-/*! For license information please see main.e1c7b40f.js.LICENSE.txt */
+/*! For license information please see main.8cc95e01.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16156,6 +16156,7 @@
                         muted: g,
                         className: pa[''.concat(Da, '-audio')],
                         url: t,
+                        loop: !0,
                         playing: x,
                         playsinline: !0,
                         preload: 'none',
@@ -16164,7 +16165,7 @@
                         onReady: function () {
                           R(!0);
                         },
-                        progressInterval: 150,
+                        progressInterval: 500,
                         onProgress: function (e) {
                           var t = e.playedSeconds;
                           x && E(t), console.log(t, 'playedSeconds');
