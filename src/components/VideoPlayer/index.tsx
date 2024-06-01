@@ -219,7 +219,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
                 setPlaying(false);
               }}
               onSeekTo={time => {
-                playerRef.current?.seekTo(time / duration, 'fraction');
+                playerRef.current?.seekTo(time, 'seconds');
                 setCurrentTime(time);
                 setPlaying(true);
               }}

@@ -1,4 +1,4 @@
-/*! For license information please see main.2db60a7d.js.LICENSE.txt */
+/*! For license information please see main.84a73d04.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -15847,13 +15847,14 @@
               m = (0, a.Z)(g, 2),
               b = m[0],
               w = m[1];
-            (0, u.useEffect)(
+            (0, u.useLayoutEffect)(
               function () {
-                w(r / t);
+                var e = +(r / t).toFixed(4);
+                w(e);
               },
               [r, t],
             );
-            (0, u.useEffect)(
+            (0, u.useLayoutEffect)(
               function () {
                 v.current = b;
               },
@@ -15861,11 +15862,14 @@
             );
             var x = function (e) {
               if (p.current) {
+                var t;
                 null === f || void 0 === f || f(), (h.current = !1);
-                var t = p.current.getBoundingClientRect().right - e,
-                  n = p.current.offsetWidth,
-                  r = (n - t) / n;
-                (r = Math.min(1, Math.max(r, 0))), w(r);
+                var n = p.current.getBoundingClientRect().right - e,
+                  r = p.current.offsetWidth,
+                  o = +(null === (t = (r - n) / r) || void 0 === t
+                    ? void 0
+                    : t.toFixed(4));
+                (o = Math.min(1, Math.max(o, 0))), w(o);
               }
             };
             return (
@@ -15876,12 +15880,14 @@
                         (e.stopPropagation(), e.preventDefault(), x(e.clientX));
                     },
                     r = function (e) {
-                      y.current &&
-                        (e.stopPropagation(),
-                        e.preventDefault(),
-                        (y.current = !1),
-                        (h.current = !0),
-                        null === i || void 0 === i || i(v.current * t));
+                      if (y.current) {
+                        e.stopPropagation(),
+                          e.preventDefault(),
+                          (y.current = !1),
+                          (h.current = !0);
+                        var n = +(v.current * t).toFixed(4);
+                        null === i || void 0 === i || i(n);
+                      }
                     },
                     o = function (e) {
                       var t = e.touches[0];
@@ -15938,7 +15944,7 @@
                         h.current && b > v.current,
                       ),
                     ),
-                    style: { transform: 'scaleX('.concat(b, ')') },
+                    style: { transform: 'scaleX('.concat(100 * b, '%)') },
                   }),
                 }),
               })
@@ -16198,7 +16204,7 @@
                             var t;
                             null === (t = I.current) ||
                               void 0 === t ||
-                              t.seekTo(e / j, 'fraction'),
+                              t.seekTo(e, 'seconds'),
                               E(e),
                               _(!0);
                           },

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useLayoutEffect } from 'react';
 import cs from 'classnames';
 import styles from './controls.module.less';
 import { isSupportTouch } from '@utils/index';
@@ -28,8 +28,9 @@ const Controls: React.FC<ControlsProps> = ({
   const isDownRef = useRef<boolean>(false);
   const [scaleX, setScaleX] = useState<number>(currentTime / duration);
 
-  useEffect(() => {
-    setScaleX(currentTime / duration);
+  useLayoutEffect(() => {
+    const x = +(currentTime / duration).toFixed(4);
+    setScaleX(x);
   }, [currentTime, duration]);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -47,7 +48,7 @@ const Controls: React.FC<ControlsProps> = ({
     calculatePercentage(touch.clientX);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     preScaleXRef.current = scaleX;
   }, [scaleX]);
 
@@ -58,8 +59,11 @@ const Controls: React.FC<ControlsProps> = ({
       const divRight = containerRef.current.getBoundingClientRect().right;
       const distance = divRight - clientX;
       const divWidth = containerRef.current.offsetWidth;
-      let calculatedPercentage = (divWidth - distance) / divWidth;
+      let calculatedPercentage = +((divWidth - distance) / divWidth)?.toFixed(
+        4,
+      );
       calculatedPercentage = Math.min(1, Math.max(calculatedPercentage, 0));
+
       setScaleX(calculatedPercentage);
     }
   };
@@ -81,7 +85,8 @@ const Controls: React.FC<ControlsProps> = ({
         e.preventDefault();
         isDownRef.current = false;
         linearRef.current = true;
-        onSeekTo?.(preScaleXRef.current * duration);
+        const time = +(preScaleXRef.current * duration).toFixed(4);
+        onSeekTo?.(time);
       }
     };
 
@@ -115,8 +120,6 @@ const Controls: React.FC<ControlsProps> = ({
     };
   }, [ready]);
 
-  // alert(`{ transform: scaleX(${scaleX}%) }`);
-
   return (
     <div
       className={cs(styles[`${classNamePrefix}`], {
@@ -132,7 +135,7 @@ const Controls: React.FC<ControlsProps> = ({
             [styles[`${classNamePrefix}-inner-progress-duration`]]:
               linearRef.current && scaleX > preScaleXRef.current,
           })}
-          style={{ transform: `scaleX(${scaleX})` }}
+          style={{ transform: `scaleX(${100 * scaleX}%)` }}
         />
       </div>
     </div>
