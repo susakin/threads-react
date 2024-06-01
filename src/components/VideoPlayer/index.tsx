@@ -230,7 +230,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
               onSeekTo={percentage => {
                 playerRef.current?.seekTo(percentage, 'fraction');
                 console.log(percentage, 'onSeekTo');
-                //setCurrentTime(time);
+                setPercentage(percentage);
                 timeGapRef.current = -1;
                 setPlaying(true);
               }}
