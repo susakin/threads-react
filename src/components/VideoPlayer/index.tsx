@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import ReactPlayer from 'react-player';
 import { useInView } from 'react-intersection-observer';
 import cs from 'classnames';
@@ -9,7 +15,6 @@ import { useIntersectionObserver } from '@hooks/useIntersectionObserver';
 import { playerScheduler } from './scheduler';
 import { uniqueId } from 'lodash';
 import { Spin } from '..';
-import { isSupportTouch } from '@utils/index';
 
 type VideoPlayerProps = {
   url: string;
@@ -54,8 +59,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
   const idRef = React.useRef<string>(uniqueId());
   const _containerRef = React.useRef<HTMLDivElement>(null);
   const [nearBottom, setNearBottom] = useState<boolean>(false);
-
   const hasControls = (controls || inViewer) && ready;
+  const onSeekRef = useRef<boolean>(false);
 
   const [inViewRef, inView] = useInView({
     threshold: 0.2,
@@ -80,6 +85,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
 
   useEffect(() => {
     playingRef.current = playing;
+    onSeekRef.current = false;
   }, [playing]);
 
   const setRefs = useCallback(
@@ -186,9 +192,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             onReady={() => {
               setReady(true);
             }}
-            progressInterval={isSupportTouch ? 600 : 200}
+            progressInterval={onSeekRef?.current ? 800 : 200}
             onProgress={({ played }) => {
-              console.log(played, 'played');
               playing && hasControls && setPercentage(played);
             }}
           />
@@ -217,7 +222,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
               }}
               onSeekTo={percentage => {
                 playerRef.current?.seekTo(percentage, 'fraction');
-                console.log(percentage, 'onSeekTo');
+                onSeekRef.current = true;
                 setPercentage(percentage);
                 setPlaying(true);
               }}
