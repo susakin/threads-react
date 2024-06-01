@@ -186,7 +186,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             onReady={() => {
               setReady(true);
             }}
-            progressInterval={500}
+            progressInterval={300}
             onProgress={({ playedSeconds }) => {
               playing && setCurrentTime(playedSeconds);
               console.log(playedSeconds, 'playedSeconds');

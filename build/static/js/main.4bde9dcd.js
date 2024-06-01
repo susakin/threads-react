@@ -1,4 +1,4 @@
-/*! For license information please see main.8cc95e01.js.LICENSE.txt */
+/*! For license information please see main.4bde9dcd.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16165,7 +16165,7 @@
                         onReady: function () {
                           R(!0);
                         },
-                        progressInterval: 500,
+                        progressInterval: 300,
                         onProgress: function (e) {
                           var t = e.playedSeconds;
                           x && E(t), console.log(t, 'playedSeconds');
