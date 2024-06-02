@@ -1,4 +1,4 @@
-/*! For license information please see main.18e7a255.js.LICENSE.txt */
+/*! For license information please see main.494b0981.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -16204,7 +16204,7 @@
                               (W.current = !0),
                               setTimeout(function () {
                                 W.current = !1;
-                              }, 200);
+                              }, 700);
                           },
                         }),
                     ],

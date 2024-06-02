@@ -33,7 +33,7 @@ define(['./workbox-f5b72648'], function (s) {
     s.clientsClaim(),
     s.precacheAndRoute(
       [
-        { url: '/index.html', revision: '29a084eb0106c556b435cb9e10b9ae20' },
+        { url: '/index.html', revision: '7fcd24e0461473ee75c2329f73220618' },
         { url: '/static/css/152.d247877b.chunk.css', revision: null },
         { url: '/static/css/527.3a054278.chunk.css', revision: null },
         { url: '/static/css/596.7100a5cc.chunk.css', revision: null },
@@ -52,9 +52,9 @@ define(['./workbox-f5b72648'], function (s) {
         { url: '/static/js/864.d3455417.chunk.js', revision: null },
         { url: '/static/js/9.c5fabb72.chunk.js', revision: null },
         { url: '/static/js/997.e2316830.chunk.js', revision: null },
-        { url: '/static/js/main.18e7a255.js', revision: null },
+        { url: '/static/js/main.494b0981.js', revision: null },
         {
-          url: '/static/js/main.18e7a255.js.LICENSE.txt',
+          url: '/static/js/main.494b0981.js.LICENSE.txt',
           revision: 'aea7f4df688f3af28d40817a22eb579f',
         },
         {

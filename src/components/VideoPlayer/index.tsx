@@ -230,7 +230,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
                 seekedRef.current = true;
                 setTimeout(() => {
                   seekedRef.current = false;
-                }, 200);
+                }, 700);
               }}
             />
           )}
