@@ -1,4 +1,4 @@
-/*! For license information please see main.d5f93c10.js.LICENSE.txt */
+/*! For license information please see main.1828f4fa.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -7640,7 +7640,16 @@
                       (0, v.jsx)(p.zx, {
                         type: 'text',
                         className: h[''.concat(T, '-action')],
-                        onClick: S,
+                        onClick: function (e) {
+                          null === S || void 0 === S || S(e),
+                            w(function (e) {
+                              return (0, o.Z)(
+                                (0, o.Z)({}, e),
+                                {},
+                                { duration: 1 },
+                              );
+                            });
+                        },
                         children: k,
                       }),
                   ],
@@ -7694,18 +7703,18 @@
           })(),
           _ = (0, b.throttle)(
             function (e, t) {
-              var n = (0, u.createRef)(),
-                i = (0, w.gh)(),
-                a = '_TOAST_CONTAINER '.concat(
-                  'dark' === i ? 'light' : 'dark',
+              var n = (0, w.gh)(),
+                i = '_TOAST_CONTAINER '.concat(
+                  'dark' === n ? 'light' : 'dark',
                   '-mode',
                 );
               r
-                ? (r.className = a)
-                : (((r = document.createElement('div')).className = a),
+                ? (r.className = i)
+                : (((r = document.createElement('div')).className = i),
                   (r.style.pointerEvents = 'none'),
                   document.body.appendChild(r)),
                 x.schedule(function () {
+                  var n = (0, u.createRef)();
                   return new Promise(function (i) {
                     var a = (0, m.Z)(
                       (0, v.jsx)(
@@ -21398,7 +21407,7 @@
             };
           };
       },
-      1959: function (e, t, n) {
+      3301: function (e, t, n) {
         'use strict';
         n.d(t, {
           jC: function () {
@@ -23282,19 +23291,18 @@
               E = void 0 === S ? 0 : S,
               D = C.id,
               j = void 0 === D ? '' : D,
-              P = C.isSavedByViewer,
-              A = C.textEntities,
-              T = ((null === o || void 0 === o ? void 0 : o.user) || {})
+              P = C.textEntities,
+              A = ((null === o || void 0 === o ? void 0 : o.user) || {})
                 .friendshipStatus,
-              L = (0, a.useState)(!1),
-              R = (0, i.Z)(L, 2),
-              M = R[0],
-              F = R[1],
-              N = (0, Me.r)({
+              T = (0, a.useState)(!1),
+              L = (0, i.Z)(T, 2),
+              R = L[0],
+              M = L[1],
+              F = (0, Me.r)({
                 user: null === o || void 0 === o ? void 0 : o.user,
                 onUserFriendshipStatusUpdate: x,
               }).item,
-              Z = (function (e) {
+              N = (function (e) {
                 var t,
                   n = e.createdAt,
                   r = e.onEditClick,
@@ -23332,8 +23340,8 @@
                   { item: t }
                 );
               })({ createdAt: E, onEditClick: m }),
-              I = Z.item,
-              B = (function (e) {
+              Z = N.item,
+              I = (function (e) {
                 var t = e.post,
                   n = e.pinToWhere,
                   r = e.onPinChange,
@@ -23429,48 +23437,89 @@
                   };
                 return { item: x };
               })({ post: o, onPinChange: d, pinToWhere: v }),
-              z = B.item,
-              U = (0, Fe.l)({
+              B = I.item,
+              z = (function (e) {
+                var t = e.post,
+                  n = e.onPostUpdate,
+                  r = t || {},
+                  o = r.id,
+                  i = r.isSavedByViewer,
+                  a = (0, c.s0)(),
+                  l = (0, y.i)(Pe.sm, {
+                    manual: !0,
+                    onSuccess: function () {
+                      null === n ||
+                        void 0 === n ||
+                        n(o, { isSavedByViewer: !0 }),
+                        s.FN.show({
+                          duration: 5e3,
+                          content: '\u5df2\u6536\u85cf',
+                          hasMinWith: !0,
+                          action: '\u67e5\u770b\u5168\u90e8',
+                          onActionClick: function () {
+                            a('/saved');
+                          },
+                        });
+                    },
+                  }).run,
+                  f = (0, y.i)(Pe.YL, {
+                    manual: !0,
+                    onSuccess: function () {
+                      s.FN.show({
+                        duration: 5e3,
+                        content: '\u5df2\u53d6\u6d88\u4fdd\u5b58',
+                        hasMinWith: !0,
+                        action: '\u64a4\u9500',
+                        onActionClick: function () {
+                          l(o);
+                        },
+                      }),
+                        null === n ||
+                          void 0 === n ||
+                          n(o, { isSavedByViewer: !1 });
+                    },
+                  }).run;
+                return {
+                  item: {
+                    label: ''.concat(i ? '\u53d6\u6d88' : '', '\u6536\u85cf'),
+                    onClick: function () {
+                      i ? f(o) : l(o);
+                    },
+                    icon: i
+                      ? (0, O.jsx)(u.JH, {
+                          viewBox: '0 0 20 20',
+                          size: 20,
+                          fill: 'currentColor',
+                        })
+                      : (0, O.jsx)(u.vc, {
+                          viewBox: '0 0 20 20',
+                          size: 20,
+                          fill: 'none',
+                          stroke: 'currentColor',
+                          strokeWidth: 1.5,
+                        }),
+                  },
+                };
+              })({ post: o, onPostUpdate: l }),
+              U = z.item,
+              K = (0, Fe.l)({
                 user: null === o || void 0 === o ? void 0 : o.user,
                 onUserFriendshipStatusUpdate: x,
               }).item,
-              K = (0, y.i)(Pe.fR, {
+              H = (0, y.i)(Pe.fR, {
                 manual: !0,
                 onSuccess: function () {
                   null === f || void 0 === f || f(j),
                     s.FN.show('\u5df2\u5220\u9664');
                 },
               }).run,
-              H = (0, c.s0)(),
-              W = (0, y.i)(Pe.sm, {
-                manual: !0,
-                onSuccess: function () {
-                  s.FN.show({
-                    duration: 5e3,
-                    content: '\u5df2\u6536\u85cf',
-                    hasMinWith: !0,
-                    action: '\u67e5\u770b\u5168\u90e8',
-                    onActionClick: function () {
-                      H('/saved');
-                    },
-                  }),
-                    null === l || void 0 === l || l(j, { isSavedByViewer: !0 });
-                },
-              }).run,
-              V = (0, y.i)(Pe.YL, {
-                manual: !0,
-                onSuccess: function () {
-                  s.FN.show('\u5df2\u53d6\u6d88\u6536\u85cf'),
-                    null === l || void 0 === l || l(j, { isSavedByViewer: !1 });
-                },
-              }).run,
-              q = (0, y.i)(Pe.jp, {
+              W = (0, y.i)(Pe.jp, {
                 manual: !0,
                 onSuccess: function () {
                   null === l || void 0 === l || l(j, { isHiddenByViewer: !0 });
                 },
               }).run,
-              $ = (0, y.i)(de.fv, {
+              V = (0, y.i)(de.fv, {
                 manual: !0,
                 onSuccess: function () {
                   null === p ||
@@ -23481,7 +23530,7 @@
                     s.FN.show('\u5df2\u505c\u6b62\u5173\u6ce8');
                 },
               }).run,
-              Y = (0, y.i)(Pe.Uu, {
+              q = (0, y.i)(Pe.Uu, {
                 manual: !0,
                 onSuccess: function (e, t) {
                   var n = (0, i.Z)(t, 2),
@@ -23497,17 +23546,17 @@
                     );
                 },
               }),
-              G = Y.run,
-              Q = (0, a.useMemo)(
+              $ = q.run,
+              Y = (0, a.useMemo)(
                 function () {
                   var e =
-                      null === A || void 0 === A
+                      null === P || void 0 === P
                         ? void 0
-                        : A.some(function (e) {
+                        : P.some(function (e) {
                             return 'tag' === e.type;
                           }),
                     t = [
-                      I,
+                      Z,
                       e
                         ? {
                             label: '\u7528\u6807\u8bb0\u521b\u5efa',
@@ -23522,32 +23571,11 @@
                             onClick: g,
                           }
                         : null,
-                      {
-                        label: ''.concat(
-                          P ? '\u53d6\u6d88' : '',
-                          '\u6536\u85cf',
-                        ),
-                        onClick: function () {
-                          P ? V(j) : W(j);
-                        },
-                        icon: P
-                          ? (0, O.jsx)(u.JH, {
-                              viewBox: '0 0 20 20',
-                              size: 20,
-                              fill: 'currentColor',
-                            })
-                          : (0, O.jsx)(u.vc, {
-                              viewBox: '0 0 20 20',
-                              size: 20,
-                              fill: 'none',
-                              stroke: 'currentColor',
-                              strokeWidth: 1.5,
-                            }),
-                      },
+                      U,
                     ];
                   return (
-                    h && t.unshift(z),
-                    null !== T && void 0 !== T && T.isOwn
+                    h && t.unshift(B),
+                    null !== A && void 0 !== A && A.isOwn
                       ? t.push(
                           {
                             label: ''.concat(
@@ -23559,7 +23587,7 @@
                               '\u9690\u85cf\u83b7\u8d5e\u6570\u548c\u5206\u4eab\u6b21\u6570',
                             ),
                             onClick: function () {
-                              G(null === o || void 0 === o ? void 0 : o.id, {
+                              $(null === o || void 0 === o ? void 0 : o.id, {
                                 likeAndViewCountsDisabled: !(
                                   null !== o &&
                                   void 0 !== o &&
@@ -23575,7 +23603,7 @@
                           {
                             label: '\u8c01\u53ef\u4ee5\u56de\u590d',
                             onClick: function () {
-                              F(!0);
+                              M(!0);
                             },
                             split: !0,
                             icon: (0, O.jsx)(u.Nm, {
@@ -23598,7 +23626,7 @@
                                 okType: 'danger',
                                 okText: '\u5220\u9664',
                                 onOk: function () {
-                                  K(j);
+                                  H(j);
                                 },
                               });
                             },
@@ -23612,7 +23640,7 @@
                           {
                             label: '\u6ca1\u5174\u8da3',
                             onClick: function () {
-                              q(null === o || void 0 === o ? void 0 : o.id);
+                              W(null === o || void 0 === o ? void 0 : o.id);
                             },
                             icon: (0, O.jsx)(u.c, {
                               viewBox: '0 0 20 20',
@@ -23620,13 +23648,13 @@
                             }),
                             split: !0,
                           },
-                          U,
+                          K,
                         ),
-                        null !== T && void 0 !== T && T.following
+                        null !== A && void 0 !== A && A.following
                           ? t.push({
                               label: '\u505c\u6b62\u5173\u6ce8',
                               onClick: function () {
-                                $(
+                                V(
                                   null === o || void 0 === o
                                     ? void 0
                                     : o.user.id,
@@ -23637,7 +23665,7 @@
                                 size: 20,
                               }),
                             })
-                          : t.push(N)),
+                          : t.push(F)),
                     t
                   );
                 },
@@ -23654,10 +23682,10 @@
                     ? void 0
                     : o.likeAndViewCountsDisabled,
                   null === o || void 0 === o ? void 0 : o.replyAuth,
-                  null === o || void 0 === o ? void 0 : o.isSavedByViewer,
                   U,
-                  z,
-                  I,
+                  K,
+                  B,
+                  Z,
                 ],
               );
             return (0, O.jsxs)('div', {
@@ -23682,12 +23710,12 @@
                     }),
                   }),
                 r &&
-                  0 !== Q.length &&
+                  0 !== Y.length &&
                   (0, O.jsx)(s.J2, {
                     placement: 'bottom-end',
                     offset: 5,
                     hideWhenContentClick: !0,
-                    content: (0, O.jsx)(s.mX, { items: Q }),
+                    content: (0, O.jsx)(s.mX, { items: Y }),
                     children: (0, O.jsx)(s.vC, {
                       className: je[''.concat(We, '-button')],
                       size: 20,
@@ -23701,9 +23729,9 @@
                 (0, O.jsx)(Re, {
                   post: o,
                   onPostUpdate: l,
-                  visible: M,
+                  visible: R,
                   onClose: function () {
-                    F(!1);
+                    M(!1);
                   },
                 }),
               ],
@@ -27048,13 +27076,7 @@
                                       icon: 'done',
                                       action: '\u67e5\u770b',
                                       onActionClick: function () {
-                                        var n;
-                                        I('/post/'.concat(e)),
-                                          null === t ||
-                                            void 0 === t ||
-                                            null === (n = t.close) ||
-                                            void 0 === n ||
-                                            n.call(t);
+                                        I('/post/'.concat(e));
                                       },
                                       content: f
                                         ? '\u5df2\u7f16\u8f91'
@@ -81668,16 +81690,16 @@
         e +
         '.' +
         {
-          9: 'c5fabb72',
+          9: 'd8372794',
           27: 'e116c24e',
-          69: 'cba7f6df',
-          152: 'acde5de1',
-          527: '741a76af',
+          69: '08b65601',
+          152: 'fc02a35d',
+          527: 'fad365e1',
           596: '63c38699',
-          653: '0ad22251',
-          849: 'cf1ce959',
-          864: 'd3455417',
-          997: 'e2316830',
+          653: 'e3f64920',
+          849: '87dde10e',
+          864: '64b01828',
+          997: '8306122f',
         }[e] +
         '.chunk.js'
       );
@@ -82029,7 +82051,7 @@
             title: '\u6536\u85cf\u5939 \u2022 Threads',
           },
         ],
-        u = n(1959),
+        u = n(3301),
         s = n(6975),
         c = n(813),
         l = { 'app-placeholder': 'UPKJY', 'app-placeholder-logo': 'WL1hO' },

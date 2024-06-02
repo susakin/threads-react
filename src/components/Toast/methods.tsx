@@ -40,7 +40,6 @@ const scheduler = createScheduler();
 
 const throttleShow = throttle(
   (props: ToastProps | string, resolve: (value: ToastRef) => void) => {
-    const toastRef = createRef<ToastRef>();
     const theme = getTheme();
     const className = `_TOAST_CONTAINER ${
       theme === 'dark' ? 'light' : 'dark'
@@ -55,6 +54,7 @@ const throttleShow = throttle(
     }
 
     scheduler.schedule(() => {
+      const toastRef = createRef<ToastRef>();
       return new Promise<void>(resolveSchedule => {
         const unmount = renderToContainer(
           <Toast

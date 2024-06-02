@@ -4,8 +4,6 @@ import {
   Edited,
   Direction,
   UnFollow,
-  UnSave,
-  Save,
   Unlike,
   Delete,
   Hide,
@@ -20,13 +18,7 @@ import {
 } from '@components/index';
 import styles from './postHeaderAction.module.less';
 import { OnPostUpdate } from '../Post';
-import {
-  deletePost,
-  hidePost,
-  updateLikeAndViewCounts,
-  postSave,
-  postUnSave,
-} from '@services/post';
+import { deletePost, hidePost, updateLikeAndViewCounts } from '@services/post';
 import { useFetch } from '@hooks/useFetch';
 import { unfollow } from '@services/profile';
 import Modal from '@components/Modal';
@@ -35,10 +27,10 @@ import { OnFollowingChange } from '../FollowButton';
 
 import ReplyAuthModal from '../ReplyAuthModal';
 import { useBlock } from './useBlock';
-import { useNavigate } from 'react-router-dom';
 import { useMute } from './useMute';
 import { usePin, UsePinProps } from './usePin';
 import { useEdit, UseEditProps } from './useEdit';
+import { useSave } from './useSave';
 
 const classNamePrefix = 'post-header-action';
 
@@ -70,13 +62,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   onEditClick,
   onUserFriendshipStatusUpdate,
 }) => {
-  const {
-    captionIsEdited,
-    createdAt = 0,
-    id = '',
-    isSavedByViewer,
-    textEntities,
-  } = post || {};
+  const { captionIsEdited, createdAt = 0, id = '', textEntities } = post || {};
 
   const { friendshipStatus } = post?.user || {};
   const [replyAuthVisible, setReplyAuthVisible] = useState<boolean>(false);
@@ -88,6 +74,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     onPinChange,
     pinToWhere,
   });
+  const { item: saveItem } = useSave({ post, onPostUpdate });
 
   const { item: muteItem } = useMute({
     user: post?.user,
@@ -99,31 +86,6 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     onSuccess() {
       onDelete?.(id as string);
       Toast.show('已删除');
-    },
-  });
-
-  const navigate = useNavigate();
-  const { run: _postSave } = useFetch(postSave, {
-    manual: true,
-    onSuccess() {
-      Toast.show({
-        duration: 5000,
-        content: '已收藏',
-        hasMinWith: true,
-        action: '查看全部',
-        onActionClick() {
-          navigate(`/saved`);
-        },
-      });
-      onPostUpdate?.(id as string, { isSavedByViewer: true });
-    },
-  });
-
-  const { run: _postUnSave } = useFetch(postUnSave, {
-    manual: true,
-    onSuccess() {
-      Toast.show('已取消收藏');
-      onPostUpdate?.(id as string, { isSavedByViewer: false });
     },
   });
 
@@ -174,23 +136,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
             onClick: onTagClick,
           }
         : (null as any),
-      {
-        label: `${isSavedByViewer ? '取消' : ''}收藏`,
-        onClick() {
-          isSavedByViewer ? _postUnSave(id) : _postSave(id as string);
-        },
-        icon: isSavedByViewer ? (
-          <UnSave viewBox="0 0 20 20" size={20} fill="currentColor" />
-        ) : (
-          <Save
-            viewBox="0 0 20 20"
-            size={20}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={1.5}
-          />
-        ),
-      },
+      saveItem,
     ];
 
     if (hasPin) {
@@ -276,7 +222,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     post?.user?.friendshipStatus,
     post?.likeAndViewCountsDisabled,
     post?.replyAuth,
-    post?.isSavedByViewer,
+    saveItem,
     muteItem,
     pinItem,
     editItem,

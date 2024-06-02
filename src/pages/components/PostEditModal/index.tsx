@@ -235,7 +235,6 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
           action: '查看',
           onActionClick() {
             navigate(`/post/${postCode}`);
-            toastRef?.close?.();
           },
           content: editPost ? '已编辑' : '已发布',
           hasMinWith: true,

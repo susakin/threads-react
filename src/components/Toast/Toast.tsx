@@ -96,7 +96,10 @@ const Toast = (props: ToastProps, ref: React.Ref<ToastRef> | undefined) => {
           <Button
             type="text"
             className={styles[`${classNamePrefix}-action`]}
-            onClick={onActionClick}
+            onClick={e => {
+              onActionClick?.(e);
+              setProps(p => ({ ...p, duration: 1 }));
+            }}
           >
             {action}
           </Button>
