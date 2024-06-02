@@ -4592,10 +4592,10 @@ img[src=''] {
 .DbzJD {
   align-items: center;
   background-color: var(--barcelona-secondary-background);
+  border: 1px solid var(--barcelona-primary-outline);
   border-radius: 16px;
   display: flex;
   flex-direction: row;
-  outline: 1px solid var(--barcelona-primary-outline);
   padding: 12px;
 }
 .U0wmG {

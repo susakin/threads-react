@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.d52a9106.css",
+    "main.css": "/static/css/main.ea9bc925.css",
     "main.js": "/static/js/main.a6b82b44.js",
     "static/css/849.2e35b7a7.chunk.css": "/static/css/849.2e35b7a7.chunk.css",
     "static/js/849.87dde10e.chunk.js": "/static/js/849.87dde10e.chunk.js",
@@ -25,7 +25,7 @@
     "service-worker.js": "/service-worker.js"
   },
   "entrypoints": [
-    "static/css/main.d52a9106.css",
+    "static/css/main.ea9bc925.css",
     "static/js/main.a6b82b44.js"
   ]
 }
