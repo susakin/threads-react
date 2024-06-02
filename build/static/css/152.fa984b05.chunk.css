@@ -18,17 +18,15 @@
 }
 .HQOj2 {
   height: 44px;
-  width: 100%;
-}
-.F380r {
-  margin-top: 12px;
 }
 .D9qmX,
-.F380r {
+.F380r,
+.HQOj2 {
   width: 100%;
 }
 .byHDD {
   background-color: var(--barcelona-primary-background);
+  padding-top: 12px;
   z-index: 1;
 }
 .Z4ukF {
