@@ -15,6 +15,7 @@ import { useIntersectionObserver } from '@hooks/useIntersectionObserver';
 import { playerScheduler } from './scheduler';
 import { uniqueId } from 'lodash';
 import { Spin } from '..';
+import { isSupportTouch } from '@utils/index';
 
 type VideoPlayerProps = {
   url: string;
@@ -227,10 +228,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
                 playerRef.current?.seekTo(percentage, 'fraction');
                 setPercentage(percentage);
                 setPlaying(true);
-                seekedRef.current = true;
-                setTimeout(() => {
-                  seekedRef.current = false;
-                }, 700);
+                if (isSupportTouch) {
+                  seekedRef.current = true;
+                  setTimeout(() => {
+                    seekedRef.current = false;
+                  }, 700);
+                }
               }}
             />
           )}
