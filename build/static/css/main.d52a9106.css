@@ -1047,6 +1047,7 @@
   position: fixed;
   scrollbar-width: none;
   top: 0;
+  touch-action: none;
   width: 100%;
   z-index: 3;
 }
@@ -1854,6 +1855,7 @@
   left: 0;
   padding: 16px 0;
   position: absolute;
+  touch-action: none;
   width: 100%;
 }
 .vnv6F {
@@ -1888,6 +1890,7 @@
 .X8Mbq {
   background-color: var(--barcelona-primary-icon);
   border-radius: 100px;
+  touch-action: none;
   -webkit-transform-origin: left;
   transform-origin: left;
   transition-timing-function: linear;

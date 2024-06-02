@@ -97,10 +97,12 @@ const Controls: React.FC<ControlsProps> = ({
       document.addEventListener(
         isSupportTouch ? 'touchmove' : 'mousemove',
         isSupportTouch ? handleTouchMove : (handleMouseMove as any),
+        { passive: false },
       );
       document.addEventListener(
         isSupportTouch ? 'touchend' : 'mouseup',
         handleUp as any,
+        { passive: false },
       );
     }
 

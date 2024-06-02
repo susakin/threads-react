@@ -30,7 +30,6 @@ const PostComposer: React.FC = () => {
           写写串文...
         </div>
         <Button
-          className={styles[`${classNamePrefix}-inner-button`]}
           onClick={() => {
             setVisible(true);
           }}

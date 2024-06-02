@@ -25,7 +25,6 @@
           'post-composer': 'H4Pe9',
           'post-composer-inner': 'C8spY',
           'post-composer-inner-hint': 'Ms_GT',
-          'post-composer-inner-button': 'BgYya',
           'post-composer-split': 'J45oc',
         },
         u = t(8420),
@@ -60,7 +59,6 @@
                     children: '\u5199\u5199\u4e32\u6587...',
                   }),
                   (0, d.jsx)(c.zx, {
-                    className: s[''.concat(v, '-inner-button')],
                     onClick: function () {
                       r(!0);
                     },
@@ -344,7 +342,7 @@
         W = t(6023),
         q = t(2568),
         X = 'user-card',
-        Y = function (n) {
+        _ = function (n) {
           var e = n.user,
             t = n.className,
             i = n.onDelete,
@@ -441,15 +439,15 @@
             ],
           });
         },
-        _ = t(8048),
-        J = t(3703),
-        O = 'recommend',
-        Q = function () {
+        J = t(8048),
+        O = t(3703),
+        Q = 'recommend',
+        V = function () {
           var n = (0, l.useState)([]),
             e = (0, o.Z)(n, 2),
             t = e[0],
             i = e[1];
-          return (0, _.i)(J.o, {
+          return (0, J.i)(O.o, {
             onSuccess: function (n) {
               i(null === n || void 0 === n ? void 0 : n.users);
             },
@@ -457,23 +455,23 @@
           }).loading || !t.length
             ? null
             : (0, d.jsxs)('div', {
-                className: w[''.concat(O)],
+                className: w[''.concat(Q)],
                 children: [
                   (0, d.jsx)('div', {
-                    className: w[''.concat(O, '-title')],
+                    className: w[''.concat(Q, '-title')],
                     children: (0, d.jsx)('span', {
-                      className: w[''.concat(O, '-title-text')],
+                      className: w[''.concat(Q, '-title-text')],
                       children: '\u4e3a\u4f60\u63a8\u8350',
                     }),
                   }),
                   (0, d.jsx)(F, {
-                    className: w[''.concat(O, '-scroll-container')],
+                    className: w[''.concat(Q, '-scroll-container')],
                     children: t.map(function (n) {
                       return (0, d.jsx)(
-                        Y,
+                        _,
                         {
                           user: n,
-                          className: w[''.concat(O, '-user')],
+                          className: w[''.concat(Q, '-user')],
                           onDelete: function (n) {
                             i(function (e) {
                               return e.filter(function (e) {
@@ -503,7 +501,7 @@
                 ],
               });
         },
-        V = {
+        Y = {
           media: 'bljwE',
           'media-viewer-content': 'Q1_CE',
           'fade-in': 'ErXMj',
@@ -521,11 +519,11 @@
             e = null === n || void 0 === n ? void 0 : n.includes('following'),
             t = (0, l.useContext)(x.k).state.navigationEmitter;
           return (0, d.jsx)('div', {
-            className: V[''.concat(A)],
+            className: Y[''.concat(A)],
             children: (0, d.jsxs)(U.rU, {
               to: e ? '/' : 'following',
               replace: !0,
-              className: V[''.concat(A, '-link')],
+              className: Y[''.concat(A, '-link')],
               onClick: function () {
                 null === t ||
                   void 0 === t ||
@@ -533,13 +531,13 @@
               },
               children: [
                 (0, d.jsx)('div', {
-                  className: V[''.concat(A, '-link-text')],
+                  className: Y[''.concat(A, '-link-text')],
                   children: e
                     ? '\u5df2\u5173\u6ce8'
                     : '\u4e3a\u4f60\u63a8\u8350',
                 }),
                 (0, d.jsx)('div', {
-                  className: V[''.concat(A, '-link-icon')],
+                  className: Y[''.concat(A, '-link-icon')],
                   children: (0, d.jsx)(b.rs, {
                     viewBox: '0 0 12 16',
                     width: 12,
@@ -725,7 +723,7 @@
                           title: '\u4e3a\u4f60\u63a8\u8350',
                           children: (0, d.jsx)(a.p_, {
                             randomRender: function (n) {
-                              return 9 === n ? (0, d.jsx)(Q, {}) : null;
+                              return 9 === n ? (0, d.jsx)(V, {}) : null;
                             },
                             spin: function (n) {
                               return n ? null : (0, d.jsx)(c.N7, {});

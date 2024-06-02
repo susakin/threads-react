@@ -60,7 +60,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
   const _containerRef = React.useRef<HTMLDivElement>(null);
   const [nearBottom, setNearBottom] = useState<boolean>(false);
   const hasControls = (controls || inViewer) && ready;
-  const onSeekRef = useRef<boolean>(false);
+
+  const seekedRef = useRef<boolean>(false);
 
   const [inViewRef, inView] = useInView({
     threshold: 0.2,
@@ -191,12 +192,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
             onReady={() => {
               setReady(true);
             }}
-            progressInterval={onSeekRef?.current ? 400 : 50}
+            progressInterval={16}
             onProgress={({ played }) => {
-              playing && hasControls && setPercentage(played);
-              if (onSeekRef?.current) {
-                onSeekRef.current = false;
-              }
+              !seekedRef.current &&
+                playing &&
+                hasControls &&
+                setPercentage(played);
             }}
           />
           {!ready && (
@@ -224,9 +225,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = props => {
               }}
               onSeekTo={percentage => {
                 playerRef.current?.seekTo(percentage, 'fraction');
-                onSeekRef.current = true;
                 setPercentage(percentage);
                 setPlaying(true);
+                seekedRef.current = true;
+                setTimeout(() => {
+                  seekedRef.current = false;
+                }, 200);
               }}
             />
           )}

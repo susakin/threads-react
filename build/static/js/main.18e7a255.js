@@ -1,4 +1,4 @@
-/*! For license information please see main.61468c32.js.LICENSE.txt */
+/*! For license information please see main.18e7a255.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -15892,10 +15892,12 @@
                       (document.addEventListener(
                         l.Y ? 'touchmove' : 'mousemove',
                         l.Y ? o : e,
+                        { passive: !1 },
                       ),
                       document.addEventListener(
                         l.Y ? 'touchend' : 'mouseup',
                         r,
+                        { passive: !1 },
                       )),
                     function () {
                       document.removeEventListener(
@@ -16161,15 +16163,10 @@
                         onReady: function () {
                           P(!0);
                         },
-                        progressInterval:
-                          null !== W && void 0 !== W && W.current ? 400 : 50,
+                        progressInterval: 16,
                         onProgress: function (e) {
                           var t = e.played;
-                          x && H && E(t),
-                            null !== W &&
-                              void 0 !== W &&
-                              W.current &&
-                              (W.current = !1);
+                          !W.current && x && H && E(t);
                         },
                       }),
                       !j &&
@@ -16202,9 +16199,12 @@
                             null === (t = M.current) ||
                               void 0 === t ||
                               t.seekTo(e, 'fraction'),
-                              (W.current = !0),
                               E(e),
-                              _(!0);
+                              _(!0),
+                              (W.current = !0),
+                              setTimeout(function () {
+                                W.current = !1;
+                              }, 200);
                           },
                         }),
                     ],
@@ -16316,7 +16316,7 @@
               (0, d.jsx)(m.Z, {
                 visible: t,
                 onClose: n,
-                pullToClose: !l.Y,
+                pullToClose: !0,
                 contentClassName: Na[''.concat(Za)],
                 disabledPlayerScheduler: a,
                 children: (0, d.jsx)('div', {
@@ -81674,7 +81674,7 @@
           527: '741a76af',
           596: '63c38699',
           653: '0ad22251',
-          849: '6956374b',
+          849: 'cf1ce959',
           864: 'd3455417',
           997: 'e2316830',
         }[e] +
@@ -81691,7 +81691,7 @@
           152: 'd247877b',
           527: '3a054278',
           596: '7100a5cc',
-          849: '662ac0d3',
+          849: '2e35b7a7',
           864: 'c745ec70',
           997: '45eb6d00',
         }[e] +
