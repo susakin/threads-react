@@ -1,6 +1,6 @@
 import React from 'react';
 import CombinedPost, { CombinedPostProps } from '../CombinedPost';
-import { HideableComponent } from '@components/index';
+import { HidableComponent } from '@components/index';
 import List, { ListProps } from '../List';
 import styles from './index.module.less';
 import cs from 'classnames';
@@ -71,7 +71,7 @@ function PostList<T extends Record<string, any>>({
               {data?.map((item, index) => {
                 const isFirst = index === 0;
                 return (
-                  <HideableComponent key={item?.id}>
+                  <HidableComponent key={item?.id}>
                     {randomRender?.(index)}
                     <CombinedPost
                       onCommentCountClick={onCommentCountClick}
@@ -255,7 +255,7 @@ function PostList<T extends Record<string, any>>({
                       }}
                       onPostSuccess={onPostSuccess}
                     />
-                  </HideableComponent>
+                  </HidableComponent>
                 );
               })}
             </>

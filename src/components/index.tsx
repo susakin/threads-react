@@ -44,7 +44,7 @@ export { default as VideoMedia } from './Media/VideoMedia';
 
 export { default as MediaViewer } from './MediaViewer';
 
-export { default as HideableComponent } from './HideableComponent';
+export { default as HidableComponent } from './HidableComponent';
 
 export { default as Avatar } from './Avatar';
 

@@ -4,7 +4,7 @@ import styles from './index.module.less';
 import List, { ListProps } from '../List';
 import cs from 'classnames';
 import { PickFollowButtonProps } from '../UserCard';
-import HideableComponent from '@components/HideableComponent';
+import HidableComponent from '@components/HidableComponent';
 
 const classNamePrefix = 'user-list';
 
@@ -45,7 +45,7 @@ function UserList<T extends Record<string, any>>({
             const { user, activity } = item;
             const activityType = activity?.type;
             return (
-              <HideableComponent key={item?.id || user?.id}>
+              <HidableComponent key={item?.id || user?.id}>
                 <User
                   hasAction={hasAction}
                   canNavigate={canNavigate}
@@ -85,7 +85,7 @@ function UserList<T extends Record<string, any>>({
                     deleteItem(item.id);
                   }}
                 />
-              </HideableComponent>
+              </HidableComponent>
             );
           });
         }}

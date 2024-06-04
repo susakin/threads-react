@@ -1,9 +1,7 @@
 import React, { useRef, useState } from 'react';
-import cs from 'classnames';
 import { useIntersectionObserver } from '@hooks/useIntersectionObserver';
-import styles from './index.module.less';
 
-type HideableComponentProps = {
+type HidableComponentProps = {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
@@ -20,7 +18,7 @@ function intersectionObserverEntryIsIntersecting(
             entry.intersectionRect.width > 0));
 }
 
-const HideableComponent: React.FC<HideableComponentProps> = ({
+const HidableComponent: React.FC<HidableComponentProps> = ({
   children,
   className,
   style,
@@ -53,7 +51,7 @@ const HideableComponent: React.FC<HideableComponentProps> = ({
   return (
     <div
       ref={containerRef}
-      className={cs(styles['hideable-component'], className)}
+      className={className}
       style={{ ...style, minHeight: height }}
     >
       {hide ? null : children}
@@ -61,4 +59,4 @@ const HideableComponent: React.FC<HideableComponentProps> = ({
   );
 };
 
-export default HideableComponent;
+export default HidableComponent;
