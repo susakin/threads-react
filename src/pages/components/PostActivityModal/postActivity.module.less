@@ -1,55 +1,4 @@
-@import '@assets/less/variable.less';
-
 .post {
-  &-activities {
-    cursor: pointer;
-
-    &-item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      &-icon {
-        padding-left: 30px;
-        margin-right: 18px;
-        display: flex;
-      }
-
-      &-inner {
-        flex-grow: 1;
-        padding-top: 12px;
-        padding-bottom: 12px;
-        padding-right: 24px;
-        height: 36px;
-        border-bottom: 0.5px solid var(--barcelona-primary-outline);
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        &-text {
-          .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 600);
-        }
-
-        &-num {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-
-          &-text {
-            padding-right: 8px;
-            .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 400);
-          }
-
-          &-icon {
-            display: flex;
-            transform: rotate(180deg);
-          }
-        }
-      }
-    }
-  }
-
   &-activity {
     min-height: 112px;
     max-height: calc(100vh - 64px);
@@ -83,38 +32,6 @@
 
         &-item {
           padding-right: 24px;
-        }
-      }
-    }
-
-    &-header {
-      min-height: var(--barcelona-mobile-header-height);
-      position: absolute;
-      border-top-right-radius: 16px;
-      backdrop-filter: blur(28.5px);
-      border-top-left-radius: 16px;
-      border-top-right-radius: 16px;
-      width: 100%;
-      grid-template-columns: 1fr 50% 1fr;
-      display: grid;
-      align-items: center;
-      box-sizing: border-box;
-      padding-left: 30px;
-      padding-right: 30px;
-      z-index: 1;
-
-      &-title {
-        .text(var(--barcelona-primary-text), var(--system-16-font-size), 1.3125, 600);
-        user-select: none;
-        text-align: center;
-      }
-
-      &-back {
-        cursor: pointer;
-        display: flex;
-
-        &:active {
-          opacity: 0.4;
         }
       }
     }

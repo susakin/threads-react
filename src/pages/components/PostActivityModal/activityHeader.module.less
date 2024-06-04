@@ -1,0 +1,33 @@
+@import '@assets/less/variable.less';
+
+.activity-header {
+  min-height: var(--barcelona-mobile-header-height);
+  position: absolute;
+  border-top-right-radius: 16px;
+  backdrop-filter: blur(28.5px);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  width: 100%;
+  grid-template-columns: 1fr 50% 1fr;
+  display: grid;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 30px;
+  padding-right: 30px;
+  z-index: 1;
+
+  &-title {
+    .text(var(--barcelona-primary-text), var(--system-16-font-size), 1.3125, 600);
+    user-select: none;
+    text-align: center;
+  }
+
+  &-back {
+    cursor: pointer;
+    display: flex;
+
+    &:active {
+      opacity: 0.4;
+    }
+  }
+}

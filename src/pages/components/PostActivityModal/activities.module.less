@@ -1,0 +1,52 @@
+@import '@assets/less/variable.less';
+
+.activities {
+  &-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &-has-more {
+      cursor: pointer;
+    }
+
+    &-icon {
+      padding-left: 30px;
+      margin-right: 18px;
+      display: flex;
+    }
+
+    &-inner {
+      flex-grow: 1;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      padding-right: 24px;
+      height: 36px;
+      border-bottom: 0.5px solid var(--barcelona-primary-outline);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &-text {
+        .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 600);
+      }
+
+      &-num {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &-text {
+          padding-right: 8px;
+          .text(var(--barcelona-primary-text), var(--system-15-font-size), 1.4, 400);
+        }
+
+        &-icon {
+          display: flex;
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useMemo, useState } from 'react';
-import { Direction, Arrow, Heart, Repost, Quote } from '@components/Icon';
+import { Heart, Repost, Quote } from '@components/Icon';
 import QuotedPost from '../QuotedPost';
 import UserList from '../UserList';
 import styles from './postActivity.module.less';
@@ -10,82 +10,8 @@ import { UserActivity } from '../User';
 import Spin from '@components/Spin';
 import ShortenNumber, { shortenNumber } from '@components/ShortenNumber';
 import { useNavigate } from 'react-router-dom';
-
-type PostActivityHeaderProps = {
-  hasBack?: boolean;
-  title?: React.ReactNode;
-  onBackClick?: () => void;
-};
-
-const PostActivityHeader: React.FC<PostActivityHeaderProps> = ({
-  hasBack,
-  onBackClick,
-  title,
-}) => {
-  const classNamePrefix = 'post-activity-header';
-  return (
-    <div className={styles[`${classNamePrefix}`]}>
-      <div className={styles[`${classNamePrefix}-back`]}>
-        {hasBack && (
-          <Arrow size={20} viewBox="0 0 24 24" onClick={onBackClick} />
-        )}
-      </div>
-      <div className={styles[`${classNamePrefix}-title`]}>{title}</div>
-    </div>
-  );
-};
-
-type PostActivityItem = {
-  label?: React.ReactNode;
-  icon?: React.ReactNode;
-  num?: number;
-  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-};
-
-type PostActivityItemsProps = {
-  items?: PostActivityItem[];
-};
-
-const PostActivities: React.FC<PostActivityItemsProps> = ({ items }) => {
-  const classNamePrefix = `post-activities`;
-
-  return (
-    <div className={styles[`${classNamePrefix}`]}>
-      {items?.map(({ icon, label, num, onClick }, index) => {
-        return (
-          <div
-            className={styles[`${classNamePrefix}-item`]}
-            key={index}
-            onClick={onClick}
-          >
-            <div className={styles[`${classNamePrefix}-item-icon`]}>{icon}</div>
-            <div className={styles[`${classNamePrefix}-item-inner`]}>
-              <div className={styles[`${classNamePrefix}-item-inner-text`]}>
-                {label}
-              </div>
-              <div className={styles[`${classNamePrefix}-item-inner-num`]}>
-                <div
-                  className={styles[`${classNamePrefix}-item-inner-num-text`]}
-                >
-                  {num}
-                </div>
-                <div
-                  className={styles[`${classNamePrefix}-item-inner-num-icon`]}
-                >
-                  <Direction
-                    fill="currentColor"
-                    size={16}
-                    viewBox="0 0 24 24"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-};
+import ActivityHeader from './ActivityHeader';
+import Activities from './Activities';
 
 const classNamePrefix = 'post-activity';
 
@@ -215,7 +141,7 @@ const PostActivity: React.FC<PostActivityProps> = ({
 
   return (
     <div className={styles[`${classNamePrefix}`]}>
-      <PostActivityHeader
+      <ActivityHeader
         title={title}
         hasBack={!isAllActivityType}
         onBackClick={() => {
@@ -232,7 +158,7 @@ const PostActivity: React.FC<PostActivityProps> = ({
             style={{ marginTop: 0 }}
           />
         </div>
-        {isAllActivityType && <PostActivities items={items} />}
+        {isAllActivityType && <Activities items={items} />}
         {loading ? (
           <Spin spinning height={150} />
         ) : (

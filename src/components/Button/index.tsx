@@ -9,7 +9,6 @@ export type ButtonProps = {
   children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void | unknown;
   disabled?: boolean;
-  disabledType?: 'default' | 'gray';
   type?: 'default' | 'primary' | 'text';
   loading?: boolean;
   disableClickWhenDisabled?: boolean;
@@ -23,17 +22,17 @@ const Button: React.FC<ButtonProps> = ({
   style,
   children,
   type = 'default',
-  disabledType = 'default',
   onClick,
-  disabled,
   loading,
   disableClickWhenDisabled = true,
   size = 'default',
+  ...rest
 }) => {
-  const _disabled = (disabled && disableClickWhenDisabled) || loading;
+  const disabled = rest.disabled || loading;
+
   return (
     <div
-      onClick={_disabled ? undefined : onClick}
+      onClick={disabled && disableClickWhenDisabled ? undefined : onClick}
       role="button"
       tabIndex={0}
       className={cs(
@@ -42,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({
         styles[`${classNamePrefix}-${type}`],
         styles[`${classNamePrefix}-size-${size}`],
         {
-          [styles[`${classNamePrefix}-disabled-${disabledType}`]]: _disabled,
+          [styles[`${classNamePrefix}-disabled`]]: disabled,
         },
       )}
       style={style}
