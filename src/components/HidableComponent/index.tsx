@@ -5,6 +5,8 @@ type HidableComponentProps = {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  root?: Element;
+  rootMargin?: string;
 };
 
 function intersectionObserverEntryIsIntersecting(
@@ -22,6 +24,8 @@ const HidableComponent: React.FC<HidableComponentProps> = ({
   children,
   className,
   style,
+  rootMargin = '2000px 0px',
+  root,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hide, setHide] = useState<boolean>(false);
@@ -30,8 +34,8 @@ const HidableComponent: React.FC<HidableComponentProps> = ({
   useIntersectionObserver(
     containerRef,
     {
-      root: null,
-      rootMargin: '2000px 0px',
+      root,
+      rootMargin,
       threshold: 0,
     },
     ([entry]) => {

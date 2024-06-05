@@ -19,6 +19,7 @@ import { useCountDown } from 'ahooks';
 import { useNavigate } from 'react-router-dom';
 import { OnFollowingChange } from '../FollowButton';
 import AccessibilityModal from './AccessibilityModal';
+import { loginModal } from '../Login/LoginModal';
 
 type PostEditModalProps = {
   visible?: boolean;
@@ -330,7 +331,7 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
   };
 
   if (visible && !state.user) {
-    Toast.show('Not Allowed');
+    loginModal.show();
     onClose?.();
     return null;
   }

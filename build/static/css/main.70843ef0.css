@@ -5024,6 +5024,216 @@ img[src=''] {
     transform-origin: center;
   }
 }
+.Z4uS0 {
+  width: 370px;
+}
+.y8Yjv {
+  align-items: stretch;
+  border: 1px solid var(--barcelona-primary-outline);
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  transition: -webkit-transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
+  transition:
+    transform 0.1s ease-in-out,
+    -webkit-transform 0.1s ease-in-out;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.y8Yjv:active {
+  -webkit-transform: scale(0.98);
+  transform: scale(0.98);
+}
+.y8Yjv img {
+  border-radius: inherit;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.y8Yjv img,
+.y8Yjv video {
+  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+.y8Yjv video {
+  cursor: pointer;
+  display: block;
+}
+.wpN3t {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .wpN3t {
+    padding-left: var(--barcelona-lightbox-horizontal-padding);
+    padding-right: var(--barcelona-lightbox-horizontal-padding);
+  }
+}
+.YCoLA {
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+  -webkit-animation-name: YCoLA;
+  animation-name: YCoLA;
+}
+@-webkit-keyframes YCoLA {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes YCoLA {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.gVtVW {
+  -webkit-animation-name: gVtVW;
+  animation-name: gVtVW;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-transform-origin: bottom;
+  transform-origin: bottom;
+}
+.bMmAe,
+.gVtVW {
+  -webkit-animation-duration: 0.15s;
+  animation-duration: 0.15s;
+}
+.bMmAe {
+  -webkit-animation-name: bMmAe;
+  animation-name: bMmAe;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+@-webkit-keyframes gVtVW {
+  0% {
+    opacity: 0;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@keyframes gVtVW {
+  0% {
+    opacity: 0;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-webkit-keyframes bMmAe {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes bMmAe {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+._480vC:focus {
+  outline: 0;
+}
+._480vC:focus-visible {
+  outline: auto;
+}
+.MyYsQ {
+  box-sizing: border-box;
+  padding: 24px;
+  width: 100%;
+}
+@media (max-width: 519px) {
+  .MyYsQ {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+.ia2d_ {
+  word-wrap: break-word;
+  color: var(--barcelona-primary-text);
+  font-family: var(--font-family-system);
+  font-size: var(--system-16-font-size);
+  font-weight: 700;
+  line-height: 1.3125;
+  margin-bottom: 16px;
+  max-width: 100%;
+  min-width: 0;
+  text-align: left;
+  text-align: center;
+  white-space: pre-line;
+  word-break: break-word;
+}
+.lmuPR {
+  margin-bottom: 8px;
+}
+.zmVjf {
+  background-color: var(--barcelona-tertiary-background);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: var(--barcelona-primary-text);
+  font-size: var(--system-15-font-size);
+  line-height: 140%;
+  outline: none;
+  padding: 16px;
+  touch-action: manipulation;
+  width: 100%;
+}
+.zmVjf:focus {
+  outline: 0;
+}
+.zmVjf:focus-visible {
+  outline: auto;
+}
+.Apuf_ {
+  width: 100%;
+}
 .B198g {
   align-items: stretch;
   border: 1px solid var(--barcelona-primary-outline);
