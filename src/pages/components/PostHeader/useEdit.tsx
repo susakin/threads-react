@@ -6,11 +6,12 @@ import dayjs from 'dayjs';
 export type UseEditProps = {
   createdAt: number;
   onEditClick?: () => void;
+  isOwn?: boolean;
 };
 
 const classNamePrefix = 'use-edit';
 
-export const useEdit = ({ createdAt, onEditClick }: UseEditProps) => {
+export const useEdit = ({ createdAt, onEditClick, isOwn }: UseEditProps) => {
   const leftTime = useMemo(() => {
     const step = 5 * 60 * 1000;
 
@@ -22,7 +23,7 @@ export const useEdit = ({ createdAt, onEditClick }: UseEditProps) => {
 
   const [countdown] = useCountDown({ leftTime });
   let item;
-  if (countdown > 0 && leftTime) {
+  if (countdown > 0 && leftTime && isOwn) {
     item = {
       label: (
         <div className={styles[`${classNamePrefix}`]}>

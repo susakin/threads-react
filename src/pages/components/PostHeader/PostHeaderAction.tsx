@@ -68,7 +68,11 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   const [replyAuthVisible, setReplyAuthVisible] = useState<boolean>(false);
 
   const { item } = useBlock({ user: post?.user, onUserFriendshipStatusUpdate });
-  const { item: editItem } = useEdit({ createdAt, onEditClick });
+  const { item: editItem } = useEdit({
+    createdAt,
+    onEditClick,
+    isOwn: post?.user?.friendshipStatus.isOwn,
+  });
   const { item: pinItem } = usePin({
     post,
     onPinChange,

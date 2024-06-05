@@ -1,4 +1,4 @@
-/*! For license information please see main.559e7662.js.LICENSE.txt */
+/*! For license information please see main.c0dadafc.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -23461,50 +23461,53 @@
           We = 'post-header-action',
           Ve = function (e) {
             var t,
-              n = e.hasAction,
-              r = void 0 === n || n,
-              o = e.post,
-              l = e.onPostUpdate,
-              f = e.onDelete,
-              d = e.onPinChange,
-              p = e.onFollowingChange,
-              h = e.hasPin,
-              v = e.pinToWhere,
-              g = e.onTagClick,
-              m = e.onEditClick,
-              x = e.onUserFriendshipStatusUpdate,
-              C = o || {},
-              k = C.captionIsEdited,
-              S = C.createdAt,
-              E = void 0 === S ? 0 : S,
-              D = C.id,
-              j = void 0 === D ? '' : D,
-              P = C.textEntities,
-              A = ((null === o || void 0 === o ? void 0 : o.user) || {})
+              n,
+              r = e.hasAction,
+              o = void 0 === r || r,
+              l = e.post,
+              f = e.onPostUpdate,
+              d = e.onDelete,
+              p = e.onPinChange,
+              h = e.onFollowingChange,
+              v = e.hasPin,
+              g = e.pinToWhere,
+              m = e.onTagClick,
+              x = e.onEditClick,
+              C = e.onUserFriendshipStatusUpdate,
+              k = l || {},
+              S = k.captionIsEdited,
+              E = k.createdAt,
+              D = void 0 === E ? 0 : E,
+              j = k.id,
+              P = void 0 === j ? '' : j,
+              A = k.textEntities,
+              T = ((null === l || void 0 === l ? void 0 : l.user) || {})
                 .friendshipStatus,
-              T = (0, a.useState)(!1),
-              L = (0, i.Z)(T, 2),
-              R = L[0],
-              M = L[1],
-              F = (0, Me.r)({
-                user: null === o || void 0 === o ? void 0 : o.user,
-                onUserFriendshipStatusUpdate: x,
+              L = (0, a.useState)(!1),
+              R = (0, i.Z)(L, 2),
+              M = R[0],
+              F = R[1],
+              N = (0, Me.r)({
+                user: null === l || void 0 === l ? void 0 : l.user,
+                onUserFriendshipStatusUpdate: C,
               }).item,
-              N = (function (e) {
+              Z = (function (e) {
                 var t,
                   n = e.createdAt,
                   r = e.onEditClick,
-                  o = (0, a.useMemo)(
+                  o = e.isOwn,
+                  u = (0, a.useMemo)(
                     function () {
                       var e = 3e5;
                       return Date.now() - n < e ? n + e - Date.now() : 0;
                     },
                     [n],
                   ),
-                  u = Ke({ leftTime: o }),
-                  s = (0, i.Z)(u, 1)[0];
+                  s = Ke({ leftTime: u }),
+                  c = (0, i.Z)(s, 1)[0];
                 return (
-                  s > 0 &&
+                  c > 0 &&
+                    u &&
                     o &&
                     (t = {
                       label: (0, O.jsxs)('div', {
@@ -23516,7 +23519,7 @@
                           }),
                           (0, O.jsx)('div', {
                             className: Ne[''.concat(He, '-value')],
-                            children: Be()(s).format('mm:ss'),
+                            children: Be()(c).format('mm:ss'),
                           }),
                         ],
                       }),
@@ -23527,9 +23530,19 @@
                     }),
                   { item: t }
                 );
-              })({ createdAt: E, onEditClick: m }),
-              Z = N.item,
-              I = (function (e) {
+              })({
+                createdAt: D,
+                onEditClick: x,
+                isOwn:
+                  null === l ||
+                  void 0 === l ||
+                  null === (t = l.user) ||
+                  void 0 === t
+                    ? void 0
+                    : t.friendshipStatus.isOwn,
+              }),
+              I = Z.item,
+              B = (function (e) {
                 var t = e.post,
                   n = e.pinToWhere,
                   r = e.onPinChange,
@@ -23624,9 +23637,9 @@
                     loading: h,
                   };
                 return { item: x };
-              })({ post: o, onPinChange: d, pinToWhere: v }),
-              B = I.item,
-              z = (function (e) {
+              })({ post: l, onPinChange: p, pinToWhere: g }),
+              z = B.item,
+              U = (function (e) {
                 var t = e.post,
                   n = e.onPostUpdate,
                   r = t || {},
@@ -23688,45 +23701,45 @@
                         }),
                   },
                 };
-              })({ post: o, onPostUpdate: l }),
-              U = z.item,
-              K = (0, Fe.l)({
-                user: null === o || void 0 === o ? void 0 : o.user,
-                onUserFriendshipStatusUpdate: x,
+              })({ post: l, onPostUpdate: f }),
+              K = U.item,
+              H = (0, Fe.l)({
+                user: null === l || void 0 === l ? void 0 : l.user,
+                onUserFriendshipStatusUpdate: C,
               }).item,
-              H = (0, y.i)(Pe.fR, {
+              W = (0, y.i)(Pe.fR, {
                 manual: !0,
                 onSuccess: function () {
-                  null === f || void 0 === f || f(j),
+                  null === d || void 0 === d || d(P),
                     s.FN.show('\u5df2\u5220\u9664');
                 },
               }).run,
-              W = (0, y.i)(Pe.jp, {
+              V = (0, y.i)(Pe.jp, {
                 manual: !0,
                 onSuccess: function () {
-                  null === l || void 0 === l || l(j, { isHiddenByViewer: !0 });
+                  null === f || void 0 === f || f(P, { isHiddenByViewer: !0 });
                 },
               }).run,
-              V = (0, y.i)(de.fv, {
+              q = (0, y.i)(de.fv, {
                 manual: !0,
                 onSuccess: function () {
-                  null === p ||
-                    void 0 === p ||
-                    p(null === o || void 0 === o ? void 0 : o.user.id, {
+                  null === h ||
+                    void 0 === h ||
+                    h(null === l || void 0 === l ? void 0 : l.user.id, {
                       following: !1,
                     }),
                     s.FN.show('\u5df2\u505c\u6b62\u5173\u6ce8');
                 },
               }).run,
-              q = (0, y.i)(Pe.Uu, {
+              $ = (0, y.i)(Pe.Uu, {
                 manual: !0,
                 onSuccess: function (e, t) {
                   var n = (0, i.Z)(t, 2),
                     r = n[0],
                     o = n[1].likeAndViewCountsDisabled;
-                  null === l ||
-                    void 0 === l ||
-                    l(r, { likeAndViewCountsDisabled: o }),
+                  null === f ||
+                    void 0 === f ||
+                    f(r, { likeAndViewCountsDisabled: o }),
                     s.FN.show(
                       o
                         ? '\u70b9\u8d5e\u548c\u5206\u4eab\u5df2\u9690\u85cf'
@@ -23734,17 +23747,17 @@
                     );
                 },
               }),
-              $ = q.run,
-              Y = (0, a.useMemo)(
+              Y = $.run,
+              G = (0, a.useMemo)(
                 function () {
                   var e =
-                      null === P || void 0 === P
+                      null === A || void 0 === A
                         ? void 0
-                        : P.some(function (e) {
+                        : A.some(function (e) {
                             return 'tag' === e.type;
                           }),
                     t = [
-                      Z,
+                      I,
                       e
                         ? {
                             label: '\u7528\u6807\u8bb0\u521b\u5efa',
@@ -23756,30 +23769,30 @@
                               stroke: 'currentColor',
                             }),
                             split: !0,
-                            onClick: g,
+                            onClick: m,
                           }
                         : null,
-                      U,
+                      K,
                     ];
                   return (
-                    h && t.unshift(B),
-                    null !== A && void 0 !== A && A.isOwn
+                    v && t.unshift(z),
+                    null !== T && void 0 !== T && T.isOwn
                       ? t.push(
                           {
                             label: ''.concat(
-                              null !== o &&
-                                void 0 !== o &&
-                                o.likeAndViewCountsDisabled
+                              null !== l &&
+                                void 0 !== l &&
+                                l.likeAndViewCountsDisabled
                                 ? '\u53d6\u6d88'
                                 : '',
                               '\u9690\u85cf\u83b7\u8d5e\u6570\u548c\u5206\u4eab\u6b21\u6570',
                             ),
                             onClick: function () {
-                              $(null === o || void 0 === o ? void 0 : o.id, {
+                              Y(null === l || void 0 === l ? void 0 : l.id, {
                                 likeAndViewCountsDisabled: !(
-                                  null !== o &&
-                                  void 0 !== o &&
-                                  o.likeAndViewCountsDisabled
+                                  null !== l &&
+                                  void 0 !== l &&
+                                  l.likeAndViewCountsDisabled
                                 ),
                               });
                             },
@@ -23791,7 +23804,7 @@
                           {
                             label: '\u8c01\u53ef\u4ee5\u56de\u590d',
                             onClick: function () {
-                              M(!0);
+                              F(!0);
                             },
                             split: !0,
                             icon: (0, O.jsx)(u.Nm, {
@@ -23814,7 +23827,7 @@
                                 okType: 'danger',
                                 okText: '\u5220\u9664',
                                 onOk: function () {
-                                  H(j);
+                                  W(P);
                                 },
                               });
                             },
@@ -23828,7 +23841,7 @@
                           {
                             label: '\u6ca1\u5174\u8da3',
                             onClick: function () {
-                              W(null === o || void 0 === o ? void 0 : o.id);
+                              V(null === l || void 0 === l ? void 0 : l.id);
                             },
                             icon: (0, O.jsx)(u.c, {
                               viewBox: '0 0 20 20',
@@ -23836,16 +23849,16 @@
                             }),
                             split: !0,
                           },
-                          K,
+                          H,
                         ),
-                        null !== A && void 0 !== A && A.following
+                        null !== T && void 0 !== T && T.following
                           ? t.push({
                               label: '\u505c\u6b62\u5173\u6ce8',
                               onClick: function () {
-                                V(
-                                  null === o || void 0 === o
+                                q(
+                                  null === l || void 0 === l
                                     ? void 0
-                                    : o.user.id,
+                                    : l.user.id,
                                 );
                               },
                               icon: (0, O.jsx)(u.un, {
@@ -23853,27 +23866,27 @@
                                 size: 20,
                               }),
                             })
-                          : t.push(F)),
+                          : t.push(N)),
                     t
                   );
                 },
                 [
-                  o,
-                  h,
-                  null === o ||
-                  void 0 === o ||
-                  null === (t = o.user) ||
-                  void 0 === t
+                  l,
+                  v,
+                  null === l ||
+                  void 0 === l ||
+                  null === (n = l.user) ||
+                  void 0 === n
                     ? void 0
-                    : t.friendshipStatus,
-                  null === o || void 0 === o
+                    : n.friendshipStatus,
+                  null === l || void 0 === l
                     ? void 0
-                    : o.likeAndViewCountsDisabled,
-                  null === o || void 0 === o ? void 0 : o.replyAuth,
-                  U,
+                    : l.likeAndViewCountsDisabled,
+                  null === l || void 0 === l ? void 0 : l.replyAuth,
                   K,
-                  B,
-                  Z,
+                  H,
+                  z,
+                  I,
                 ],
               );
             return (0, O.jsxs)('div', {
@@ -23882,7 +23895,7 @@
                 e.stopPropagation();
               },
               children: [
-                k &&
+                S &&
                   (0, O.jsx)(s.vC, {
                     className: je[''.concat(We, '-button')],
                     size: 20,
@@ -23897,13 +23910,13 @@
                       viewBox: '0 0 20.1325 21.186',
                     }),
                   }),
-                r &&
-                  0 !== Y.length &&
+                o &&
+                  0 !== G.length &&
                   (0, O.jsx)(s.J2, {
                     placement: 'bottom-end',
                     offset: 5,
                     hideWhenContentClick: !0,
-                    content: (0, O.jsx)(s.mX, { items: Y }),
+                    content: (0, O.jsx)(s.mX, { items: G }),
                     children: (0, O.jsx)(s.vC, {
                       className: je[''.concat(We, '-button')],
                       size: 20,
@@ -23915,11 +23928,11 @@
                     }),
                   }),
                 (0, O.jsx)(Re, {
-                  post: o,
-                  onPostUpdate: l,
-                  visible: R,
+                  post: l,
+                  onPostUpdate: f,
+                  visible: M,
                   onClose: function () {
-                    M(!1);
+                    F(!1);
                   },
                 }),
               ],
