@@ -4,11 +4,13 @@ import styles from './index.module.less';
 import { AuthContext } from '@context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import Login from '@pages/components/Login';
+import { useHistoryStack } from '@hooks/useHistoryStack';
 
 const classNamePrefix = `auth`;
 
 const Auth: React.FC = () => {
   const { state } = useContext(AuthContext);
+  const historyStack = useHistoryStack();
   const navigate = useNavigate();
 
   useLayoutEffect(() => {
@@ -20,7 +22,16 @@ const Auth: React.FC = () => {
   return (
     <div className={styles[`${classNamePrefix}`]}>
       <div className={styles[`${classNamePrefix}-inner`]}>
-        <div className={styles[`${classNamePrefix}-inner-logo`]}>
+        <div
+          className={styles[`${classNamePrefix}-inner-logo`]}
+          onClick={() => {
+            if (historyStack.length > 0) {
+              navigate(-1);
+            } else {
+              navigate('/');
+            }
+          }}
+        >
           <Threads
             fill="var(--barcelona-primary-icon)"
             size="100%"

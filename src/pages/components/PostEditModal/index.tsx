@@ -19,7 +19,7 @@ import { useCountDown } from 'ahooks';
 import { useNavigate } from 'react-router-dom';
 import { OnFollowingChange } from '../FollowButton';
 import AccessibilityModal from './AccessibilityModal';
-import { loginModal } from '../Login/LoginModal';
+import { useLogin } from '@pages/components/Login/LoginModal';
 
 type PostEditModalProps = {
   visible?: boolean;
@@ -329,9 +329,10 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
       },
     });
   };
+  const { showLogin } = useLogin();
 
   if (visible && !state.user) {
-    loginModal.show();
+    showLogin();
     onClose?.();
     return null;
   }

@@ -2,7 +2,6 @@ import { useRequest } from 'ahooks';
 import { Options, Result, Service } from 'ahooks/lib/useRequest/src/types';
 import { Response } from '@utils/request';
 import Toast from '@components/Toast';
-import { loginModal } from '@pages/components/Login/LoginModal';
 
 export const useFetch = <TData, TParams extends any[]>(
   service: Service<Response<TData>, TParams>,
@@ -27,9 +26,6 @@ export const useFetch = <TData, TParams extends any[]>(
       options?.onError?.(error, params);
       if (!options?.ignoreErrorMsg) {
         Toast.show(error?.response?.data?.msg || error.message);
-        if (error?.response?.data?.code === 401) {
-          loginModal.show();
-        }
       }
     },
   });

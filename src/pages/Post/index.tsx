@@ -8,7 +8,7 @@ import {
   PostActivityModal,
 } from '@pages/components';
 import { Spin, Button } from '@components/index';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   getPostDetail,
   getPostReply,
@@ -22,6 +22,7 @@ import useCacheState from '@hooks/useCacheState';
 import { ActionRefType } from '@pages/components/List';
 import { Direction } from '@components/Icon';
 import { Post as PostItem } from '@typings/index';
+import { useHistoryStack } from '@hooks/useHistoryStack';
 
 type Params = {
   code: string;
@@ -52,6 +53,8 @@ const Post: React.FC = () => {
   const actionRef = useRef<ActionRefType>(null);
   const lastPostIdRef = useRef<string>();
   const [lastPost, setLastPost] = useState<PostItem>();
+  const navigate = useNavigate();
+  const historyStack = useHistoryStack();
 
   useLayoutEffect(() => {
     if (!posts) {
@@ -159,6 +162,15 @@ const Post: React.FC = () => {
                 ignoreMutingUser={false}
                 indent
                 hasPin={true}
+                onDelete={id => {
+                  if (id === firstPost?.id) {
+                    if (historyStack.length > 0) {
+                      navigate(-1);
+                    } else {
+                      navigate('/');
+                    }
+                  }
+                }}
                 pinToWhere="profile"
                 onDataChange={data => {
                   const posts = data[data?.length - 1]?.posts;
@@ -225,30 +237,33 @@ const Post: React.FC = () => {
                   hasBorderTop
                 />
               )}
-              {posts?.length > 1 && firstPost && fetchEnd && (
-                <>
-                  {hasFirstReply && (
-                    <div className={styles[`${classNamePrefix}-split`]}>
-                      发给 {firstPost?.user?.username} 的更多回复
-                    </div>
-                  )}
-                  <PostList
-                    onDataChange={data => {
-                      setHasFirstReply(!!data.length);
-                    }}
-                    key={`${firstPostId?.id}-${code}`}
-                    pinToWhere="comment"
-                    hasPin={firstPost?.user?.friendshipStatus?.isOwn}
-                    hasPinSign={true}
-                    replyToPostId={firstPostId?.id}
-                    params={firstPostId}
-                    cacheKey={`${firstPostId?.id}-${code}-first-post-reply`}
-                    request={fetchPostReply}
-                    ignoreMutingUser={false}
-                    indent
-                  />
-                </>
-              )}
+              {posts?.length > 1 &&
+                firstPostId?.id !== lastPostId?.id &&
+                firstPost &&
+                fetchEnd && (
+                  <>
+                    {hasFirstReply && (
+                      <div className={styles[`${classNamePrefix}-split`]}>
+                        发给 {firstPost?.user?.username} 的更多回复
+                      </div>
+                    )}
+                    <PostList
+                      onDataChange={data => {
+                        setHasFirstReply(!!data.length);
+                      }}
+                      key={`${firstPostId?.id}-${code}`}
+                      pinToWhere="comment"
+                      hasPin={firstPost?.user?.friendshipStatus?.isOwn}
+                      hasPinSign={true}
+                      replyToPostId={firstPostId?.id}
+                      params={firstPostId}
+                      cacheKey={`${firstPostId?.id}-${code}-first-post-reply`}
+                      request={fetchPostReply}
+                      ignoreMutingUser={false}
+                      indent
+                    />
+                  </>
+                )}
             </>
           )}
         </LoadingContainer>

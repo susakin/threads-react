@@ -6,18 +6,18 @@
       o.r(i),
         o.d(i, {
           default: function () {
-            return C;
+            return y;
           },
         });
       var e = o(4165),
         t = o(5861),
-        l = o(9439),
-        d = o(7313),
-        u = o(5043),
+        d = o(9439),
+        l = o(7313),
+        u = o(7748),
         s = o(6975),
         a = o(8467),
-        c = o(4814),
-        v = o(8048),
+        v = o(4814),
+        c = o(8048),
         r = o(6031),
         p = {
           media: 'AXYqt',
@@ -35,72 +35,75 @@
         h = o(3479),
         f = o(2298),
         m = o(813),
-        g = o(6417),
-        x = 'post',
-        C = function () {
+        g = o(340),
+        x = o(6417),
+        C = 'post',
+        y = function () {
           var n,
             i,
             o,
-            C,
             y,
             j,
-            S = (0, a.UO)().code,
-            P = (0, d.useState)(!1),
-            Z = (0, l.Z)(P, 2),
-            k = Z[0],
-            w = Z[1],
-            T = (0, f.Z)(void 0, ''.concat(S, '-detail')),
-            q = (0, l.Z)(T, 2),
-            z = q[0],
-            b = q[1],
-            I = (0, d.useState)(!1),
-            L = (0, l.Z)(I, 2),
+            S,
+            P = (0, a.UO)().code,
+            Z = (0, l.useState)(!1),
+            k = (0, d.Z)(Z, 2),
+            w = k[0],
+            T = k[1],
+            q = (0, f.Z)(void 0, ''.concat(P, '-detail')),
+            z = (0, d.Z)(q, 2),
+            b = z[0],
+            D = z[1],
+            I = (0, l.useState)(!1),
+            L = (0, d.Z)(I, 2),
             M = L[0],
             N = L[1],
-            D = (0, v.i)(c.si, {
+            U = (0, c.i)(v.si, {
               manual: !0,
               onSuccess: function (n) {
-                b(n), w(!n.length);
+                D(n), T(!n.length);
               },
               onError: function () {
-                w(!0);
+                T(!0);
               },
             }),
-            U = D.loading,
-            E = D.run,
-            F = null === z || void 0 === z ? void 0 : z[0],
-            K = (0, d.useState)(!1),
-            O = (0, l.Z)(K, 2),
-            R = O[0],
-            _ = O[1],
-            B = (0, d.useState)(!1),
-            W = (0, l.Z)(B, 2),
-            X = W[0],
-            J = W[1],
-            Y = (0, d.useRef)(null),
-            A = (0, d.useRef)(),
-            G = (0, d.useState)(),
-            H = (0, l.Z)(G, 2),
-            Q = H[0],
-            V = H[1];
-          (0, d.useLayoutEffect)(
+            E = U.loading,
+            F = U.run,
+            K = null === b || void 0 === b ? void 0 : b[0],
+            O = (0, l.useState)(!1),
+            R = (0, d.Z)(O, 2),
+            _ = R[0],
+            B = R[1],
+            W = (0, l.useState)(!1),
+            X = (0, d.Z)(W, 2),
+            J = X[0],
+            Y = X[1],
+            A = (0, l.useRef)(null),
+            G = (0, l.useRef)(),
+            H = (0, l.useState)(),
+            Q = (0, d.Z)(H, 2),
+            V = Q[0],
+            $ = Q[1],
+            nn = (0, a.s0)(),
+            on = (0, g.v)();
+          (0, l.useLayoutEffect)(
             function () {
-              z
-                ? w(!(null !== z && void 0 !== z && z.length))
-                : (V(null), _(!1), E(S));
+              b
+                ? T(!(null !== b && void 0 !== b && b.length))
+                : ($(null), B(!1), F(P));
             },
-            [S, z],
+            [P, b],
           );
-          var $ = (0, d.useMemo)(
+          var en = (0, l.useMemo)(
               function () {
-                return [{ id: (0, r.uniqueId)(), posts: z }];
+                return [{ id: (0, r.uniqueId)(), posts: b }];
               },
-              [z],
+              [b],
             ),
-            nn = (function () {
+            tn = (function () {
               var n = (0, t.Z)(
                 (0, e.Z)().mark(function n(i) {
-                  var o, t, l, d, u, s, a, v;
+                  var o, t, d, l, u, s, a, c;
                   return (0, e.Z)().wrap(function (n) {
                     for (;;)
                       switch ((n.prev = n.next)) {
@@ -108,13 +111,13 @@
                           return (
                             (o = i.page),
                             (t = i.pageSize),
-                            (l = i.id),
-                            (d = i.excludePostCode),
+                            (d = i.id),
+                            (l = i.excludePostCode),
                             (n.next = 3),
-                            (0, c.ru)(l, {
+                            (0, v.ru)(d, {
                               page: o,
                               pageSize: t,
-                              excludePostCode: d,
+                              excludePostCode: l,
                             })
                           );
                         case 3:
@@ -122,19 +125,19 @@
                             (u = n.sent),
                             (s = u.code),
                             (a = u.msg),
-                            (v = u.data),
+                            (c = u.data),
                             n.abrupt('return', {
                               success: 200 == s,
                               msg: a,
                               data: (
-                                (null === v || void 0 === v
+                                (null === c || void 0 === c
                                   ? void 0
-                                  : v.posts) || []
+                                  : c.posts) || []
                               ).map(function (n) {
                                 return { id: (0, r.uniqueId)(), posts: n };
                               }),
                               total:
-                                null === v || void 0 === v ? void 0 : v.total,
+                                null === c || void 0 === c ? void 0 : c.total,
                             })
                           );
                         case 8:
@@ -148,46 +151,46 @@
                 return n.apply(this, arguments);
               };
             })(),
-            on = (0, d.useMemo)(
+            dn = (0, l.useMemo)(
               function () {
-                return { id: null === Q || void 0 === Q ? void 0 : Q.id };
+                return { id: null === V || void 0 === V ? void 0 : V.id };
               },
-              [null === Q || void 0 === Q ? void 0 : Q.id],
+              [null === V || void 0 === V ? void 0 : V.id],
             ),
-            en = (0, d.useMemo)(
+            ln = (0, l.useMemo)(
               function () {
                 return {
-                  id: null === F || void 0 === F ? void 0 : F.id,
-                  excludePostCode: S,
+                  id: null === K || void 0 === K ? void 0 : K.id,
+                  excludePostCode: P,
                 };
               },
-              [null === F || void 0 === F ? void 0 : F.id],
+              [null === K || void 0 === K ? void 0 : K.id],
             );
           (0, (0, h.Z)().setTitle)(
-            F
+            K
               ? '@'
                   .concat(
-                    (null === F ||
-                    void 0 === F ||
-                    null === (n = F.user) ||
+                    (null === K ||
+                    void 0 === K ||
+                    null === (n = K.user) ||
                     void 0 === n
                       ? void 0
                       : n.username) || '',
                     ' \u2022 ',
                   )
                   .concat(
-                    (null === F || void 0 === F ? void 0 : F.caption) ||
+                    (null === K || void 0 === K ? void 0 : K.caption) ||
                       '\u5e16\u5b50',
                   )
               : '',
           );
-          var tn = (0, v.i)(c.Xe, {
+          var un = (0, c.i)(v.Xe, {
               manual: !0,
               onSuccess: function (n) {
                 var i, o;
-                null === Y ||
-                  void 0 === Y ||
-                  null === (i = Y.current) ||
+                null === A ||
+                  void 0 === A ||
+                  null === (i = A.current) ||
                   void 0 === i ||
                   null === (o = i.appendData) ||
                   void 0 === o ||
@@ -201,33 +204,38 @@
                   );
               },
             }),
-            ln = tn.run,
-            dn = tn.loading,
-            un =
-              ((null === Q || void 0 === Q ? void 0 : Q.repostCount) || 0) >
+            sn = un.run,
+            an = un.loading,
+            vn =
+              ((null === V || void 0 === V ? void 0 : V.repostCount) || 0) >
                 0 ||
-              ((null === Q || void 0 === Q ? void 0 : Q.likeCount) || 0) > 0 ||
-              ((null === Q || void 0 === Q ? void 0 : Q.commentCount) || 0) > 0;
-          return (0, g.jsx)(u._z, {
-            children: (0, g.jsxs)('div', {
-              className: p[''.concat(x)],
+              ((null === V || void 0 === V ? void 0 : V.likeCount) || 0) > 0 ||
+              ((null === V || void 0 === V ? void 0 : V.commentCount) || 0) > 0;
+          return (0, x.jsx)(u._z, {
+            children: (0, x.jsxs)('div', {
+              className: p[''.concat(C)],
               children: [
-                (0, g.jsx)(u.ly, {
-                  loading: dn,
-                  children: U
-                    ? (0, g.jsx)(s.yC, { spinning: !0, height: 150 })
-                    : k
-                    ? (0, g.jsx)(u.jC, {})
-                    : (0, g.jsxs)(g.Fragment, {
+                (0, x.jsx)(u.ly, {
+                  loading: an,
+                  children: E
+                    ? (0, x.jsx)(s.yC, { spinning: !0, height: 150 })
+                    : w
+                    ? (0, x.jsx)(u.jC, {})
+                    : (0, x.jsxs)(x.Fragment, {
                         children: [
-                          (0, g.jsx)(u.p_, {
+                          (0, x.jsx)(u.p_, {
                             hasPaddingTop: !1,
-                            data: $,
+                            data: en,
                             lastChildLineType: 'none',
                             lastChildHasSummaryUserPreview: !1,
                             ignoreMutingUser: !1,
                             indent: !0,
                             hasPin: !0,
+                            onDelete: function (n) {
+                              n ===
+                                (null === K || void 0 === K ? void 0 : K.id) &&
+                                (on.length > 0 ? nn(-1) : nn('/'));
+                            },
                             pinToWhere: 'profile',
                             onDataChange: function (n) {
                               var i,
@@ -249,48 +257,48 @@
                                           ? void 0
                                           : o.length) - 1
                                       ];
-                              V(
+                              $(
                                 (null === e || void 0 === e
                                   ? void 0
-                                  : e.code) === S
+                                  : e.code) === P
                                   ? e
-                                  : F,
+                                  : K,
                               );
                             },
                             onCommentCountClick: function () {
-                              null !== on &&
-                                void 0 !== on &&
-                                on.id &&
-                                R &&
-                                ln(
-                                  null === on || void 0 === on ? void 0 : on.id,
-                                  { pageSize: 5, replyId: A.current },
+                              null !== dn &&
+                                void 0 !== dn &&
+                                dn.id &&
+                                _ &&
+                                sn(
+                                  null === dn || void 0 === dn ? void 0 : dn.id,
+                                  { pageSize: 5, replyId: G.current },
                                 );
                             },
-                            actionRef: Y,
+                            actionRef: A,
                           }),
-                          un &&
-                            (0, g.jsxs)('div', {
-                              className: p[''.concat(x, '-activity')],
+                          vn &&
+                            (0, x.jsxs)('div', {
+                              className: p[''.concat(C, '-activity')],
                               children: [
-                                ((null === Q || void 0 === Q
+                                ((null === V || void 0 === V
                                   ? void 0
-                                  : Q.commentCount) || 0) > 0 &&
-                                  (0, g.jsx)('div', {
+                                  : V.commentCount) || 0) > 0 &&
+                                  (0, x.jsx)('div', {
                                     className:
-                                      p[''.concat(x, '-activity-text')],
+                                      p[''.concat(C, '-activity-text')],
                                     children: '\u56de\u590d',
                                   }),
-                                (0, g.jsxs)(s.zx, {
+                                (0, x.jsxs)(s.zx, {
                                   type: 'text',
                                   className:
-                                    p[''.concat(x, '-activity-button')],
+                                    p[''.concat(C, '-activity-button')],
                                   onClick: function () {
                                     N(!0);
                                   },
                                   children: [
                                     '\u67e5\u770b\u52a8\u6001',
-                                    (0, g.jsx)(m.Nm, {
+                                    (0, x.jsx)(m.Nm, {
                                       viewBox: '0 0 24 24',
                                       size: 12,
                                       style: {
@@ -302,47 +310,47 @@
                                 }),
                               ],
                             }),
-                          (null === on || void 0 === on ? void 0 : on.id) &&
-                            (0, g.jsx)(
+                          (null === dn || void 0 === dn ? void 0 : dn.id) &&
+                            (0, x.jsx)(
                               u.p_,
                               {
                                 pinToWhere: 'comment',
                                 ignoreMutingUser: !1,
                                 hasPin:
-                                  (null === F ||
-                                  void 0 === F ||
-                                  null === (i = F.user) ||
+                                  (null === K ||
+                                  void 0 === K ||
+                                  null === (i = K.user) ||
                                   void 0 === i ||
                                   null === (o = i.friendshipStatus) ||
                                   void 0 === o
                                     ? void 0
                                     : o.isOwn) &&
-                                  (null === F || void 0 === F
+                                  (null === K || void 0 === K
                                     ? void 0
-                                    : F.id) ===
-                                    (null === on || void 0 === on
+                                    : K.id) ===
+                                    (null === dn || void 0 === dn
                                       ? void 0
-                                      : on.id),
+                                      : dn.id),
                                 hasPinSign: !0,
                                 replyToPostId:
-                                  null === F || void 0 === F ? void 0 : F.id,
-                                params: on,
-                                request: nn,
-                                actionRef: Y,
+                                  null === K || void 0 === K ? void 0 : K.id,
+                                params: dn,
+                                request: tn,
+                                actionRef: A,
                                 cacheKey: ''
                                   .concat(
-                                    null === on || void 0 === on
+                                    null === dn || void 0 === dn
                                       ? void 0
-                                      : on.id,
+                                      : dn.id,
                                     '-',
                                   )
-                                  .concat(S, '-last-post-reply'),
+                                  .concat(P, '-last-post-reply'),
                                 onFetchEnd: function () {
-                                  _(!0);
+                                  B(!0);
                                 },
                                 onDataChange: function (n) {
                                   var i, o, e;
-                                  A.current = n
+                                  G.current = n
                                     ? null === n ||
                                       void 0 === n ||
                                       null ===
@@ -364,78 +372,80 @@
                                 indent: !0,
                                 hasBorderTop: !0,
                               },
-                              null === on || void 0 === on ? void 0 : on.id,
+                              null === dn || void 0 === dn ? void 0 : dn.id,
                             ),
-                          (null === z || void 0 === z ? void 0 : z.length) >
+                          (null === b || void 0 === b ? void 0 : b.length) >
                             1 &&
-                            F &&
-                            R &&
-                            (0, g.jsxs)(g.Fragment, {
+                            (null === ln || void 0 === ln ? void 0 : ln.id) !==
+                              (null === dn || void 0 === dn ? void 0 : dn.id) &&
+                            K &&
+                            _ &&
+                            (0, x.jsxs)(x.Fragment, {
                               children: [
-                                X &&
-                                  (0, g.jsxs)('div', {
-                                    className: p[''.concat(x, '-split')],
+                                J &&
+                                  (0, x.jsxs)('div', {
+                                    className: p[''.concat(C, '-split')],
                                     children: [
                                       '\u53d1\u7ed9 ',
-                                      null === F ||
-                                      void 0 === F ||
-                                      null === (C = F.user) ||
-                                      void 0 === C
+                                      null === K ||
+                                      void 0 === K ||
+                                      null === (y = K.user) ||
+                                      void 0 === y
                                         ? void 0
-                                        : C.username,
+                                        : y.username,
                                       ' \u7684\u66f4\u591a\u56de\u590d',
                                     ],
                                   }),
-                                (0, g.jsx)(
+                                (0, x.jsx)(
                                   u.p_,
                                   {
                                     onDataChange: function (n) {
-                                      J(!!n.length);
+                                      Y(!!n.length);
                                     },
                                     pinToWhere: 'comment',
                                     hasPin:
-                                      null === F ||
-                                      void 0 === F ||
-                                      null === (y = F.user) ||
-                                      void 0 === y ||
-                                      null === (j = y.friendshipStatus) ||
-                                      void 0 === j
+                                      null === K ||
+                                      void 0 === K ||
+                                      null === (j = K.user) ||
+                                      void 0 === j ||
+                                      null === (S = j.friendshipStatus) ||
+                                      void 0 === S
                                         ? void 0
-                                        : j.isOwn,
+                                        : S.isOwn,
                                     hasPinSign: !0,
                                     replyToPostId:
-                                      null === en || void 0 === en
+                                      null === ln || void 0 === ln
                                         ? void 0
-                                        : en.id,
-                                    params: en,
+                                        : ln.id,
+                                    params: ln,
                                     cacheKey: ''
                                       .concat(
-                                        null === en || void 0 === en
+                                        null === ln || void 0 === ln
                                           ? void 0
-                                          : en.id,
+                                          : ln.id,
                                         '-',
                                       )
-                                      .concat(S, '-first-post-reply'),
-                                    request: nn,
+                                      .concat(P, '-first-post-reply'),
+                                    request: tn,
                                     ignoreMutingUser: !1,
                                     indent: !0,
                                   },
                                   ''
                                     .concat(
-                                      null === en || void 0 === en
+                                      null === ln || void 0 === ln
                                         ? void 0
-                                        : en.id,
+                                        : ln.id,
                                       '-',
                                     )
-                                    .concat(S),
+                                    .concat(P),
                                 ),
                               ],
                             }),
                         ],
                       }),
                 }),
-                (0, g.jsx)(u.oL, {
-                  post: Q,
+                (0, x.jsx)(u.oL, {
+                  post: V,
                   visible: M,
                   onClose: function () {
                     N(!1);

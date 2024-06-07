@@ -34,6 +34,7 @@ type PostListProps = {
     | 'onReply'
     | 'onPostSuccess'
     | 'onUsernameClick'
+    | 'onDelete'
   >;
 
 function PostList<T extends Record<string, any>>({
@@ -58,6 +59,7 @@ function PostList<T extends Record<string, any>>({
   hasRepostSign,
   hasFirstSign,
   onUsernameClick,
+  onDelete,
   ...rest
 }: PostListProps & ListProps<CombinedPostItem, T>) {
   return (
@@ -157,12 +159,17 @@ function PostList<T extends Record<string, any>>({
                         });
                       }}
                       onDelete={id => {
+                        onDelete?.(id);
                         if ((item.posts?.length || 0) > 1) {
+                          const index =
+                            item.posts?.findIndex(item => item?.id === id) ||
+                            -1;
                           itemFieldUpdate(item?.id, {
                             ...item,
-                            posts: item.posts?.filter(
-                              post => !post.replyToUid && post?.id !== id,
-                            ),
+                            posts:
+                              index !== -1
+                                ? item.posts?.filter((item, i) => i < index)
+                                : item.posts,
                           });
                         } else {
                           deleteItem(item?.id);
