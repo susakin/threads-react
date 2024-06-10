@@ -1,4 +1,4 @@
-/*! For license information please see main.6413e6d3.js.LICENSE.txt */
+/*! For license information please see main.d0b7fdef.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -27411,7 +27411,7 @@
                 var e = (0, c.s0)();
                 return {
                   showLogin: function () {
-                    if (!pe.Y) return e('/auth'), null;
+                    if (pe.Y) return e('/auth'), null;
                     var t = (0, Sn.Z)(
                       (0, O.jsx)(Dn, {
                         visible: !0,

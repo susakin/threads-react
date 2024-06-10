@@ -33,6 +33,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(null, error => {
   console.log(error); // for debug
   //alert(error.message)
+
   return Promise.reject(error);
 });
 

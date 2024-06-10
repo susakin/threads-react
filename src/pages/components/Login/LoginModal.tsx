@@ -46,7 +46,7 @@ export const useLogin = () => {
 
   return {
     showLogin() {
-      if (!isSupportTouch) {
+      if (isSupportTouch) {
         navigate('/auth');
         return null;
       }
