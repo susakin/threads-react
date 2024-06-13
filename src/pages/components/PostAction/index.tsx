@@ -6,7 +6,6 @@ import {
   Repost,
   Share,
   Reposted,
-  Link,
   ShareTo,
 } from '@components/Icon';
 import {
@@ -18,7 +17,6 @@ import {
 } from '@components/index';
 import styles from './index.module.less';
 import { Post } from '@typings/index';
-import { copyText } from '@utils/clipboard';
 import { postLike, postUnlike, repost, unrepost } from '@services/post';
 import { useFetch } from '@hooks/useFetch';
 import PostEditModal from '../PostEditModal';
@@ -28,6 +26,8 @@ import PrivateModifyModal from '../PrivateModifyModal';
 import { useCurrentUser } from '@context/AuthProvider';
 import cs from 'classnames';
 import { isSupportTouch } from '@utils/index';
+import { useCopy } from '../PostHeader/useCopy';
+import PopupMenu from '@components/PopupMenu';
 
 const classNamePrefix = 'post-action';
 
@@ -51,11 +51,9 @@ const PostAction: React.FC<PostActionProps> = ({
   const [privateModifyVisible, setPrivateModifyVisible] =
     useState<boolean>(false);
   const user = useCurrentUser();
-  const postUrl = `${window.location.origin}/post/${post?.code}`;
-
-  function onCopy() {
-    copyText(postUrl);
-  }
+  const { item: copyItem } = useCopy({ postCode: post?.code });
+  const [repostMenuVisible, setRepostMenuVisible] = useState<boolean>(false);
+  const [shareMenuVisible, setShareMenuVisible] = useState<boolean>(false);
 
   const { run: _postLike, loading: postLikeLoading } = useFetch(postLike, {
     manual: true,
@@ -144,32 +142,43 @@ const PostAction: React.FC<PostActionProps> = ({
     setPostEditVisible(true);
   }
 
-  const actions = useMemo(() => {
-    const props = {
-      viewBox,
-      size,
-    };
+  const props = {
+    viewBox,
+    size,
+  };
 
-    const shareItems: any[] = [
-      {
-        label: '复制链接',
-        onClick: onCopy,
-        icon: <Link viewBox="0 0 18 18" size={21} fill="transparent" />,
+  const shareItems: any[] = [copyItem];
+  if (navigator?.share && isSupportTouch) {
+    const url = `${window.location.origin}/post/${post?.code}`;
+    shareItems.push({
+      label: '分享到...',
+      onClick() {
+        navigator.share({
+          url,
+          title: 'threads',
+          text: `@${post?.user?.username || ''} • ${post?.caption || '帖子'}`,
+        });
       },
-    ];
-    if (navigator?.share && isSupportTouch) {
-      shareItems.push({
-        label: '分享到...',
-        onClick() {
-          navigator.share({
-            url: postUrl,
-            title: 'threads',
-            text: `@${post?.user?.username || ''} • ${post?.caption || '帖子'}`,
-          });
-        },
-        icon: <ShareTo viewBox="0 0 19 19" size={20} fill="transparent" />,
-      });
-    }
+      icon: <ShareTo viewBox="0 0 19 19" size={20} fill="transparent" />,
+    });
+  }
+
+  const repostItems = [
+    {
+      danger: post?.isRepostedByViewer,
+      label: !post?.isRepostedByViewer ? '转发' : '移除',
+      icon: <Repost {...props} fill="currentColor" />,
+      onClick: onRepostClick,
+    },
+    {
+      label: '引用',
+      onClick: onQuote,
+      disabled: !post?.canReply,
+      icon: <Quote viewBox={'0 0 20 20'} size={size} fill="currentColor" />,
+    },
+  ];
+
+  const actions = useMemo(() => {
     return [
       {
         icon: (
@@ -234,36 +243,17 @@ const PostAction: React.FC<PostActionProps> = ({
           <Popover
             placement="bottom-start"
             hideWhenContentClick
-            content={
-              <PopoverMenu
-                items={[
-                  {
-                    danger: post?.isRepostedByViewer,
-                    label: !post?.isRepostedByViewer ? '转发' : '移除',
-                    icon: <Repost {...props} fill="currentColor" />,
-                    onClick: onRepostClick,
-                  },
-                  {
-                    label: '引用',
-                    onClick: onQuote,
-                    disabled: !post?.canReply,
-                    icon: (
-                      <Quote
-                        viewBox={'0 0 20 20'}
-                        size={size}
-                        fill="currentColor"
-                      />
-                    ),
-                  },
-                ]}
-              />
-            }
+            enabled={!isSupportTouch}
+            content={<PopoverMenu items={repostItems} />}
           >
             <ActiveScaleButton
               contentClassName={styles[`${classNamePrefix}-button`]}
               size={36}
               style={{
                 padding: post?.repostCount ? '0 12px' : '',
+              }}
+              onClick={() => {
+                isSupportTouch && setRepostMenuVisible(true);
               }}
               layerOffset={0}
             >
@@ -287,10 +277,17 @@ const PostAction: React.FC<PostActionProps> = ({
         icon: (
           <Popover
             placement="bottom-start"
+            enabled={!isSupportTouch}
             hideWhenContentClick
             content={<PopoverMenu items={shareItems} />}
           >
-            <ActiveScaleButton size={36} layerOffset={0}>
+            <ActiveScaleButton
+              size={36}
+              layerOffset={0}
+              onClick={() => {
+                isSupportTouch && setShareMenuVisible(true);
+              }}
+            >
               <Share
                 strokeWidth={2}
                 stroke="currentColor"
@@ -338,6 +335,21 @@ const PostAction: React.FC<PostActionProps> = ({
         visible={postEditVisible}
         onClose={() => {
           setPostEditVisible(false);
+        }}
+      />
+      <PopupMenu
+        items={[repostItems] as any}
+        visible={repostMenuVisible}
+        onClose={() => {
+          setRepostMenuVisible(false);
+        }}
+      />
+
+      <PopupMenu
+        items={[shareItems] as any}
+        visible={shareMenuVisible}
+        onClose={() => {
+          setShareMenuVisible(false);
         }}
       />
     </>

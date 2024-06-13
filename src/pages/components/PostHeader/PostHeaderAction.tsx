@@ -31,6 +31,9 @@ import { useMute } from './useMute';
 import { usePin, UsePinProps } from './usePin';
 import { useEdit, UseEditProps } from './useEdit';
 import { useSave } from './useSave';
+import { useCopy } from './useCopy';
+import PopupMenu from '@components/PopupMenu';
+import { isSupportTouch } from '@utils/index';
 
 const classNamePrefix = 'post-header-action';
 
@@ -62,12 +65,22 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   onEditClick,
   onUserFriendshipStatusUpdate,
 }) => {
-  const { captionIsEdited, createdAt = 0, id = '', textEntities } = post || {};
+  const {
+    captionIsEdited,
+    createdAt = 0,
+    id = '',
+    textEntities,
+    code,
+  } = post || {};
 
   const { friendshipStatus } = post?.user || {};
   const [replyAuthVisible, setReplyAuthVisible] = useState<boolean>(false);
+  const [menuVisible, setMenuVisible] = useState<boolean>(false);
 
-  const { item } = useBlock({ user: post?.user, onUserFriendshipStatusUpdate });
+  const { item: blockItem } = useBlock({
+    user: post?.user,
+    onUserFriendshipStatusUpdate,
+  });
   const { item: editItem } = useEdit({
     createdAt,
     onEditClick,
@@ -84,6 +97,8 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     user: post?.user,
     onUserFriendshipStatusUpdate,
   });
+
+  const { item: copyItem } = useCopy({ postCode: code });
 
   const { run: _deletePost } = useFetch(deletePost, {
     manual: true,
@@ -215,9 +230,14 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
           icon: <UnFollow viewBox="0 0 20 20" size={20} />,
         });
       } else {
-        items.push(item);
+        items.push({
+          ...blockItem,
+          split: true,
+        });
       }
     }
+
+    items.push(copyItem);
 
     return items;
   }, [
@@ -231,6 +251,23 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     pinItem,
     editItem,
   ]);
+
+  const popupMenu = useMemo(() => {
+    const items: any[] = [];
+    let group: any[] = [];
+    const _menu = menu.filter(item => !!item);
+    _menu.forEach((item, index) => {
+      group.push(item);
+      if (item?.split) {
+        items.push(group);
+        group = [];
+      }
+      if (index === _menu.length - 1) {
+        items.push(group);
+      }
+    });
+    return items;
+  }, [menu]);
 
   return (
     <div
@@ -255,11 +292,15 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
           placement="bottom-end"
           offset={5}
           hideWhenContentClick
+          enabled={!isSupportTouch}
           content={<PopoverMenu items={menu} />}
         >
           <ActiveScaleButton
             className={styles[`${classNamePrefix}-button`]}
             size={20}
+            onClick={() => {
+              isSupportTouch && setMenuVisible(true);
+            }}
           >
             <More fill="currentColor" size={20} viewBox="0 0 24 24" />
           </ActiveScaleButton>
@@ -272,6 +313,13 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
         visible={replyAuthVisible}
         onClose={() => {
           setReplyAuthVisible(false);
+        }}
+      />
+      <PopupMenu
+        items={popupMenu as any}
+        visible={menuVisible}
+        onClose={() => {
+          setMenuVisible(false);
         }}
       />
     </div>

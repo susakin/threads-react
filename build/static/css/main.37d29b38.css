@@ -6903,6 +6903,206 @@ img[src=''] {
   color: var(--barcelona-secondary-text);
   font-weight: 400;
 }
+.p432s {
+  align-items: stretch;
+  border: 1px solid var(--barcelona-primary-outline);
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  transition: -webkit-transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
+  transition:
+    transform 0.1s ease-in-out,
+    -webkit-transform 0.1s ease-in-out;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.p432s:active {
+  -webkit-transform: scale(0.98);
+  transform: scale(0.98);
+}
+.p432s img {
+  border-radius: inherit;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.p432s img,
+.p432s video {
+  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+}
+.p432s video {
+  cursor: pointer;
+  display: block;
+}
+.i7372 {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .i7372 {
+    padding-left: var(--barcelona-lightbox-horizontal-padding);
+    padding-right: var(--barcelona-lightbox-horizontal-padding);
+  }
+}
+.KEVk0 {
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+  -webkit-animation-name: KEVk0;
+  animation-name: KEVk0;
+}
+@-webkit-keyframes KEVk0 {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes KEVk0 {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.ZQkbc {
+  -webkit-animation-name: ZQkbc;
+  animation-name: ZQkbc;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-transform-origin: bottom;
+  transform-origin: bottom;
+}
+.ZQkbc,
+.xkx3y {
+  -webkit-animation-duration: 0.15s;
+  animation-duration: 0.15s;
+}
+.xkx3y {
+  -webkit-animation-name: xkx3y;
+  animation-name: xkx3y;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+@-webkit-keyframes ZQkbc {
+  0% {
+    opacity: 0;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@keyframes ZQkbc {
+  0% {
+    opacity: 0;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-webkit-keyframes xkx3y {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes xkx3y {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.BejZ2:focus {
+  outline: 0;
+}
+.BejZ2:focus-visible {
+  outline: auto;
+}
+.Tw6Y4 {
+  padding: 16px 16px 0;
+}
+.Yt75M {
+  background-color: var(--barcelona-tertiary-background);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+._9d_WB {
+  align-items: center;
+  border-top: 0.5px solid var(--barcelona-primary-outline);
+  display: flex;
+  padding: 16px;
+}
+._9d_WB:first-child {
+  border-top-width: 0;
+}
+.eQzaE {
+  color: var(--barcelona-error-text);
+}
+.eQzaE .QdP5r {
+  color: inherit;
+}
+.QdP5r {
+  word-wrap: break-word;
+  color: var(--barcelona-primary-text);
+  flex: 1 1;
+  font-family: var(--font-family-system);
+  font-size: var(--system-15-font-size);
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 100%;
+  min-width: 0;
+  text-align: left;
+  white-space: pre-line;
+  word-break: break-word;
+}
+.F4uL4 {
+  display: flex;
+  margin-left: 8px;
+  width: 20px;
+}
 .RFERy {
   display: grid;
   grid-template-columns: 1fr -webkit-max-content;
