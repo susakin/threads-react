@@ -3,7 +3,7 @@ import { Popup } from '..';
 import cs from 'classnames';
 import styles from './index.module.less';
 
-type MenuItem = {
+export type MenuItem = {
   label?: React.ReactNode;
   icon?: React.ReactNode;
   danger?: boolean;

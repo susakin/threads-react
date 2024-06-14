@@ -32,10 +32,28 @@ import { usePin, UsePinProps } from './usePin';
 import { useEdit, UseEditProps } from './useEdit';
 import { useSave } from './useSave';
 import { useCopy } from './useCopy';
-import PopupMenu from '@components/PopupMenu';
+import PopupMenu, { MenuItem as PopupMenuItem } from '@components/PopupMenu';
 import { isSupportTouch } from '@utils/index';
+import { MenuItem } from '@components/Popover/Menu';
 
 const classNamePrefix = 'post-header-action';
+
+export const getMenuGroup = (menu: MenuItem[]): Array<PopupMenuItem[]> => {
+  const items: Array<PopupMenuItem[]> = [];
+  let group: MenuItem[] = [];
+  menu = menu.filter(item => !!item);
+  menu.forEach((item, index) => {
+    group.push(item);
+    if (item?.split) {
+      items.push(group);
+      group = [];
+    }
+    if (index === menu.length - 1) {
+      items.push(group);
+    }
+  });
+  return items;
+};
 
 export type PostHeaderActionProps = {
   hasAction?: boolean;
@@ -253,20 +271,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
   ]);
 
   const popupMenu = useMemo(() => {
-    const items: any[] = [];
-    let group: any[] = [];
-    const _menu = menu.filter(item => !!item);
-    _menu.forEach((item, index) => {
-      group.push(item);
-      if (item?.split) {
-        items.push(group);
-        group = [];
-      }
-      if (index === _menu.length - 1) {
-        items.push(group);
-      }
-    });
-    return items;
+    return getMenuGroup(menu);
   }, [menu]);
 
   return (

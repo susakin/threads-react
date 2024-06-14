@@ -24,7 +24,9 @@ import Info from '@components/Icon/Info';
 import { Link as LinkIcon } from '@components/Icon';
 import RemoveFans from '@components/Icon/RemoveFans';
 import { copyText } from '@utils/clipboard';
-
+import { isSupportTouch } from '@utils/index';
+import PopupMenu from '@components/PopupMenu';
+import { getMenuGroup } from '@pages/components/PostHeader/PostHeaderAction';
 const classNamePrefix = 'profile-follower';
 
 type ProfileFollowerProps = {
@@ -46,6 +48,7 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
   const isRestricting = user?.friendshipStatus?.restricting;
 
   const { followerCount, profileContextFacepileUsers, bioLink } = user || {};
+  const [popupMenuVisible, setPopupMenuVisible] = useState<boolean>(false);
 
   const actionProps: UseMuteProps = {
     user,
@@ -203,9 +206,13 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
           <ActiveScaleButton
             size={24}
             className={styles[`${classNamePrefix}-action-button`]}
+            onClick={() => {
+              isSupportTouch && setPopupMenuVisible(true);
+            }}
           >
             <Popover
               hideWhenContentClick
+              enabled={!isSupportTouch}
               placement="bottom-end"
               content={<PopoverMenu items={menus} />}
             >
@@ -227,6 +234,13 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
         onClose={() => {
           setProfileModalVisible(false);
         }}
+      />
+      <PopupMenu
+        visible={popupMenuVisible}
+        onClose={() => {
+          setPopupMenuVisible(false);
+        }}
+        items={getMenuGroup(menus)}
       />
     </div>
   );
