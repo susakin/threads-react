@@ -12,7 +12,6 @@ import { PostSummaryProps } from '../PostSummary';
 import { PostActionProps } from '../PostAction';
 import Sign from './Sign';
 import Username from '../Username';
-import Time from '@components/Time';
 import { useNavigate } from 'react-router-dom';
 import { PostHeaderProps } from '../PostHeader';
 
@@ -157,8 +156,7 @@ const CombinedPost: React.FC<CombinedPostProps> = ({
                       className={styles[`${classNamePrefix}-repost-username`]}
                       hasVerified={false}
                     />
-                    <Time time={post?.repostedBy?.createdAt} />
-                    前转发了
+                    转发了
                   </span>
                 }
                 icon={<Repost viewBox="0 0 18 18" size={16} />}

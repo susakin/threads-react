@@ -15,7 +15,7 @@ type ActivitiesProps = {
   items?: Activity[];
 };
 
-const classNamePrefix = `post-activities`;
+const classNamePrefix = `activities`;
 
 const Activities: React.FC<ActivitiesProps> = ({ items }) => {
   return (
@@ -31,7 +31,7 @@ const Activities: React.FC<ActivitiesProps> = ({ items }) => {
           >
             <div className={styles[`${classNamePrefix}-item-icon`]}>{icon}</div>
             <div className={styles[`${classNamePrefix}-item-inner`]}>
-              <div className={styles[`${classNamePrefix}-item-inner-text`]}>
+              <div className={styles[`${classNamePrefix}-item-inner-label`]}>
                 {label}
               </div>
               <div className={styles[`${classNamePrefix}-item-inner-num`]}>
@@ -40,17 +40,18 @@ const Activities: React.FC<ActivitiesProps> = ({ items }) => {
                 >
                   {num}
                 </div>
-                {hasMore && (
-                  <div
-                    className={styles[`${classNamePrefix}-item-inner-num-icon`]}
-                  >
+
+                <div
+                  className={styles[`${classNamePrefix}-item-inner-num-icon`]}
+                >
+                  {hasMore && (
                     <Direction
                       fill="currentColor"
                       size={16}
                       viewBox="0 0 24 24"
                     />
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -8844,7 +8844,7 @@ img[src=''] {
   padding-right: 24px;
   padding-top: 12px;
 }
-.beU74 {
+.eOsYN {
   word-wrap: break-word;
   color: var(--barcelona-primary-text);
   font-family: var(--font-family-system);
@@ -8878,8 +8878,10 @@ img[src=''] {
 }
 .v6yxc {
   display: flex;
+  height: 16px;
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
+  width: 16px;
 }
 .GbazO {
   align-items: stretch;

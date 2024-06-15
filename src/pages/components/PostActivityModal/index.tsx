@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import PostActivity, { PostActivityData } from './PostActivity';
+import PostActivity, { Activities } from './PostActivity';
 import Modal from '@components/Modal/Modal';
 import useViewport from '@hooks/useViewport';
 import Popup from '@components/Popup';
@@ -22,7 +22,7 @@ const PostActivityModal: React.FC<PostActivityModalProps> = ({
 
   const Container = viewportWidth < 700 ? Popup : Modal;
 
-  const { loading, data, run } = useFetch<PostActivityData, any>(
+  const { loading, data, run } = useFetch<Activities, any>(
     postActivitySummary,
     {
       manual: true,
@@ -35,11 +35,7 @@ const PostActivityModal: React.FC<PostActivityModalProps> = ({
 
   return (
     <Container visible={visible} onClose={onClose} loading={loading}>
-      <PostActivity
-        post={post}
-        postActivityData={data?.data}
-        onNavigate={onClose}
-      />
+      <PostActivity post={post} activities={data?.data} onNavigate={onClose} />
     </Container>
   );
 };

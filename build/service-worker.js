@@ -1,30 +1,30 @@
 if (!self.define) {
   let s,
     i = {};
-  const e = (e, n) => (
-    (e = new URL(e + '.js', n).href),
-    i[e] ||
+  const n = (n, c) => (
+    (n = new URL(n + '.js', c).href),
+    i[n] ||
       new Promise(i => {
         if ('document' in self) {
           const s = document.createElement('script');
-          (s.src = e), (s.onload = i), document.head.appendChild(s);
-        } else (s = e), importScripts(e), i();
+          (s.src = n), (s.onload = i), document.head.appendChild(s);
+        } else (s = n), importScripts(n), i();
       }).then(() => {
-        let s = i[e];
-        if (!s) throw new Error(`Module ${e} didn’t register its module`);
+        let s = i[n];
+        if (!s) throw new Error(`Module ${n} didn’t register its module`);
         return s;
       })
   );
-  self.define = (n, c) => {
+  self.define = (c, e) => {
     const l =
       s ||
       ('document' in self ? document.currentScript.src : '') ||
       location.href;
     if (i[l]) return;
     let t = {};
-    const u = s => e(s, l),
+    const u = s => n(s, l),
       r = { module: { uri: l }, exports: t, require: u };
-    i[l] = Promise.all(n.map(s => r[s] || u(s))).then(s => (c(...s), t));
+    i[l] = Promise.all(c.map(s => r[s] || u(s))).then(s => (e(...s), t));
   };
 }
 define(['./workbox-f5b72648'], function (s) {
@@ -33,7 +33,7 @@ define(['./workbox-f5b72648'], function (s) {
     s.clientsClaim(),
     s.precacheAndRoute(
       [
-        { url: '/index.html', revision: '7c446abcb5ea861698103542cc229ff8' },
+        { url: '/index.html', revision: '65b9dc5f2e9171642798c361f4ab17d7' },
         { url: '/static/css/152.fa984b05.chunk.css', revision: null },
         { url: '/static/css/527.3a054278.chunk.css', revision: null },
         { url: '/static/css/596.3ea640d4.chunk.css', revision: null },
@@ -41,20 +41,20 @@ define(['./workbox-f5b72648'], function (s) {
         { url: '/static/css/864.c745ec70.chunk.css', revision: null },
         { url: '/static/css/9.59340105.chunk.css', revision: null },
         { url: '/static/css/997.45eb6d00.chunk.css', revision: null },
-        { url: '/static/css/main.37d29b38.css', revision: null },
-        { url: '/static/js/152.02e223fe.chunk.js', revision: null },
+        { url: '/static/css/main.0432f831.css', revision: null },
+        { url: '/static/js/152.84a80e9b.chunk.js', revision: null },
         { url: '/static/js/27.e116c24e.chunk.js', revision: null },
-        { url: '/static/js/527.2514fad7.chunk.js', revision: null },
+        { url: '/static/js/527.2c73390c.chunk.js', revision: null },
         { url: '/static/js/596.29f338d8.chunk.js', revision: null },
-        { url: '/static/js/653.01fec077.chunk.js', revision: null },
-        { url: '/static/js/69.3e58e28d.chunk.js', revision: null },
-        { url: '/static/js/849.e965e5a1.chunk.js', revision: null },
-        { url: '/static/js/864.d1667970.chunk.js', revision: null },
-        { url: '/static/js/9.0ca3643a.chunk.js', revision: null },
-        { url: '/static/js/997.de782f5e.chunk.js', revision: null },
-        { url: '/static/js/main.31f0edad.js', revision: null },
+        { url: '/static/js/653.884dc71f.chunk.js', revision: null },
+        { url: '/static/js/69.451bde43.chunk.js', revision: null },
+        { url: '/static/js/849.0a882412.chunk.js', revision: null },
+        { url: '/static/js/864.a1da8340.chunk.js', revision: null },
+        { url: '/static/js/9.06f02873.chunk.js', revision: null },
+        { url: '/static/js/997.4b2ce42e.chunk.js', revision: null },
+        { url: '/static/js/main.4a7f1046.js', revision: null },
         {
-          url: '/static/js/main.31f0edad.js.LICENSE.txt',
+          url: '/static/js/main.4a7f1046.js.LICENSE.txt',
           revision: 'aea7f4df688f3af28d40817a22eb579f',
         },
         {

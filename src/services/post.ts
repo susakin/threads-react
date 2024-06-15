@@ -237,3 +237,10 @@ export const vote = <T, U>(data: U) => {
     data,
   });
 };
+
+export const view = <T, U>(postId: string) => {
+  return request<T, U>({
+    url: `view/${postId}`,
+    method: 'post',
+  });
+};

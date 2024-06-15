@@ -8,6 +8,10 @@ import cs from 'classnames';
 import styles from './index.module.less';
 import { Post as PostItem } from '@typings/index';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { view } from '@services/post';
+import { useFetch } from '@hooks/useFetch';
+import { useInView } from 'react-intersection-observer';
+import { useCurrentUser } from '@context/AuthProvider';
 
 const classNamePrefix = 'post';
 
@@ -71,7 +75,7 @@ const Post: React.FC<PostProps> = ({
   postLineBarClassName,
   ...rest
 }) => {
-  const { user, code, caption, medias } = post || {};
+  const { user, code, caption, medias, id } = post || {};
   const hasLine = lineType !== 'none';
   const isSquiggleLine = lineType === 'squiggle';
   const _indent = indent || isSquiggleLine;
@@ -81,6 +85,21 @@ const Post: React.FC<PostProps> = ({
   const { pathname } = useLocation();
   const path = `/post/${code}`;
   const _canNavigate = path !== pathname && canNavigate;
+  const currentUser = useCurrentUser();
+
+  const { run } = useFetch(view, {
+    manual: true,
+  });
+
+  const [inViewRef] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+    onChange(inView) {
+      if (inView && currentUser && !user?.friendshipStatus?.isOwn) {
+        run(id as string);
+      }
+    },
+  });
 
   return (
     <div
@@ -92,6 +111,7 @@ const Post: React.FC<PostProps> = ({
         [styles[`${classNamePrefix}-none-caption-has-summary`]]:
           noneCaption && hasSummary && !_indent,
       })}
+      ref={inViewRef}
       onClick={() => {
         _canNavigate && navigate(path);
       }}
