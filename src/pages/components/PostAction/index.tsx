@@ -179,9 +179,10 @@ const PostAction: React.FC<PostActionProps> = ({
   ];
 
   const actions = useMemo(() => {
-    const hasLikeCount = post?.likeCount && !post?.likeAndViewCountsDisabled;
+    const hasLikeCount =
+      (post?.likeCount || 0) > 0 && !post?.likeAndViewCountsDisabled;
     const hasRepostCount =
-      post?.repostCount && !post?.likeAndViewCountsDisabled;
+      (post?.repostCount || 0) > 0 && !post?.likeAndViewCountsDisabled;
     return [
       {
         icon: (

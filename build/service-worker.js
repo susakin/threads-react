@@ -1,8 +1,8 @@
 if (!self.define) {
   let s,
     i = {};
-  const n = (n, e) => (
-    (n = new URL(n + '.js', e).href),
+  const n = (n, c) => (
+    (n = new URL(n + '.js', c).href),
     i[n] ||
       new Promise(i => {
         if ('document' in self) {
@@ -15,7 +15,7 @@ if (!self.define) {
         return s;
       })
   );
-  self.define = (e, c) => {
+  self.define = (c, e) => {
     const l =
       s ||
       ('document' in self ? document.currentScript.src : '') ||
@@ -24,7 +24,7 @@ if (!self.define) {
     let t = {};
     const u = s => n(s, l),
       r = { module: { uri: l }, exports: t, require: u };
-    i[l] = Promise.all(e.map(s => r[s] || u(s))).then(s => (c(...s), t));
+    i[l] = Promise.all(c.map(s => r[s] || u(s))).then(s => (e(...s), t));
   };
 }
 define(['./workbox-f5b72648'], function (s) {
@@ -33,7 +33,7 @@ define(['./workbox-f5b72648'], function (s) {
     s.clientsClaim(),
     s.precacheAndRoute(
       [
-        { url: '/index.html', revision: '20360ffa4e0804263a9a20ba78d48599' },
+        { url: '/index.html', revision: '800090d11eb2316e44f90757acacdf3f' },
         { url: '/static/css/152.fa984b05.chunk.css', revision: null },
         { url: '/static/css/527.3a054278.chunk.css', revision: null },
         { url: '/static/css/596.3ea640d4.chunk.css', revision: null },
@@ -52,9 +52,9 @@ define(['./workbox-f5b72648'], function (s) {
         { url: '/static/js/864.a1da8340.chunk.js', revision: null },
         { url: '/static/js/9.06f02873.chunk.js', revision: null },
         { url: '/static/js/997.4b2ce42e.chunk.js', revision: null },
-        { url: '/static/js/main.a88f8b78.js', revision: null },
+        { url: '/static/js/main.c274d8dc.js', revision: null },
         {
-          url: '/static/js/main.a88f8b78.js.LICENSE.txt',
+          url: '/static/js/main.c274d8dc.js.LICENSE.txt',
           revision: 'aea7f4df688f3af28d40817a22eb579f',
         },
         {

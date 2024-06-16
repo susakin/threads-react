@@ -1,4 +1,4 @@
-/*! For license information please see main.a88f8b78.js.LICENSE.txt */
+/*! For license information please see main.c274d8dc.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -24299,14 +24299,16 @@
               ae = (0, a.useMemo)(
                 function () {
                   var e =
-                      (null === n || void 0 === n ? void 0 : n.likeCount) &&
+                      ((null === n || void 0 === n ? void 0 : n.likeCount) ||
+                        0) > 0 &&
                       !(
                         null !== n &&
                         void 0 !== n &&
                         n.likeAndViewCountsDisabled
                       ),
                     t =
-                      (null === n || void 0 === n ? void 0 : n.repostCount) &&
+                      ((null === n || void 0 === n ? void 0 : n.repostCount) ||
+                        0) > 0 &&
                       !(
                         null !== n &&
                         void 0 !== n &&
