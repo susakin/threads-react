@@ -179,6 +179,9 @@ const PostAction: React.FC<PostActionProps> = ({
   ];
 
   const actions = useMemo(() => {
+    const hasLikeCount = post?.likeCount && !post?.likeAndViewCountsDisabled;
+    const hasRepostCount =
+      post?.repostCount && !post?.likeAndViewCountsDisabled;
     return [
       {
         icon: (
@@ -189,8 +192,8 @@ const PostAction: React.FC<PostActionProps> = ({
             contentClassName={styles[`${classNamePrefix}-button`]}
             size={36}
             style={{
-              padding: post?.likeCount ? '0 12px' : '',
-              marginLeft: post?.likeCount ? '-4px' : '',
+              padding: hasLikeCount ? '0 12px' : '',
+              marginLeft: hasLikeCount ? '-4px' : '',
             }}
             layerOffset={0}
             onClick={onLikeClick}
@@ -203,7 +206,7 @@ const PostAction: React.FC<PostActionProps> = ({
               stroke="currentColor"
               fill={post?.isLikedByViewer ? 'currentColor' : 'transparent'}
             />
-            {(post?.likeCount || 0) > 0 && !post?.likeAndViewCountsDisabled && (
+            {hasLikeCount && (
               <ScrollCountText
                 count={post?.likeCount}
                 className={styles[`${classNamePrefix}-button-scroll-text`]}
@@ -250,7 +253,7 @@ const PostAction: React.FC<PostActionProps> = ({
               contentClassName={styles[`${classNamePrefix}-button`]}
               size={36}
               style={{
-                padding: post?.repostCount ? '0 12px' : '',
+                padding: hasRepostCount ? '0 12px' : '',
               }}
               onClick={() => {
                 isSupportTouch && setRepostMenuVisible(true);
@@ -262,13 +265,12 @@ const PostAction: React.FC<PostActionProps> = ({
               ) : (
                 <Reposted {...props} fill="currentColor" />
               )}
-              {(post?.repostCount || 0) > 0 &&
-                !post?.likeAndViewCountsDisabled && (
-                  <ScrollCountText
-                    count={post?.repostCount}
-                    className={styles[`${classNamePrefix}-button-scroll-text`]}
-                  />
-                )}
+              {hasRepostCount && (
+                <ScrollCountText
+                  count={post?.repostCount}
+                  className={styles[`${classNamePrefix}-button-scroll-text`]}
+                />
+              )}
             </ActiveScaleButton>
           </Popover>
         ),

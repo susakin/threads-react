@@ -1,4 +1,4 @@
-/*! For license information please see main.c18339da.js.LICENSE.txt */
+/*! For license information please see main.a88f8b78.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -24298,6 +24298,20 @@
               ],
               ae = (0, a.useMemo)(
                 function () {
+                  var e =
+                      (null === n || void 0 === n ? void 0 : n.likeCount) &&
+                      !(
+                        null !== n &&
+                        void 0 !== n &&
+                        n.likeAndViewCountsDisabled
+                      ),
+                    t =
+                      (null === n || void 0 === n ? void 0 : n.repostCount) &&
+                      !(
+                        null !== n &&
+                        void 0 !== n &&
+                        n.likeAndViewCountsDisabled
+                      );
                   return [
                     {
                       icon: (0, O.jsxs)(s.vC, {
@@ -24313,14 +24327,8 @@
                         contentClassName: Fe[''.concat(Ye, '-button')],
                         size: 36,
                         style: {
-                          padding:
-                            null !== n && void 0 !== n && n.likeCount
-                              ? '0 12px'
-                              : '',
-                          marginLeft:
-                            null !== n && void 0 !== n && n.likeCount
-                              ? '-4px'
-                              : '',
+                          padding: e ? '0 12px' : '',
+                          marginLeft: e ? '-4px' : '',
                         },
                         layerOffset: 0,
                         onClick: ee,
@@ -24342,14 +24350,7 @@
                               },
                             ),
                           ),
-                          ((null === n || void 0 === n
-                            ? void 0
-                            : n.likeCount) || 0) > 0 &&
-                            !(
-                              null !== n &&
-                              void 0 !== n &&
-                              n.likeAndViewCountsDisabled
-                            ) &&
+                          e &&
                             (0, O.jsx)(s.DP, {
                               count:
                                 null === n || void 0 === n
@@ -24408,12 +24409,7 @@
                         children: (0, O.jsxs)(s.vC, {
                           contentClassName: Fe[''.concat(Ye, '-button')],
                           size: 36,
-                          style: {
-                            padding:
-                              null !== n && void 0 !== n && n.repostCount
-                                ? '0 12px'
-                                : '',
-                          },
+                          style: { padding: t ? '0 12px' : '' },
                           onClick: function () {
                             pe.Y && Z(!0);
                           },
@@ -24436,14 +24432,7 @@
                                     { fill: 'currentColor' },
                                   ),
                                 ),
-                            ((null === n || void 0 === n
-                              ? void 0
-                              : n.repostCount) || 0) > 0 &&
-                              !(
-                                null !== n &&
-                                void 0 !== n &&
-                                n.likeAndViewCountsDisabled
-                              ) &&
+                            t &&
                               (0, O.jsx)(s.DP, {
                                 count:
                                   null === n || void 0 === n
