@@ -1,4 +1,4 @@
-/*! For license information please see main.cba7f03b.js.LICENSE.txt */
+/*! For license information please see main.c18339da.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -26328,54 +26328,56 @@
               M = T.caption,
               F = T.medias,
               Z = T.id,
-              N = 'none' !== k,
-              I = 'squiggle' === k,
-              B = C || I,
-              z = 'line' === k || I,
-              U =
+              N = T.isViewedByViewer,
+              I = 'none' !== k,
+              B = 'squiggle' === k,
+              z = C || B,
+              U = 'line' === k || B,
+              K =
                 !M &&
                 ((null === F || void 0 === F ? void 0 : F.length) || 0) > 1,
-              K = (0, c.s0)(),
-              H = (0, c.TH)().pathname,
-              W = '/post/'.concat(R),
-              V = W !== H && x,
-              q = (0, h.xJ)(),
-              $ = (0, y.i)(Ze.ei, { manual: !0 }).run,
-              Y = (0, Xt.YD)({
+              H = (0, c.s0)(),
+              W = (0, c.TH)().pathname,
+              V = '/post/'.concat(R),
+              q = V !== W && x,
+              $ = (0, h.xJ)(),
+              Y = (0, y.i)(Ze.ei, { manual: !0 }).run,
+              G = (0, Xt.YD)({
                 threshold: 0.2,
                 triggerOnce: !0,
                 onChange: function (e) {
                   var t;
                   !e ||
-                    !q ||
+                    !$ ||
                     (null !== L &&
                       void 0 !== L &&
                       null !== (t = L.friendshipStatus) &&
                       void 0 !== t &&
                       t.isOwn) ||
-                    $(Z);
+                    N ||
+                    Y(Z);
                 },
               }),
-              G = (0, i.Z)(Y, 1)[0];
+              Q = (0, i.Z)(G, 1)[0];
             return (0, O.jsxs)('div', {
               className: d()(
                 Jt[''.concat(tn)],
                 n,
                 ((t = {}),
-                (0, o.Z)(t, Jt[''.concat(tn, '-none-line')], !N),
-                (0, o.Z)(t, Jt[''.concat(tn, '-has-line')], N),
-                (0, o.Z)(t, Jt[''.concat(tn, '-can-navigate')], V),
-                (0, o.Z)(t, Jt[''.concat(tn, '-none-caption')], U),
+                (0, o.Z)(t, Jt[''.concat(tn, '-none-line')], !I),
+                (0, o.Z)(t, Jt[''.concat(tn, '-has-line')], I),
+                (0, o.Z)(t, Jt[''.concat(tn, '-can-navigate')], q),
+                (0, o.Z)(t, Jt[''.concat(tn, '-none-caption')], K),
                 (0, o.Z)(
                   t,
                   Jt[''.concat(tn, '-none-caption-has-summary')],
-                  U && v && !B,
+                  K && v && !z,
                 ),
                 t),
               ),
-              ref: G,
+              ref: Q,
               onClick: function () {
-                V && K(W);
+                q && H(V);
               },
               children: [
                 (0, O.jsx)(Oe, {
@@ -26396,7 +26398,7 @@
                     A,
                   ),
                 ),
-                z && (0, O.jsx)(Qt, { innerClassName: j, barClassName: P }),
+                U && (0, O.jsx)(Qt, { innerClassName: j, barClassName: P }),
                 (0, O.jsx)($t, {
                   className: Jt[''.concat(tn, '-caption')],
                   post: a,
@@ -26408,7 +26410,7 @@
                   onFollowingChange:
                     null === A || void 0 === A ? void 0 : A.onFollowingChange,
                   quotedPostcanNavigate: x,
-                  hasPlaceholder: N,
+                  hasPlaceholder: I,
                   onReply: D,
                   quotePostActionButtonInContainer: E,
                 }),

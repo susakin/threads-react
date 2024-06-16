@@ -75,7 +75,7 @@ const Post: React.FC<PostProps> = ({
   postLineBarClassName,
   ...rest
 }) => {
-  const { user, code, caption, medias, id } = post || {};
+  const { user, code, caption, medias, id, isViewedByViewer } = post || {};
   const hasLine = lineType !== 'none';
   const isSquiggleLine = lineType === 'squiggle';
   const _indent = indent || isSquiggleLine;
@@ -95,7 +95,12 @@ const Post: React.FC<PostProps> = ({
     threshold: 0.2,
     triggerOnce: true,
     onChange(inView) {
-      if (inView && currentUser && !user?.friendshipStatus?.isOwn) {
+      if (
+        inView &&
+        currentUser &&
+        !user?.friendshipStatus?.isOwn &&
+        !isViewedByViewer
+      ) {
         run(id as string);
       }
     },

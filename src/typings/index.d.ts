@@ -80,6 +80,7 @@ export type Post = {
   id: string;
   isLikedByViewer?: boolean;
   isHiddenByViewer?: boolean;
+  isViewedByViewer?: boolean;
   quotedPost?: Post;
   quotedPostId?: string;
   isRepostedByViewer?: boolean;
@@ -99,6 +100,7 @@ export type Post = {
   isUnavailable?: boolean;
   replyAuth?: ReplyAuth;
   isPinnedToComment?: boolean;
+  viewCount?: number;
   pollId?: string;
   poll?: Poll;
   textEntities?: TextEntity[];
