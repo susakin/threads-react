@@ -1,4 +1,4 @@
-/*! For license information please see main.4a7f1046.js.LICENSE.txt */
+/*! For license information please see main.cba7f03b.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -25540,8 +25540,8 @@
               o = (0, a.useMemo)(
                 function () {
                   var e = [];
-                  return (
-                    null !== n &&
+                  if (
+                    (null !== n &&
                       void 0 !== n &&
                       n.repostCount &&
                       e.push({
@@ -25575,28 +25575,6 @@
                           d('quote');
                         },
                       }),
-                    e.length &&
-                      null !== n &&
-                      void 0 !== n &&
-                      n.likeCount &&
-                      e.unshift({
-                        icon: (0, O.jsx)(u.Xd, {
-                          viewBox: '0 0 18 18',
-                          width: 24,
-                          height: '22',
-                          strokeWidth: 2,
-                          stroke: 'currentColor',
-                          fill: 'transparent',
-                        }),
-                        label: '\u8d5e',
-                        num: (0, O.jsx)(Ct.Z, {
-                          value:
-                            null === n || void 0 === n ? void 0 : n.likeCount,
-                        }),
-                        onClick: function () {
-                          d('like');
-                        },
-                      }),
                     null !== n &&
                       void 0 !== n &&
                       n.viewCount &&
@@ -25611,8 +25589,29 @@
                         ),
                         hasMore: !1,
                       }),
-                    e
-                  );
+                    null !== n && void 0 !== n && n.likeCount)
+                  ) {
+                    var t = {
+                      icon: (0, O.jsx)(u.Xd, {
+                        viewBox: '0 0 18 18',
+                        width: 24,
+                        height: '22',
+                        strokeWidth: 2,
+                        stroke: 'currentColor',
+                        fill: 'transparent',
+                      }),
+                      label: '\u8d5e',
+                      num: (0, O.jsx)(Ct.Z, {
+                        value:
+                          null === n || void 0 === n ? void 0 : n.likeCount,
+                      }),
+                      onClick: function () {
+                        d('like');
+                      },
+                    };
+                    e.length > 0 ? e.splice(1, 0, t) : e.push(t), e.unshift();
+                  }
+                  return e;
                 },
                 [n],
               ),

@@ -60,9 +60,17 @@ const PostActivity: React.FC<PostActivityProps> = ({
         },
       });
     }
-
-    if (items.length && activities?.likeCount) {
+    if (activities?.viewCount) {
       items.unshift({
+        icon: <Eye viewBox="0 0 24 24" size={24} />,
+        label: '浏览量',
+        num: numberFormat.withThousandDelimiters(activities?.viewCount),
+        hasMore: false,
+      });
+    }
+
+    if (activities?.likeCount) {
+      const likeItem = {
         icon: (
           <Heart
             viewBox="0 0 18 18"
@@ -78,15 +86,13 @@ const PostActivity: React.FC<PostActivityProps> = ({
         onClick() {
           setActivityType('like');
         },
-      });
-    }
-    if (activities?.viewCount) {
-      items.unshift({
-        icon: <Eye viewBox="0 0 24 24" size={24} />,
-        label: '浏览量',
-        num: numberFormat.withThousandDelimiters(activities?.viewCount),
-        hasMore: false,
-      });
+      };
+      if (items.length > 0) {
+        items.splice(1, 0, likeItem);
+      } else {
+        items.push(likeItem);
+      }
+      items.unshift();
     }
 
     return items;
