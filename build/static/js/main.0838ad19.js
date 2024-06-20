@@ -1,4 +1,4 @@
-/*! For license information please see main.c274d8dc.js.LICENSE.txt */
+/*! For license information please see main.0838ad19.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -6070,10 +6070,8 @@
               q = W.refs,
               $ = W.floatingStyles,
               Y = W.context,
-              G = W.update,
-              Q = W.elements,
-              J = Xt(Y),
-              X = (function (e, t) {
+              G = Xt(Y),
+              Q = (function (e, t) {
                 void 0 === t && (t = {});
                 var n = e.open,
                   r = e.onOpenChange,
@@ -6151,7 +6149,7 @@
                   [c, o, f, v, g, i, p, n, r],
                 );
               })(Y, { enabled: z && b }),
-              ee = (function (e, t) {
+              J = (function (e, t) {
                 void 0 === t && (t = {});
                 var n = e.open,
                   o = e.onOpenChange,
@@ -6453,7 +6451,7 @@
                 enabled: !z && b,
                 handleClose: on(),
               }),
-              te = (function (e, t) {
+              X = (function (e, t) {
                 void 0 === t && (t = {});
                 var n = e.open,
                   r = e.onOpenChange,
@@ -6706,7 +6704,7 @@
                   )
                 );
               })(Y),
-              ne = (function (e) {
+              ee = (function (e) {
                 void 0 === e && (e = []);
                 var t = e,
                   n = a.useCallback(function (t) {
@@ -6733,9 +6731,9 @@
                   },
                   [n, r, o],
                 );
-              })([X, ee, te, J]),
-              re = ne.getReferenceProps,
-              oe = ne.getFloatingProps;
+              })([Q, J, X, G]),
+              te = ee.getReferenceProps,
+              ne = ee.getFloatingProps;
             return (
               (0, a.useEffect)(
                 function () {
@@ -6743,20 +6741,6 @@
                     V.includes('end') && M('right top');
                 },
                 [V],
-              ),
-              (0, a.useEffect)(
-                function () {
-                  var e = function () {
-                    Q.reference && Q.floating && Re(Q.reference, Q.floating, G);
-                  };
-                  return (
-                    window.addEventListener('resize', e),
-                    function () {
-                      window.removeEventListener('resize', e);
-                    }
-                  );
-                },
-                [Q],
               ),
               (0, a.useEffect)(function () {
                 var e;
@@ -6773,7 +6757,7 @@
                 children: [
                   (0, an.jsx)(
                     s.i,
-                    (0, r.Z)((0, r.Z)({ ref: B }, re()), {}, { children: t }),
+                    (0, r.Z)((0, r.Z)({ ref: B }, te()), {}, { children: t }),
                   ),
                   j &&
                     (0, an.jsx)(Wt, {
@@ -6784,12 +6768,13 @@
                             {
                               ref: q.setFloating,
                               style: (0, r.Z)(
-                                (0, r.Z)({ zIndex: 5, outline: 'none' }, $),
+                                (0, r.Z)({ zIndex: 1, outline: 'none' }, $),
                                 {},
                                 { transformOrigin: R },
+                                C.floatingStyle,
                               ),
                             },
-                            oe(),
+                            ne(),
                           ),
                           {},
                           {
@@ -28079,6 +28064,7 @@
               strategy: 'fixed',
               hideWhenContentClick: !0,
               placement: 'bottom-end',
+              floatingStyle: { zIndex: 3 },
               children: (0, O.jsxs)('div', {
                 className: Sn[''.concat(Mn)],
                 children: [

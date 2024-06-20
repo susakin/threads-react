@@ -111,6 +111,7 @@ const Menu: React.FC = () => {
       strategy={'fixed'}
       hideWhenContentClick
       placement="bottom-end"
+      floatingStyle={{ zIndex: 3 }}
     >
       <div className={styles[`${classNamePrefix}`]}>
         <div className={styles[`${classNamePrefix}-outer`]}>

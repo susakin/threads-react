@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Wrapper } from './Wrapper';
+import { UseFloatingOptions } from '@floating-ui/react';
+
 import {
   useFloating,
   useHover,
@@ -25,20 +27,8 @@ export type PopoverProps = {
   enabled?: boolean;
   onVisibleChange?: (open: boolean) => void;
   hideWhenContentClick?: boolean;
-  placement?:
-    | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'right'
-    | 'right-start'
-    | 'right-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'left'
-    | 'left-start'
-    | 'left-end';
-};
+  floatingStyle?: React.CSSProperties;
+} & Pick<UseFloatingOptions, 'placement'>;
 
 const Popover: React.FC<PopoverProps> = ({
   children,
@@ -66,8 +56,6 @@ const Popover: React.FC<PopoverProps> = ({
     refs,
     floatingStyles,
     context,
-    update,
-    elements,
   } = useFloating({
     placement,
     strategy,
@@ -112,19 +100,6 @@ const Popover: React.FC<PopoverProps> = ({
   }, [_placement]);
 
   useEffect(() => {
-    const resize = () => {
-      if (elements.reference && elements.floating) {
-        autoUpdate(elements.reference, elements.floating as any, update);
-      }
-    };
-    window.addEventListener('resize', resize);
-
-    return () => {
-      window.removeEventListener('resize', resize);
-    };
-  }, [elements]);
-
-  useEffect(() => {
     refs.setReference(wrapperRef?.current?.element as any);
   }, []);
 
@@ -138,10 +113,11 @@ const Popover: React.FC<PopoverProps> = ({
           <div
             ref={refs.setFloating}
             style={{
-              zIndex: 5,
+              zIndex: 1,
               outline: 'none',
               ...floatingStyles,
               transformOrigin,
+              ...rest.floatingStyle,
             }}
             {...getFloatingProps()}
             onClick={
