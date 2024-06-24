@@ -221,7 +221,7 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
       onError(content) {
         setIsUploading(false);
         toastRef?.update?.({
-          duration: 5000,
+          duration: 3000,
           hasMinWith: true,
           content,
           icon: undefined,
@@ -231,7 +231,7 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
         setIsUploading(false);
         onSuccess?.(post);
         toastRef?.update?.({
-          duration: 5000,
+          duration: 3000,
           icon: 'done',
           action: '查看',
           onActionClick() {

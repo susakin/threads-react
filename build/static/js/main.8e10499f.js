@@ -1,4 +1,4 @@
-/*! For license information please see main.e80faf92.js.LICENSE.txt */
+/*! For license information please see main.8e10499f.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -7941,21 +7941,18 @@
                       for (;;)
                         switch ((r.prev = r.next)) {
                           case 0:
-                            if (
-                              (console.log(t, e.length, 111),
-                              t || !(e.length > 0))
-                            ) {
-                              r.next = 9;
+                            if (t || !(e.length > 0)) {
+                              r.next = 8;
                               break;
                             }
                             if (((t = !0), !(o = e.shift()))) {
-                              r.next = 7;
+                              r.next = 6;
                               break;
                             }
-                            return (r.next = 7), o();
-                          case 7:
+                            return (r.next = 6), o();
+                          case 6:
                             (t = !1), n();
-                          case 9:
+                          case 8:
                           case 'end':
                             return r.stop();
                         }
@@ -21732,7 +21729,6 @@
                         void 0 === n ||
                         n(o, { isSavedByViewer: !0 }),
                         u.FN.show({
-                          duration: 5e3,
                           content: '\u5df2\u6536\u85cf',
                           hasMinWith: !0,
                           action: '\u67e5\u770b\u5168\u90e8',
@@ -21746,7 +21742,6 @@
                     manual: !0,
                     onSuccess: function () {
                       u.FN.show({
-                        duration: 5e3,
                         content: '\u5df2\u53d6\u6d88\u4fdd\u5b58',
                         hasMinWith: !0,
                         action: '\u64a4\u9500',
@@ -27448,7 +27443,7 @@
                                     null === (n = t.update) ||
                                     void 0 === n ||
                                     n.call(t, {
-                                      duration: 5e3,
+                                      duration: 3e3,
                                       hasMinWith: !0,
                                       content: e,
                                       icon: void 0,
@@ -27463,7 +27458,7 @@
                                     null === (r = t.update) ||
                                     void 0 === r ||
                                     r.call(t, {
-                                      duration: 5e3,
+                                      duration: 3e3,
                                       icon: 'done',
                                       action: '\u67e5\u770b',
                                       onActionClick: function () {

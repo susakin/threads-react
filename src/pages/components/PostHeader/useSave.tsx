@@ -20,7 +20,6 @@ export const useSave = ({ post, onPostUpdate }: UseSaveProps) => {
     onSuccess() {
       onPostUpdate?.(id as string, { isSavedByViewer: true });
       Toast.show({
-        duration: 5000,
         content: '已收藏',
         hasMinWith: true,
         action: '查看全部',
@@ -35,7 +34,6 @@ export const useSave = ({ post, onPostUpdate }: UseSaveProps) => {
     manual: true,
     onSuccess() {
       Toast.show({
-        duration: 5000,
         content: '已取消保存',
         hasMinWith: true,
         action: '撤销',

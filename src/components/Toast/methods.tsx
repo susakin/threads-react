@@ -15,7 +15,6 @@ const createScheduler = (): Scheduler => {
   let isProcessing = false;
 
   const processQueue = async () => {
-    console.log(isProcessing, showQueue.length, 111);
     if (!isProcessing && showQueue.length > 0) {
       isProcessing = true;
       const nextResolver = showQueue.shift();
