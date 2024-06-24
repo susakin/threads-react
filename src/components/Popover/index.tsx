@@ -15,6 +15,8 @@ import {
   useDismiss,
   safePolygon,
   useFocus,
+  useRole,
+  hide,
 } from '@floating-ui/react';
 
 export type PopoverProps = {
@@ -25,7 +27,7 @@ export type PopoverProps = {
   openDelay?: number;
   offset?: number;
   enabled?: boolean;
-  onVisibleChange?: (open: boolean) => void;
+  onOpenChange?: (open: boolean) => void;
   hideWhenContentClick?: boolean;
   floatingStyle?: React.CSSProperties;
 } & Pick<UseFloatingOptions, 'placement'>;
@@ -36,9 +38,8 @@ const Popover: React.FC<PopoverProps> = ({
   trigger = 'click',
   openDelay = 0,
   strategy = 'absolute',
-  placement,
   enabled = true,
-  onVisibleChange,
+  onOpenChange,
   hideWhenContentClick,
   ...rest
 }) => {
@@ -48,30 +49,28 @@ const Popover: React.FC<PopoverProps> = ({
   const isTriggerClick = trigger === 'click';
 
   useEffect(() => {
-    onVisibleChange?.(open);
+    onOpenChange?.(open);
   }, [open]);
 
-  const {
-    placement: _placement,
-    refs,
-    floatingStyles,
-    context,
-  } = useFloating({
-    placement,
-    strategy,
-    open,
-    onOpenChange(open) {
-      setOpen(open);
-    },
-    whileElementsMounted: autoUpdate,
-    middleware: [shift(), flip(), offset(rest.offset)],
-  });
+  const { placement, refs, floatingStyles, context, middlewareData } =
+    useFloating({
+      placement: rest.placement,
+      strategy,
+      open,
+      onOpenChange(open) {
+        setOpen(open);
+      },
+      whileElementsMounted: autoUpdate,
+      middleware: [hide(), shift(), flip(), offset(rest.offset)],
+    });
 
   const focus = useFocus(context);
 
   const click = useClick(context, {
     enabled: isTriggerClick && enabled,
   });
+
+  const role = useRole(context);
 
   const hover = useHover(context, {
     delay: {
@@ -87,17 +86,18 @@ const Popover: React.FC<PopoverProps> = ({
     hover,
     dismiss,
     focus,
+    role,
   ]);
 
   useEffect(() => {
-    if (_placement.includes('start')) {
+    if (placement.includes('start')) {
       setTransformOrigin('left top');
     }
 
-    if (_placement.includes('end')) {
+    if (placement.includes('end')) {
       setTransformOrigin('right top');
     }
-  }, [_placement]);
+  }, [placement]);
 
   useEffect(() => {
     refs.setReference(wrapperRef?.current?.element as any);
@@ -114,6 +114,9 @@ const Popover: React.FC<PopoverProps> = ({
             ref={refs.setFloating}
             style={{
               zIndex: 1,
+              visibility: middlewareData.hide?.referenceHidden
+                ? 'hidden'
+                : 'visible',
               outline: 'none',
               ...floatingStyles,
               transformOrigin,

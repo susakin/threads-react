@@ -107,7 +107,7 @@ const Menu: React.FC = () => {
   return (
     <Popover
       content={content}
-      onVisibleChange={v => setVisible(v)}
+      onOpenChange={v => setVisible(v)}
       strategy={'fixed'}
       hideWhenContentClick
       placement="bottom-end"

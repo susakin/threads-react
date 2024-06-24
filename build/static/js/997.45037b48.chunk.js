@@ -1730,13 +1730,19 @@
             null === w ||
               void 0 === w ||
               w.useSubscription(function (e) {
-                var n, i;
+                var n, i, o;
                 'newPost' === e.type &&
-                  (null === (n = j.current) ||
-                    void 0 === n ||
-                    null === (i = n.reload) ||
+                  (null === d ||
+                  void 0 === d ||
+                  null === (n = d.friendshipStatus) ||
+                  void 0 === n
+                    ? void 0
+                    : n.isOwn) &&
+                  (null === (i = j.current) ||
                     void 0 === i ||
-                    i.call(n));
+                    null === (o = i.reload) ||
+                    void 0 === o ||
+                    o.call(i));
               }),
             null === w ||
               void 0 === w ||

@@ -1,8 +1,8 @@
 if (!self.define) {
   let s,
     i = {};
-  const n = (n, e) => (
-    (n = new URL(n + '.js', e).href),
+  const n = (n, c) => (
+    (n = new URL(n + '.js', c).href),
     i[n] ||
       new Promise(i => {
         if ('document' in self) {
@@ -15,7 +15,7 @@ if (!self.define) {
         return s;
       })
   );
-  self.define = (e, c) => {
+  self.define = (c, e) => {
     const l =
       s ||
       ('document' in self ? document.currentScript.src : '') ||
@@ -24,7 +24,7 @@ if (!self.define) {
     let t = {};
     const u = s => n(s, l),
       r = { module: { uri: l }, exports: t, require: u };
-    i[l] = Promise.all(e.map(s => r[s] || u(s))).then(s => (c(...s), t));
+    i[l] = Promise.all(c.map(s => r[s] || u(s))).then(s => (e(...s), t));
   };
 }
 define(['./workbox-f5b72648'], function (s) {
@@ -33,7 +33,7 @@ define(['./workbox-f5b72648'], function (s) {
     s.clientsClaim(),
     s.precacheAndRoute(
       [
-        { url: '/index.html', revision: '5426201ad69da74c2b8ed760856df02b' },
+        { url: '/index.html', revision: '4c5bd8a684f3c4ca34032f1f59b78a93' },
         { url: '/static/css/152.fa984b05.chunk.css', revision: null },
         { url: '/static/css/527.3a054278.chunk.css', revision: null },
         { url: '/static/css/596.3ea640d4.chunk.css', revision: null },
@@ -51,10 +51,10 @@ define(['./workbox-f5b72648'], function (s) {
         { url: '/static/js/849.0a882412.chunk.js', revision: null },
         { url: '/static/js/864.a1da8340.chunk.js', revision: null },
         { url: '/static/js/9.06f02873.chunk.js', revision: null },
-        { url: '/static/js/997.4b2ce42e.chunk.js', revision: null },
-        { url: '/static/js/main.0838ad19.js', revision: null },
+        { url: '/static/js/997.45037b48.chunk.js', revision: null },
+        { url: '/static/js/main.e80faf92.js', revision: null },
         {
-          url: '/static/js/main.0838ad19.js.LICENSE.txt',
+          url: '/static/js/main.e80faf92.js.LICENSE.txt',
           revision: 'aea7f4df688f3af28d40817a22eb579f',
         },
         {

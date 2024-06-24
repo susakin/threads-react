@@ -146,7 +146,9 @@ const ProfilePosts: React.FC<ProfilePostsProps> = ({
   ]);
 
   navigationEmitter?.useSubscription(props => {
-    props.type === 'newPost' && postListRef.current?.reload?.();
+    props.type === 'newPost' &&
+      user?.friendshipStatus?.isOwn &&
+      postListRef.current?.reload?.();
   });
 
   function reload() {
