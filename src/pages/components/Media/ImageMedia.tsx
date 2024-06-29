@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageViewer, Image } from '..';
+import { ImageViewer, Image } from '../../../components';
 import { getAspectRatioInSingleMedia } from '@utils/mediaAspectRatioUtils';
 import cs from 'classnames';
 import styles from './imageMedia.module.less';

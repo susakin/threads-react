@@ -18,7 +18,8 @@ export type ToastProps = {
 
 export type ToastRef = {
   update?: (props: ToastProps) => void;
-  close?: () => void;
+  close?: () => Promise<void>;
+  getContent?: () => React.ReactNode;
 };
 
 const Toast = (props: ToastProps, ref: React.Ref<ToastRef> | undefined) => {
@@ -55,6 +56,15 @@ const Toast = (props: ToastProps, ref: React.Ref<ToastRef> | undefined) => {
       close() {
         clearTimeout(timerRef.current);
         setTimeEnd(true);
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve();
+            onClose?.();
+          }, 50);
+        });
+      },
+      getContent() {
+        return content;
       },
     };
   });

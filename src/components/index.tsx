@@ -34,15 +34,7 @@ export { default as VideoViewer } from './VideoViewer';
 
 export { default as ImageViewer } from './ImageViewer';
 
-export { default as MediaCarousel } from './MediaCarousel';
-
 export { default as Image } from './Image';
-
-export { default as ImageMedia } from './Media/ImageMedia';
-
-export { default as VideoMedia } from './Media/VideoMedia';
-
-export { default as MediaViewer } from './MediaViewer';
 
 export { default as HidableComponent } from './HidableComponent';
 
@@ -66,7 +58,7 @@ export { default as AvatarViewer } from './AvatarViewer';
 
 export { default as Switch } from './Switch';
 
-export { default as Media } from './Media';
+export { default as Media } from '../pages/components/Media';
 
 export { default as Link } from './Link';
 

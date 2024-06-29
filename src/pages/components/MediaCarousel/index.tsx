@@ -11,8 +11,8 @@ import {
   AnimatedScrollArea,
   Image,
   VideoPlayer,
-  MediaViewer,
-} from '..';
+} from '@components/index';
+import { MediaViewer } from '../index';
 import { useDebounceFn } from 'ahooks';
 import { getNextCardPosition } from '@utils/animatedCarouselUtils';
 import { isSupportTouch } from '@utils/index';
@@ -20,9 +20,9 @@ import styles from './index.module.less';
 import { Media } from '@typings/index';
 import useViewport from '@hooks/useViewport';
 import PairMedia from './PairMedia';
-import { ImageMediaProps } from '@components/Media/ImageMedia';
-import DeleteButton from '@components/Media/DeleteButton';
-import AccessibilityButton from '@components/Media/AccessibilityButton';
+import { ImageMediaProps } from '@pages/components/Media/ImageMedia';
+import DeleteButton from '@pages/components/Media/DeleteButton';
+import AccessibilityButton from '@pages/components/Media/AccessibilityButton';
 
 type MediaCarouselProps = {
   medias: Media[];

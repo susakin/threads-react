@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Mask, Swiper, CircleButton, SwiperRef } from '../';
+import { Mask, Swiper, CircleButton, SwiperRef } from '@components/index';
 import { Arrow } from '@components/Icon';
 import VideoInViewer from './VideoInViewer';
 import ImageInViewer from './ImageInViewer';

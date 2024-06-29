@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Media as MediaItem } from '@typings/index';
-import { ImageMedia, MediaCarousel, VideoMedia } from '..';
+import { ImageMedia, MediaCarousel, VideoMedia } from '../index';
 import { ImageMediaProps } from './ImageMedia';
 
 type MediaProps = {

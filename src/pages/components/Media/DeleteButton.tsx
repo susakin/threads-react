@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './deleteButton.module.less';
-import { CircleButton } from '..';
+import { CircleButton } from '../../../components';
 import { CircleButtonProps } from '@components/Button/CircleButton';
 import { CloseStrong } from '@components/Icon';
 import cs from 'classnames';

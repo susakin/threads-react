@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { VideoPlayer, VideoViewer } from '..';
+import { VideoPlayer, VideoViewer } from '../../../components';
 import { getAspectRatioInSingleMedia } from '@utils/mediaAspectRatioUtils';
 import styles from './videoMedia.module.less';
 import { Media } from '@typings/index';

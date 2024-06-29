@@ -1,18 +1,15 @@
 import React from 'react';
-import { Image } from '../';
-import styles from './imageInViewer.module.less';
+import { VideoPlayer } from '@components/index';
 import useAspectRatioInViewer from '@hooks/useAspectRatioInViewer';
 import { Media } from '@typings/index';
 
-type ImageInViewerProps = {
+type VideoInViewerProps = {
   media: Media;
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   placeholderWidth?: number;
 };
 
-const classNamePrefix = 'image-in-viewer';
-
-const ImageInViewer: React.FC<ImageInViewerProps> = ({
+const VideoInViewer: React.FC<VideoInViewerProps> = ({
   media,
   onClick,
   placeholderWidth = 0,
@@ -22,17 +19,17 @@ const ImageInViewer: React.FC<ImageInViewerProps> = ({
     mediaHeight: media.mediaHeight,
     placeholderWidth,
   });
+
   return (
-    <div
-      className={styles[`${classNamePrefix}`]}
-      style={style}
-      onClick={onClick}
-    >
-      <picture className={styles[`${classNamePrefix}-picture`]}>
-        <Image src={media.url} draggable={false} />
-      </picture>
+    <div style={style} onClick={onClick}>
+      <VideoPlayer
+        url={media.url}
+        inViewer={true}
+        playWhenInView
+        disabledSchedule={true}
+      />
     </div>
   );
 };
 
-export default ImageInViewer;
+export default VideoInViewer;
