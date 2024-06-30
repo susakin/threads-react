@@ -248,7 +248,7 @@ const PostAction: React.FC<PostActionProps> = ({
             placement="bottom-start"
             hideWhenContentClick
             enabled={!isSupportTouch}
-            content={<PopoverMenu items={repostItems} />}
+            content={<PopoverMenu items={[repostItems]} />}
           >
             <ActiveScaleButton
               contentClassName={styles[`${classNamePrefix}-button`]}

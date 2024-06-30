@@ -32,28 +32,10 @@ import { usePin, UsePinProps } from './usePin';
 import { useEdit, UseEditProps } from './useEdit';
 import { useSave } from './useSave';
 import { useCopy } from './useCopy';
-import PopupMenu, { MenuItem as PopupMenuItem } from '@components/PopupMenu';
+import PopupMenu from '@components/PopupMenu';
 import { isSupportTouch } from '@utils/index';
-import { MenuItem } from '@components/Popover/Menu';
 
 const classNamePrefix = 'post-header-action';
-
-export const getMenuGroup = (menu: MenuItem[]): Array<PopupMenuItem[]> => {
-  const items: Array<PopupMenuItem[]> = [];
-  let group: MenuItem[] = [];
-  menu = menu.filter(item => !!item);
-  menu.forEach((item, index) => {
-    group.push(item);
-    if (item?.split) {
-      items.push(group);
-      group = [];
-    }
-    if (index === menu.length - 1) {
-      items.push(group);
-    }
-  });
-  return items;
-};
 
 export type PostHeaderActionProps = {
   hasAction?: boolean;
@@ -153,9 +135,9 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     },
   });
 
-  const menu: PopoverMenuItem[] = useMemo(() => {
+  const menu: Array<PopoverMenuItem[]> = useMemo(() => {
     const hasTag = textEntities?.some(item => item.type === 'tag');
-    const items: PopoverMenuItem[] = [
+    const eidtGroup: PopoverMenuItem[] = [
       editItem as any,
       hasTag
         ? {
@@ -173,91 +155,95 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
             onClick: onTagClick,
           }
         : (null as any),
-      saveItem,
     ];
 
-    if (hasPin) {
-      items.unshift(pinItem);
-    }
-
-    if (friendshipStatus?.isOwn) {
-      items.push(
-        {
-          label: `${
-            post?.likeAndViewCountsDisabled ? '取消' : ''
-          }隐藏获赞数和分享次数`,
-          onClick() {
-            _updateLikeAndViewCounts(post?.id as string, {
-              likeAndViewCountsDisabled: !post?.likeAndViewCountsDisabled,
-            });
-          },
-          icon: <Unlike viewBox="0 0 20 20" size={20} />,
-        },
-        {
-          label: '谁可以回复',
-          onClick() {
-            setReplyAuthVisible(true);
-          },
-          split: true,
-          icon: (
-            <Direction
-              viewBox="0 0 24 24"
-              size={16}
-              style={{
-                transform: 'rotate(180deg)',
-                color: 'var(--barcelona-secondary-icon)',
-              }}
-            />
-          ),
-        },
-        {
-          label: '删除',
-          danger: true,
-          onClick() {
-            Modal.confirm({
-              title: '删除帖子？',
-              content: '这篇帖子一旦删除便无法恢复。',
-              okType: 'danger',
-              okText: '删除',
-              onOk: () => {
-                _deletePost(id);
-              },
-            });
-          },
-          icon: <Delete viewBox="0 0 20 20" size={20} />,
-        },
-      );
-    } else {
-      items.push(
-        {
-          label: '没兴趣',
-          onClick() {
-            _hidePost(post?.id as string);
-          },
-          icon: <Hide viewBox="0 0 20 20" size={20} />,
-          split: true,
-        },
-        muteItem,
-      );
-      if (friendshipStatus?.following) {
-        items.push({
-          label: '停止关注',
-          onClick: () => {
-            runUnfollow(post?.user.id as string);
-          },
-          icon: <UnFollow viewBox="0 0 20 20" size={20} />,
+    const likeItem = {
+      label: `${
+        post?.likeAndViewCountsDisabled ? '取消' : ''
+      }隐藏获赞数和分享次数`,
+      onClick() {
+        _updateLikeAndViewCounts(post?.id as string, {
+          likeAndViewCountsDisabled: !post?.likeAndViewCountsDisabled,
         });
-      } else {
-        items.push({
-          ...blockItem,
-          split: true,
+      },
+      icon: <Unlike viewBox="0 0 20 20" size={20} />,
+    };
+
+    const replyItem = {
+      label: '谁能回复和引用',
+      onClick() {
+        setReplyAuthVisible(true);
+      },
+      icon: (
+        <Direction
+          viewBox="0 0 24 24"
+          size={16}
+          style={{
+            transform: 'rotate(180deg)',
+            color: 'var(--barcelona-secondary-icon)',
+          }}
+        />
+      ),
+    };
+
+    const interstItem = {
+      label: '没兴趣',
+      onClick() {
+        _hidePost(post?.id as string);
+      },
+      icon: <Hide viewBox="0 0 20 20" size={20} />,
+    };
+
+    const isOwn = friendshipStatus?.isOwn;
+    const saveGroup: PopoverMenuItem[] = [
+      saveItem,
+      hasPin ? pinItem : (undefined as any),
+      isOwn ? likeItem : (undefined as any),
+      isOwn ? replyItem : (undefined as any),
+      !isOwn ? interstItem : (undefined as any),
+    ];
+
+    const stopFollowItem = {
+      label: '停止关注',
+      onClick: () => {
+        runUnfollow(post?.user.id as string);
+      },
+      icon: <UnFollow viewBox="0 0 20 20" size={20} />,
+    };
+
+    const muteGroup: PopoverMenuItem[] = [
+      !isOwn ? muteItem : (undefined as any),
+      !isOwn
+        ? friendshipStatus?.following
+          ? stopFollowItem
+          : blockItem
+        : (undefined as any),
+    ];
+
+    const deleteItem: PopoverMenuItem = {
+      label: '删除',
+      danger: true,
+      onClick() {
+        Modal.confirm({
+          title: '删除帖子？',
+          content: '这篇帖子一旦删除便无法恢复。',
+          okType: 'danger',
+          okText: '删除',
+          onOk: () => {
+            _deletePost(id);
+          },
         });
-      }
-    }
+      },
+      icon: <Delete viewBox="0 0 20 20" size={20} />,
+    };
 
-    items.push(copyItem);
+    const deleteGroup: PopoverMenuItem[] = [
+      isOwn ? deleteItem : (undefined as any),
+    ];
 
-    return items;
+    const copyGroup: PopoverMenuItem[] = [copyItem];
+
+    return [eidtGroup, saveGroup, muteGroup, deleteGroup, copyGroup];
   }, [
     post,
     hasPin,
@@ -269,10 +255,6 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
     pinItem,
     editItem,
   ]);
-
-  const popupMenu = useMemo(() => {
-    return getMenuGroup(menu);
-  }, [menu]);
 
   return (
     <div
@@ -321,7 +303,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
         }}
       />
       <PopupMenu
-        items={popupMenu as any}
+        items={menu as any}
         visible={menuVisible}
         onClose={() => {
           setMenuVisible(false);

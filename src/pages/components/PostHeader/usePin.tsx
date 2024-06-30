@@ -12,6 +12,7 @@ import {
   getPostPinned,
 } from '@services/post';
 import { Pin } from '@components/Icon';
+import UnPin from '@components/Icon/UnPin';
 
 export type UsePinProps = {
   post?: Post;
@@ -73,11 +74,11 @@ export const usePin = ({ post, pinToWhere, onPinChange }: UsePinProps) => {
       onPinChange?.(id as string, false);
     },
   });
-
+  const pinProps = { viewBox: '0 0 20 20', size: 20 };
   const item = {
     label: _hasPined ? '取消置顶' : `置顶到${pinToProfile ? '主页' : '评论'}`,
     onClick: _onPinClick,
-    icon: <Pin viewBox="0 0 20 20" size={20} />,
+    icon: _hasPined ? <UnPin {...pinProps} /> : <Pin {...pinProps} />,
     loading,
   };
 

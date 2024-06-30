@@ -51,7 +51,7 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   }
 
   return (
-    <Popover placement="bottom-end" content={<Menu items={items} />}>
+    <Popover placement="bottom-end" content={<Menu items={[items]} />}>
       <div className={styles[`${classNamePrefix}`]}>
         {url ? (
           <Avatar size={52} url={url} />

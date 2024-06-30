@@ -182,9 +182,12 @@ const PostEdit: React.FC<PostEditProps> = ({
         <Popover
           placement="bottom-start"
           hideWhenContentClick
+          floatingStyle={{
+            zIndex: 3,
+          }}
           content={
             <PopoverMenu
-              items={menus}
+              items={[menus]}
               onClick={item => {
                 const key = item.key as any;
                 setReplyAuth(key);

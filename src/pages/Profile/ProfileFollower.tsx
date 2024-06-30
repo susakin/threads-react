@@ -22,11 +22,10 @@ import { useBlock } from '@pages/components/PostHeader/useBlock';
 import { UseMuteProps, useMute } from '@pages/components/PostHeader/useMute';
 import Info from '@components/Icon/Info';
 import { Link as LinkIcon } from '@components/Icon';
-import RemoveFans from '@components/Icon/RemoveFans';
+import RemoveFollower from '@components/Icon/RemoveFollower';
 import { copyText } from '@utils/clipboard';
 import { isSupportTouch } from '@utils/index';
 import PopupMenu from '@components/PopupMenu';
-import { getMenuGroup } from '@pages/components/PostHeader/PostHeaderAction';
 const classNamePrefix = 'profile-follower';
 
 type ProfileFollowerProps = {
@@ -63,7 +62,7 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
   };
 
   const { item: muteItem } = useMute(actionProps);
-  const { item } = useBlock(actionProps);
+  const { item: blockItem } = useBlock(actionProps);
 
   const { run } = useFetch(deleteFollow, {
     manual: true,
@@ -104,8 +103,8 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
     },
   });
 
-  const menus = useMemo<PopoverMenuItem[]>(() => {
-    const items: any = [
+  const menus = useMemo<Array<PopoverMenuItem[]>>(() => {
+    const copyGroup: PopoverMenuItem[] = [
       {
         label: '复制链接',
         icon: <LinkIcon viewBox="0 0 18 18" size={21} fill="transparent" />,
@@ -119,49 +118,54 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
           setProfileModalVisible(true);
         },
         icon: <Info viewBox="0 0 24 24" size={20} />,
-        split: true,
       },
     ];
 
-    if (!isOwn) {
-      items.push(muteItem, {
-        label: `${isRestricting ? '取消' : ''}限制 `,
-        onClick() {
-          !isRestricting
-            ? _restricte(user?.id as any)
-            : _unrestricte(user?.id as string);
-        },
-        icon: isRestricting ? (
-          <Restricted viewBox="0 0 20 20" size={20} />
-        ) : (
-          <Restrict viewBox="0 0 20 20" size={20} />
-        ),
-      });
-    }
-    if (user?.friendshipStatus?.followedBy) {
-      items.push({
-        label: '移除粉丝',
-        onClick() {
-          Modal.confirm({
-            title: '移除粉丝？',
-            content: `我们不会告诉${user?.username}你将 TA 移除了。`,
-            okText: '移除',
-            okType: 'danger',
-            onOk() {
-              run(user?.id);
-            },
-          });
-        },
-        icon: <RemoveFans viewBox="0 0 20 20" size={20} />,
-        split: true,
-      });
-    }
-    if (!isOwn) {
-      items.push(item);
-    }
+    const restrictItem = {
+      label: `${isRestricting ? '取消' : ''}限制 `,
+      onClick() {
+        !isRestricting
+          ? _restricte(user?.id as any)
+          : _unrestricte(user?.id as string);
+      },
+      icon: isRestricting ? (
+        <Restricted viewBox="0 0 20 20" size={20} />
+      ) : (
+        <Restrict viewBox="0 0 20 20" size={20} />
+      ),
+    };
 
-    return items;
-  }, [user?.friendshipStatus?.followedBy, isRestricting, item]);
+    const removeFollowerItem = {
+      label: '移除粉丝',
+      onClick() {
+        Modal.confirm({
+          title: '移除粉丝？',
+          content: `我们不会告诉${user?.username}你将 TA 移除了。`,
+          okText: '移除',
+          okType: 'danger',
+          onOk() {
+            run(user?.id as string);
+          },
+        });
+      },
+      icon: <RemoveFollower viewBox="0 0 20 20" size={20} />,
+      split: true,
+    };
+
+    const muteGroup: PopoverMenuItem[] = [
+      !isOwn ? muteItem : (undefined as any),
+      !isOwn ? restrictItem : (undefined as any),
+      user?.friendshipStatus?.followedBy
+        ? removeFollowerItem
+        : (undefined as any),
+    ];
+
+    const blockGroup: PopoverMenuItem[] = [
+      !isOwn ? blockItem : (undefined as any),
+    ];
+
+    return [copyGroup, muteGroup, blockGroup];
+  }, [user?.friendshipStatus?.followedBy, isRestricting, blockItem]);
 
   return (
     <div className={styles[`${classNamePrefix}`]}>
@@ -240,7 +244,7 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
         onClose={() => {
           setPopupMenuVisible(false);
         }}
-        items={getMenuGroup(menus)}
+        items={menus}
       />
     </div>
   );

@@ -1302,7 +1302,6 @@
   border-radius: 16px;
   height: auto;
   overflow-x: hidden;
-  padding: 8px;
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1321,6 +1320,13 @@
   box-shadow: 0 10.5px 21px rgba(0, 0, 0, 0.08);
   -webkit-transform-origin: inherit;
   transform-origin: inherit;
+}
+.DKGXU {
+  border-bottom: 1px solid var(--barcelona-threadline);
+  padding: 8px;
+}
+.DKGXU:last-child {
+  border-bottom: none;
 }
 .MrFqv {
   width: 220px;
@@ -1343,13 +1349,6 @@
 }
 .ygDVP:hover {
   background-color: var(--barcelona-hovered-background);
-}
-.w6tT8 {
-  background-color: var(--barcelona-primary-outline);
-  border-width: 0;
-  height: 0.5px;
-  margin: 8px 0 8px -12px;
-  width: calc(100% + 24px);
 }
 .bzxfh {
   align-items: center;

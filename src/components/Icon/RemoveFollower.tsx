@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, { SvgProps } from './Svg';
 
-const RemoveFans: React.FC<SvgProps> = props => {
+const RemoveFollower: React.FC<SvgProps> = props => {
   return (
     <Svg fill="currentColor" {...props}>
       <title>{props?.ariaLabel}</title>
@@ -37,4 +37,4 @@ const RemoveFans: React.FC<SvgProps> = props => {
   );
 };
 
-export default RemoveFans;
+export default RemoveFollower;

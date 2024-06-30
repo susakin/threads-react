@@ -92,7 +92,7 @@ const Menu: React.FC = () => {
       className={styles[`${classNamePrefix}-menu`]}
     >
       <MutilStepContainer.Item>
-        <PopoverMenu items={items} shadow={false} />
+        <PopoverMenu items={[items]} shadow={false} />
       </MutilStepContainer.Item>
       <MutilStepContainer.Item>
         <SwitchTheme

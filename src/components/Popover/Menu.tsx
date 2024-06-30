@@ -10,7 +10,6 @@ export type MenuItem = {
   danger?: boolean;
   className?: string;
   disabled?: boolean;
-  split?: boolean;
   style?: React.CSSProperties;
   onClick?: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -61,7 +60,6 @@ const MenuItem: React.FC<MenuItem> = ({
   danger,
   className,
   disabled,
-  split,
   style,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -105,14 +103,16 @@ const MenuItem: React.FC<MenuItem> = ({
           )}
         </div>
       </div>
-      {split && <hr className={styles[`${classNamePrefix}-split`]} />}
     </>
   );
 };
 
-const Menu: React.FC<
-  Pick<MenuItemsProps, 'items' | 'onClick'> & { shadow?: boolean }
-> = ({ items, onClick, shadow = true }) => {
+type MenuProps = Pick<MenuItemsProps, 'onClick'> & {
+  shadow?: boolean;
+  items?: Array<MenuItem[]>;
+};
+
+const Menu: React.FC<MenuProps> = ({ items, onClick, shadow = true }) => {
   const classNamePrefix = 'menu';
   return (
     <div
@@ -120,7 +120,15 @@ const Menu: React.FC<
         [styles[`${classNamePrefix}-shadow`]]: shadow,
       })}
     >
-      <MenuItems items={items} onClick={onClick} />
+      {items?.map((item, index) => {
+        const _item = item.filter(item => item);
+        if (_item.length === 0) return null;
+        return (
+          <div className={cs(styles[`${classNamePrefix}-group`])} key={index}>
+            <MenuItems items={item} onClick={onClick} />
+          </div>
+        );
+      })}
     </div>
   );
 };

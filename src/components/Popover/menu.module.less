@@ -7,7 +7,6 @@
   position: relative;
   width: auto;
   height: auto;
-  padding: 8px;
 
   &-shadow {
     border: 0.5px solid var(--barcelona-primary-column-outline);
@@ -15,6 +14,15 @@
     background-color: var(--barcelona-elevated-background);
     transform-origin: inherit;
     .scale-in();
+  }
+
+  &-group {
+    padding: 8px;
+    border-bottom: 1px solid var(--barcelona-threadline);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
   &-items {
@@ -29,15 +37,6 @@
 
     &:hover {
       background-color: var(--barcelona-hovered-background);
-    }
-
-    &-split {
-      height: 0.5px;
-      background-color: var(--barcelona-primary-outline);
-      width: calc(100% + 24px);
-      border-width: 0;
-      margin: 8px 0;
-      margin-left: -12px;
     }
 
     &-inner {
