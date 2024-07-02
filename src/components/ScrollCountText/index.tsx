@@ -1,37 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import styles from './index.module.less';
 import cs from 'classnames';
-const classNamePrefix = 'scroll-count-text';
+import numberFormat from '@utils/numberFormat';
+import { usePrevious } from 'ahooks';
 
-type ScrollCountTextProps = {
+type ScrollTextProps = {
   count?: number;
-  children?: React.ReactNode;
-  className?: string;
-  onClick?: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
+  increment?: boolean;
 };
 
-const ScrollCountText: React.FC<ScrollCountTextProps> = ({
-  children,
-  className,
-  onClick,
-  ...rest
-}) => {
+const ScrollText: React.FC<ScrollTextProps> = ({ ...rest }) => {
+  const classNamePrefix = 'scroll-text';
+
   const [count, setCount] = useState<number>(rest?.count as number);
+  const [increment, setIncrement] = useState<boolean>(
+    rest?.increment as boolean,
+  );
+
+  useLayoutEffect(() => {
+    setIncrement(rest?.increment as boolean);
+  }, [rest?.count]);
 
   useEffect(() => {
-    (rest.count as number) > count
+    rest?.increment
       ? setTimeout(() => {
           setCount(rest.count as number);
-        }, 200)
+          setIncrement(false);
+        }, 210)
       : setCount(rest.count as number);
   }, [rest.count]);
 
-  const increment = (rest?.count as number) > count;
-
   return (
     <span
-      className={cs(styles[`${classNamePrefix}`], className)}
-      onClick={onClick}
+      className={styles[`${classNamePrefix}`]}
       style={
         {
           lineHeight: 'var(--base-line-clamp-line-height)',
@@ -47,7 +48,55 @@ const ScrollCountText: React.FC<ScrollCountTextProps> = ({
         <div>{count}</div>
         {increment && <div>{rest.count}</div>}
       </div>
-      {children}
+    </span>
+  );
+};
+
+type ScrollCountTextProps = {
+  count?: number;
+  className?: string;
+
+  onClick?: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
+};
+
+const ScrollCountText: React.FC<ScrollCountTextProps> = ({
+  className,
+  onClick,
+  ...rest
+}) => {
+  const classNamePrefix = 'scroll-count-text';
+  const previous = usePrevious(rest?.count);
+  const count = rest?.count as number;
+  const increment = count > (previous as number);
+
+  const formatCount = (
+    count > 9999
+      ? numberFormat.formatLargeNumberForCJKLocale(count)
+      : numberFormat.withThousandDelimiters(count)
+  ).split('');
+  const suffix = numberFormat.getSuffixForCJKLocale(count);
+
+  const scrollCount = useMemo(() => {
+    const regex = /^\d$/;
+    const len = formatCount.length;
+    return formatCount.map((num, i) => {
+      console.log(len - i);
+      if (regex.test(num)) {
+        return (
+          <ScrollText count={Number(num)} key={len - i} increment={increment} />
+        );
+      }
+      return num;
+    });
+  }, [formatCount]);
+
+  return (
+    <span
+      className={cs(className, styles[`${classNamePrefix}`])}
+      onClick={onClick}
+    >
+      {scrollCount}
+      {suffix}
     </span>
   );
 };

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Avatar, ShortenNumber } from '@components/index';
+import { Avatar } from '@components/index';
 import styles from './index.module.less';
 import UserPreview from '../UserPreview';
 import { User } from '@typings/index';
 import FollowButton, { FollowButtonProps } from '../FollowButton';
 import { LargeVerifiedBadge } from '@components/Icon';
 import LinkifyText from '../LinkifyText';
+import { shortenNumber } from '@utils/numberFormat';
 
 const classNamePrefix = 'user-card';
 
@@ -73,7 +74,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, ...rest }) => {
           )}
         />
         <div className={styles[`${classNamePrefix}-follower-num`]}>
-          <ShortenNumber value={followerCount as number} /> 位粉丝
+          {shortenNumber(followerCount as number)} 位粉丝
         </div>
       </div>
       {!user?.friendshipStatus?.isOwn && (

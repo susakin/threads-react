@@ -121,8 +121,8 @@ const Menu: React.FC<MenuProps> = ({ items, onClick, shadow = true }) => {
       })}
     >
       {items?.map((item, index) => {
-        const _item = item.filter(item => item);
-        if (_item.length === 0) return null;
+        const _item = item?.filter(i => i);
+        if (!_item || _item?.length === 0) return null;
         return (
           <div className={cs(styles[`${classNamePrefix}-group`])} key={index}>
             <MenuItems items={item} onClick={onClick} />

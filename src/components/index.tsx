@@ -42,8 +42,6 @@ export { default as Avatar } from './Avatar';
 
 export { default as ScrollInModal } from './Modal/ScrollInModal';
 
-export { default as ShortenNumber } from './ShortenNumber';
-
 export { default as Time } from './Time';
 
 export { default as ScrollCountText } from './ScrollCountText';

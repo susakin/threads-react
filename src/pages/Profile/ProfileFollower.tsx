@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import {
-  ShortenNumber,
   ActiveScaleButton,
   Popover,
   PopoverMenu,
@@ -26,6 +25,7 @@ import RemoveFollower from '@components/Icon/RemoveFollower';
 import { copyText } from '@utils/clipboard';
 import { isSupportTouch } from '@utils/index';
 import PopupMenu from '@components/PopupMenu';
+import { shortenNumber } from '@utils/numberFormat';
 const classNamePrefix = 'profile-follower';
 
 type ProfileFollowerProps = {
@@ -187,7 +187,7 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
             [styles[`${classNamePrefix}-preview-count`]]: !isPrivate,
           })}
         >
-          <ShortenNumber value={followerCount as number} /> 位粉丝
+          {shortenNumber(followerCount as number)} 位粉丝
         </span>
       </div>
       {bioLink && (

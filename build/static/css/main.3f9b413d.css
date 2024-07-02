@@ -2679,19 +2679,19 @@ img[src=''] {
   white-space: pre-line;
   word-break: break-word;
 }
-._CjvB {
+.RbpkR {
   display: inline-grid;
   grid-template-columns: auto auto;
   overflow-y: hidden;
   position: relative;
 }
-.Zw05S {
+.nUsMw {
   display: flex;
   flex-direction: column;
   height: var(--base-line-clamp-line-height);
   text-overflow: clip;
 }
-.vUiu8 {
+.jp6Bk {
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
   transition-duration: 0.2s;
@@ -2701,6 +2701,11 @@ img[src=''] {
     transform,
     -webkit-transform;
   transition-timing-function: ease-in;
+}
+._CjvB {
+  display: inline-flex;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .zH7NE {
   box-sizing: border-box;

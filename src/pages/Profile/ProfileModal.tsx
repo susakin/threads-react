@@ -1,13 +1,14 @@
 import React from 'react';
 import Modal from '@components/Modal/Modal';
 import cs from 'classnames';
-import { Avatar, ShortenNumber, DragModal } from '@components/index';
+import { Avatar, DragModal } from '@components/index';
 import { VerifiedBadge } from '@components/Icon';
 import styles from './profileModal.module.less';
 import { User } from '@typings/index';
 
 import dayjs from 'dayjs';
 import useViewport from '@hooks/useViewport';
+import { shortenNumber } from '@utils/numberFormat';
 
 type ProfileItemProps = {
   label?: React.ReactNode;
@@ -84,8 +85,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
       label: '加入时间',
       value: (
         <>
-          {dayjs(createdAt).format('YYYY年MM月')} · #{' '}
-          <ShortenNumber value={rank as number} />
+          {dayjs(createdAt).format('YYYY年MM月')} · # {shortenNumber(rank)}
         </>
       ),
     },

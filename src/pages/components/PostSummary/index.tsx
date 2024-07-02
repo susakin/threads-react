@@ -94,16 +94,16 @@ const PostSummary: React.FC<PostSummaryProps> = ({
             查看动态
           </span>
         ) : (
-          <ScrollCountText
-            onClick={e => {
-              e.stopPropagation();
-              setVisible(true);
-            }}
-            count={likeCount}
-            className={styles[`${classNamePrefix}-like`]}
-          >
+          <span className={styles[`${classNamePrefix}-like`]}>
+            <ScrollCountText
+              onClick={e => {
+                e.stopPropagation();
+                setVisible(true);
+              }}
+              count={likeCount}
+            />
             次赞
-          </ScrollCountText>
+          </span>
         ))}
       <PostActivityModal
         post={post}

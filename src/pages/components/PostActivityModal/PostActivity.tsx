@@ -8,12 +8,11 @@ import { postActivity } from '@services/activity';
 import { useFetch } from '@hooks/useFetch';
 import { UserActivity } from '../User';
 import Spin from '@components/Spin';
-import ShortenNumber, { shortenNumber } from '@components/ShortenNumber';
 import { useNavigate } from 'react-router-dom';
 import ActivityHeader from './ActivityHeader';
 import Activities from './Activities';
 import Eye from '@components/Icon/Eye';
-import numberFormat from '@components/ShortenNumber/numberFormat';
+import numberFormat, { shortenNumber } from '@utils/numberFormat';
 
 const classNamePrefix = 'post-activity';
 
@@ -43,7 +42,7 @@ const PostActivity: React.FC<PostActivityProps> = ({
       items.push({
         icon: <Repost viewBox="0 0 18 18" size={24} />,
         label: '转发',
-        num: <ShortenNumber value={activities?.repostCount} />,
+        num: shortenNumber(activities?.repostCount),
         onClick() {
           setActivityType('repost');
         },
@@ -54,7 +53,7 @@ const PostActivity: React.FC<PostActivityProps> = ({
       items.push({
         icon: <Quote viewBox="0 0 20 20" size={24} />,
         label: '引用',
-        num: <ShortenNumber value={activities?.quoteCount} />,
+        num: shortenNumber(activities?.quoteCount),
         onClick() {
           setActivityType('quote');
         },
@@ -82,7 +81,7 @@ const PostActivity: React.FC<PostActivityProps> = ({
           />
         ),
         label: '赞',
-        num: <ShortenNumber value={activities?.likeCount} />,
+        num: shortenNumber(activities?.likeCount),
         onClick() {
           setActivityType('like');
         },

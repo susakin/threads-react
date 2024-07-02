@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
-import { Tabs, ShortenNumber } from '@components/index';
+import { Tabs } from '@components/index';
 import styles from './followerTabs.module.less';
 import { User } from '@typings/index';
 import { UserList, RequestType } from '@pages/components';
 
 import { getFollower, getFollowing } from '@services/profile';
+import { shortenNumber } from '@utils/numberFormat';
 
 type TabsTitleProps = {
   label?: React.ReactNode;
@@ -17,7 +18,7 @@ const TabsTitle: React.FC<TabsTitleProps> = ({ label, count }) => {
     <>
       <span className={styles[`${classNamePrefix}-label`]}>{label}</span>
       <span className={styles[`${classNamePrefix}-count`]}>
-        <ShortenNumber value={count || 0} />
+        {shortenNumber(count)}
       </span>
     </>
   );

@@ -21,3 +21,11 @@ const numberFormat = {
 };
 
 export default numberFormat;
+
+export function shortenNumber(value: number = 0 as any) {
+  return value > 9999
+    ? `${numberFormat.formatLargeNumberForCJKLocale(
+        value,
+      )}${numberFormat.getSuffixForCJKLocale(value)}`
+    : numberFormat.withThousandDelimiters(value);
+}

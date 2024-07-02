@@ -282,7 +282,7 @@ const PostAction: React.FC<PostActionProps> = ({
             placement="bottom-start"
             enabled={!isSupportTouch}
             hideWhenContentClick
-            content={<PopoverMenu items={shareItems} />}
+            content={<PopoverMenu items={[shareItems]} />}
           >
             <ActiveScaleButton
               size={36}

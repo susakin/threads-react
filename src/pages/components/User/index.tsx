@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Time, ShortenNumber } from '@components/index';
+import { Avatar, Time } from '@components/index';
 import {
   NotificationLike,
   NotificationFollow,
@@ -19,6 +19,7 @@ import { PickFollowButtonProps } from '../UserCard';
 import FollowRequest from './FollowRequest';
 import { useNavigate } from 'react-router-dom';
 import NotificationStar from '@components/Icon/NotificationStar';
+import { shortenNumber } from '@utils/numberFormat';
 
 const classNamePrefix = 'user';
 
@@ -262,7 +263,7 @@ const User: React.FC<UserProps> = ({
                 (item: any) => item.profilePicUrl as string,
               )}
             />
-            <ShortenNumber value={followerCount as number} />
+            {shortenNumber(followerCount as number)}
             位粉丝
           </div>
         )}
