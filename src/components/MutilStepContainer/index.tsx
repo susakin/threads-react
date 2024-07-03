@@ -91,7 +91,7 @@ const MutilStepContainer = forwardRef<
 
   useEffect(() => {
     const el = document.querySelector(
-      `.${styles[`${classNamePrefix}-slide-active`]}`,
+      `.${styles[`${classNamePrefix}-item-active`]}`,
     );
     if (el && mounted) {
       const rect = el.getBoundingClientRect();
@@ -109,9 +109,9 @@ const MutilStepContainer = forwardRef<
           if (!mounted && index) return null;
           return (
             <div
-              className={cs(styles[`${classNamePrefix}-slide`], {
-                [styles[`${classNamePrefix}-slide-active`]]: current === index,
-                [styles[`${classNamePrefix}-slide-mounted`]]: mounted,
+              className={cs(styles[`${classNamePrefix}-item`], {
+                [styles[`${classNamePrefix}-item-active`]]: current === index,
+                [styles[`${classNamePrefix}-item-mounted`]]: mounted,
               })}
               style={{
                 transform: `translateX(${

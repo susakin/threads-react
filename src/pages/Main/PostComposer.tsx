@@ -43,7 +43,7 @@ const PostComposer: React.FC = () => {
         onClose={() => {
           setVisible(false);
         }}
-        title={'发布串文'}
+        title={'新建串文'}
       />
     </div>
   );

@@ -31,15 +31,7 @@ const ScrollText: React.FC<ScrollTextProps> = ({ ...rest }) => {
   }, [rest.count]);
 
   return (
-    <span
-      className={styles[`${classNamePrefix}`]}
-      style={
-        {
-          lineHeight: 'var(--base-line-clamp-line-height)',
-          '--base-line-clamp-line-height': 'calc(1.4 * 1em)',
-        } as any
-      }
-    >
+    <span className={styles[`${classNamePrefix}`]}>
       <div
         className={cs(styles[`${classNamePrefix}-inner`], {
           [styles[`${classNamePrefix}-inner-changing`]]: increment,
@@ -55,7 +47,6 @@ const ScrollText: React.FC<ScrollTextProps> = ({ ...rest }) => {
 type ScrollCountTextProps = {
   count?: number;
   className?: string;
-
   onClick?: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
 };
 

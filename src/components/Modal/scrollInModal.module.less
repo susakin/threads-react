@@ -1,6 +1,6 @@
 @import '@assets/less/variable.less';
 
-.scroll-in-modal {
+.scroll-in {
   background-color: var(--barcelona-secondary-background);
   height: 100dvh;
   position: fixed;
@@ -13,7 +13,9 @@
   flex-direction: column;
   padding-bottom: env(safe-area-inset-bottom);
 
-  .scroll-in();
+  &-animate {
+    .scroll-in();
+  }
 
   &-header {
     padding: 8px 16px;

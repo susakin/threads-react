@@ -222,7 +222,7 @@ const Navigation: React.FC<NavigationProps> = ({
         onSuccess={() => {
           navigationEmitter?.emit({ type: 'newPost' });
         }}
-        title={'发布串文'}
+        title={'新建串文'}
       />
     </>
   );
