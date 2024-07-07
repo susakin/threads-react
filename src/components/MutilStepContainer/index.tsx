@@ -1,17 +1,17 @@
 /* eslint-disable react/display-name */
 import React, {
   forwardRef,
-  useEffect,
   useImperativeHandle,
   useMemo,
   useState,
   useRef,
-  useLayoutEffect,
 } from 'react';
 import styles from './index.module.less';
 import cs from 'classnames';
 import StepItem from './StepItem';
 import { attachPropertiesToComponent } from '@utils/attachPropertiesToComponent';
+import { useUpdateEffect, usePrevious } from 'ahooks';
+import useResizeObserver from 'use-resize-observer';
 
 const classNamePrefix = 'mutil-step-container';
 
@@ -30,12 +30,11 @@ const MutilStepContainer = forwardRef<
   MutilStepContainerProps
 >((props, ref) => {
   const [current, setCurrent] = useState<number>(0);
-  const [mounted, setMounted] = useState<boolean>(false);
+  const [transition, setTransition] = useState<boolean>(false);
+  const previous = usePrevious(current);
   const rootRef = useRef<HTMLDivElement>(null);
-  const [rect, setRect] = useState<{
-    width?: number | string;
-    height?: number | string;
-  }>({});
+  const currentRef = useRef<HTMLDivElement>(null);
+
   const { className } = props;
   const { validChildren, count } = useMemo(() => {
     let count = 0;
@@ -66,60 +65,45 @@ const MutilStepContainer = forwardRef<
     swipePrev,
   }));
 
+  useUpdateEffect(() => {
+    setTransition(true);
+  }, [current]);
+
   if (count === 0 || !validChildren) {
     return null;
   }
 
-  useLayoutEffect(() => {
-    const div = rootRef.current;
-    if (div) {
-      const hasAnimation =
-        window.getComputedStyle(div).animationName !== 'none';
-      hasAnimation &&
-        div.addEventListener('animationend', () => {
-          setMounted(true);
-          setTimeout(() => {
-            setMounted(true);
-          });
-        });
-    } else {
-      setTimeout(() => {
-        setMounted(true);
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    const el = document.querySelector(
-      `.${styles[`${classNamePrefix}-item-active`]}`,
-    );
-    if (el && mounted) {
-      const rect = el.getBoundingClientRect();
-      setRect({
-        width: rect.width || 'auto',
-        height: rect.height || 'auto',
-      });
-    }
-  }, [current, mounted]);
+  const { width, height } = useResizeObserver({
+    ref: currentRef,
+  });
 
   function renderTrackInner() {
     return (
       <>
         {React.Children.map(validChildren, (child, index) => {
-          if (!mounted && index) return null;
+          const isCurrent = current === index;
           return (
             <div
               className={cs(styles[`${classNamePrefix}-item`], {
-                [styles[`${classNamePrefix}-item-active`]]: current === index,
-                [styles[`${classNamePrefix}-item-mounted`]]: mounted,
+                [styles[`${classNamePrefix}-item-active`]]: isCurrent,
               })}
+              ref={isCurrent ? currentRef : null}
               style={{
                 transform: `translateX(${
                   (index - current) * 100
-                }%) translateZ(1px)`,
+                }%) translateZ(1px) translateY(-50%)`,
+              }}
+              onTransitionEnd={() => {
+                requestAnimationFrame(() => {
+                  setTransition(false);
+                });
               }}
             >
-              {child}
+              {(!(current < index && !transition) ||
+                (transition &&
+                  (previous || 0) > current &&
+                  index > current + 1)) &&
+                child}
             </div>
           );
         })}
@@ -130,7 +114,7 @@ const MutilStepContainer = forwardRef<
   return (
     <div
       className={cs(styles[`${classNamePrefix}`], className)}
-      style={rect}
+      style={{ width, height }}
       ref={rootRef}
     >
       {renderTrackInner()}

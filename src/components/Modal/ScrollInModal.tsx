@@ -20,7 +20,7 @@ const ScrollInModal: React.FC<ScrollInModalProps> = ({
       hasClose={false}
       color="rgba(0,0,0,0.07)"
     >
-      <ScrollIn onCancel={onCancel} {...rest} />
+      <ConfirmPanel onCancel={onCancel} {...rest} />
     </Mask>
   );
 };
@@ -36,17 +36,17 @@ type ScrollInProps = {
   animate?: boolean;
 };
 
-export const ScrollIn: React.FC<ScrollInProps> = ({
+export const ConfirmPanel: React.FC<ScrollInProps> = ({
   onCancel,
   loading,
   title,
-  cancelText,
-  okText,
+  cancelText = '取消',
+  okText = '确定',
   onOk,
   animate = true,
   children,
 }) => {
-  const classNamePrefix = 'scroll-in';
+  const classNamePrefix = 'confirm-panel';
   return (
     <div
       className={cs(styles[`${classNamePrefix}`], {

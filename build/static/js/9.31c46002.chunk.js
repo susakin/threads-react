@@ -21,7 +21,7 @@
           'settings-title': 'UePeV',
           settings: 'd_0v6',
         },
-        a = i(2589),
+        a = i(706),
         o = i(8467),
         l = i(4733),
         r = {
@@ -177,7 +177,7 @@
             ],
           });
         },
-        T = i(9393),
+        T = i(7176),
         z = i(4110),
         B = function (e) {
           var n = e.visible,

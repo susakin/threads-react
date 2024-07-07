@@ -15,7 +15,7 @@ import { OnFollowingChange } from '../FollowButton';
 
 const classNamePrefix = 'post-edit';
 
-type PostEditProps = {
+export type PostEditProps = {
   user?: User;
   replyPost?: PostItem;
   editPosts?: EditPost[];

@@ -13,8 +13,8 @@
         r = t(5861),
         o = t(9439),
         l = t(7313),
-        a = t(2589),
-        c = t(9393),
+        a = t(706),
+        c = t(7176),
         s = {
           media: 'Ksrat',
           'media-viewer-content': 'nWJBe',
@@ -72,7 +72,7 @@
                 onClose: function () {
                   r(!1);
                 },
-                title: '\u53d1\u5e03\u4e32\u6587',
+                title: '\u65b0\u5efa\u4e32\u6587',
               }),
             ],
           });
