@@ -14,12 +14,13 @@ import { uniqueId } from 'lodash';
 import { Media, Post, TextEntity } from '@typings/index';
 import AccessibilityPanel from './AccessibilityPanel';
 import { useLogin } from '@pages/components/Login/LoginModal';
-import { MutilStepContainer } from '@components/index';
-import { MutilStepContainerRef } from '@components/MutilStepContainer';
 import { Mask } from '@components/index';
 import { ConfirmPanel } from '@components/Modal/ScrollInModal';
 import Accessibility from './Accessibility';
 import PostEditForm, { PostEditFormProps } from './PostEditForm';
+import MutilPageViewContainer, {
+  MutilPageViewContainerRef,
+} from '@components/MutilPageViewContainer';
 
 type PostEditModalProps = {
   visible?: boolean;
@@ -111,8 +112,8 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
 
   const [media, setMedia] = useState<Media>();
   const idRef = useRef<string>();
-  const mutilStepContainerRef = useRef<MutilStepContainerRef>(null);
-  const smallMutilStepContainerRef = useRef<MutilStepContainerRef>(null);
+  const mutilPageContainerRef = useRef<MutilPageViewContainerRef>(null);
+  const smallPageContainerRef = useRef<MutilPageViewContainerRef>(null);
 
   const postEditForm = (
     <PostEditForm
@@ -122,8 +123,8 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
         setMedia(media);
         idRef.current = id;
         (inSmallScreen
-          ? smallMutilStepContainerRef
-          : mutilStepContainerRef
+          ? smallPageContainerRef
+          : mutilPageContainerRef
         ).current?.swipeNext();
       }}
       user={state.user}
@@ -182,8 +183,8 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
     onClose() {
       setMedia(undefined);
       (inSmallScreen
-        ? smallMutilStepContainerRef
-        : mutilStepContainerRef
+        ? smallPageContainerRef
+        : mutilPageContainerRef
       ).current?.swipePrev();
     },
     onUpdateAccessibilityCaption(accessibilityCaption: string) {
@@ -220,19 +221,19 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
           hasContentStyle={false}
         >
           <div>
-            <MutilStepContainer ref={mutilStepContainerRef}>
-              <MutilStepContainer.Item>
+            <MutilPageViewContainer ref={mutilPageContainerRef}>
+              <MutilPageViewContainer.Item>
                 <div className={styles[`${classNamePrefix}-title`]}>
                   {title}
                 </div>
                 <div className={styles[`${classNamePrefix}`]}>
                   {!inSmallScreen ? postEditForm : null}
                 </div>
-              </MutilStepContainer.Item>
-              <MutilStepContainer.Item>
+              </MutilPageViewContainer.Item>
+              <MutilPageViewContainer.Item>
                 <AccessibilityPanel {...accessibilityProps} />
-              </MutilStepContainer.Item>
-            </MutilStepContainer>
+              </MutilPageViewContainer.Item>
+            </MutilPageViewContainer>
           </div>
         </Modal>
       ) : (
@@ -245,8 +246,8 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
             onClose?.();
           }}
         >
-          <MutilStepContainer ref={smallMutilStepContainerRef}>
-            <MutilStepContainer.Item>
+          <MutilPageViewContainer ref={smallPageContainerRef}>
+            <MutilPageViewContainer.Item>
               <ConfirmPanel
                 title={title}
                 okText={null}
@@ -266,20 +267,20 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
               >
                 {postEditForm}
               </ConfirmPanel>
-            </MutilStepContainer.Item>
-            <MutilStepContainer.Item>
+            </MutilPageViewContainer.Item>
+            <MutilPageViewContainer.Item>
               <ConfirmPanel
                 title={'添加替代文字'}
                 okText={null}
                 animate={false}
                 onCancel={() => {
-                  smallMutilStepContainerRef?.current?.swipePrev();
+                  smallPageContainerRef?.current?.swipePrev();
                 }}
               >
                 <Accessibility {...accessibilityProps} />
               </ConfirmPanel>
-            </MutilStepContainer.Item>
-          </MutilStepContainer>
+            </MutilPageViewContainer.Item>
+          </MutilPageViewContainer>
         </Mask>
       )}
     </>

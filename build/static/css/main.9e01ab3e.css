@@ -9361,6 +9361,40 @@ img[src=''] {
   color: var(--barcelona-secondary-text);
   margin-right: auto;
 }
+.ibCcw {
+  align-items: stretch;
+  -webkit-clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0 0 0);
+  overflow: hidden;
+  position: relative;
+}
+.aYhVB,
+.ibCcw {
+  display: flex;
+  flex-direction: column;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+.aYhVB {
+  flex-grow: 1;
+}
+.Jkf8q {
+  display: none;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.Jkf8q,
+.UH7tG {
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+.UH7tG {
+  display: flex;
+  flex-direction: column;
+}
 .caMwa {
   align-items: stretch;
   border: 1px solid var(--barcelona-primary-outline);

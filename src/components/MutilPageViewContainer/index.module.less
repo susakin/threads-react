@@ -1,0 +1,26 @@
+.multi-page-view-container {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  clip-path: inset(0px 0 0 0);
+  transform-origin: top left;
+  align-items: stretch;
+
+  &-item {
+    display: flex;
+    transform-origin: top left;
+    flex-direction: column;
+    flex-grow: 1;
+
+    &-inactive {
+      position: absolute;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+      display: none;
+      transform-origin: top left;
+      z-index: 1;
+    }
+  }
+}

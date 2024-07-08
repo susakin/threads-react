@@ -1,12 +1,12 @@
 'use strict';
 (self.webpackChunkthreads = self.webpackChunkthreads || []).push([
-  [653],
+  [69],
   {
-    8653: function (e, t, n) {
+    6069: function (e, t, n) {
       n.r(t);
       var r = n(4165),
         a = n(5861),
-        u = (n(7313), n(706)),
+        u = (n(7313), n(8568)),
         s = n(4814),
         i = n(6031),
         c = n(6417);
@@ -23,7 +23,7 @@
                         (a = t.page),
                         (u = t.pageSize),
                         (e.next = 3),
-                        (0, s.bK)({ page: a, pageSize: u })
+                        (0, s.o)({ page: a, pageSize: u })
                       );
                     case 3:
                       return (
@@ -59,10 +59,10 @@
         })();
         return (0, c.jsx)(u._z, {
           children: (0, c.jsx)(u.p_, {
-            cacheKey: 'liked',
+            cacheKey: 'saved',
             request: e,
             emptyPlaceholder:
-              '\u4f60\u8fd8\u6ca1\u6709\u70b9\u8d5e\u5e16\u5b50\u3002',
+              '\u4f60\u6536\u85cf\u7684\u5e16\u5b50\u4f1a\u663e\u793a\u5728\u8fd9\u91cc\u3002',
             indent: !0,
             ignoreMutingUser: !1,
           }),
