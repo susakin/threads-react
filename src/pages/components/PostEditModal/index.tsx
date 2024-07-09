@@ -181,11 +181,11 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
   const accessibilityProps = {
     media,
     onClose() {
-      setMedia(undefined);
-      (inSmallScreen
-        ? smallPageContainerRef
-        : mutilPageContainerRef
-      ).current?.swipePrev();
+      (inSmallScreen ? smallPageContainerRef : mutilPageContainerRef).current
+        ?.swipePrev()
+        .then(() => {
+          setMedia(undefined);
+        });
     },
     onUpdateAccessibilityCaption(accessibilityCaption: string) {
       setEditPosts(v => {
@@ -246,41 +246,44 @@ const PostEditModal: React.FC<PostEditModalProps> = ({
             onClose?.();
           }}
         >
-          <MutilPageViewContainer ref={smallPageContainerRef}>
-            <MutilPageViewContainer.Item>
-              <ConfirmPanel
-                title={title}
-                okText={null}
-                onCancel={() => {
-                  if (!canSubmit) {
-                    return onClose?.();
-                  }
-                  ModalFn.confirm({
-                    title: '放弃串文？',
-                    okText: '放弃',
-                    okType: 'danger',
-                    onOk() {
-                      onClose?.();
-                    },
-                  });
-                }}
-              >
-                {postEditForm}
-              </ConfirmPanel>
-            </MutilPageViewContainer.Item>
-            <MutilPageViewContainer.Item>
-              <ConfirmPanel
-                title={'添加替代文字'}
-                okText={null}
-                animate={false}
-                onCancel={() => {
-                  smallPageContainerRef?.current?.swipePrev();
-                }}
-              >
-                <Accessibility {...accessibilityProps} />
-              </ConfirmPanel>
-            </MutilPageViewContainer.Item>
-          </MutilPageViewContainer>
+          <div className={styles[`${classNamePrefix}-small`]}>
+            <MutilPageViewContainer ref={smallPageContainerRef}>
+              <MutilPageViewContainer.Item>
+                <ConfirmPanel
+                  title={title}
+                  okText={null}
+                  animate={false}
+                  onCancel={() => {
+                    if (!canSubmit) {
+                      return onClose?.();
+                    }
+                    ModalFn.confirm({
+                      title: '放弃串文？',
+                      okText: '放弃',
+                      okType: 'danger',
+                      onOk() {
+                        onClose?.();
+                      },
+                    });
+                  }}
+                >
+                  {postEditForm}
+                </ConfirmPanel>
+              </MutilPageViewContainer.Item>
+              <MutilPageViewContainer.Item>
+                <ConfirmPanel
+                  title={'添加替代文字'}
+                  okText={null}
+                  animate={false}
+                  onCancel={() => {
+                    smallPageContainerRef?.current?.swipePrev();
+                  }}
+                >
+                  <Accessibility {...accessibilityProps} />
+                </ConfirmPanel>
+              </MutilPageViewContainer.Item>
+            </MutilPageViewContainer>
+          </div>
         </Mask>
       )}
     </>

@@ -1,4 +1,4 @@
-/*! For license information please see main.59a23660.js.LICENSE.txt */
+/*! For license information please see main.dbe4754e.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -21139,6 +21139,7 @@
             focus: 'VfhiM',
             'post-edit-modal': 'kKlok',
             'post-edit-modal-title': 'cpt8d',
+            'post-edit-modal-small': 'ByrNW',
           },
           _ = n(2706),
           k = n(6031),
@@ -26899,9 +26900,9 @@
             );
           },
           Bn = {
-            'multi-page-view-container': 'ibCcw',
-            'multi-page-view-container-item': 'aYhVB',
-            'multi-page-view-container-item-inactive': 'Jkf8q',
+            'mutil-page-view-container': 'Tqmgk',
+            'mutil-page-view-container-item': 'yVyN1',
+            'mutil-page-view-container-item-inactive': 'YOh06',
           },
           zn = { 'page-view-item': 'UH7tG' },
           Un = function (e) {
@@ -26915,7 +26916,7 @@
           },
           Kn = n(1244),
           Hn = n(2688),
-          Wn = 'multi-page-view-container';
+          Wn = 'mutil-page-view-container';
         var Vn = (0, a.forwardRef)(function (e, t) {
             var n = (0, a.useState)(0),
               r = (0, i.Z)(n, 2),
@@ -26929,9 +26930,10 @@
               v = (0, a.useRef)(null),
               y = (0, a.useRef)(),
               g = (0, a.useRef)(),
-              m = (h || 0) < u,
-              b = e.className,
-              w = (0, a.useMemo)(
+              m = (0, a.useRef)(),
+              b = (h || 0) < u,
+              w = e.className,
+              x = (0, a.useMemo)(
                 function () {
                   var t = 0;
                   return {
@@ -26947,142 +26949,148 @@
                 },
                 [e.children],
               ),
-              x = w.validChildren,
-              C = w.count;
-            function _() {
+              C = x.validChildren,
+              _ = x.count;
+            function k() {
               null == y.current
                 ? (g.current = y.current.getBoundingClientRect())
                 : null != (null === v || void 0 === v ? void 0 : v.current) &&
                   (g.current = v.current.getBoundingClientRect());
             }
-            function k() {
-              _(),
-                s(function (e) {
-                  return e + 1;
-                });
-            }
             function S() {
-              _(),
-                s(function (e) {
-                  return e - 1;
-                });
+              return new Promise(function (e) {
+                k(),
+                  s(function (e) {
+                    return e + 1;
+                  }),
+                  (m.current = e);
+              });
+            }
+            function E() {
+              return new Promise(function (e) {
+                k(),
+                  s(function (e) {
+                    return e - 1;
+                  }),
+                  (m.current = e);
+              });
             }
             if (
               ((0, a.useEffect)(function () {
-                _();
+                k();
               }, []),
               (0, a.useImperativeHandle)(t, function () {
-                return { swipeNext: k, swipePrev: S };
+                return { swipeNext: S, swipePrev: E };
               }),
-              (0, Wt.Z)(
-                function () {
-                  p(!0);
-                },
-                [u],
-              ),
-              0 === C || !x)
+              0 === _ || !C)
             )
               return null;
-            var E = (0, a.useCallback)(
+            var D = (0, a.useCallback)(
               function (e) {
                 var t,
                   n = y.current,
                   r = v.current,
-                  o = g.current;
+                  o = 300,
+                  i = g.current;
                 if (null !== e) {
                   if (e && n && r) {
-                    var i = e.getBoundingClientRect(),
-                      a = m ? 1 : -1;
+                    var a = e.getBoundingClientRect(),
+                      u = b ? 1 : -1;
                     (n.style.cssText = ''),
                       (e.style.cssText = ''),
                       n.style.setProperty('display', 'flex'),
                       n.style.setProperty(
                         'width',
-                        (null === o || void 0 === o ? void 0 : o.width) + 'px',
+                        (null === i || void 0 === i ? void 0 : i.width) + 'px',
                       ),
                       n.style.setProperty(
                         'height',
-                        (null === o || void 0 === o ? void 0 : o.height) + 'px',
+                        (null === i || void 0 === i ? void 0 : i.height) + 'px',
                       ),
                       e.style.removeProperty('display'),
                       e.style.removeProperty('width'),
                       e.style.removeProperty('height');
                     for (
-                      var u = Math.round(18), s = [], c = [], l = [], f = 0;
-                      f <= u;
-                      f++
+                      var s = Math.round(18), c = [], l = [], f = [], d = 0;
+                      d <= s;
+                      d++
                     ) {
-                      var d = f / u,
-                        h = ((t = d), Math.cos((t + 1) * Math.PI) / 2 + 0.5),
-                        b =
-                          (null === o || void 0 === o ? void 0 : o.width) /
-                          i.width,
-                        w =
-                          (null === o || void 0 === o ? void 0 : o.height) /
-                          i.height;
-                      (b += (1 - b) * h), (w += (1 - w) * h);
-                      var x = o.left - i.left,
-                        C = o.top - i.top;
-                      x *= 1 - h;
-                      var _ = C * (1 - h),
-                        k = Math.min(o.width, i.width),
-                        S = k * -a * h;
-                      (k = k * a * (1 - h)),
-                        (h = C - _),
-                        (C = -_),
-                        s.push({
-                          easing: 'step-end',
-                          offset: d,
-                          transform:
-                            'translateX(' +
-                            x +
-                            'px) translateY(' +
-                            _ +
-                            'px) scaleX(' +
-                            b +
-                            ') scaleY(' +
-                            w +
-                            ')',
-                        }),
+                      var h = d / s,
+                        w = ((t = h), Math.cos((t + 1) * Math.PI) / 2 + 0.5),
+                        x =
+                          (null === i || void 0 === i ? void 0 : i.width) /
+                          a.width,
+                        C =
+                          (null === i || void 0 === i ? void 0 : i.height) /
+                          a.height;
+                      (x += (1 - x) * w), (C += (1 - C) * w);
+                      var _ = i.left - a.left,
+                        k = i.top - a.top;
+                      _ *= 1 - w;
+                      var S = k * (1 - w),
+                        E = Math.min(i.width, a.width),
+                        D = E * -u * w;
+                      (E = E * u * (1 - w)),
+                        (w = k - S),
+                        (k = -S),
                         c.push({
                           easing: 'step-end',
-                          offset: d,
+                          offset: h,
                           transform:
-                            'scaleX(' +
-                            1 / b +
-                            ') scaleY(' +
-                            1 / w +
-                            ') translateX(' +
-                            S +
+                            'translateX(' +
+                            _ +
                             'px) translateY(' +
-                            h +
-                            'px)',
+                            S +
+                            'px) scaleX(' +
+                            x +
+                            ') scaleY(' +
+                            C +
+                            ')',
                         }),
                         l.push({
                           easing: 'step-end',
-                          offset: d,
+                          offset: h,
                           transform:
                             'scaleX(' +
-                            1 / b +
+                            1 / x +
                             ') scaleY(' +
-                            1 / w +
+                            1 / C +
                             ') translateX(' +
-                            k +
+                            D +
                             'px) translateY(' +
-                            C +
+                            w +
+                            'px)',
+                        }),
+                        f.push({
+                          easing: 'step-end',
+                          offset: h,
+                          transform:
+                            'scaleX(' +
+                            1 / x +
+                            ') scaleY(' +
+                            1 / C +
+                            ') translateX(' +
+                            E +
+                            'px) translateY(' +
+                            k +
                             'px)',
                         });
                     }
-                    e.animate(l, 300),
-                      r.animate(s, 300),
-                      n.animate(c, 300),
-                      e.animate([{ opacity: 0 }, { opacity: 1 }], 300),
-                      (n.animate(
-                        [{ opacity: 1 }, { opacity: 0 }],
-                        300,
-                      ).onfinish = function () {
-                        (n.style.cssText = ''), p(!1);
-                      });
+                    e.animate(f, o),
+                      r.animate(c, o),
+                      p(!0),
+                      n.animate(l, o),
+                      e.animate([{ opacity: 0 }, { opacity: 1 }], o),
+                      (n.animate([{ opacity: 1 }, { opacity: 0 }], o).onfinish =
+                        function () {
+                          var e;
+                          (n.style.cssText = ''),
+                            p(!1),
+                            null === (e = m.current) ||
+                              void 0 === e ||
+                              e.call(m, void 0),
+                            (m.current = void 0);
+                        });
                   }
                   y.current = e;
                 }
@@ -27090,23 +27098,27 @@
               [u],
             );
             return (0, O.jsx)('div', {
-              className: d()(Bn[''.concat(Wn)], b),
+              className: d()(Bn[''.concat(Wn)], w),
               ref: v,
               children: (0, O.jsx)(O.Fragment, {
-                children: a.Children.map(x, function (e, t) {
+                children: a.Children.map(C, function (e, t) {
                   var n = u === t;
-                  return (0, O.jsx)('div', {
-                    className: d()(
-                      Bn[''.concat(Wn, '-item')],
-                      (0, o.Z)(
-                        {},
-                        Bn[''.concat(Wn, '-item-inactive')],
-                        t !== u,
+                  return (0, O.jsx)(
+                    'div',
+                    {
+                      className: d()(
+                        Bn[''.concat(Wn, '-item')],
+                        (0, o.Z)(
+                          {},
+                          Bn[''.concat(Wn, '-item-inactive')],
+                          t !== u,
+                        ),
                       ),
-                    ),
-                    ref: n ? E : null,
-                    children: (!(u < t && !f) || (f && m && t > u + 1)) && e,
-                  });
+                      ref: n ? D : null,
+                      children: (t <= u || (t === u + 1 && !b && f)) && e,
+                    },
+                    t,
+                  );
                 }),
               }),
             });
@@ -27290,10 +27302,11 @@
               media: Z,
               onClose: function () {
                 var e;
-                B(void 0),
-                  null === (e = (A ? K : U).current) ||
-                    void 0 === e ||
-                    e.swipePrev();
+                null === (e = (A ? K : U).current) ||
+                  void 0 === e ||
+                  e.swipePrev().then(function () {
+                    B(void 0);
+                  });
               },
               onUpdateAccessibilityCaption: function (e) {
                 D(function (t) {
@@ -27338,47 +27351,51 @@
                     onClose: function () {
                       null === n || void 0 === n || n();
                     },
-                    children: (0, O.jsxs)(qn, {
-                      ref: K,
-                      children: [
-                        (0, O.jsx)(qn.Item, {
-                          children: (0, O.jsx)(I.R, {
-                            title: o,
-                            okText: null,
-                            onCancel: function () {
-                              if (!j)
-                                return null === n || void 0 === n
-                                  ? void 0
-                                  : n();
-                              x.Z.confirm({
-                                title: '\u653e\u5f03\u4e32\u6587\uff1f',
-                                okText: '\u653e\u5f03',
-                                okType: 'danger',
-                                onOk: function () {
-                                  null === n || void 0 === n || n();
-                                },
-                              });
-                            },
-                            children: H,
+                    children: (0, O.jsx)('div', {
+                      className: C[''.concat(Yn, '-small')],
+                      children: (0, O.jsxs)(qn, {
+                        ref: K,
+                        children: [
+                          (0, O.jsx)(qn.Item, {
+                            children: (0, O.jsx)(I.R, {
+                              title: o,
+                              okText: null,
+                              animate: !1,
+                              onCancel: function () {
+                                if (!j)
+                                  return null === n || void 0 === n
+                                    ? void 0
+                                    : n();
+                                x.Z.confirm({
+                                  title: '\u653e\u5f03\u4e32\u6587\uff1f',
+                                  okText: '\u653e\u5f03',
+                                  okType: 'danger',
+                                  onOk: function () {
+                                    null === n || void 0 === n || n();
+                                  },
+                                });
+                              },
+                              children: H,
+                            }),
                           }),
-                        }),
-                        (0, O.jsx)(qn.Item, {
-                          children: (0, O.jsx)(I.R, {
-                            title: '\u6dfb\u52a0\u66ff\u4ee3\u6587\u5b57',
-                            okText: null,
-                            animate: !1,
-                            onCancel: function () {
-                              var e;
-                              null === K ||
-                                void 0 === K ||
-                                null === (e = K.current) ||
-                                void 0 === e ||
-                                e.swipePrev();
-                            },
-                            children: (0, O.jsx)(P, (0, r.Z)({}, V)),
+                          (0, O.jsx)(qn.Item, {
+                            children: (0, O.jsx)(I.R, {
+                              title: '\u6dfb\u52a0\u66ff\u4ee3\u6587\u5b57',
+                              okText: null,
+                              animate: !1,
+                              onCancel: function () {
+                                var e;
+                                null === K ||
+                                  void 0 === K ||
+                                  null === (e = K.current) ||
+                                  void 0 === e ||
+                                  e.swipePrev();
+                              },
+                              children: (0, O.jsx)(P, (0, r.Z)({}, V)),
+                            }),
                           }),
-                        }),
-                      ],
+                        ],
+                      }),
                     }),
                   })
                 : (0, O.jsx)(w.Z, {

@@ -12,9 +12,9 @@ import styles from './index.module.less';
 import cs from 'classnames';
 import PageViewItem from './PageViewItem';
 import { attachPropertiesToComponent } from '@utils/attachPropertiesToComponent';
-import { useUpdateEffect, usePrevious } from 'ahooks';
+import { usePrevious } from 'ahooks';
 
-const classNamePrefix = 'multi-page-view-container';
+const classNamePrefix = 'mutil-page-view-container';
 
 type MutilPageViewContainerProps = {
   className?: string;
@@ -22,8 +22,8 @@ type MutilPageViewContainerProps = {
 };
 
 export type MutilPageViewContainerRef = {
-  swipeNext: () => void;
-  swipePrev: () => void;
+  swipeNext: () => Promise<unknown>;
+  swipePrev: () => Promise<unknown>;
 };
 
 function cycleModifier(a: number) {
@@ -40,6 +40,7 @@ const MutilPageViewContainer = forwardRef<
   const rootRef = useRef<HTMLDivElement>(null);
   const lastCurrentRef = useRef<HTMLDivElement>();
   const rectRef = useRef<any>();
+  const resolveRef = useRef<any>();
 
   const increment = (previous || 0) < current;
 
@@ -71,13 +72,19 @@ const MutilPageViewContainer = forwardRef<
   }
 
   function swipeNext() {
-    getRect();
-    setCurrent(v => v + 1);
+    return new Promise(resolve => {
+      getRect();
+      setCurrent(v => v + 1);
+      resolveRef.current = resolve;
+    });
   }
 
   function swipePrev() {
-    getRect();
-    setCurrent(v => v - 1);
+    return new Promise(resolve => {
+      getRect();
+      setCurrent(v => v - 1);
+      resolveRef.current = resolve;
+    });
   }
 
   useEffect(() => {
@@ -89,10 +96,6 @@ const MutilPageViewContainer = forwardRef<
     swipePrev,
   }));
 
-  useUpdateEffect(() => {
-    setTransition(true);
-  }, [current]);
-
   if (count === 0 || !validChildren) {
     return null;
   }
@@ -101,7 +104,7 @@ const MutilPageViewContainer = forwardRef<
     (div: HTMLDivElement) => {
       const lastCurrent = lastCurrentRef.current;
       const root = rootRef.current;
-
+      const duration = 300;
       const rect = rectRef.current;
 
       if (div !== null) {
@@ -119,7 +122,7 @@ const MutilPageViewContainer = forwardRef<
           div.style.removeProperty('width');
           div.style.removeProperty('height');
 
-          const h = Math.round(60 * (300 / 1000));
+          const h = Math.round(60 * (duration / 1000));
           const j = [];
           const k = [];
           const l = [];
@@ -183,9 +186,10 @@ const MutilPageViewContainer = forwardRef<
                 'px)',
             });
           }
-          div.animate(l, 300);
-          root.animate(j, 300);
-          lastCurrent.animate(k, 300);
+          div.animate(l, duration);
+          root.animate(j, duration);
+          setTransition(true);
+          lastCurrent.animate(k, duration);
           div.animate(
             [
               {
@@ -195,7 +199,7 @@ const MutilPageViewContainer = forwardRef<
                 opacity: 1,
               },
             ],
-            300,
+            duration,
           );
           lastCurrent.animate(
             [
@@ -206,10 +210,12 @@ const MutilPageViewContainer = forwardRef<
                 opacity: 0,
               },
             ],
-            300,
+            duration,
           ).onfinish = function () {
             lastCurrent.style.cssText = '';
             setTransition(false);
+            resolveRef.current?.(undefined);
+            resolveRef.current = undefined;
           };
         }
         lastCurrentRef.current = div;
@@ -229,9 +235,10 @@ const MutilPageViewContainer = forwardRef<
                 [styles[`${classNamePrefix}-item-inactive`]]: index !== current,
               })}
               ref={isCurrent ? setRef : null}
+              key={index}
             >
-              {(!(current < index && !transition) ||
-                (transition && increment && index > current + 1)) &&
+              {(index <= current ||
+                (index === current + 1 && !increment && transition)) &&
                 child}
             </div>
           );
