@@ -71,7 +71,6 @@ const ScrollCountText: React.FC<ScrollCountTextProps> = ({
     const regex = /^\d$/;
     const len = formatCount.length;
     return formatCount.map((num, i) => {
-      console.log(len - i);
       if (regex.test(num)) {
         return (
           <ScrollText count={Number(num)} key={len - i} increment={increment} />

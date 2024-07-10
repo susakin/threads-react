@@ -34,7 +34,7 @@ const MutilStepContainer = forwardRef<
   const previous = usePrevious(current);
   const rootRef = useRef<HTMLDivElement>(null);
   const currentRef = useRef<HTMLDivElement>(null);
-
+  const increment = (previous || 0) < current;
   const { className } = props;
   const { validChildren, count } = useMemo(() => {
     let count = 0;
@@ -99,10 +99,8 @@ const MutilStepContainer = forwardRef<
                 });
               }}
             >
-              {(!(current < index && !transition) ||
-                (transition &&
-                  (previous || 0) > current &&
-                  index > current + 1)) &&
+              {(index <= current ||
+                (index === current + 1 && !increment && transition)) &&
                 child}
             </div>
           );
