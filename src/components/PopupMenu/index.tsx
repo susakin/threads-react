@@ -21,6 +21,7 @@ const Menu: React.FC<MenuProps> = ({ items, className, onClick }) => {
   return (
     <div className={cs(styles[`${classNamePrefix}`], className)}>
       {items?.map((item, index) => {
+        if (!item) return null;
         return (
           <div
             className={cs(styles[`${classNamePrefix}-item`], {

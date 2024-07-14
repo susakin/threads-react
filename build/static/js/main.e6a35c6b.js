@@ -1,4 +1,4 @@
-/*! For license information please see main.dbe4754e.js.LICENSE.txt */
+/*! For license information please see main.e6a35c6b.js.LICENSE.txt */
 !(function () {
   var e = {
       9904: function (e, t, n) {
@@ -7145,37 +7145,39 @@
                 null === t || void 0 === t
                   ? void 0
                   : t.map(function (e, t) {
-                      return (0, s.jsxs)(
-                        'div',
-                        {
-                          className: a()(
-                            u[''.concat(i, '-item')],
-                            (0, r.Z)(
-                              {},
-                              u[''.concat(i, '-item-danger')],
-                              e.danger,
-                            ),
-                          ),
-                          onClick: function (t) {
-                            var n;
-                            null === (n = e.onClick) ||
-                              void 0 === n ||
-                              n.call(e, t),
-                              null === o || void 0 === o || o(t);
-                          },
-                          children: [
-                            (0, s.jsx)('span', {
-                              className: u[''.concat(i, '-item-label')],
-                              children: e.label,
-                            }),
-                            (0, s.jsx)('span', {
-                              className: u[''.concat(i, '-item-icon')],
-                              children: e.icon,
-                            }),
-                          ],
-                        },
-                        t,
-                      );
+                      return e
+                        ? (0, s.jsxs)(
+                            'div',
+                            {
+                              className: a()(
+                                u[''.concat(i, '-item')],
+                                (0, r.Z)(
+                                  {},
+                                  u[''.concat(i, '-item-danger')],
+                                  e.danger,
+                                ),
+                              ),
+                              onClick: function (t) {
+                                var n;
+                                null === (n = e.onClick) ||
+                                  void 0 === n ||
+                                  n.call(e, t),
+                                  null === o || void 0 === o || o(t);
+                              },
+                              children: [
+                                (0, s.jsx)('span', {
+                                  className: u[''.concat(i, '-item-label')],
+                                  children: e.label,
+                                }),
+                                (0, s.jsx)('span', {
+                                  className: u[''.concat(i, '-item-icon')],
+                                  children: e.icon,
+                                }),
+                              ],
+                            },
+                            t,
+                          )
+                        : null;
                     }),
             });
           },
@@ -16675,16 +16677,13 @@
                   var e = /^\d$/,
                     t = s.length;
                   return s.map(function (n, r) {
-                    return (
-                      console.log(t - r),
-                      e.test(n)
-                        ? (0, d.jsx)(
-                            Ia,
-                            { count: Number(n), increment: a },
-                            t - r,
-                          )
-                        : n
-                    );
+                    return e.test(n)
+                      ? (0, d.jsx)(
+                          Ia,
+                          { count: Number(n), increment: a },
+                          t - r,
+                        )
+                      : n;
                   });
                 },
                 [s],
@@ -16906,8 +16905,9 @@
               v = (0, Za.Z)(i),
               y = (0, u.useRef)(null),
               g = (0, u.useRef)(null),
-              m = e.className,
-              b = (0, u.useMemo)(
+              m = (v || 0) < i,
+              b = e.className,
+              w = (0, u.useMemo)(
                 function () {
                   var t = 0;
                   return {
@@ -16923,21 +16923,21 @@
                 },
                 [e.children],
               ),
-              w = b.validChildren,
-              x = b.count;
-            function C() {
+              x = w.validChildren,
+              C = w.count;
+            function _() {
               s(function (e) {
                 return e + 1;
               });
             }
-            function _() {
+            function k() {
               s(function (e) {
                 return e - 1;
               });
             }
             if (
               ((0, u.useImperativeHandle)(t, function () {
-                return { swipeNext: C, swipePrev: _ };
+                return { swipeNext: _, swipePrev: k };
               }),
               (0, tu.Z)(
                 function () {
@@ -16945,18 +16945,18 @@
                 },
                 [i],
               ),
-              0 === x || !w)
+              0 === C || !x)
             )
               return null;
-            var k = (0, qo.Z)({ ref: g }),
-              S = k.width,
-              E = k.height;
+            var S = (0, qo.Z)({ ref: g }),
+              E = S.width,
+              D = S.height;
             return (0, d.jsx)('div', {
-              className: c()(Ja[''.concat(nu)], m),
-              style: { width: S, height: E },
+              className: c()(Ja[''.concat(nu)], b),
+              style: { width: E, height: D },
               ref: y,
               children: (0, d.jsx)(d.Fragment, {
-                children: u.Children.map(w, function (e, t) {
+                children: u.Children.map(x, function (e, t) {
                   var n = i === t;
                   return (0, d.jsx)('div', {
                     className: c()(
@@ -16975,8 +16975,7 @@
                         h(!1);
                       });
                     },
-                    children:
-                      (!(i < t && !p) || (p && (v || 0) > i && t > i + 1)) && e,
+                    children: (t <= i || (t === i + 1 && !m && p)) && e,
                   });
                 }),
               }),
