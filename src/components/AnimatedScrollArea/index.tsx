@@ -5,6 +5,7 @@ import { useDrag } from 'react-use-gesture';
 //import cs from 'classnames';
 import stylex, { type StyleXStyles } from '@stylexjs/stylex';
 import styles from './index.stylex';
+import mergeRefs from 'merge-refs';
 
 type AnimateScrollAreaProps = {
   containerRef?: React.RefObject<HTMLDivElement>;
@@ -21,12 +22,12 @@ type AnimateScrollAreaProps = {
 const decay = 0.995;
 const dis = 1;
 const AnimateScrollArea: React.FC<AnimateScrollAreaProps> = ({
-  containerRef,
   children,
   onScroll,
   disabledScroll,
   disabledInit,
   style,
+  ...rest
 }) => {
   const spring = useSpring(() => {
     return {
@@ -34,16 +35,16 @@ const AnimateScrollArea: React.FC<AnimateScrollAreaProps> = ({
       immediate: !0,
     };
   });
-  const _containerRef = useRef<HTMLDivElement>(null);
-  const { width } = useResizeObserver({ ref: _containerRef });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { width } = useResizeObserver({ ref: containerRef });
 
   const elasticValue = spring[0].elasticValue;
   const springRef = spring[1];
 
   const [clientWidth, setClientWidth] = useState<number>(() => {
-    return _containerRef?.current === null
+    return containerRef?.current === null
       ? 0
-      : (_containerRef?.current?.clientWidth as any);
+      : (containerRef?.current?.clientWidth as any);
   });
   useLayoutEffect(() => {
     setClientWidth(width as any);
@@ -75,7 +76,7 @@ const AnimateScrollArea: React.FC<AnimateScrollAreaProps> = ({
         x: -mx,
       });
 
-      const el = _containerRef?.current;
+      const el = containerRef?.current;
 
       if (el === null || disabledScroll) return;
       const scrollLeft = Math.abs(el?.scrollLeft as number);
@@ -112,10 +113,7 @@ const AnimateScrollArea: React.FC<AnimateScrollAreaProps> = ({
       axis: 'x',
       filterTaps: true,
       initial: () => {
-        return [
-          _containerRef.current ? -_containerRef.current.scrollLeft : 0,
-          0,
-        ];
+        return [containerRef.current ? -containerRef.current.scrollLeft : 0, 0];
       },
     },
   );
@@ -132,16 +130,7 @@ const AnimateScrollArea: React.FC<AnimateScrollAreaProps> = ({
         disabled && styles.animatedScrollAreaDisabled,
         !disabled && styles.animatedScrollAreaNotDisabledCusor,
       )}
-      ref={el => {
-        if (_containerRef) {
-          //@ts-ignore
-          _containerRef.current = el;
-        }
-        if (containerRef) {
-          //@ts-ignore
-          containerRef.current = el;
-        }
-      }}
+      ref={mergeRefs(rest.containerRef, containerRef)}
       scrollLeft={_spring[0].x}
       style={{
         ...style,
