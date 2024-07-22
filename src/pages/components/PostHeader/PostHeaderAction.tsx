@@ -9,13 +9,7 @@ import {
   Hide,
   Tag,
 } from '@components/Icon';
-import {
-  ActiveScaleButton,
-  Popover,
-  PopoverMenu,
-  PopoverMenuItem,
-  Toast,
-} from '@components/index';
+import { ActiveScaleButton, PopoverMenuItem, Toast } from '@components/index';
 import styles from './postHeaderAction.module.less';
 import { OnPostUpdate } from '../Post';
 import { deletePost, hidePost, updateLikeAndViewCounts } from '@services/post';
@@ -34,6 +28,7 @@ import { useSave } from './useSave';
 import { useCopy } from './useCopy';
 import PopupMenu from '@components/PopupMenu';
 import { isSupportTouch } from '@utils/index';
+import PopoverMenu from '@components/Popover/PopoverMenu';
 
 const classNamePrefix = 'post-header-action';
 
@@ -275,12 +270,12 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
         </ActiveScaleButton>
       )}
       {hasAction && menu.length !== 0 && (
-        <Popover
+        <PopoverMenu
           placement="bottom-end"
           offset={5}
           hideWhenContentClick
           enabled={!isSupportTouch}
-          content={<PopoverMenu items={menu} />}
+          menus={menu}
         >
           <ActiveScaleButton
             className={styles[`${classNamePrefix}-button`]}
@@ -291,7 +286,7 @@ const PostHeaderAction: React.FC<PostHeaderActionProps> = ({
           >
             <More fill="currentColor" size={20} viewBox="0 0 24 24" />
           </ActiveScaleButton>
-        </Popover>
+        </PopoverMenu>
       )}
 
       <ReplyAuthModal

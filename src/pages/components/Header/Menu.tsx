@@ -11,6 +11,7 @@ import { MenuItem } from '@components/Popover/Menu';
 import { Link } from 'react-router-dom';
 import { MutilStepContainerRef } from '@components/MutilStepContainer';
 import SwitchTheme from './SwitchTheme';
+import { Placement } from '@floating-ui/react';
 
 const classNamePrefix = 'menu';
 
@@ -86,23 +87,30 @@ const Menu: React.FC = () => {
       },
     });
   }
-  const content = (
-    <MutilStepContainer
-      ref={mutilStepRef}
-      className={styles[`${classNamePrefix}-menu`]}
-    >
-      <MutilStepContainer.Item>
-        <PopoverMenu items={[items]} shadow={false} />
-      </MutilStepContainer.Item>
-      <MutilStepContainer.Item>
-        <SwitchTheme
-          onBack={() => {
-            mutilStepRef.current?.swipePrev();
-          }}
-        />
-      </MutilStepContainer.Item>
-    </MutilStepContainer>
-  );
+  const content = (placement: Placement) => {
+    return (
+      <MutilStepContainer
+        ref={mutilStepRef}
+        className={styles[`${classNamePrefix}-menu`]}
+        style={{
+          transformOrigin: placement?.includes('start')
+            ? 'left top'
+            : 'right top',
+        }}
+      >
+        <MutilStepContainer.Item>
+          <PopoverMenu items={[items]} shadow={false} />
+        </MutilStepContainer.Item>
+        <MutilStepContainer.Item>
+          <SwitchTheme
+            onBack={() => {
+              mutilStepRef.current?.swipePrev();
+            }}
+          />
+        </MutilStepContainer.Item>
+      </MutilStepContainer>
+    );
+  };
 
   return (
     <Popover

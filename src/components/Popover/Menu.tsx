@@ -110,15 +110,22 @@ const MenuItem: React.FC<MenuItem> = ({
 type MenuProps = Pick<MenuItemsProps, 'onClick'> & {
   shadow?: boolean;
   items?: Array<MenuItem[]>;
+  style?: React.CSSProperties;
 };
 
-const Menu: React.FC<MenuProps> = ({ items, onClick, shadow = true }) => {
+const Menu: React.FC<MenuProps> = ({
+  items,
+  onClick,
+  shadow = true,
+  style,
+}) => {
   const classNamePrefix = 'menu';
   return (
     <div
       className={cs(styles[`${classNamePrefix}`], {
         [styles[`${classNamePrefix}-shadow`]]: shadow,
       })}
+      style={style}
     >
       {items?.map((item, index) => {
         const _item = item?.filter(i => i);

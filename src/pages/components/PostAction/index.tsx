@@ -8,13 +8,7 @@ import {
   Reposted,
   ShareTo,
 } from '@components/Icon';
-import {
-  ActiveScaleButton,
-  Popover,
-  PopoverMenu,
-  ScrollCountText,
-  Toast,
-} from '@components/index';
+import { ActiveScaleButton, ScrollCountText, Toast } from '@components/index';
 import styles from './index.module.less';
 import { Post } from '@typings/index';
 import { postLike, postUnlike, repost, unrepost } from '@services/post';
@@ -28,6 +22,7 @@ import cs from 'classnames';
 import { isSupportTouch } from '@utils/index';
 import { useCopy } from '../PostHeader/useCopy';
 import PopupMenu from '@components/PopupMenu';
+import PopoverMenu from '@components/Popover/PopoverMenu';
 
 const classNamePrefix = 'post-action';
 
@@ -244,11 +239,11 @@ const PostAction: React.FC<PostActionProps> = ({
       },
       {
         icon: (
-          <Popover
+          <PopoverMenu
             placement="bottom-start"
             hideWhenContentClick
             enabled={!isSupportTouch}
-            content={<PopoverMenu items={[repostItems]} />}
+            menus={[repostItems]}
           >
             <ActiveScaleButton
               contentClassName={styles[`${classNamePrefix}-button`]}
@@ -273,16 +268,16 @@ const PostAction: React.FC<PostActionProps> = ({
                 />
               )}
             </ActiveScaleButton>
-          </Popover>
+          </PopoverMenu>
         ),
       },
       {
         icon: (
-          <Popover
+          <PopoverMenu
             placement="bottom-start"
             enabled={!isSupportTouch}
             hideWhenContentClick
-            content={<PopoverMenu items={[shareItems]} />}
+            menus={[shareItems]}
           >
             <ActiveScaleButton
               size={36}
@@ -298,7 +293,7 @@ const PostAction: React.FC<PostActionProps> = ({
                 {...props}
               />
             </ActiveScaleButton>
-          </Popover>
+          </PopoverMenu>
         ),
       },
     ];

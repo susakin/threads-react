@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Wrapper } from './Wrapper';
 import { UseFloatingOptions } from '@floating-ui/react';
+import { Placement } from '@floating-ui/react';
 
 import {
   useFloating,
@@ -21,7 +22,7 @@ import {
 
 export type PopoverProps = {
   children?: React.ReactElement;
-  content?: React.ReactNode;
+  content?: ((placement: Placement) => React.ReactNode) | React.ReactNode;
   trigger?: 'click' | 'hover';
   strategy?: 'fixed' | 'absolute';
   openDelay?: number;
@@ -34,7 +35,6 @@ export type PopoverProps = {
 
 const Popover: React.FC<PopoverProps> = ({
   children,
-  content,
   trigger = 'click',
   openDelay = 0,
   strategy = 'absolute',
@@ -44,7 +44,6 @@ const Popover: React.FC<PopoverProps> = ({
   ...rest
 }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [transformOrigin, setTransformOrigin] = useState<string>('');
   const wrapperRef = useRef<Wrapper>(null);
   const isTriggerClick = trigger === 'click';
 
@@ -63,6 +62,14 @@ const Popover: React.FC<PopoverProps> = ({
       whileElementsMounted: autoUpdate,
       middleware: [hide(), shift(), flip(), offset(rest.offset)],
     });
+
+  const content = useMemo(() => {
+    if (typeof rest.content === 'function') {
+      return rest.content(placement);
+    } else {
+      return rest.content;
+    }
+  }, [placement, rest.content]);
 
   const focus = useFocus(context);
 
@@ -90,16 +97,6 @@ const Popover: React.FC<PopoverProps> = ({
   ]);
 
   useEffect(() => {
-    if (placement.includes('start')) {
-      setTransformOrigin('left top');
-    }
-
-    if (placement.includes('end')) {
-      setTransformOrigin('right top');
-    }
-  }, [placement]);
-
-  useEffect(() => {
     refs.setReference(wrapperRef?.current?.element as any);
   }, []);
 
@@ -119,7 +116,6 @@ const Popover: React.FC<PopoverProps> = ({
                 : 'visible',
               outline: 'none',
               ...floatingStyles,
-              transformOrigin,
               ...rest.floatingStyle,
             }}
             {...getFloatingProps()}

@@ -18,6 +18,7 @@ const classNamePrefix = 'mutil-step-container';
 type MutilStepContainerProps = {
   className?: string;
   children?: React.ReactNode;
+  style?: React.CSSProperties;
 };
 
 export type MutilStepContainerRef = {
@@ -35,7 +36,7 @@ const MutilStepContainer = forwardRef<
   const rootRef = useRef<HTMLDivElement>(null);
   const currentRef = useRef<HTMLDivElement>(null);
   const increment = (previous || 0) < current;
-  const { className } = props;
+  const { className, style } = props;
   const { validChildren, count } = useMemo(() => {
     let count = 0;
     const validChildren = React.Children.map(props.children, child => {
@@ -112,7 +113,7 @@ const MutilStepContainer = forwardRef<
   return (
     <div
       className={cs(styles[`${classNamePrefix}`], className)}
-      style={{ width, height }}
+      style={{ width, height, ...style }}
       ref={rootRef}
     >
       {renderTrackInner()}
