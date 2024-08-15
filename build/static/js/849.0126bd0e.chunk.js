@@ -13,8 +13,8 @@
         r = t(5861),
         o = t(9439),
         l = t(7313),
-        a = t(8568),
-        c = t(8739),
+        a = t(3919),
+        c = t(5421),
         s = {
           media: 'Ksrat',
           'media-viewer-content': 'nWJBe',
