@@ -1,10 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  Button,
-  PopoverMenuItem,
-  Popover,
-  PopoverMenu,
-} from '@components/index';
+import { Button, PopoverMenuItem } from '@components/index';
+import PopoverMenu from '@components/Popover/PopoverMenu';
 import PostEditItem from './PostEditItem';
 import Post from '../Post';
 import styles from './postEdit.module.less';
@@ -179,22 +175,18 @@ const PostEdit: React.FC<PostEditProps> = ({
             {length}
           </div>
         )}
-        <Popover
+        <PopoverMenu
           placement="bottom-start"
           hideWhenContentClick
           floatingStyle={{
             zIndex: 3,
           }}
-          content={
-            <PopoverMenu
-              items={[menus]}
-              onClick={item => {
-                const key = item.key as any;
-                setReplyAuth(key);
-                onReplyAuthChange?.(key);
-              }}
-            />
-          }
+          menus={[menus]}
+          onMenuClick={item => {
+            const key = item.key as any;
+            setReplyAuth(key);
+            onReplyAuthChange?.(key);
+          }}
         >
           <Button
             type="text"
@@ -207,7 +199,7 @@ const PostEdit: React.FC<PostEditProps> = ({
             {hasPoll ? '、' : '和'}引用
             {hasPoll ? '和投票' : ''}
           </Button>
-        </Popover>
+        </PopoverMenu>
       </div>
     </div>
   );

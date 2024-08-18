@@ -4,15 +4,21 @@ import Popover, { PopoverProps } from '.';
 
 type PopoverMenuProps = {
   menus?: Array<MenuItem[]>;
+  onMenuClick?: (menu: MenuItem) => void;
 } & PopoverProps;
 
-const PopoverMenu: React.FC<PopoverMenuProps> = ({ menus, ...rest }) => {
+const PopoverMenu: React.FC<PopoverMenuProps> = ({
+  menus,
+  onMenuClick,
+  ...rest
+}) => {
   return (
     <Popover
       {...rest}
       content={placement => {
         return (
           <Menu
+            onClick={onMenuClick}
             items={menus}
             style={{
               transformOrigin: placement?.includes('start')
