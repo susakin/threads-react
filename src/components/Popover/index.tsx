@@ -30,7 +30,7 @@ export type PopoverProps = {
   enabled?: boolean;
   onOpenChange?: (open: boolean) => void;
   hideWhenContentClick?: boolean;
-  floatingStyle?: React.CSSProperties;
+  floatingStyles?: React.CSSProperties;
 } & Pick<UseFloatingOptions, 'placement'>;
 
 const Popover: React.FC<PopoverProps> = ({
@@ -100,6 +100,8 @@ const Popover: React.FC<PopoverProps> = ({
     refs.setReference(wrapperRef?.current?.element as any);
   }, []);
 
+  console.log(rest.floatingStyles, 'floatingStyles');
+
   return (
     <>
       <Wrapper ref={wrapperRef} {...getReferenceProps()}>
@@ -116,7 +118,7 @@ const Popover: React.FC<PopoverProps> = ({
                 : 'visible',
               outline: 'none',
               ...floatingStyles,
-              ...rest.floatingStyle,
+              ...rest.floatingStyles,
             }}
             {...getFloatingProps()}
             onClick={

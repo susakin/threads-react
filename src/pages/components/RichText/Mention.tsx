@@ -84,6 +84,7 @@ const Mention: React.FC = () => {
         ) {
           return null;
         }
+        console.log(props.store.getReferenceElement(), 'props');
         const node = (
           <Popover {...props}>
             {loading ? (

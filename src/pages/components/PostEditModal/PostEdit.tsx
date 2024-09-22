@@ -178,7 +178,7 @@ const PostEdit: React.FC<PostEditProps> = ({
         <PopoverMenu
           placement="bottom-start"
           hideWhenContentClick
-          floatingStyle={{
+          floatingStyles={{
             zIndex: 3,
           }}
           menus={[menus]}

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styles from './avatarSelector.module.less';
 import { AddAvatar } from '@components/Icon';
 import Avatar from '@components/Avatar';
-import Popover from '@components/Popover';
-import Menu, { MenuItem } from '@components/Popover/Menu';
+import { MenuItem } from '@components/Popover/Menu';
 import { FileUpload } from '@pages/components';
+import PopoverMenu from '@components/Popover/PopoverMenu';
 
 const classNamePrefix = 'avatar-selector';
 
@@ -51,7 +51,11 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   }
 
   return (
-    <Popover placement="bottom-end" content={<Menu items={[items]} />}>
+    <PopoverMenu
+      placement="bottom-end"
+      menus={[items]}
+      floatingStyles={{ zIndex: 3 }}
+    >
       <div className={styles[`${classNamePrefix}`]}>
         {url ? (
           <Avatar size={52} url={url} />
@@ -61,7 +65,7 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
           </div>
         )}
       </div>
-    </Popover>
+    </PopoverMenu>
   );
 };
 

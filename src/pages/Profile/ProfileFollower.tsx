@@ -1,11 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import {
-  ActiveScaleButton,
-  Popover,
-  PopoverMenu,
-  PopoverMenuItem,
-  Link,
-} from '@components/index';
+import { ActiveScaleButton, PopoverMenuItem, Link } from '@components/index';
+import PopoverMenu from '@components/Popover/PopoverMenu';
 import { UserPreview } from '@pages/components';
 import { Instagram, MoreOutline, Restrict, Restricted } from '@components/Icon';
 import FollowerModal from './FollowerModal';
@@ -214,14 +209,14 @@ const ProfileFollower: React.FC<ProfileFollowerProps> = ({
               isSupportTouch && setPopupMenuVisible(true);
             }}
           >
-            <Popover
+            <PopoverMenu
               hideWhenContentClick
               enabled={!isSupportTouch}
               placement="bottom-end"
-              content={<PopoverMenu items={menus} />}
+              menus={menus}
             >
               <MoreOutline size={24} viewBox="0 0 24 24" />
-            </Popover>
+            </PopoverMenu>
           </ActiveScaleButton>
         )}
       </div>
