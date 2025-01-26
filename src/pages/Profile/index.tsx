@@ -45,7 +45,11 @@ const Profile: React.FC = () => {
   const { loading, run } = useFetch<User, [string]>(getUserByUsername, {
     manual: true,
     onSuccess(data) {
-      setUser(data);
+      if (data) {
+        setUser(data);
+      } else {
+        setIsError(true);
+      }
     },
     onError() {
       setIsError(true);
