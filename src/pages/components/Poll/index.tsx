@@ -38,7 +38,7 @@ const Poll: React.FC<PollProps> = ({ poll, onUpdate }) => {
         ...poll,
         viewerVote: true,
         tallies: tallies?.map(item => {
-          if (item.id === params.id) {
+          if (item.id === params.pollItemId) {
             (item.count as number)++;
             item.voteUserAvatar = [state?.user?.profilePicUrl as string];
           }
@@ -72,7 +72,7 @@ const Poll: React.FC<PollProps> = ({ poll, onUpdate }) => {
               onClick={e => {
                 if (!over && viewerCanVote) {
                   e.stopPropagation();
-                  !loading && run({ pollId: poll?.id, id: item.id });
+                  !loading && run({ pollId: poll?.id, pollItemId: item.id });
                 }
               }}
               className={cs(styles[`${classNamePrefix}-option-item`], {
