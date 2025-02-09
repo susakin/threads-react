@@ -112,7 +112,7 @@ const Popover: React.FC<PopoverProps> = ({
           <div
             ref={refs.setFloating}
             style={{
-              zIndex: 1,
+              zIndex: 3,
               visibility: middlewareData.hide?.referenceHidden
                 ? 'hidden'
                 : 'visible',
